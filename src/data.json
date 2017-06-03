@@ -1,0 +1,993 @@
+{
+  "splitDistrict": false,
+  "invalidAddress": false,
+  "normalizedLocation": "New Gloucester",
+  "divisions": [
+    "ocd-division/country:us",
+    "ocd-division/country:us/state:me",
+    "ocd-division/country:us/state:me/cd:1"
+  ],
+  "issues": [
+    {
+      "id": "rechTyXtuGUkwEWQO",
+      "name": "Express Outrage Over Withdrawal from Paris Agreement",
+      "reason": "President Trump has made the decision to withdraw from the Paris climate accord despite overwhelming opposition from nearly every direction: a majority of American voters support the agreement and nearly every country in the world—195 in total—have signed the landmark accord; Elon Musk has resigned as advisor to Trump's business council; even shareholders at Exxon Mobil have called for greater and focus on the costs of climate change, signaling that investors want fossil fuel companies to move toward a low-carbon economy.  \n\nWithdrawing from the agreement will at best damage U.S. competitiveness as other countries take the lead in the global transition to clean energy. It will also do serious damage to U.S. strategic interests around the world by alienating U.S. allies and undermining U.S. policy priorities. And all of that isn’t even touching on the impact that pulling out of the deal will have on climate change.",
+      "script": "Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP].   \n\nI'm calling to express outrage that President Trump has chosen to withdraw from the Paris Climate Agreement. For the sake of our economy, health, and national security, the United States must continue to lead the global fight against climate change. I expect [SEN/REP NAME] to publically denounce Trump's decision. \n\nThank you for your time and consideration. \n\n[IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]",
+      "contacts": [
+        {
+          "id": "ME-ChelliePingree",
+          "name": "Chellie Pingree",
+          "phone": "202-225-6116",
+          "photoURL": "https://5calls.org/photo/ME-ChelliePingree",
+          "party": "Democratic",
+          "state": "ME",
+          "reason": "This is your local representative in the House.",
+          "area": "House",
+          "field_offices": [
+            {
+              "phone": "207-774-5019",
+              "city": ""
+            },
+            {
+              "phone": "207-873-5713",
+              "city": ""
+            }
+          ]
+        },
+        {
+          "id": "ME-SusanMCollins",
+          "name": "Susan M. Collins",
+          "phone": "202-224-2523",
+          "photoURL": "https://5calls.org/photo/ME-SusanMCollins",
+          "party": "Republican",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8414",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-0417",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-283-1101",
+              "city": "Biddeford"
+            },
+            {
+              "phone": "207-493-7873",
+              "city": "Caribou"
+            },
+            {
+              "phone": "207-784-6969",
+              "city": "Lewiston"
+            },
+            {
+              "phone": "207-780-3575",
+              "city": "Portland"
+            }
+          ]
+        },
+        {
+          "id": "ME-AngusSKingJr",
+          "name": "Angus S. King Jr.",
+          "phone": "202-224-5344",
+          "photoURL": "https://5calls.org/photo/ME-AngusSKingJr",
+          "party": "Independent",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8292",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-8000",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-764-5124",
+              "city": "Presque Isle"
+            },
+            {
+              "phone": "207-883-1588",
+              "city": "Scarborough"
+            }
+          ]
+        }
+      ],
+      "inactive": false
+    },
+    {
+      "id": "recCfiQl5iqBu2tDh",
+      "name": "Governors: Commit to Maintaining Paris Climate Standards",
+      "reason": "Nearly every single country in the world (195 in total) has signed the landmark Paris Climate Agreement. In fact, only Syria and Nicaragua have not joined the agreement, and Nicaragua stayed out because the accord wasn’t ambitious enough. Withdrawing from the agreement damages U.S. competitiveness as other countries will take the lead in the global transition to clean energy. It will also do serious damage to U.S. strategic interests around the world by alienating U.S. allies and undermining U.S. policy priorities. And all of that isn’t even touching on the impact pulling out of the deal will now have on climate change. The Paris Agreement is the best chance we have at slowing global warming and protecting our communities from the threats of climate change. As if that’s not enough: more than a thousand businesses and a majority of American voters support the agreement.\n\nAlthough Trump has decided to withdraw the United States from the Paris Climate Agreement, individual states maintain their control over their own carbon emission standards and clean energy priorities. If enough states commit to maintaining the standards of the Paris Climate Agreement, the collective achievement can offset the adverse effects of the Trump-led national withdrawal. Governors Jerry Brown of California, Andrew Cuomo of New York and Jay Inslee of Washington formed a \"United States Climate Alliance\" immediately after the announcement of Trump's Paris Accord decision. Urge your state's Governor to join the cause and continue the fight against climate change.\n\nSOURCE: Center for American Progress",
+      "script": "Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP].\n\nI'm calling because I am extremely alarmed by the Trump Administration's decision to withdraw the US from the Paris Climate Agreement, and I ask that Governor [NAME] join the United States Climate Alliance with other state leaders to maintain the climate goals set forth in the agreement. Climate change is a real threat to our safety, our health and our economy, and we must do everything we can to fight it.\n\nThank you for your time and attention.\n\n[IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied] ",
+      "contacts": [
+        {
+          "id": "ME-PaulLePage",
+          "name": "Paul LePage",
+          "phone": "207-287-3531",
+          "photoURL": "https://5calls.org/photo/ME-PaulLePage",
+          "party": "Republican",
+          "state": "ME",
+          "reason": "This is your state Governor.",
+          "area": "Governor",
+          "field_offices": null
+        }
+      ],
+      "inactive": false
+    },
+    {
+      "id": "recwKhoGJPTEIScUQ",
+      "name": "Protect Disability Benefits (SSDI) from Trump Budget Cuts",
+      "reason": "During his campaign, Trump made repeated promises to preserve Social Security benefits. Despite these promises, his 2018 budget proposal recommends cutting Social Security Disability Insurance (SSDI) payments to disabled workers by $72 billion over the next 10 years.\n\nTrump's administration argues that SSDI budget cuts will address wasteful and fraudulent access to these benefits. However, SSDI applicants must meet a host of eligibilty criteria to qualify for benefits. They must have worked a set number of years, have accumulated Social Security credits, and be under the age of 65. SSDI benefits are not overly generous (the US places 30th out of 34 peer countries for this type of benefit), nor are they easy to access - 60% of applications are denied. Despite these hurdles, there are nearly 9 million disabled workers currently receiving benefits; for 80% of beneficiaries, SSDI is their sole source of income.\n\nThese proposed SSDI cuts, particularly if combined with a repeal of the Affordable Care Act/Obamacare and budget cuts to Medicaid, would devastate millions of Americans who are already struggling to stay afloat in the face of health issues and economic insecurity.\n\nThe House and Senate Budget Committees will use Trump's budget proposal as guidance when finalizing their own budget recommendations. Constituents must make it clear to our members of Congress that SSDI and other social safety net programs represent our core values of supporting those most in need, and must not be eliminated in order to provide tax breaks to corporations and the most wealthy Americans.",
+      "script": "Hi, my name is [NAME] and I’m a constituent from [CITY, STATE].\n\nI’m calling today because I’m strongly opposed to the Social Security Disability Insurance (SSDI) cuts proposed by Trump - millions of Americans benefit from this important program. I ask that [REP/SEN NAME] strongly oppose cutting the SSDI budget and continue to support this and other critical social safety net programs.\n\nOPTIONAL: Share story of how you or someone you know benefited from SSDI\n\nThank you for your hard work answering the phones. \n\n[IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied] \n",
+      "contacts": [
+        {
+          "id": "ME-SusanMCollins",
+          "name": "Susan M. Collins",
+          "phone": "202-224-2523",
+          "photoURL": "https://5calls.org/photo/ME-SusanMCollins",
+          "party": "Republican",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8414",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-0417",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-283-1101",
+              "city": "Biddeford"
+            },
+            {
+              "phone": "207-493-7873",
+              "city": "Caribou"
+            },
+            {
+              "phone": "207-784-6969",
+              "city": "Lewiston"
+            },
+            {
+              "phone": "207-780-3575",
+              "city": "Portland"
+            }
+          ]
+        },
+        {
+          "id": "ME-AngusSKingJr",
+          "name": "Angus S. King Jr.",
+          "phone": "202-224-5344",
+          "photoURL": "https://5calls.org/photo/ME-AngusSKingJr",
+          "party": "Independent",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8292",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-8000",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-764-5124",
+              "city": "Presque Isle"
+            },
+            {
+              "phone": "207-883-1588",
+              "city": "Scarborough"
+            }
+          ]
+        },
+        {
+          "id": "ME-ChelliePingree",
+          "name": "Chellie Pingree",
+          "phone": "202-225-6116",
+          "photoURL": "https://5calls.org/photo/ME-ChelliePingree",
+          "party": "Democratic",
+          "state": "ME",
+          "reason": "This is your local representative in the House.",
+          "area": "House",
+          "field_offices": [
+            {
+              "phone": "207-774-5019",
+              "city": ""
+            },
+            {
+              "phone": "207-873-5713",
+              "city": ""
+            }
+          ]
+        }
+      ],
+      "inactive": false
+    },
+    {
+      "id": "recIY5BMUytUixNbV",
+      "name": "Say No to the CHOICE Act and Defend Dodd-Frank Regulations ",
+      "reason": "Update (5/30): HR 10, the Financial CHOICE Act of 2017, is scheduled for full House vote next Wednesday, June 7th. \n\nThe Dodd-Frank Act is a financial reform law that was passed in 2010 as a response to the Great Recession. It includes a set of regulations intended to prevent “too-big-to-fail” banks from causing another economic crisis. One critical piece of legislation under Dodd-Frank is the Volcker rule, which prohibits banks from making certain kinds of speculative investments, such as those that led to the housing market crash in 2008. The Volcker rule also limits banks in their relationships with hedge funds and private equity funds. Dodd-Frank also created the Consumer Financial Protection Bureau (CFPB), which ensures that banks, lenders, credit card corporations, and other financial companies treat their customers fairly and protect consumers from practices like predatory payday lending. \n\nHouse Republicans have introduced legislation known as the Financial CHOICE Act of 2017 (H.R. 10) that would repeal the Volcker rule and strip the CFPB of key enforcement powers, including the ability to fine institutions for unfair lending practices (which the CFPB recently used to fine Wells Fargo $100 million for opening 2 million accounts that their customers didn't know about). The repeal of the Volcker rule alone would increase big banks' profits by hundreds of millions of dollars a year while putting the American public at risk for another recession driven by irresponsible banking practices. ",
+      "script": "Hi, my name is [Name] and I’m a constituent from [City, ZIP].\n\nI'm calling to express my opposition to H.R. 10, the Financial CHOICE Act of 2017, which would undermine the crucial consumer protections provided by the Dodd-Frank Act. As the 2008 recession illustrated, the banking industry must be carefully regulated to protect consumers from risky lending practices and corporate greed. \n\n[IF COMMITTEE, Add: Please pass my message along to the Chairman and other members of the committee.]\n\nThank you for your hard work answering the phones.\n\n[IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]",
+      "contacts": [
+        {
+          "id": "ME-ChelliePingree",
+          "name": "Chellie Pingree",
+          "phone": "202-225-6116",
+          "photoURL": "https://5calls.org/photo/ME-ChelliePingree",
+          "party": "Democratic",
+          "state": "ME",
+          "reason": "This is your local representative in the House.",
+          "area": "House",
+          "field_offices": [
+            {
+              "phone": "207-774-5019",
+              "city": ""
+            },
+            {
+              "phone": "207-873-5713",
+              "city": ""
+            }
+          ]
+        }
+      ],
+      "inactive": false
+    },
+    {
+      "id": "recppeNQT6Thkt5qW",
+      "name": "Oppose Budget Cuts to SNAP / Food Stamps",
+      "reason": "Trump’s 2018 budget proposal funds tax breaks for the wealthy by slashing social safety net services, including a 25% cut to the SNAP (food stamp) budget. Currently, 45 million Americans rely on food stamps, nearly half of which are children. Reduction of this critical service is a cruel and unnecessary tactic designed to pad a budget that favors corporations and the rich over the general population.\n\nSNAP is an effective program with proven results. Major studies have consistently shown not only reduced hunger and food insecurity but also lasting improvements in health outcomes, including less obesity and higher birth weights, among SNAP recipients. By providing a safety net to families during economic hard times, SNAP is also an important way to lift them out of poverty. Furthermore, SNAP is highly efficient, with 95% of dollars spent on the program going directly to benefits. Even Trump's Secretary of Agriculture Sonny Perdue recognized the value of SNAP, saying of the program, “You don’t try to fix things that aren’t broken”. \n\nThe House and Senate Budget Committees will use Trump's budget proposal as guidance when finalizing their own budget recommendations. During the budget review process, constituents must make it clear that SNAP and other social safety net programs represent our core value of supporting those most in need and must not be eliminated to further enrich corporations and the most wealthy Americans.",
+      "script": "Hi, my name is [NAME] and I’m a constituent from [CITY, STATE].\n\nI’m calling today because I’m strongly opposed to the SNAP / food stamp budget cuts proposed by Trump - a 25% cut to this effective and important program is unacceptable. I ask that [REP/SEN NAME] strongly oppose cutting of the SNAP / food stamps program and continue to support this and other critical social safety net programs.\n\nOPTIONAL: Share story of how you or someone you know benefited from SNAP / food stamps\n\nThank you for your hard work answering the phones. \n\n[IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied] ",
+      "contacts": [
+        {
+          "id": "ME-SusanMCollins",
+          "name": "Susan M. Collins",
+          "phone": "202-224-2523",
+          "photoURL": "https://5calls.org/photo/ME-SusanMCollins",
+          "party": "Republican",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8414",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-0417",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-283-1101",
+              "city": "Biddeford"
+            },
+            {
+              "phone": "207-493-7873",
+              "city": "Caribou"
+            },
+            {
+              "phone": "207-784-6969",
+              "city": "Lewiston"
+            },
+            {
+              "phone": "207-780-3575",
+              "city": "Portland"
+            }
+          ]
+        },
+        {
+          "id": "ME-AngusSKingJr",
+          "name": "Angus S. King Jr.",
+          "phone": "202-224-5344",
+          "photoURL": "https://5calls.org/photo/ME-AngusSKingJr",
+          "party": "Independent",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8292",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-8000",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-764-5124",
+              "city": "Presque Isle"
+            },
+            {
+              "phone": "207-883-1588",
+              "city": "Scarborough"
+            }
+          ]
+        },
+        {
+          "id": "ME-ChelliePingree",
+          "name": "Chellie Pingree",
+          "phone": "202-225-6116",
+          "photoURL": "https://5calls.org/photo/ME-ChelliePingree",
+          "party": "Democratic",
+          "state": "ME",
+          "reason": "This is your local representative in the House.",
+          "area": "House",
+          "field_offices": [
+            {
+              "phone": "207-774-5019",
+              "city": ""
+            },
+            {
+              "phone": "207-873-5713",
+              "city": ""
+            }
+          ]
+        }
+      ],
+      "inactive": false
+    },
+    {
+      "id": "recywt9vEUNwAsZOo",
+      "name": "Support the Creation of the Independent Commission ",
+      "reason": "UPDATE (5/29): Given recent reporting of Jared Kushner's request for a secret communication channel to the Kremlin, it has again become clear why we need an independent commission in addition to the already appointed special prosecutor to investigate Trump's many ties to Russia.\n\nOn May 10th, House Minority Leader Nancy Pelosi wrote a letter to Speaker Ryan urging for him to bring H.R. 356, the Protecting Our Democracy Act, to an immediate vote on the floor as soon as the House reconvenes the week of May 15th. The bipartisan bill, sponsored by Rep. Eric Swalwell (D-CA), would establish an independent commission of 12 non-governmental appointees to fully investigate Russian interference in the 2016 election and any potential ties to the Trump campaign. \n\nSince Speaker Ryan has failed to bring this bill to the floor, on May 17th Rep. Pelosi filed a discharge petition on HR 356: a parliamentarian procedure that allows a bill to be brought to the floor without passing through committee. If a simple majority of House members sign the discharge petition, Pelosi can force a floor vote on the measure. Currently, every Democrat has agreed to sign the petition.\n\nWhile a special prosecutor has been appointed after the abrupt firing of FBI Director Comey, an independent commission is still needed to ensure a fair and thorough investigation. A special prosecutor will be able to press criminal charges if necessary, but he/she could still be controlled or even fired. An independent commission, however, would have more autonomy and will produce an extensive, conclusive report of its findings, including information of wrongdoings that may not warrant criminal charges but is still vital for the American public to know.",
+      "script": "Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP]. \n\nI'm calling to express my support for [House: H.R.356; Senate: S.27], which would establish an independent special commission to investigate Russia's interference in the 2016 presidential election. An independent commission is needed as soon as possible to remove the political games that have been hindering the investigation into Russia's interference in our election. \n\nThank you for your hard work answering the phones.\n\n[IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]",
+      "contacts": [
+        {
+          "id": "ME-ChelliePingree",
+          "name": "Chellie Pingree",
+          "phone": "202-225-6116",
+          "photoURL": "https://5calls.org/photo/ME-ChelliePingree",
+          "party": "Democratic",
+          "state": "ME",
+          "reason": "This is your local representative in the House.",
+          "area": "House",
+          "field_offices": [
+            {
+              "phone": "207-774-5019",
+              "city": ""
+            },
+            {
+              "phone": "207-873-5713",
+              "city": ""
+            }
+          ]
+        },
+        {
+          "id": "ME-SusanMCollins",
+          "name": "Susan M. Collins",
+          "phone": "202-224-2523",
+          "photoURL": "https://5calls.org/photo/ME-SusanMCollins",
+          "party": "Republican",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8414",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-0417",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-283-1101",
+              "city": "Biddeford"
+            },
+            {
+              "phone": "207-493-7873",
+              "city": "Caribou"
+            },
+            {
+              "phone": "207-784-6969",
+              "city": "Lewiston"
+            },
+            {
+              "phone": "207-780-3575",
+              "city": "Portland"
+            }
+          ]
+        },
+        {
+          "id": "ME-AngusSKingJr",
+          "name": "Angus S. King Jr.",
+          "phone": "202-224-5344",
+          "photoURL": "https://5calls.org/photo/ME-AngusSKingJr",
+          "party": "Independent",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8292",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-8000",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-764-5124",
+              "city": "Presque Isle"
+            },
+            {
+              "phone": "207-883-1588",
+              "city": "Scarborough"
+            }
+          ]
+        }
+      ],
+      "inactive": false
+    },
+    {
+      "id": "recY5BSX6sq7v2Ddj",
+      "name": "Demand Town Halls During the Memorial Day Recess",
+      "reason": "The Senate and the House of Representatives are scheduled for Congressional Recess from May 29th to June 5th. During Recess, members of Congress are expected to work in their districts and engage with their constituents. It is also the perfect time for them to hold public town halls so constituents can express their concerns in person. This will be the Senate's first recess since the House passage of the American Health Care Act and is thus constituents' first opportunity to discuss healthcare with their Senators while the Senate is actively drafting healthcare legislation. According to some insiders, if there is enough \"blowback\" back home regarding healthcare, the Senate may drop their attempt to repeal Obamacare.\n\nBut in addition to healthcare, members of Congress must address a myriad of other issues during this recess, including the continuously escalating reports of the Trump campaign's connections to Russian election interference, Trump's own efforts to obstruct investigations of his administration, and the 2018 Budget. While Budget Director Mick Mulvaney has released the Trump administration's full budget proposal, the House and Senate will ultimately decide what programs remain safe and fully funded and which will be gutted.\n\nHold your representatives accountable for their actions and demand they face their constituents while they're home and available to do so. If members of Congress refuse to hold a town hall, request an in-office meeting to discuss your concerns.\n\nNOTE: Select a Local Office to call to get the most up-to-date schedule information from staffers.",
+      "script": "Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP]. \n\nIs [REP/SEN NAME] planning to hold a town hall during the Memorial Day recess?\n\n[IF YES] I’d like to RSVP. May I please have the details?\n\n[IF NO] Would the [Congressman/woman or Senator] be available to meet myself and other constituents to talk about [specific issue of your choosing]? We have serious concerns we'd like to discuss in depth.\n\nThank you for your time and attention.\n\n[IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied] ",
+      "contacts": [
+        {
+          "id": "ME-ChelliePingree",
+          "name": "Chellie Pingree",
+          "phone": "202-225-6116",
+          "photoURL": "https://5calls.org/photo/ME-ChelliePingree",
+          "party": "Democratic",
+          "state": "ME",
+          "reason": "This is your local representative in the House.",
+          "area": "House",
+          "field_offices": [
+            {
+              "phone": "207-774-5019",
+              "city": ""
+            },
+            {
+              "phone": "207-873-5713",
+              "city": ""
+            }
+          ]
+        },
+        {
+          "id": "ME-SusanMCollins",
+          "name": "Susan M. Collins",
+          "phone": "202-224-2523",
+          "photoURL": "https://5calls.org/photo/ME-SusanMCollins",
+          "party": "Republican",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8414",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-0417",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-283-1101",
+              "city": "Biddeford"
+            },
+            {
+              "phone": "207-493-7873",
+              "city": "Caribou"
+            },
+            {
+              "phone": "207-784-6969",
+              "city": "Lewiston"
+            },
+            {
+              "phone": "207-780-3575",
+              "city": "Portland"
+            }
+          ]
+        },
+        {
+          "id": "ME-AngusSKingJr",
+          "name": "Angus S. King Jr.",
+          "phone": "202-224-5344",
+          "photoURL": "https://5calls.org/photo/ME-AngusSKingJr",
+          "party": "Independent",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8292",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-8000",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-764-5124",
+              "city": "Presque Isle"
+            },
+            {
+              "phone": "207-883-1588",
+              "city": "Scarborough"
+            }
+          ]
+        }
+      ],
+      "inactive": false
+    },
+    {
+      "id": "recyfLGhUkNTmoa1j",
+      "name": "Stop Congress From Uninsuring Millions of People ",
+      "reason": "The nonpartisan Congressional Budget Office (CBO) analysis of the revised American Health Care Act (AHCA) is in, and its findings are clear: the bill will strip 14 million Americans of health insurance by next year and 23 million by 2026 while making coverage unaffordable for millions more. In fact, the AHCA would leave more Americans uninsured by 2026 than were uninsured prior to the ACA's passage in 2010. \n\nThe AHCA's rollback of Medicaid expansion alone would immediately deprive 11 million low-income people of insurance access. The AHCA's changes to the individual insurance market, where roughly 19 million Americans buy insurance (via federal and state marketplace plans and other nongroup plans), would also reduce insurance coverage. By replacing income-based tax credits with age-based credits, the bill would drive up nongroup premiums dramatically for low-income, older enrollees. For some older adults, their premiums could go up by as much as 800%. However, wealthy Americans would receive tax breaks totaling roughly $900 billion thanks to the new tax credit structure.\n\nAn estimated 1 in 6 people live in states that would request AHCA regulatory waivers, which would allow insurers to reinstate price discrimination based on health status and end coverage of essential health benefits. The CBO estimates that many sicker people would be priced out of the insurance market altogether. For many more consumers, out-of-pocket spending on maternity care, mental health and substance abuse services could increase by thousands of dollars in a given year. \n\nThe CBO estimated the AHCA could reduce premiums overall, but it would achieve this by making insurance unattainable for older and sicker Americans and by allowing insurers to offer much skimpier plans. We must not allow the Senate to reverse years of progress in increasing healthcare access.",
+      "script": "Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP].\n\nI'm calling today because I'm furious House Republicans passed the American Health Care Act, which would leave even more Americans uninsured than pre-ACA and drive up premiums for millions more.\n\n[Optional: Share a personal story about how this bill will impact you or someone you know]\n\n[IF CALLING SENATOR, ADD: I urge [SEN NAME] to vote against the AHCA and ensure the ACA's expansion of Medicaid and protections for people with preexisting conditions remain in place.]\n\nThank you for your time.\n\n[IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied] ",
+      "contacts": [
+        {
+          "id": "ME-ChelliePingree",
+          "name": "Chellie Pingree",
+          "phone": "202-225-6116",
+          "photoURL": "https://5calls.org/photo/ME-ChelliePingree",
+          "party": "Democratic",
+          "state": "ME",
+          "reason": "This is your local representative in the House.",
+          "area": "House",
+          "field_offices": [
+            {
+              "phone": "207-774-5019",
+              "city": ""
+            },
+            {
+              "phone": "207-873-5713",
+              "city": ""
+            }
+          ]
+        },
+        {
+          "id": "ME-SusanMCollins",
+          "name": "Susan M. Collins",
+          "phone": "202-224-2523",
+          "photoURL": "https://5calls.org/photo/ME-SusanMCollins",
+          "party": "Republican",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8414",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-0417",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-283-1101",
+              "city": "Biddeford"
+            },
+            {
+              "phone": "207-493-7873",
+              "city": "Caribou"
+            },
+            {
+              "phone": "207-784-6969",
+              "city": "Lewiston"
+            },
+            {
+              "phone": "207-780-3575",
+              "city": "Portland"
+            }
+          ]
+        },
+        {
+          "id": "ME-AngusSKingJr",
+          "name": "Angus S. King Jr.",
+          "phone": "202-224-5344",
+          "photoURL": "https://5calls.org/photo/ME-AngusSKingJr",
+          "party": "Independent",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8292",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-8000",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-764-5124",
+              "city": "Presque Isle"
+            },
+            {
+              "phone": "207-883-1588",
+              "city": "Scarborough"
+            }
+          ]
+        }
+      ],
+      "inactive": false
+    },
+    {
+      "id": "recILZMLtc4Dtu157",
+      "name": "Stand Up Against Mass Incarceration",
+      "reason": "Attorney General Jeff Sessions seems determined to return our country to the past when prosecutors and judges were required to impose mandatory minimum sentences, even for non-violent offenders. This was a key “weapon” in the failed War on Drugs policy pursued in the 1980’s, which jailed a disproportionate number of poor urban black and Hispanic Americans, swelled prison populations, placed state and local governments in the impossible situation of funding and managing overcrowded prisons, and deprived millions of the right to vote.  \n\nMandatory minimum sentencing, which has been recognized by conservatives and liberals alike as restrictive and destructive, will only harm another generation of poor Americans. The ACLU reports that black Americans are 4-5 times more likely to be convicted for drug possession, even though blacks and whites use drugs at roughly the same rates. More troubling still is that even after convicts have served their time, many cannot vote, obtain employment, get loans, or even rent apartments. The downstream effects of mass incarceration on poor urban families and communities are nearly insurmountable.  \n\nThe response from legislators on both sides of the aisle has been a swift and clear \"no.\" Senators Rand Paul (R-KY), Patrick Leahy (D-VT), Jeff Merkley (D-OR), and Representatives Thomas Massie (R-KY) and Bobby Scott (D-VA3) have reintroduced the Justice Safety Valve Act, which allows prosecutors and judges to use their discretion to consider each case separately. The Justice Safety Valve Act is a crucial check on the unjust and regressive actions of the Attorney General.",
+      "script": "Hi, my name is [NAME] and I’m a constituent from [CITY, STATE]. \n\n[IF CALLING COMMITTEE, ADD: I'd like to leave a message for the Chairman and members of the committee.]\n\nI’m calling today in support of [S.1127 for Senate/ H.R. 2435 for House], the Justice Safety Valve Act. Prosecutors and judges should use their own discretion to consider each case, instead of imposing arbitrary mandatory minimum sentences that result in mass incarceration.\n\nThank you for your hard work answering the phones. \n\n[IF LEAVING A VOICEMAIL please leave your full street address to ensure your call is tallied]",
+      "contacts": [
+        {
+          "id": "ME-ChelliePingree",
+          "name": "Chellie Pingree",
+          "phone": "202-225-6116",
+          "photoURL": "https://5calls.org/photo/ME-ChelliePingree",
+          "party": "Democratic",
+          "state": "ME",
+          "reason": "This is your local representative in the House.",
+          "area": "House",
+          "field_offices": [
+            {
+              "phone": "207-774-5019",
+              "city": ""
+            },
+            {
+              "phone": "207-873-5713",
+              "city": ""
+            }
+          ]
+        },
+        {
+          "id": "recpiyl1muzvhAmGZ",
+          "name": "House Judiciary Committee",
+          "phone": "202-225-3951",
+          "photoURL": "",
+          "party": "",
+          "state": "",
+          "reason": "This organization is driving legislation related to the issue.",
+          "area": "",
+          "field_offices": null
+        },
+        {
+          "id": "ME-SusanMCollins",
+          "name": "Susan M. Collins",
+          "phone": "202-224-2523",
+          "photoURL": "https://5calls.org/photo/ME-SusanMCollins",
+          "party": "Republican",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8414",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-0417",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-283-1101",
+              "city": "Biddeford"
+            },
+            {
+              "phone": "207-493-7873",
+              "city": "Caribou"
+            },
+            {
+              "phone": "207-784-6969",
+              "city": "Lewiston"
+            },
+            {
+              "phone": "207-780-3575",
+              "city": "Portland"
+            }
+          ]
+        },
+        {
+          "id": "ME-AngusSKingJr",
+          "name": "Angus S. King Jr.",
+          "phone": "202-224-5344",
+          "photoURL": "https://5calls.org/photo/ME-AngusSKingJr",
+          "party": "Independent",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8292",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-8000",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-764-5124",
+              "city": "Presque Isle"
+            },
+            {
+              "phone": "207-883-1588",
+              "city": "Scarborough"
+            }
+          ]
+        },
+        {
+          "id": "recZhL39WIa4p5MZp",
+          "name": "Senate Judiciary Committee",
+          "phone": "202-224-5225",
+          "photoURL": "",
+          "party": "",
+          "state": "",
+          "reason": "This organization is driving legislation related to the issue.",
+          "area": "",
+          "field_offices": null
+        }
+      ],
+      "inactive": false
+    },
+    {
+      "id": "reccRyuJun7MkwTXJ",
+      "name": "Protect Public School Funding and Student Loan Protections",
+      "reason": "The Trump administration, along with Secretary Betsy DeVos, laid out their proposal for the 2018 Department of Education budget - a long list of program cuts and funding shifts that would leave public schools underfunded and vulnerable students unprotected. The $11 billion worth of budget cuts would completely dismantle teacher training programs, after school programs (that mostly serve poor children), class-size reduction efforts, the Special Olympics, and 20 other programs designed to address bullying prevention, mental health, gifted students, as well as arts, foreign language, history and STEM education. \n\nNot only does the budget proposal defund a multitude of vital programs, it also devastates the entirety of the public school system. $400 million would be spent on expanding charter and religious schools, and $1 billion dollars spent a new grant to promote voucher or 'school choice' programs in public schools, effectively diverting funds away from already struggling public schools and into private schools. Trump and DeVos also have their eyes on overhauling federal financial aid with a proposal to kill the Public Service Loan Forgiveness program (which allows student borrowers to have their debt erased if they work for the government or a nonprofit for at least 10 years), and replace all student loan repayment plans with a single plan, a move that could give one contractor too much power and ability to abuse student borrowers.\n\nAs if this large number of troubling changes aren't enough and DeVos's priorities aren't already clear, DeVos has also proposed cutting the Dept. of Education's Office of Civil Rights staff by 10% (complaints are on a significant rise) and increasing the budget for her own security by millions of taxpayer dollars.",
+      "script": "Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP].   \n\nI’m calling to urge [REP/SENT NAME] to reject the Trump administration's proposed budget cuts to the education department. \n\nOPTIONAL: Share a personal story or reason why this matters to you. For example:  \n\n-- I (or someone close to you) am a product of the public school system, and I think more effort should be spent on improving it, not abandoning it.\n\n-- I (or someone close to you) needed federal assistance to pay for higher education, and I support the programs that make it easier for students to do so and protect them from abuse by lending companies.\n\n-- It is important to me that my children (or young people close to you) have access to arts (or science, foreign language, etc.) education in their schools, and do not want to see those programs dismantled.\n\nThank you for your time and attention.\n\n[IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied] ",
+      "contacts": [
+        {
+          "id": "ME-ChelliePingree",
+          "name": "Chellie Pingree",
+          "phone": "202-225-6116",
+          "photoURL": "https://5calls.org/photo/ME-ChelliePingree",
+          "party": "Democratic",
+          "state": "ME",
+          "reason": "This is your local representative in the House.",
+          "area": "House",
+          "field_offices": [
+            {
+              "phone": "207-774-5019",
+              "city": ""
+            },
+            {
+              "phone": "207-873-5713",
+              "city": ""
+            }
+          ]
+        },
+        {
+          "id": "ME-SusanMCollins",
+          "name": "Susan M. Collins",
+          "phone": "202-224-2523",
+          "photoURL": "https://5calls.org/photo/ME-SusanMCollins",
+          "party": "Republican",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8414",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-0417",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-283-1101",
+              "city": "Biddeford"
+            },
+            {
+              "phone": "207-493-7873",
+              "city": "Caribou"
+            },
+            {
+              "phone": "207-784-6969",
+              "city": "Lewiston"
+            },
+            {
+              "phone": "207-780-3575",
+              "city": "Portland"
+            }
+          ]
+        },
+        {
+          "id": "ME-AngusSKingJr",
+          "name": "Angus S. King Jr.",
+          "phone": "202-224-5344",
+          "photoURL": "https://5calls.org/photo/ME-AngusSKingJr",
+          "party": "Independent",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8292",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-8000",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-764-5124",
+              "city": "Presque Isle"
+            },
+            {
+              "phone": "207-883-1588",
+              "city": "Scarborough"
+            }
+          ]
+        }
+      ],
+      "inactive": false
+    },
+    {
+      "id": "recjqUWRIEDfFKjAc",
+      "name": "Senators: Appoint an Independent and Experienced FBI Director",
+      "reason": "Trump has publicly admitted that Russia was on his mind when he fired FBI Director James Comey on May 9. Every day, disturbing revelations emerge about additional ways Trump and his team have attempted to obstruct investigations of his administration's ties to Russia. As Trump rushes to replace Comey, it is more important than ever that Congress appoint an apolitical, independent FBI director.\n\nComey's replacement must be experienced in law enforcement and above politics. The new FBI director also must have impeccable integrity and be committed to an independent agency to ensure they do not obstruct special prosecutor Robert Mueller's investigation of Trump's Russia ties. The Senate must be able to put country before party and resist the confirmation of anyone other than a person with relevant experience and unimpeachable character.",
+      "script": "Hi, my name is [NAME] and I'm a citizen from [CITY, ZIP].\n\nI'm calling to encourage [SEN/REP NAME] to insist on an FBI Director with experience in federal law enforcement and running a federal agency who is committed to a politically independent FBI. Anything less will undermine public trust in the FBI and endanger the agency's ability to serve our nation impartially. \n\nThank you for your time and attention.\n\n[IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied] ",
+      "contacts": [
+        {
+          "id": "ME-SusanMCollins",
+          "name": "Susan M. Collins",
+          "phone": "202-224-2523",
+          "photoURL": "https://5calls.org/photo/ME-SusanMCollins",
+          "party": "Republican",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8414",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-0417",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-283-1101",
+              "city": "Biddeford"
+            },
+            {
+              "phone": "207-493-7873",
+              "city": "Caribou"
+            },
+            {
+              "phone": "207-784-6969",
+              "city": "Lewiston"
+            },
+            {
+              "phone": "207-780-3575",
+              "city": "Portland"
+            }
+          ]
+        },
+        {
+          "id": "ME-AngusSKingJr",
+          "name": "Angus S. King Jr.",
+          "phone": "202-224-5344",
+          "photoURL": "https://5calls.org/photo/ME-AngusSKingJr",
+          "party": "Independent",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8292",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-8000",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-764-5124",
+              "city": "Presque Isle"
+            },
+            {
+              "phone": "207-883-1588",
+              "city": "Scarborough"
+            }
+          ]
+        }
+      ],
+      "inactive": false
+    },
+    {
+      "id": "rec9e4NT0KiKdx9Pb",
+      "name": "Fight Trump's Massive Budget Cut Proposal",
+      "reason": "The Trump administration has released their full 2018 FY Budget proposal, expanding on the requests outlined in March. In addition to drastic funding cuts to the EPA, Planned Parenthood, and the Education Department (effectively diverting funds from public schools to voucher programs), the latest proposal also slashes safety net and anti-poverty programs, a historically severe move that would devastate the lives of millions of low-income families.\n\nThe proposed budget includes an $800 billion cut to Medicaid from the AHCA plus an additional $610 billion totally a 47% budget decrease; a $191 billion cut to the Supplemental Nutrition Assistance Program (SNAP) or food stamps; as well as cuts to school lunch programs, disability benefits, and domestic abuse assistance programs. Sen. Chuck Schumer (D-NY) responded to the proposal, \"This would pull the rug out from so many Americans who need help.\" Alongside these harmful and draconian spending cuts, the budget also makes room for major tax cuts to the wealthy.\n\nThe administration's budget proposal will now be taken into consideration by Congress, with the House and Senate Budget Committee holding hearings with agency and department heads and engaging in debate over their own version of a 2018 Budget. Constituents must make it clear to Congress that Trump's budget strays far from true American values, and that crucial government programs that aid individuals in need of protection and assistance should not be cut just to give tax breaks to millionaires and corporations.",
+      "script": "Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP]. \n\nI'm calling to express my serious concerns about Trump's proposed budget for 2018, and I urge [REP/SEN NAME] to work to maintain funding for crucial government programs instead of cutting them to give tax breaks to the wealthy.\n\nOPTIONAL: Share a personal story about why at-risk federal programs are important to you; for example:\n\n-- I (or someone you know) depend(s) on Medicaid to access treatment for [my/their] illness or disability.\n\n-- The EPA ensures that our future generations will inherit a clean, safe, and prosperous country.\n\n-- I believe that funding public education is an investment in our country's future. \n\n-- My family (or a family you know) relies on SNAP assistance to provide for [our/their] children.\n\nThank you for your time and attention.\n\n[IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied] ",
+      "contacts": [
+        {
+          "id": "ME-ChelliePingree",
+          "name": "Chellie Pingree",
+          "phone": "202-225-6116",
+          "photoURL": "https://5calls.org/photo/ME-ChelliePingree",
+          "party": "Democratic",
+          "state": "ME",
+          "reason": "This is your local representative in the House.",
+          "area": "House",
+          "field_offices": [
+            {
+              "phone": "207-774-5019",
+              "city": ""
+            },
+            {
+              "phone": "207-873-5713",
+              "city": ""
+            }
+          ]
+        },
+        {
+          "id": "ME-SusanMCollins",
+          "name": "Susan M. Collins",
+          "phone": "202-224-2523",
+          "photoURL": "https://5calls.org/photo/ME-SusanMCollins",
+          "party": "Republican",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8414",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-0417",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-283-1101",
+              "city": "Biddeford"
+            },
+            {
+              "phone": "207-493-7873",
+              "city": "Caribou"
+            },
+            {
+              "phone": "207-784-6969",
+              "city": "Lewiston"
+            },
+            {
+              "phone": "207-780-3575",
+              "city": "Portland"
+            }
+          ]
+        },
+        {
+          "id": "ME-AngusSKingJr",
+          "name": "Angus S. King Jr.",
+          "phone": "202-224-5344",
+          "photoURL": "https://5calls.org/photo/ME-AngusSKingJr",
+          "party": "Independent",
+          "state": "ME",
+          "reason": "This is one of your two Senators.",
+          "area": "Senate",
+          "field_offices": [
+            {
+              "phone": "207-622-8292",
+              "city": "Augusta"
+            },
+            {
+              "phone": "207-945-8000",
+              "city": "Bangor"
+            },
+            {
+              "phone": "207-764-5124",
+              "city": "Presque Isle"
+            },
+            {
+              "phone": "207-883-1588",
+              "city": "Scarborough"
+            }
+          ]
+        }
+      ],
+      "inactive": false
+    }
+  ]
+}

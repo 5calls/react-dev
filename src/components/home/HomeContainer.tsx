@@ -1,12 +1,17 @@
 // import {connect, Dispatch} from 'react-redux';
 // import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Why5calls from './Why5calls';
+import { Issue } from '../../common/model';
 
-interface StateProps {}
+interface StateProps {
+  issues: Issue[];
+}
 
 function mapStateToProps(state: StateProps): StateProps {
-  return {};
+  return {
+    issues: state.issues
+  };
 }
 
 // function mapDispatchToProps(dispatch Dispatch<DispatchProps>): DispatchProps {
