@@ -5,6 +5,7 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import createStore from './redux/store';
 // import createHistory from 'history/createBrowserHistory';
+import registerServiceWorker from './registerServiceWorker';
 import HomePage from './components/home/HomePage';
 // import AboutPage from './components/about/AboutPage';
 
@@ -36,4 +37,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-// registerServiceWorker();
+registerServiceWorker();
