@@ -1,10 +1,17 @@
-This project was created using create-react-app using [react-scripts-ts](https://github.com/wmonk/create-react-app-typescript) script (v2.2.0) and the following command-line run from the parent folder:
+This project was created using create-react-app using [react-scripts-ts](https://github.com/wmonk/create-react-app-typescript) script and the following command-line run from the parent folder:
 
 `create-react-app 5calls-react-port  --scripts-version=react-scripts-ts`
 
+## Development Notes
+
+What follows are notes from using the create-react-app with react-scripts-ts script for development:
+
+* **react-scripts-ts**: Used version 2.2.0 to create the app, which was up-to-date with CRA 1.0.0.
+* **react-router-redux:** Version ^5.0.0-alpha.6 was needed prevent this version 4.0 error related to the use of `ConnectedRouter`: "Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined."
 
 ------------------------------------------
 ## What follows in the original CRA documentation
+------------------------------------------
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
