@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import Navigation from './Navigation';
 interface Props {
   readonly children?: {};
 }
@@ -27,6 +27,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
 
     <footer>
       REPLACE WITH FOOTER COMPONENT
+      <Navigation />
       <div className="colophon">
         <p>5 Calls Civic Action is a 501(c)4 non-profit,
           <a href="https://secure.actblue.com/contribute/page/5calls?refcode=footer">donate today</a></p>
