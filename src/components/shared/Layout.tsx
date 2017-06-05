@@ -1,5 +1,7 @@
 import * as React from 'react';
 import Navigation from './Navigation';
+import SidebarContainer from './SidebarContainer';
+
 interface Props {
   readonly children?: {};
 }
@@ -12,12 +14,13 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
           <h1 className="issues__title">
             <a href="/"><img className="issues__logo" src="/img/5calls-logotype.png" alt="5 Calls" />5 Calls</a>
           </h1>
-          <p className="issues__subtitle">
-            ISSUE SUBTITLE HERE
+          <p className="issues__location">
+            LOCATION HERE
           </p>
         </header>
         <ul className="issues-list" role="navigation">
           ISSUE LIST HERE
+          <SidebarContainer />
         </ul>
       </div>
     </aside>

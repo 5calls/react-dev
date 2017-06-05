@@ -1,12 +1,16 @@
 import { Issue } from '../../common/model';
-import { IssueActionType, IssuesAction } from './action';
+import { IssueActionType, IssuesAction, IssueSelectedAction } from './action';
 
-
-function issuesActionCreator(issues: Issue[]): IssuesAction {
+export function issuesActionCreator(issues: Issue[]): IssuesAction {
   return {
     type: IssueActionType.GET_ISSUES,
     payload: issues
   };
 }
 
-export default issuesActionCreator;
+export function selectIssueActionCreator(issue: Issue): IssueSelectedAction {
+  return {
+    type: IssueActionType.ISSUE_SELECTED,
+    payload: issue
+  };
+}

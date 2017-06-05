@@ -6,6 +6,7 @@ import issuesReducer from './remoteData/reducer';
 export interface ApplicationState {
   routing: RouterState;
   issues: Issue[];
+  selectedIssue: Issue;
 }
 
 const rootReducer = combineReducers({
