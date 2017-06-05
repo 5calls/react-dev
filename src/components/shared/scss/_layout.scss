@@ -1,0 +1,94 @@
+.layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 80%;
+  margin: 0 auto;
+  max-width: 1024px;
+
+  @include bp(medium) {
+    flex-direction: column;
+  }
+}
+
+.layout__side {
+  flex: 1;
+  border-top: 2px solid $red;
+  margin: 30px;
+  min-width: 300px;
+
+  @include bp(medium) {
+    margin: 0;
+  }
+}
+
+.layout__main {
+  flex: 2;
+  margin: 16px 24px 24px 6px;
+
+  @include bp(medium) {
+    margin: 0 24px 24px;
+  }
+}
+
+.logo__header {
+  background-color: $red;
+  height: 12px;
+}
+
+.callcount {
+  clear: both;
+  font-size: $font-xlarge;
+  font-weight: bold;
+  text-transform: uppercase;
+  @include bp(small) {
+    font-size: $font-large;
+  }
+}
+
+.promote {
+  p {
+    font-size: $font-large;
+    text-align: center;
+  }
+  a {
+    cursor: pointer;
+    display: inline-block;
+    margin: 12px 12px 20px;
+  }
+}
+
+footer {
+  background-color: $blue;
+  text-align: center;
+  font-size: $font-small;
+  color: #fff;
+  padding-top: 12px;
+
+  .colophon {
+    padding: 12px 0 48px 0;
+    line-height: 2em;
+    a {
+      padding: 0 12px;
+      white-space: nowrap;
+      span {
+        margin-left: 5px;
+      }
+    }
+    p {
+      a {
+        padding: 0;
+        text-decoration: underline;
+      }
+    }
+  }
+  a {
+    color: #fff;
+  }
+  .emailform {
+    display: inline-block;
+    white-space: nowrap;
+  }
+  input[type=text] {
+    width: 120px;
+  }
+}

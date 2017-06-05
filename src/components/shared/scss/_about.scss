@@ -1,0 +1,45 @@
+.about {
+
+  &__title {
+    font-size: 40px;
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    font-size: $font-large;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  &__source {
+    display: block;
+    padding: 0 0 0 3px;
+    font-size: $font-small;
+    white-space: nowrap;
+  }
+
+  .callout {
+    text-align: center;
+  }
+
+  p {
+  	font-size: $font-normal;
+  }
+
+  h3 {
+    font-size: 28px;
+  }
+
+  li {
+    font-size: $font-normal;
+    line-height: 1.2em;
+    margin: 0 0 0.5rem 0;
+  }
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
