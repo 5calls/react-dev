@@ -8,6 +8,7 @@ What follows are notes from using the create-react-app with react-scripts-ts scr
 
 * **react-scripts-ts**: Used version 2.2.0 to create the app, which was up-to-date with CRA 1.0.0.
 * **react-router-redux:** Version ^5.0.0-alpha.6 was needed prevent this version 4.0 error related to the use of `ConnectedRouter`: "Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined."
+* **node-sass-chokidar** -- Added as a dev dependency to allow scss preprocessing using the create-react-app `build-css` and `watch-css` scripts in `package.json`. Using this also required adding an import for each generated CSS file into `index.tsx`. One of these scripts needs to be run before the development server is started or before the `build` script is run for production deployment.
 
 ------------------------------------------
 ## What follows in the original CRA documentation

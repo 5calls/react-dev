@@ -7,10 +7,10 @@ interface Props {
 }
 
 const Sidebar = (props: Props) => (
-  <div>
+  <ul className="issues-list" role="navigation">
     {/* TODO: Add issues list component */}
     {props.issues ? props.issues.map((issue: Issue) => <li>{issue.name}</li>) : 'No issues found'}
-  </div>
+  </ul>
 );
 
 export default Sidebar;

@@ -7,26 +7,26 @@ interface Props {
 }
 
 const Layout: React.StatelessComponent<Props> = (props: Props) => (
-  <div className="layout">
-    <aside id="nav" role="contentinfo" className="layout__side">
-      <div className="issues">
-        <header className="issues__header" role="banner">
-          <h1 className="issues__title">
-            <a href="/"><img className="issues__logo" src="/img/5calls-logotype.png" alt="5 Calls" />5 Calls</a>
-          </h1>
-          <p className="issues__location">
-            LOCATION HERE
+  <div>
+    <header className="logo__header" role="banner" />
+    <div className="layout">
+      <aside id="nav" role="contentinfo" className="layout__side">
+        <div className="issues">
+          <header className="issues__header" role="banner">
+            <h1 className="issues__title">
+              <a href="/"><img className="issues__logo" src="/img/5calls-logotype.png" alt="5 Calls" />5 Calls</a>
+            </h1>
+            <p className="issues__location">
+              LOCATION HERE
           </p>
-        </header>
-        <ul className="issues-list" role="navigation">
-          ISSUE LIST HERE
+          </header>
           <SidebarContainer />
-        </ul>
-      </div>
-    </aside>
-    <main className="container">
-      {props.children}
-    </main>
+        </div>
+      </aside>
+      <main className="container">
+        {props.children}
+      </main>
+    </div>
 
     <footer>
       REPLACE WITH FOOTER COMPONENT

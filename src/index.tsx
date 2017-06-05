@@ -8,6 +8,9 @@ import createStore from './redux/store';
 import registerServiceWorker from './registerServiceWorker';
 import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
+import './components/bundle.css';
+import './components/shared/scss/style.css';
+import './components/shared/scss/vendor/normalize.css';
 
 const history = createHistory();
 
