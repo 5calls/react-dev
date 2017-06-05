@@ -11,7 +11,7 @@ export interface ApplicationState {
 
 const rootReducer = combineReducers({
   routing,
-  issuesReducer
+  issues: issuesReducer
 });
 
 export default rootReducer;
