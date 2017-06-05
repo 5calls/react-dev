@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 // import { applyMiddleware, createStore, Middleware } from 'redux';
 import rootReducer from './root';
 // import { createLogger, ReduxLoggerOptions } from 'redux-logger';
@@ -14,5 +14,13 @@ import rootReducer from './root';
 // }
 
 export default (initialState) => {
-  return createStore(rootReducer, initialState);
+  return createStore(
+    rootReducer,
+    initialState,
+    compose(
+      // Call applyMiddleware() here
+      // This added for Redux Dev Tools - install Chrome or Firefox extension to use
+      // tslint:disable-next-line:max-line-length no-string-literal
+      typeof window === 'object' && typeof window['devToolsExtension'] !== 'undefined' ? window['devToolsExtension']() : (f) => f
+    ));
 };
