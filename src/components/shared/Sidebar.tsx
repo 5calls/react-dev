@@ -1,16 +1,42 @@
 import * as React from 'react';
+import { connect, /* Dispatch */ } from 'react-redux';
+// import { bindActionCreators } from 'redux';
 import { Issue } from '../../common/model';
+// import { issuesActionCreator } from '../../redux/remoteData/actionCreator';
+import {ApplicationState} from '../../redux/root';
+import IssuesList from '../issues/IssuesList';
+// import {getIssues} from '../../redux/remoteData/apiThunk';
 
-interface Props {
-  readonly issues: Issue[];
-  selectIssueActionCreator: (issue: Issue) => void;
+interface DispatchProps {
+  // selectIssueActionCreator: (issue: Issue) => void;
+  // getApiData: Function;
 }
 
-const Sidebar = (props: Props) => (
-  <ul className="issues-list" role="navigation">
-    {/* TODO: Add issues list component */}
-    {props.issues ? props.issues.map((issue: Issue) => <li>{issue.name}</li>) : 'No issues found'}
-  </ul>
-);
+interface Props extends DispatchProps {
+  readonly issues: {issues: Issue[], selectedIssue: Issue};
+}
 
-export default Sidebar;
+interface State {
+}
+
+class Sidebar extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+  }
+  render() {
+        // console.log('Issuesin render(): ', this.props.issues.issues);
+        return (<IssuesList issues={this.props.issues.issues} />);
+  }
+}
+
+const mapStateToProps = (state: ApplicationState): State => {
+  return {
+    issues: state.issues
+  };
+};
+
+// const mapDispatchToProps = (dispatch: Dispatch<Props>): DispatchProps => {
+  //  return bindActionCreators({getApiData: issuesActionCreator}, dispatch);
+// };
+
+export default connect<State, DispatchProps, {}>(mapStateToProps, {})(Sidebar);

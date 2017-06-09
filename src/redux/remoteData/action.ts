@@ -3,7 +3,8 @@ import { Issue } from '../../common/model';
 
 export enum IssueActionType {
   GET_ISSUES,
-  ISSUE_SELECTED
+  ISSUE_SELECTED,
+  ADD_API_DATA
 }
 
 export interface IssuesAction extends Action {

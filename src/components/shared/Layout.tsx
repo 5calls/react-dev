@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Navigation from './Navigation';
-import SidebarContainer from './SidebarContainer';
+import Sidebar from './Sidebar';
 
 interface Props {
   readonly children?: {};
@@ -20,7 +20,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
               LOCATION HERE
           </p>
           </header>
-          <SidebarContainer />
+          <Sidebar />
         </div>
       </aside>
       <main className="container">

@@ -8,6 +8,7 @@ import createStore from './redux/store';
 import registerServiceWorker from './registerServiceWorker';
 import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
+import { getIssues } from './redux/remoteData/apiThunk';
 import './components/bundle.css';
 import './components/shared/scss/style.css';
 import './components/shared/scss/vendor/normalize.css';
@@ -15,6 +16,7 @@ import './components/shared/scss/vendor/normalize.css';
 const history = createHistory();
 
 const store = createStore({});
+store.dispatch(getIssues(''));
 
 ReactDOM.render(
   <Provider store={store}>

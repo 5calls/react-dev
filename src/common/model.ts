@@ -52,3 +52,11 @@ export enum LocationFetchType {
   ADDRESS,
   BROWSER_GEOLOCATION
 }
+
+export interface ApiData {
+  splitDistrict: boolean;
+  invalidAddress: boolean;
+  normalizedLocation: string | undefined;
+  divisions: string[];
+  issues: Issue[];
+}
