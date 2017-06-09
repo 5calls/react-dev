@@ -1,3 +1,7 @@
+# 5 Calls React Port
+
+This repo is designed to as a starting point for the port of the 5 Calls web site from the [Choo](https://choo.io) front-end framework to [React](https://facebook.github.io/react/) with [Redux](http://redux.js.org/) for state management and [Typescript](https://www.typescriptlang.org/) for type safety.
+
 This project was created using create-react-app using [react-scripts-ts](https://github.com/wmonk/create-react-app-typescript) script (v2.2.0) and the following command-line run from the parent folder:
 
 `create-react-app 5calls-react-port  --scripts-version=react-scripts-ts`
