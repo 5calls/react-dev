@@ -12,9 +12,10 @@ This project was created with [create-react-app](https://github.com/facebookincu
 
 What follows are notes from using the create-react-app with react-scripts-ts for React-Redux-TypeScript development:
 
-* **react-scripts-ts**: Used version 2.2.0 to create the app, which was up-to-date with CRA 1.0.0.
-* **react-router-redux:** Version ^5.0.0-alpha.6 was needed prevent this version 4.0 error related to the use of `ConnectedRouter`: "Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined."
-* **node-sass-chokidar** -- Added as a dev dependency to allow scss preprocessing using the create-react-app `build-css` and `watch-css` scripts in `package.json`. Using this also required adding an import for each generated CSS file into `index.tsx`. One of these scripts needs to be run before the development server is started or before the `build` script is run for production deployment. It should also be run after anything is changed in a `.scss` file. It is anticipated that the `webpack.config.js` will eventually be ejected from creat-react-app (using the eject command). At that point,  webpack.config will need to be updated with loader and plugin information related to sass and css.
+* **react-scripts-ts:** Used version 2.2.0 to create the app, which was up-to-date with CRA 1.0.0.
+* **react-router:** Version 4 of this library is being used in this project.
+* **react-router-redux:** Version 5 of this library -- currently in alpha -- is used as it is compatible with React Router version 4.0. React Router Redux 5.0 is currently being developed in the React Router repository [here](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux). This library facilitates Redux time-travel debugging.
+* **node-sass-chokidar:** Added as a dev dependency to allow scss preprocessing using the create-react-app `build-css` and `watch-css` scripts in `package.json`. Using this also required adding an import for each generated CSS file into `index.tsx`. One of these scripts needs to be run before the development server is started or before the `build` script is run for production deployment. It should also be run after anything is changed in a `.scss` file. It is anticipated that the `webpack.config.js` will eventually be ejected from creat-react-app (using the eject command). At that point,  webpack.config will need to be updated with loader and plugin information related to sass and css.
 
 ------------------------------------------
 ## What follows in the original CRA documentation
