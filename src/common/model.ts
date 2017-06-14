@@ -5,6 +5,7 @@ export interface Issue {
   reason: string;
   script: string;
   contacts?: Contact[];
+  categories: Category[];
   inactive: boolean;
 }
 
@@ -13,6 +14,7 @@ export const DefaultIssue: Issue = {
   name: '',
   reason: '',
   script: '',
+  categories: [],
   inactive: false
 };
 
@@ -24,6 +26,10 @@ export interface Contact {
   state: string;
   area?: string;
   fieldOffices?: FieldOffice[];
+}
+
+export interface Category {
+  name: string;
 }
 
 export type Party = 'Democrat' | 'Republican' | 'Independent' | '';
