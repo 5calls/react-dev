@@ -1,10 +1,11 @@
-import { ApplicationState, DefaultApplicationState } from './../root';
+// import { ApplicationState, DefaultApplicationState } from './../root';
 import { Reducer } from 'redux';
+import { Issue } from '../../common/model';
 import { IssueActionType, IssuesAction } from './action';
 // const data = require('../../data.json');
 
-const issuesReducer: Reducer<ApplicationState> = (
-  state: ApplicationState = DefaultApplicationState,
+const issuesReducer: Reducer<Issue[]> = (
+  state: Issue[] = [] as Issue[],
   action: IssuesAction) => {
   // const issues = getIssues();
   switch (action.type) {
@@ -12,8 +13,10 @@ const issuesReducer: Reducer<ApplicationState> = (
 
       // tslint:disable-next-line:no-console
       console.log('Payload', action.payload);
+      // tslint:disable-next-line:no-console
+      console.log('Old State', state);
 
-      const newState = Object.assign({}, state, {issues: action.payload});
+      const newState = action.payload;
       // tslint:disable-next-line:no-console
       console.log('New State', newState);
       return newState;

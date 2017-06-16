@@ -6,7 +6,7 @@ export const getIssues = (address: string = '') => {
     api.getIssues(address)
       .then((response) => {
         // tslint:disable-next-line:no-console
-        console.log('Response Issues', response.data.issues);
+        console.log('Response Issues', response.data);
         dispatch(issuesActionCreator(response.data.issues));
         // tslint:disable-next-line:no-console
       }).catch((error) => console.error(`getIssue error: ${error.message}`, error));

@@ -9,6 +9,8 @@ export function issuesActionCreator(issues: Issue[]): IssuesAction {
 }
 
 export function selectIssueActionCreator(issue: Issue): IssueSelectedAction {
+  // tslint:disable-next-line
+  console.log('selectIssueActionCreator called with: ', issue);
   return {
     type: IssueActionType.ISSUE_SELECTED,
     payload: issue

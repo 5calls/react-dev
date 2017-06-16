@@ -3,11 +3,12 @@ import {Issue} from '../../common/model';
 
 interface Props {
   issue: Issue;
+  selectIssueActionCreator: (issue: Issue) => void;
 }
 
 const IssuesListItem: React.StatelessComponent<Props> = (props: Props) => (
   <li>
-    <a className="issues-list__item" href="">
+    <a className="issues-list__item" onClick={() => props.selectIssueActionCreator(props.issue)}>
       <span aria-live="polite" className="issues-list__item__status">
         <span className="visually-hidden"/>
       </span>

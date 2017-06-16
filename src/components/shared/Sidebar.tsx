@@ -1,19 +1,14 @@
 import * as React from 'react';
-import { connect, /* Dispatch */ } from 'react-redux';
-// import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Issue } from '../../common/model';
-// import { issuesActionCreator } from '../../redux/remoteData/actionCreator';
-import {ApplicationState} from '../../redux/root';
-import IssuesList from '../issues/IssuesList';
-// import {getIssues} from '../../redux/remoteData/apiThunk';
+import { IssuesList } from '../issues/IssuesList';
 
 interface DispatchProps {
-  // selectIssueActionCreator: (issue: Issue) => void;
-  // getApiData: Function;
 }
 
 interface Props extends DispatchProps {
-  readonly issues: {issues: Issue[], selectedIssue: Issue};
+  // readonly issues: {issues: Issue[], selectedIssue: Issue};
+  readonly issues: Issue[];
 }
 
 interface State {
@@ -24,19 +19,18 @@ class Sidebar extends React.Component<Props, State> {
     super(props);
   }
   render() {
-        // console.log('Issuesin render(): ', this.props.issues.issues);
-        return (<IssuesList issues={this.props.issues.issues} />);
+    // tslint:disable-next-line
+    console.log('Issues in render(): ', this.props.issues);
+    return (<IssuesList issues={this.props.issues} />);
   }
 }
 
-const mapStateToProps = (state: ApplicationState): State => {
+const mapStateToProps = (state): State => {
+  // tslint:disable-next-line
+  console.log('mapStateToProps() state:', state);
   return {
     issues: state.issues
   };
 };
-
-// const mapDispatchToProps = (dispatch: Dispatch<Props>): DispatchProps => {
-  //  return bindActionCreators({getApiData: issuesActionCreator}, dispatch);
-// };
 
 export default connect<State, DispatchProps, {}>(mapStateToProps, {})(Sidebar);
