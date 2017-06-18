@@ -24,6 +24,7 @@ export interface Contact {
   photoURL?: string;
   party: Party;
   state: string;
+  reason: string;
   area?: string;
   fieldOffices?: FieldOffice[];
 }
@@ -34,12 +35,15 @@ export interface Category {
 
 export type Party = 'Democrat' | 'Republican' | 'Independent' | '';
 
-export const DefaultContact: Contact = {
-  name: '',
-  phone: '',
-  party: '',
-  state: ''
-};
+// export const DefaultContact: Contact = {
+//   name: '',
+//   phone: '',
+//   party: '',
+//   state: '',
+//   reason: ''
+// };
+
+export const DefaultContact: Contact = {} as Contact;
 
 export interface FieldOffice {
   city: string;

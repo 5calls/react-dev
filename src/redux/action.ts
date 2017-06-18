@@ -1,18 +1,17 @@
 import { Action } from 'redux';
-import { Issue } from '../../common/model';
+import { Issue } from '../common/model';
 
-export enum IssueActionType {
+export enum ActionType {
   GET_ISSUES,
   ISSUE_SELECTED,
-  ADD_API_DATA
 }
 
 export interface IssuesAction extends Action {
-  type: IssueActionType;
+  type: ActionType;
   payload: Issue[];
 }
 
 export interface IssueSelectedAction extends Action {
-  type: IssueActionType;
+  type: ActionType;
   payload: Issue;
 }

@@ -23,7 +23,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
           <Sidebar />
         </div>
       </aside>
-      <main className="container">
+      <main id="content" role="main" aria-live="polite" className="layout__main">
         {props.children}
       </main>
     </div>

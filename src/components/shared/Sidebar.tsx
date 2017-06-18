@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Issue } from '../../common/model';
-import { IssuesList } from '../issues/IssuesList';
+import IssuesList from '../issues/IssuesList';
 
 interface DispatchProps {
 }
@@ -20,14 +20,14 @@ class Sidebar extends React.Component<Props, State> {
   }
   render() {
     // tslint:disable-next-line
-    console.log('Issues in render(): ', this.props.issues);
+    // console.log('Issues in render(): ', this.props.issues);
     return (<IssuesList issues={this.props.issues} />);
   }
 }
 
 const mapStateToProps = (state): State => {
   // tslint:disable-next-line
-  console.log('mapStateToProps() state:', state);
+  // console.log('mapStateToProps() state:', state);
   return {
     issues: state.issues
   };
