@@ -1,18 +1,19 @@
 import { Reducer } from 'redux';
 import { Issue } from '../../common/model';
-import { ActionType, IssuesAction } from '../action';
+import { RemoteDataAction } from './action';
 
-const issuesReducer: Reducer<Issue[]> = (
-  state: Issue[] = [] as Issue[],
-  action: IssuesAction) => {
-  // const issues = getIssues();
+export interface RemoteDataState {
+  issues: Issue[];
+}
+
+export const remoteDataReducer: Reducer<RemoteDataState> = (
+  state: RemoteDataState = {} as RemoteDataState,
+  action: RemoteDataAction): RemoteDataState => {
   switch (action.type) {
-    case ActionType.GET_ISSUES:
-      const newState = action.payload;
+    case 'GET_ISSUES':
+      const newState = Object.assign({}, state, {issues: action.payload});
       return newState;
     default:
       return state;
   }
 };
-
-export default issuesReducer;

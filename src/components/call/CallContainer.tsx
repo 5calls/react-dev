@@ -16,7 +16,7 @@ interface DispatchProps {
 }
 const mapStateToProps = (state: ApplicationState): StateProps => {
   return {
-    issues: state.issues,
+    issues: state.remoteDataState.issues,
     callState: state.callState,
     // tslint:disable-next-line:max-line-length
     currentContactId: (state.callState && state.callState.currentIssue && state.callState.contactIds ? state.callState.contactIds[state.callState.currentIssue.id] : '')

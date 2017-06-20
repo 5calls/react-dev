@@ -29,7 +29,7 @@ const mapStateToProps = (state): State => {
   // tslint:disable-next-line
   // console.log('mapStateToProps() state:', state);
   return {
-    issues: state.issues
+    issues: state.remoteDataState.issues
   };
 };
 
