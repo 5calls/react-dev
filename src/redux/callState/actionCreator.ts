@@ -1,9 +1,9 @@
 import { Issue } from '../../common/model';
-import { ActionType, IssueSelectedAction } from '../action';
+import { CurrentIssueAction } from './action';
 
-export function selectIssueActionCreator(issue: Issue): IssueSelectedAction {
+export const selectIssueActionCreator = (issue: Issue): CurrentIssueAction => {
   return {
-    type: ActionType.ISSUE_SELECTED,
+    type: 'CURRENT_ISSUE_SELECTED',
     payload: issue
   };
-}
+};

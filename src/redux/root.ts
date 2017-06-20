@@ -2,22 +2,24 @@ import { Issue, DefaultIssue } from './../common/model';
 import { routerReducer as routing } from 'react-router-redux';
 import { combineReducers } from 'redux';
 import issuesReducer from './remoteData/reducer';
-import selectedIssueReducer from './callState/reducer';
+import { CallState, callStateReducer } from './callState/reducer';
 
 export interface ApplicationState {
   issues: Issue[];
   selectedIssue: Issue;
+  callState: CallState;
 }
 
 export const DefaultApplicationState: ApplicationState = {
   issues: [],
-  selectedIssue: DefaultIssue
+  selectedIssue: DefaultIssue,
+  callState: {} as CallState
 };
 
 const rootReducer = combineReducers({
   routing,
   issues: issuesReducer,
-  selectedIssue: selectedIssueReducer
+  callState: callStateReducer
 });
 
 export default rootReducer;

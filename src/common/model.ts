@@ -19,6 +19,7 @@ export const DefaultIssue: Issue = {
 };
 
 export interface Contact {
+  id: string;
   name: string;
   phone: string;
   photoURL?: string;
