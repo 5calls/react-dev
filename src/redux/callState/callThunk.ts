@@ -1,5 +1,6 @@
 import { Dispatch } from 'react-redux';
 import { ApplicationState } from '../root';
+import { submitOutcomeActionCreator } from './actionCreator';
 
 export type OutcomeType =
   'unavailable' |
@@ -7,7 +8,7 @@ export type OutcomeType =
   'made_contact'|
   'skip'
 ;
-export interface OutcomePayload {
+export interface OutcomeData {
   issueId: string;
   contactId?: string;
   result?: string;
@@ -17,19 +18,25 @@ export interface OutcomePayload {
 /**
  * Responds to click on a call outcome button.
  *
- * @param type: OutcomeType
+ * @param outcome: string - type passed from button click event
  * @param payload: OutcomePayload
  */
 export const submitOutcome = (
-  type: OutcomeType,
-  payload: OutcomePayload) => {
-    return (dispatch: Dispatch<{}>, getState: ApplicationState ) => {
+  outcome: string,
+  data: OutcomeData) => {
+    return (dispatch: Dispatch<ApplicationState>, getState: () => ApplicationState) => {
       // tslint:disable-next-line
-      console.log(`submitOutcome() called with outcome ${type} and payload:`, payload)
+      console.log(`submitOutcome() called with outcome ${outcome} and payload:`, data)
       // send('hideFieldOfficeNumbers', data, done);
 
+      const state = getState();
+      const currentIssue = state.callState.currentIssue;
+      // tslint:disable-next-line
+      console.log(`submitOutcome() currentIssue:`, currentIssue)
+      dispatch(submitOutcomeActionCreator(data));
+
       // notify Google Analytics
-      if (type === 'unavailable') {
+      if (outcome === 'unavailable') {
         // ga('send', 'event', 'call_result', 'unavailable', 'unavailable');
       } else {
         // ga('send', 'event', 'call_result', 'success', data.result);
@@ -39,7 +46,8 @@ export const submitOutcome = (
 
       // This parameter will indicate to the backend api where this call report came from
       // A value of test indicates that it did not come from the production environment
-      // const viaParameter = window.location.host === '5calls.org' ? 'web' : 'test';
+      const viaParameter = window.location.host === '5calls.org' ? 'web' : 'test';
+      data.via = viaParameter;
 
       // post outcome data to back end
       // const body = queryString.stringify({ location: state.zip,
@@ -48,6 +56,6 @@ export const submitOutcome = (
       // { body: body, headers: {"Content-Type": "application/x-www-form-urlencoded"} }, () => {});
 
       // send('incrementContact', data, done);
-
+      return;
     };
 };

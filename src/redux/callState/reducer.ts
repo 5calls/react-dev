@@ -15,6 +15,11 @@ export const callStateReducer: Reducer<CallState> = (
     switch (action.type) {
       case 'CURRENT_ISSUE_SELECTED':
         return Object.assign({}, state, {currentIssue: action.payload});
+      case 'SUBMIT_OUTCOME':
+        // tslint:disable-next-line
+        console.log('callStateReducer() SUBMIT_OUTCOME action', action.payload);
+        // TODO: return modified state
+        return state;
       default:
         return state;
     }

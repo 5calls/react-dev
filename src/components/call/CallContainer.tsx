@@ -1,32 +1,30 @@
-import { connect } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
 import {Issue} from '../../common/model';
 import Call from './Call';
 import { ApplicationState } from '../../redux/root';
-import { OutcomePayload, submitOutcome } from '../../redux/callState/callThunk';
+import { OutcomeData, submitOutcome } from '../../redux/callState/callThunk';
 import { CallState } from '../../redux/callState/reducer';
 
 interface StateProps {
   issues: Issue[];
   callState: CallState;
-  currentContactId: string;
 }
 
 interface DispatchProps {
-  submitOutcome: (type: 'SUBMIT_OUTCOME', payload: OutcomePayload) => void;
+  onSubmitOutcome: (outcome: string, payload: OutcomeData) => Function;
 }
+
 const mapStateToProps = (state: ApplicationState): StateProps => {
   return {
     issues: state.remoteDataState.issues,
-    callState: state.callState,
-    // tslint:disable-next-line:max-line-length
-    currentContactId: (state.callState && state.callState.currentIssue && state.callState.contactIds ? state.callState.contactIds[state.callState.currentIssue.id] : '')
+    callState: state.callState
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    submitOutcome: submitOutcome
-  };
+const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps => {
+  return ({
+    onSubmitOutcome: submitOutcome
+  });
 };
 
 export default connect<StateProps, DispatchProps, {}>(mapStateToProps, mapDispatchToProps)(Call);

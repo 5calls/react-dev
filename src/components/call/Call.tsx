@@ -3,14 +3,13 @@ import { Issue, Contact } from '../../common/model';
 import ContactDetails from './ContactDetails';
 import Script from './Script';
 import Outcomes from './Outcomes';
-import { OutcomePayload } from '../../redux/callState/callThunk';
+import { OutcomeData } from '../../redux/callState/callThunk';
 import { CallState } from '../../redux/callState/reducer';
 
 export interface Props {
   issues: Issue[];
-  currentContactId: string;
   callState: CallState;
-  submitOutcome: (type: 'SUBMIT_OUTCOME', payload: OutcomePayload) => void;
+  onSubmitOutcome: (outcome: string, payload: OutcomeData) => Function;
 }
 
 export interface State {
@@ -43,7 +42,7 @@ class Call extends React.Component<Props, State> {
     }
 
     const currentContact = (issue && issue.contacts ? issue.contacts[currentContactIndex] : undefined);
-    const numberContactsLeft = issue && issue.contacts ? issue.contacts.length - currentContactIndex : 0;
+    const numberContactsLeft = issue && issue.contacts ? issue.contacts.length - (currentContactIndex + 1) : 0;
 
     return {
       currentContact: currentContact,
@@ -54,7 +53,8 @@ class Call extends React.Component<Props, State> {
   }
 
   componentWillReceiveProps(newProps: Props) {
-    //
+    // tslint:disable-next-line:no-console
+    console.log('Call.componentWillReceiveProps() props: ', newProps);
     this.setState(this.setStateFromProps(newProps));
   }
 
@@ -76,8 +76,14 @@ class Call extends React.Component<Props, State> {
         <Outcomes
           selectedIssue={this.state.issue}
           currentContactId={(this.state.currentContact ? this.state.currentContact.id : '')}
-          submitOutcome={this.props.submitOutcome}
+          onSubmitOutcome={this.props.onSubmitOutcome}
         />
+          {/* TODO: Fix people/person for 1 contact left. Move logic to a function */}
+          {this.state.numberContactsLeft > 0 ?
+            <h3 aria-live="polite" className="call__contacts__left" >
+              {this.state.numberContactsLeft} more people to call for this issue.{/*outcomes.contactsLeft*/}
+            </h3> : ''
+          }
       </section>
     );
   }

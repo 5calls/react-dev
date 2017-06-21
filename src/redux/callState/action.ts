@@ -1,4 +1,4 @@
-import { OutcomePayload } from './callThunk';
+import { OutcomeData } from './callThunk';
 import { Action } from 'redux';
 import { CallStateAction } from './action';
 import { Issue } from '../../common/model';
@@ -22,7 +22,7 @@ export interface CurrentIssueAction extends CallStateAction {
 
 export interface SubmitOutcomeAction extends CallStateAction {
   type: 'SUBMIT_OUTCOME';
-  payload: OutcomePayload;
+  payload: OutcomeData;
 }
 
 export interface SetContactIdsAction extends CallStateAction {

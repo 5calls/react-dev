@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { OutcomeType, OutcomePayload } from '../../redux/callState/callThunk';
+import { /*connect,*/ Dispatch } from 'react-redux';
+import { ApplicationState } from '../../redux/root';
+import { submitOutcome, OutcomeData } from '../../redux/callState/callThunk';
 import { Issue } from '../../common/model';
 /*
   i18n Keys
@@ -17,7 +19,8 @@ import { Issue } from '../../common/model';
 interface Props {
   selectedIssue: Issue;
   currentContactId: string;
-  submitOutcome: (type: 'SUBMIT_OUTCOME', payload: OutcomePayload) => void;
+  onSubmitOutcome: (outcome: string, payload: OutcomeData) => Function;
+  dispatch?: Dispatch<ApplicationState>;
 }
 interface State {}
 
@@ -26,17 +29,25 @@ class Outcomes extends React.Component<Props, State>  {
     super(props);
   }
 
-  dispatchOutcome(e: React.MouseEvent<HTMLButtonElement>, outcome: OutcomeType) {
+  dispatchOutcome(e: React.MouseEvent<HTMLButtonElement>, outcome: string) {
+    // tslint:disable-next-line:no-console
+    console.log(`Outcomes.dispatchOutcome() called with '${outcome}' outcome event:`, e);
     /* e.target.blur() called in Choo version
       for details on use of currentTarget see:
       https://github.com/DefinitelyTyped/DefinitelyTyped/pull/12239
     */
     e.currentTarget.blur();
     if (outcome === 'skip') {
-      // TODO: dispatch skipCallAction
-      this.props.submitOutcome('SUBMIT_OUTCOME', {issueId: this.props.selectedIssue.id});
+      // TODO: dispatch Choo skipCallAction
+
+      this.props.onSubmitOutcome(outcome, {issueId: this.props.selectedIssue.id});
+
+      // THIS WORKS WHEN COMPONENT IS WRAPPED IN A CONNECT()
+      if (this.props.dispatch) {
+        this.props.dispatch(submitOutcome(outcome, {issueId: this.props.selectedIssue.id}));
+      }
     } else {
-      // TODO: dispatch callCompleteAction
+      // TODO: dispatch Choo callCompleteAction
     }
     return true;
   }
@@ -61,12 +72,10 @@ class Outcomes extends React.Component<Props, State>  {
             Skip {/*"outcomes.skip"*/}
           </button>
         </div>
-        {/* contactsLeft > 0 ?
-          <h3 aria-live="polite" className="call__contacts__left" >{contactsLeftText}</h3> :
-          <span/> */}
       </div>
     );
   }
 }
 
+// export default connect()(Outcomes);
 export default Outcomes;
