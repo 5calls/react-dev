@@ -5,7 +5,8 @@ import { Issue } from '../../common/model';
 
 export type CallStateActionType =
   'CURRENT_ISSUE_SELECTED' |
-  'SUBMIT_OUTCOME' |
+  'COMPLETE_ISSUE' |
+  'NEXT_CONTACT' |
   'SET_CONTACT_IDS' |
   'SET_SHOW_FIELD_OFFICE_NUMBERS'
   ;
@@ -21,8 +22,12 @@ export interface CurrentIssueAction extends CallStateAction {
 }
 
 export interface SubmitOutcomeAction extends CallStateAction {
-  type: 'SUBMIT_OUTCOME';
+  type: 'COMPLETE_ISSUE';
   payload: OutcomeData;
+}
+
+export interface NextContact extends CallStateAction {
+  type: 'NEXT_CONTACT';
 }
 
 export interface SetContactIdsAction extends CallStateAction {

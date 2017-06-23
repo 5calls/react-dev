@@ -1,6 +1,6 @@
 import { Dispatch } from 'react-redux';
 import { ApplicationState } from '../root';
-import { submitOutcomeActionCreator } from './actionCreator';
+import { completeIssueActionCreator, moveToNextActionCreator } from './actionCreator';
 
 export type OutcomeType =
   'unavailable' |
@@ -9,10 +9,11 @@ export type OutcomeType =
   'skip'
 ;
 export interface OutcomeData {
+  outcome: string;
   issueId: string;
+  numberContactsLeft: number;
   contactId?: string;
-  result?: string;
-  via?: string;
+  via?: string; // added in submitOutcome()
 }
 
 /**
@@ -21,41 +22,48 @@ export interface OutcomeData {
  * @param outcome: string - type passed from button click event
  * @param payload: OutcomePayload
  */
-export const submitOutcome = (
-  outcome: string,
-  data: OutcomeData) => {
+export const submitOutcome = (data: OutcomeData) => {
     return (dispatch: Dispatch<ApplicationState>, getState: () => ApplicationState) => {
       // tslint:disable-next-line
-      console.log(`submitOutcome() called with outcome ${outcome} and payload:`, data)
+      console.log(`submitOutcome() called with data:`, data)
+
+      // TODO
       // send('hideFieldOfficeNumbers', data, done);
 
-      const state = getState();
-      const currentIssue = state.callState.currentIssue;
-      // tslint:disable-next-line
-      console.log(`submitOutcome() currentIssue:`, currentIssue)
-      dispatch(submitOutcomeActionCreator(data));
+      // const state = getState();
+      // const currentIssue = state.callState.currentIssue;
 
       // notify Google Analytics
-      if (outcome === 'unavailable') {
+      if (data.outcome === 'unavailable') {
         // ga('send', 'event', 'call_result', 'unavailable', 'unavailable');
       } else {
         // ga('send', 'event', 'call_result', 'success', data.result);
       }
 
-      // send('setUserStats', data, done);
+      // Don't post or add to user stats a "skipped" outcome
+      if (data.outcome !== 'skip') {
 
-      // This parameter will indicate to the backend api where this call report came from
-      // A value of test indicates that it did not come from the production environment
-      const viaParameter = window.location.host === '5calls.org' ? 'web' : 'test';
-      data.via = viaParameter;
+        // Add to user stats
+        // send('setUserStats', data, done);
 
-      // post outcome data to back end
-      // const body = queryString.stringify({ location: state.zip,
-      //  result: data.result, contactid: data.contactid, issueid: data.issueid, via: viaParameter });
-      // http.post(appURL+'/report',
-      // { body: body, headers: {"Content-Type": "application/x-www-form-urlencoded"} }, () => {});
+        // post outcome data to back end
 
+        // This parameter will indicate to the backend api where this call report came from
+        // A value of test indicates that it did not come from the production environment
+        const viaParameter = window.location.host === '5calls.org' ? 'web' : 'test';
+        data.via = viaParameter;
+
+        // const body = queryString.stringify({ location: state.zip,
+        //  result: data.result, contactid: data.contactid, issueid: data.issueid, via: viaParameter });
+        // http.post(appURL+'/report',
+        // { body: body, headers: {"Content-Type": "application/x-www-form-urlencoded"} }, () => {});
+      }
       // send('incrementContact', data, done);
-      return;
+
+      if ( data.numberContactsLeft === 0 ) {
+        return dispatch(completeIssueActionCreator(data));
+      } else {
+        return dispatch(moveToNextActionCreator());
+      }
     };
 };

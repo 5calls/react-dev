@@ -11,7 +11,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  onSubmitOutcome: (outcome: string, payload: OutcomeData) => Function;
+  onSubmitOutcome: (data: OutcomeData) => Function;
 }
 
 const mapStateToProps = (state: ApplicationState): StateProps => {

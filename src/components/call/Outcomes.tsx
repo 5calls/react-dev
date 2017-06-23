@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { /*connect,*/ Dispatch } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
+import { RouteComponentProps, withRouter} from 'react-router-dom';
 import { ApplicationState } from '../../redux/root';
 import { submitOutcome, OutcomeData } from '../../redux/callState/callThunk';
 import { Issue } from '../../common/model';
@@ -19,36 +20,40 @@ import { Issue } from '../../common/model';
 interface Props {
   selectedIssue: Issue;
   currentContactId: string;
-  onSubmitOutcome: (outcome: string, payload: OutcomeData) => Function;
+  numberContactsLeft: number;
+  onSubmitOutcome: (data: OutcomeData) => Function;
   dispatch?: Dispatch<ApplicationState>;
 }
 interface State {}
 
-class Outcomes extends React.Component<Props, State>  {
-  constructor(props: Props) {
-    super(props);
-  }
+// tslint:disable-next-line:no-any
+class Outcomes extends React.Component<Props & RouteComponentProps<any>, State>  {
 
   dispatchOutcome(e: React.MouseEvent<HTMLButtonElement>, outcome: string) {
-    // tslint:disable-next-line:no-console
-    console.log(`Outcomes.dispatchOutcome() called with '${outcome}' outcome event:`, e);
     /* e.target.blur() called in Choo version
       for details on use of currentTarget see:
       https://github.com/DefinitelyTyped/DefinitelyTyped/pull/12239
     */
     e.currentTarget.blur();
-    if (outcome === 'skip') {
-      // TODO: dispatch Choo skipCallAction
 
-      this.props.onSubmitOutcome(outcome, {issueId: this.props.selectedIssue.id});
-
-      // THIS WORKS WHEN COMPONENT IS WRAPPED IN A CONNECT()
-      if (this.props.dispatch) {
-        this.props.dispatch(submitOutcome(outcome, {issueId: this.props.selectedIssue.id}));
-      }
-    } else {
-      // TODO: dispatch Choo callCompleteAction
+    // Outomes logic is done in submitOutcome() thunk
+    if (this.props.dispatch) {
+      this.props.dispatch(submitOutcome(
+        {
+          outcome,
+          numberContactsLeft: this.props.numberContactsLeft,
+          issueId: this.props.selectedIssue.id,
+          contactId: this.props.currentContactId,
+        }));
     }
+    // navigate to /done when finished
+    if (this.props.numberContactsLeft === 0) {
+      if (this.props.history) {
+        this.props.history.push('/done');
+      }
+    }
+
+    window.scroll(1, 1);
     return true;
   }
 
@@ -77,5 +82,5 @@ class Outcomes extends React.Component<Props, State>  {
   }
 }
 
-// export default connect()(Outcomes);
-export default Outcomes;
+export default withRouter(connect()(Outcomes));
+// export default Outcomes;

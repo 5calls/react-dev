@@ -9,7 +9,7 @@ import { CallState } from '../../redux/callState/reducer';
 export interface Props {
   issues: Issue[];
   callState: CallState;
-  onSubmitOutcome: (outcome: string, payload: OutcomeData) => Function;
+  onSubmitOutcome: (data: OutcomeData) => Function;
 }
 
 export interface State {
@@ -37,8 +37,8 @@ class Call extends React.Component<Props, State> {
   setStateFromProps(props: Props): State {
     const issue = props.callState.currentIssue;
     let currentContactIndex = 0;
-    if (issue && props.callState.contactIds && props.callState.contactIds[issue.id]) {
-      currentContactIndex = props.callState.contactIds[issue.id];
+    if (issue && props.callState.contactIndexes && props.callState.contactIndexes[issue.id]) {
+      currentContactIndex = props.callState.contactIndexes[issue.id];
     }
 
     const currentContact = (issue && issue.contacts ? issue.contacts[currentContactIndex] : undefined);
@@ -75,6 +75,7 @@ class Call extends React.Component<Props, State> {
         <Script issue={this.state.issue} contactIndex={this.state.currentContactIndex} />
         <Outcomes
           selectedIssue={this.state.issue}
+          numberContactsLeft={this.state.numberContactsLeft}
           currentContactId={(this.state.currentContact ? this.state.currentContact.id : '')}
           onSubmitOutcome={this.props.onSubmitOutcome}
         />

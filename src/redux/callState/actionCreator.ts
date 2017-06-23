@@ -1,6 +1,6 @@
 import { OutcomeData } from './callThunk';
 import { Issue } from '../../common/model';
-import { CurrentIssueAction, SubmitOutcomeAction } from './action';
+import { CurrentIssueAction, SubmitOutcomeAction, NextContact } from './action';
 
 export const selectIssueActionCreator = (issue: Issue): CurrentIssueAction => {
   return {
@@ -9,9 +9,15 @@ export const selectIssueActionCreator = (issue: Issue): CurrentIssueAction => {
   };
 };
 
-export const submitOutcomeActionCreator = (outcomeData: OutcomeData): SubmitOutcomeAction => {
+export const completeIssueActionCreator = (outcomeData: OutcomeData): SubmitOutcomeAction => {
   return {
-    type: 'SUBMIT_OUTCOME',
+    type: 'COMPLETE_ISSUE',
     payload: outcomeData
+  };
+};
+
+export const moveToNextActionCreator = (): NextContact => {
+  return {
+    type: 'NEXT_CONTACT'
   };
 };

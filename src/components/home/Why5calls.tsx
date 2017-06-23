@@ -1,4 +1,6 @@
 import * as React from 'react';
+import Promotion from '../shared/Promotion';
+
 /* tslint:disable
   i18n Keys
     "hypothesis": {
@@ -34,12 +36,17 @@ const Why5calls: React.StatelessComponent<Props>  = (props: Props) => (
       <p>
         <strong>Spend 5 minutes, make 5 calls.{/*"hypothesis.p2"*/}</strong>
       </p>
-      {/* TODO: Add promotion text/links */}
+      {/* Add promotion text/links */}
+      <Promotion selectedIssue={null}/>
     </header>
     <div className="hypothesis__text">
       {/* TODO: Finish this section */}
+      <strong>HYP0THESIS TEXT HERE</strong>
+
     </div>
       {/* TODO: Add call count */}
+    <strong>CALL COUNT COMPONENT HERE</strong>
+
   </div>
 );
 
