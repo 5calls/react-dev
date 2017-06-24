@@ -10,7 +10,24 @@ This project was created with [create-react-app](https://github.com/facebookincu
 
 ## Development Notes
 
-What follows are notes from using the create-react-app with react-scripts-ts for React-Redux-TypeScript development:
+To build the application, you need to install [Yarn](https://yarnpkg.com/) and run the following commands:
+```
+# install dependencies:
+yarn
+
+# start the app running in the
+#   webpack development server:
+yarn start
+
+# build the app for server deployment:
+yarn build
+
+```
+For the best development experience, you should install both the React and Redux Development Tools into your browser. Both tools are available for Chrome and Firefox.
+
+## Create React App Modifications
+
+The starter for this repository was the [Create React App](https://github.com/facebookincubator/create-react-app) (CRA) with a few modifications for   React-Redux-TypeScript development:
 
 * **react-scripts-ts:** Used version 2.2.0 to create the app, which was up-to-date with CRA 1.0.0.
 * **react-router:** Version 4 of this library is being used in this project.

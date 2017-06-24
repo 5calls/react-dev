@@ -18,8 +18,7 @@ import './components/shared/scss/vendor/normalize.css';
 const history = createHistory();
 
 const store = createStore({});
-// FIXME: Remove hard-coded zip code
-store.dispatch(getIssues('04260'));
+store.dispatch(getIssues(''));
 
 ReactDOM.render(
   <Provider store={store}>

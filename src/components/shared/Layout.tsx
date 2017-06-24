@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Navigation from './Navigation';
 import Sidebar from './Sidebar';
+import LocationContainer from '../location/LocationContainer';
 
 interface Props {
   readonly children?: {};
@@ -17,7 +18,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
               <a href="/"><img className="issues__logo" src="/img/5calls-logotype.png" alt="5 Calls" />5 Calls</a>
             </h1>
             <p className="issues__location">
-              LOCATION HERE
+              <LocationContainer />
           </p>
           </header>
           <Sidebar />

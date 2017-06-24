@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { Issue } from '../../common/model';
 import Promotion from '../shared/Promotion';
 /*
@@ -27,7 +28,7 @@ const Done: React.StatelessComponent<Props> = (props: Props) => {
         {/*promote(state, prev, send)*/}
         <Promotion selectedIssue={props.selectedIssue}/>
         <p className="call__text">
-          <a href="/about">Learn why calling</a> representatives is the most
+          <Link to="/about">Learn why calling</Link> representatives is the most
           effective way of making your voice heard.{/*'callComplete.learnWhyCallingIsGreat'*/}
           </p>
         {/*townHall(state)*/}
