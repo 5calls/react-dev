@@ -1,4 +1,5 @@
 import { connect, Dispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {Issue} from '../../common/model';
 import Call from './Call';
 import { ApplicationState } from '../../redux/root';
@@ -11,7 +12,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  onSubmitOutcome: (data: OutcomeData) => Function;
+  onSubmitOutcome: (data: OutcomeData) => void;
 }
 
 const mapStateToProps = (state: ApplicationState): StateProps => {
@@ -22,9 +23,9 @@ const mapStateToProps = (state: ApplicationState): StateProps => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps => {
-  return ({
-    onSubmitOutcome: submitOutcome
-  });
+  return bindActionCreators(
+    {onSubmitOutcome: submitOutcome},
+    dispatch);
 };
 
 export default connect<StateProps, DispatchProps, {}>(mapStateToProps, mapDispatchToProps)(Call);

@@ -1,5 +1,5 @@
-import { Dispatch } from 'react-redux';
-import { ApplicationState } from '../root';
+// import { Dispatch } from 'react-redux';
+// import { ApplicationState } from '../root';
 import { completeIssueActionCreator, moveToNextActionCreator } from './actionCreator';
 
 export type OutcomeType =
@@ -22,18 +22,15 @@ export interface OutcomeData {
  * @param outcome: string - type passed from button click event
  * @param payload: OutcomePayload
  */
-export const submitOutcome = (data: OutcomeData) => {
-    return (dispatch: Dispatch<ApplicationState>, getState: () => ApplicationState) => {
+export function submitOutcome(data: OutcomeData) {
+    return (dispatch/*: Dispatch<ApplicationState>*/) => {
       // tslint:disable-next-line
-      console.log(`submitOutcome() called with data:`, data)
+      // console.log(`submitOutcome() called with data:`, data)
 
-      // TODO
+      // TODO: set callState.hideFieldOfficeNumbers
       // send('hideFieldOfficeNumbers', data, done);
 
-      // const state = getState();
-      // const currentIssue = state.callState.currentIssue;
-
-      // notify Google Analytics
+      // TODO: notify Google Analytics (ga)
       if (data.outcome === 'unavailable') {
         // ga('send', 'event', 'call_result', 'unavailable', 'unavailable');
       } else {
@@ -43,10 +40,10 @@ export const submitOutcome = (data: OutcomeData) => {
       // Don't post or add to user stats a "skipped" outcome
       if (data.outcome !== 'skip') {
 
-        // Add to user stats
+        // TODO: Add to user stats
         // send('setUserStats', data, done);
 
-        // post outcome data to back end
+        // TODO: post outcome data to back end
 
         // This parameter will indicate to the backend api where this call report came from
         // A value of test indicates that it did not come from the production environment
@@ -66,4 +63,4 @@ export const submitOutcome = (data: OutcomeData) => {
         return dispatch(moveToNextActionCreator());
       }
     };
-};
+}
