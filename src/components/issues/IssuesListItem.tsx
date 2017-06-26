@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { connect, Dispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {Issue} from '../../common/model';
-import { selectIssueActionCreator } from '../../redux/callState/actionCreator';
 
 interface Props {
   readonly issue: Issue;
-  readonly dispatch?: Dispatch<Issue>; // added by connect()
-  // readonly selectIssueActionCreator: (issue: Issue) => void;
+  readonly currentIssue: Issue;
+  // readonly completedIssueIds: string[];
+  readonly isIssueComplete: boolean;
+  readonly isIssueActive: boolean;
+  readonly setSelectedIssue:  (issue: Issue) => void;
 }
 
 interface State {}
@@ -19,27 +20,28 @@ class IssuesListItem extends React.Component<Props, State> {
   }
 
   issueSelected(issue: Issue) {
-    if (this.props.dispatch) {
-      this.props.dispatch(selectIssueActionCreator(issue));
-    }
+    this.props.setSelectedIssue(issue);
   }
 
   render() {
+    // FIXME: fix this
+    const isCompleted = this.props.isIssueComplete ? 'is-complete' : '';
+    const isActive = this.props.isIssueActive ? 'is-active' : '';
     return (
       <li>
         <Link
             aria-controls="content"
-            className="issues-list__item"
+            className={`issues-list__item ${isCompleted} ${isActive}`}
             to="/issue"
             onClick={() => this.issueSelected(this.props.issue)}
         >
-          <span aria-live="polite" className="issues-list__item__status">
+          <span aria-live="polite" className={`issues-list__item__status ${isCompleted} ${isActive}`}>
             <span className="visually-hidden"/>
           </span>
-          <span className="issues-list__item__title">
+          <span className={`issues-list__item__title ${isCompleted} ${isActive}`}>
             {this.props.issue.name}
           </span>
-          <span className="issues-list__item__summary">
+          <span className={`issues-list__item__summary ${isCompleted} ${isActive}`}>
             {/* TODO: Finish this impl */}
             <span>X calls to make</span>
           </span>
@@ -47,6 +49,7 @@ class IssuesListItem extends React.Component<Props, State> {
       </li>
     );
   }
+
 }
 
-export default connect<Props>()(IssuesListItem);
+export default IssuesListItem;

@@ -16,15 +16,14 @@ export const callStateReducer: Reducer<CallState> = (
       case 'CURRENT_ISSUE_SELECTED':
         return Object.assign({}, state, {currentIssue: action.payload});
       case 'COMPLETE_ISSUE':
-        // tslint:disable-next-line
-        console.log('callStateReducer() COMPLETE_ISSUE action', action.payload);
-        // FIXME: finish this:
-        // let newCompletedIssues = [...state.completedIssueIds];
-        // newCompletedIssues.push(state.currentIssue.id);
-        // let newState = {...state };
-        // newState.completedIssueIds = newCompletedIssues;
-        // return newState;
-        return state;
+        let newCompletedIssues: string[] = [];
+        if (state.completedIssueIds) {
+          newCompletedIssues = [...state.completedIssueIds];
+        }
+        newCompletedIssues.push(state.currentIssue.id);
+        let newState = {...state };
+        newState.completedIssueIds = newCompletedIssues;
+        return newState;
       case 'NEXT_CONTACT':
         let newIndexes = {...state.contactIndexes};
         if (!newIndexes[state.currentIssue.id]) {

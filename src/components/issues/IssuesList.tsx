@@ -3,24 +3,30 @@ import {Issue} from '../../common/model';
 import IssuesListItem from './IssuesListItem';
 
 interface Props {
-  issues: Issue[];
-}
-interface State {
+  readonly issues: Issue[];
+  readonly currentIssue: Issue;
+  readonly completedIssueIds: string[];
+  readonly setSelectedIssue: (issue: Issue) => void;
 }
 
-class IssuesList extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-  }
+const IssuesList: React.StatelessComponent<Props> = ( props: Props) => {
 
-  render() {
     return (
       <ul className="issues-list" role="navigation">
-        {/* tslint:disable-next-line:max-line-length */}
-        {this.props.issues && this.props.issues.map ? this.props.issues.map(issue => <IssuesListItem key={issue.id} issue={issue} />) : <div style={{textAlign: 'center'}}>No Issues Found</div>}
+        {props.issues && props.issues.map ? props.issues.map(issue =>
+          <IssuesListItem
+            key={issue.id}
+            issue={issue}
+            setSelectedIssue={props.setSelectedIssue}
+            currentIssue={props.currentIssue}
+            isIssueComplete={
+              props.completedIssueIds &&
+              (props.completedIssueIds.find((issueId: string) => issue.id === issueId) !== undefined)
+            }
+            isIssueActive={props.currentIssue && (props.currentIssue.id === issue.id)}
+          />) : <div style={{textAlign: 'center'}}>No Issues Found</div>}
       </ul>
     );
-  }
-}
+};
 
 export default IssuesList;
