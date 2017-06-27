@@ -1,4 +1,4 @@
-export { IssuesAction, RemoteDataAction, RemoteDataActionType } from './action';
-export { issuesActionCreator } from './actionCreator';
+export { IssuesAction, RemoteDataAction, RemoteDataActionType, CallCountAction } from './action';
+export { issuesActionCreator, callCountActionCreator } from './actionCreator';
 export { RemoteDataState, remoteDataReducer } from './reducer';
-export { getIssues } from './apiThunk';
+export { getIssues, fetchCallCount } from './apiThunk';
