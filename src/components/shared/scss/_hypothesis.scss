@@ -1,0 +1,63 @@
+.hypothesis {
+
+  &__header, &__list {
+    p, li {
+      font-size: $font-large;
+      @include bp(small) {
+        font-size: $font-small;
+      }
+    }
+  }
+
+  &__title {
+    font-size: $font-xxxlarge;
+    text-transform: uppercase;
+    @include bp(small) {
+      font-size: $font-xlarge;
+    }
+  }
+
+  &__text {
+    p {
+      font-size: $font-large;
+      @include bp(small) {
+        font-size: $font-small;
+      }
+      a {
+        font-weight: bold;
+      }
+    }
+  }
+  &__subtitle {
+    font-size: $font-large;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  &__list {
+    margin-top: 6px;
+    li {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__callout {
+    text-align: center;
+  }
+
+  &__apps {
+    list-style: none;
+
+    li {
+      float: left;
+    }
+
+    .ios {
+      padding: 9px 0 0 0;
+      width: auto;
+    }
+    .play {
+      width: 150px;
+    }
+  }
+}

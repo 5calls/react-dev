@@ -1,0 +1,135 @@
+.call {
+
+  &__title {
+  	font-size: $font-xxlarge;
+  	text-transform: uppercase;
+  	text-align: left;
+
+    @include bp(small) {
+      font-size: $font-xlarge;
+    }
+  }
+
+  &__contact {
+    position: relative;
+
+  	&__image {
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+      background-color: $gray-xlight;
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      @include bp(small) {
+        position: relative;
+        margin: auto;
+      }
+  	}
+
+    &__name {
+      font-size: $font-xlarge;
+      padding: 0;
+    }
+
+    &__phone {
+      font-size: $font-xxxlarge;
+      padding-top: 0;
+      line-height: 1em;
+    }
+
+    &__show-field-offices {
+      font-size: $font-small;
+
+      a {
+        cursor: pointer;
+      }
+    }
+
+    &__field-office-list {
+      font-size: $font-normal;
+      line-height: 1.4em;
+      margin: 0 0 16px 0;
+    }
+
+    &__name, &__phone {
+      font-weight: bold;
+      margin: 0 150px 0 0;
+
+      @include bp(medium) {
+        font-size: $font-xlarge;
+      }
+
+      @include bp(small) {
+        font-size: $font-xlarge;
+        margin: 0;
+      }
+    }
+  }
+
+  &__nocontact {
+    h2 {
+      font-size: $font-xxlarge;
+      text-align: center;
+    }
+    p {
+      font-size: $font-xlarge;
+      font-weight: bold;
+    }
+    a {
+       cursor: pointer;
+    }
+  }
+
+  &__script {
+    &__body {
+      background-color: $gray-xlight;
+      color: $gray;
+      padding: 20px;
+    }
+  }
+
+  &__contact__type,
+  &__contact__reason__header,
+  &__contact__field-offices__header,
+  &__script__header ,
+  &__outcomes__header {
+    font-weight: bold;
+    font-style: italic;
+    font-size: $font-large;
+  }
+
+  &__outcomes {
+    margin: auto auto 24px auto;
+    padding: 0;
+
+    &__items {
+      display: flex;
+      flex-wrap: wrap;
+
+      button {
+        flex-grow: 1;
+        flex-basis: 194px;
+        border: 0;
+        margin: 1px;
+        padding: 16px 0;
+        font-size: 1.6rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        background-color: $blue-light;
+        text-align: center;
+
+        &:hover {
+          background-color: $red;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

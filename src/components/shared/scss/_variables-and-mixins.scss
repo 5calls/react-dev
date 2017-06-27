@@ -1,0 +1,68 @@
+// RESPONSIVE
+
+$bp-large:  1024px;
+$bp-medium: 768px;
+$bp-small:  481px;
+
+@mixin bp($point) {
+  @if $point == medium {
+    @media only screen and (max-width: $bp-medium) { @content; }
+  }
+  @else if $point == small {
+    @media only screen and (max-width: $bp-small) { @content; }
+  }
+}
+
+// COLORS
+$red: #e53935;
+$white: #fff;
+$blue: #1875d1;
+$blue-light: #baddfa;
+$green: #0f9d58;
+$gray: #666;
+$gray-lesslight: #e5e5e5;
+$gray-light: #eeeeee;
+$gray-xlight: #f5f5f5;
+
+$color-bg: $white;
+$color-text: $blue;
+$color-link: $red;
+$color-success: $green;
+
+// FONTS
+$font-sans: 'Roboto Condensed', sans-serif;
+$font-tiny: 12px;
+$font-small: 16px;
+$font-normal: 18px;
+$font-large: 21px;
+$font-xlarge: 30px;
+$font-xxlarge: 48px;
+$font-xxxlarge: 58px;
+
+// DIMENSIONS
+$form-radius: 4px;
+
+// DEBUG
+@mixin debug-layout($color: black, $important: false) {
+  @if $important {
+    * {
+      background: rgba($color, .05) !important;
+    }
+  } @else {
+    * {
+      background: rgba($color, .05);
+    }
+  }
+}
+
+@keyframes pulseOpacity {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

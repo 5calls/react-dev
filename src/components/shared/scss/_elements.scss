@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-sans;
+  color: $color-text;
+  background-color: $color-bg;
+}
+
+html, body {
+  height: 100%;
+}
+
+p {
+  font-size: $font-normal;
+  line-height: 1.4em;
+  margin: 0 0 16px 0;
+}
+
+h2 {
+  margin: 24px 0 16px 0;
+  font-weight: bold;
+  line-height: 1.1em;
+}
+
+h3 {
+  margin: 24px 0 6px 0;
+}
+
+a,
+.subtle-button {
+  color: $color-link;
+  text-decoration: none;
+
+  border: 0;
+  background-color: transparent;
+  display: inline;
+
+  &:hover,
+  &:focus {
+    // TODO: better, nicer link styles
+    text-decoration: underline;
+  }
+}
+
+button, input[type=submit] {
+  &:not(.subtle-button) {
+    font-family: $font-sans;
+    border: 1px solid transparent;
+    border-radius: $form-radius;
+    background-color: $blue-light;
+    color: $blue;
+    margin: 2px 3px;
+    padding: 6px 18px;
+
+    transition-property: background-color, color, border-color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+
+    &:hover, &:focus {
+      color: $white;
+      background-color: $red;
+    }
+    &:active {
+      box-shadow: inset 0 1px  rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+input[type=text] {
+  font-family: $font-sans;
+  padding: 6px;
+  border-radius: $form-radius;
+  border: 2px solid $blue;
+  background-color: $white;
+
+  &:focus {
+    outline: 0;
+    border: 2px solid $blue-light;
+  }
+}

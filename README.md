@@ -2,13 +2,41 @@
 
 This repo is designed to as a starting point for the port of the 5 Calls web site from the [Choo](https://choo.io) front-end framework to [React](https://facebook.github.io/react/) with [Redux](http://redux.js.org/) for state management and [Typescript](https://www.typescriptlang.org/) for type safety.
 
-This project was created using create-react-app using [react-scripts-ts](https://github.com/wmonk/create-react-app-typescript) script (v2.2.0) and the following command-line run from the parent folder:
+As opposed to the prototype created in the [5calls-ts-react-redux ](https://github.com/cdoremus/5calls-ts-react-redux) repository, this repo is attempting to replicate the UI look-and-feel of the [5 Calls web site](https://5calls.org).
+
+This project was created with [create-react-app](https://github.com/facebookincubator/create-react-app) using the [react-scripts-ts](https://github.com/wmonk/create-react-app-typescript) script to add TypeScript support via the following command-line run from the parent folder:
 
 `create-react-app 5calls-react-port  --scripts-version=react-scripts-ts`
 
+## Development Notes
+
+To build the application, you need to install [Yarn](https://yarnpkg.com/) and run the following commands:
+```
+# install dependencies:
+yarn
+
+# start the app running in the
+#   webpack development server:
+yarn start
+
+# build the app for server deployment:
+yarn build
+
+```
+For the best development experience, you should install both the React and Redux Development Tools into your browser. Both tools are available for Chrome and Firefox.
+
+## Create React App Modifications
+
+The starter for this repository was the [Create React App](https://github.com/facebookincubator/create-react-app) (CRA) with a few modifications for   React-Redux-TypeScript development:
+
+* **react-scripts-ts:** Used version 2.2.0 to create the app, which was up-to-date with CRA 1.0.0.
+* **react-router:** Version 4 of this library is being used in this project.
+* **react-router-redux:** Version 5 of this library -- currently in alpha -- is used as it is compatible with React Router version 4.0. React Router Redux 5.0 is currently being developed in the React Router repository [here](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux). This library facilitates Redux time-travel debugging.
+* **node-sass-chokidar:** Added as a dev dependency to allow scss preprocessing using the create-react-app `build-css` and `watch-css` scripts in `package.json`. Using this also required adding an import for each generated CSS file into `index.tsx`. One of these scripts needs to be run before the development server is started or before the `build` script is run for production deployment. It should also be run after anything is changed in a `.scss` file. It is anticipated that the `webpack.config.js` will eventually be ejected from creat-react-app (using the eject command). At that point,  webpack.config will need to be updated with loader and plugin information related to sass and css.
 
 ------------------------------------------
 ## What follows in the original CRA documentation
+------------------------------------------
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
