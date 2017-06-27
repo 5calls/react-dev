@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { Issue } from '../../common/model';
-import { CallStateAction } from './action';
+import { CallStateAction } from './index';
 
 export interface CallState {
   currentIssue: Issue;

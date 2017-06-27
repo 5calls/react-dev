@@ -3,8 +3,7 @@ import { bindActionCreators } from 'redux';
 import {Issue} from '../../common/model';
 import Call from './Call';
 import { ApplicationState } from '../../redux/root';
-import { OutcomeData, submitOutcome } from '../../redux/callState/callThunk';
-import { CallState } from '../../redux/callState/reducer';
+import { CallState, OutcomeData, submitOutcome } from '../../redux/callState';
 
 interface StateProps {
   issues: Issue[];

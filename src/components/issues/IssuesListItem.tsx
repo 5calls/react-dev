@@ -5,7 +5,6 @@ import {Issue} from '../../common/model';
 interface Props {
   readonly issue: Issue;
   readonly currentIssue: Issue;
-  // readonly completedIssueIds: string[];
   readonly isIssueComplete: boolean;
   readonly isIssueActive: boolean;
   readonly setSelectedIssue:  (issue: Issue) => void;

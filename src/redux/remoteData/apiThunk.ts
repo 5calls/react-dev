@@ -1,5 +1,5 @@
 import * as api from '../../services/apiServices';
-import {issuesActionCreator} from './actionCreator';
+import {issuesActionCreator} from './index';
 
 export const getIssues = (address: string = '') => {
   return (dispatch, getState) => {

@@ -3,8 +3,7 @@ import { Issue, Contact } from '../../common/model';
 import ContactDetails from './ContactDetails';
 import Script from './Script';
 import Outcomes from './Outcomes';
-import { OutcomeData } from '../../redux/callState/callThunk';
-import { CallState } from '../../redux/callState/reducer';
+import { CallState, OutcomeData } from '../../redux/callState';
 
 export interface Props {
   issues: Issue[];

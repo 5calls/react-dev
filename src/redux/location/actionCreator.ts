@@ -1,4 +1,4 @@
-import { LocationClearedAction , LocationSetAction } from './action';
+import { LocationClearedAction , LocationSetAction } from './index';
 
 export function setLocation(address: string): LocationSetAction {
   return {

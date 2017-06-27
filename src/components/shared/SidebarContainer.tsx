@@ -3,7 +3,7 @@ import { connect, Dispatch } from 'react-redux';
 import { Issue } from '../../common/model';
 import Sidebar from './Sidebar';
 import { ApplicationState } from '../../redux/root';
-import { selectIssueActionCreator } from '../../redux/callState/actionCreator';
+import { selectIssueActionCreator } from '../../redux/callState';
 
 interface StateProps {
   readonly issues: Issue[];

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter} from 'react-router-dom';
-import { OutcomeData } from '../../redux/callState/callThunk';
+import { OutcomeData } from '../../redux/callState';
 import { Issue } from '../../common/model';
 /*
   i18n Keys

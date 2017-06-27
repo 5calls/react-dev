@@ -1,6 +1,6 @@
 import { OutcomeData } from './callThunk';
 import { Issue } from '../../common/model';
-import { CurrentIssueAction, SubmitOutcomeAction, NextContact } from './action';
+import { CurrentIssueAction, SubmitOutcomeAction, NextContact } from './index';
 
 export const selectIssueActionCreator = (issue: Issue): CurrentIssueAction => {
   return {

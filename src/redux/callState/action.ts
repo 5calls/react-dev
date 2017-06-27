@@ -1,6 +1,5 @@
-import { OutcomeData } from './callThunk';
 import { Action } from 'redux';
-import { CallStateAction } from './action';
+import { OutcomeData, CallStateAction } from './index';
 import { Issue } from '../../common/model';
 
 export type CallStateActionType =

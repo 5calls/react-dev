@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { Issue } from '../../common/model';
-import { RemoteDataAction } from './action';
+import { RemoteDataAction } from './index';
 
 export interface RemoteDataState {
   issues: Issue[];

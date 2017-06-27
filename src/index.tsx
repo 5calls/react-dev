@@ -10,7 +10,7 @@ import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
 import CallPage from './components/call/CallPage';
 import DonePage from './components/call/DonePage';
-import { getIssues } from './redux/remoteData/apiThunk';
+import { getIssues } from './redux/remoteData';
 import './components/bundle.css';
 import './components/shared/scss/style.css';
 import './components/shared/scss/vendor/normalize.css';

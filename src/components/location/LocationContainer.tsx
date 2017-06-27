@@ -1,7 +1,6 @@
 import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { clearAddress } from '../../redux/location/actionCreator';
-import { setAddress } from '../../redux/location/thunk';
+import { setAddress, clearAddress } from '../../redux/location';
 import { ApplicationState } from '../../redux/root';
 import Location from './Location';
 
