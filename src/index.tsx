@@ -10,7 +10,7 @@ import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
 import CallPage from './components/call/CallPage';
 import DonePage from './components/call/DonePage';
-import { getIssues, fetchCallCount } from './redux/remoteData';
+import { fetchLocationByIP, fetchCallCount } from './redux/remoteData';
 import './components/bundle.css';
 import './components/shared/scss/style.css';
 import './components/shared/scss/vendor/normalize.css';
@@ -18,7 +18,7 @@ import './components/shared/scss/vendor/normalize.css';
 const history = createHistory();
 
 const store = createStore({});
-store.dispatch(getIssues(''));
+store.dispatch(fetchLocationByIP());
 store.dispatch(fetchCallCount());
 
 ReactDOM.render(

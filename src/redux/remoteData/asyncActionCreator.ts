@@ -20,3 +20,15 @@ export const fetchCallCount = () => {
       }).catch((error) => console.error(`fetchCallCount error: ${error.message}`, error));
   };
 };
+
+// TODO: integrate geolocation and catch errors
+export const fetchLocationByIP = () => {
+  return (dispatch, getState) => {
+    api.getLocationByIP()
+      .then((response) => {
+        const location = response.data.loc;
+        dispatch(getIssues(location));
+        // tslint:disable-next-line:no-console
+      }).catch((error) => console.error(`fetchLocationByIP error: ${error.message}`, error));
+  };
+};
