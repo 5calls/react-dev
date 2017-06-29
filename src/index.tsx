@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
@@ -24,13 +24,13 @@ store.dispatch(fetchCallCount());
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
-        {/* <Route path="/" exact={true} render={() => <MainContainer />} /> */}
+      <Switch>
         <Route path="/" exact={true} component={HomePage} />
         <Route path="/issue" exact={true} component={CallPage} />
         <Route path="/done" exact={true} component={DonePage} />
         <Route path="/about" exact={true} component={AboutPage} />
-      </div>
+        <Route path="*" component={HomePage} />
+      </Switch>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
