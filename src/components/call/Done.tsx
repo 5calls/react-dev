@@ -33,7 +33,6 @@ const Done: React.StatelessComponent<Props> = (props: Props) => {
           </p>
         {/*townHall(state)*/}
         <strong>TOWN HALL COMPONENT HERE</strong><br/>
-        {/* TODO: Finish call count impl */}
         <CallCountContainer />
       </div>
     </section>

@@ -23,7 +23,6 @@ class IssuesListItem extends React.Component<Props, State> {
   }
 
   render() {
-    // FIXME: fix this
     const isCompleted = this.props.isIssueComplete ? 'is-complete' : '';
     const isActive = this.props.isIssueActive ? 'is-active' : '';
     return (

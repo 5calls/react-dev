@@ -8,7 +8,8 @@ export const IP_INFO_URL = 'https://ipinfo.io/json';
 export const contact = {
   email: 'make5calls@gmail.com',
   github: 'https://github.com/5calls',
-  twitter: 'https://twitter.com/make5calls'
+  twitter: 'https://twitter.com/make5calls',
+  facebook: 'https://www.facebook.com/make5calls'
 };
 
 export const localization = {
