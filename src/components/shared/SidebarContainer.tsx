@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect, Dispatch } from 'react-redux';
 import { Issue } from '../../common/model';
-import Sidebar from './Sidebar';
+import { Sidebar } from './index';
 import { ApplicationState } from '../../redux/root';
 import { selectIssueActionCreator } from '../../redux/callState';
 

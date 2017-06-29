@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import CallCount from './CallCount';
+import { CallCount } from './index';
 import { ApplicationState } from './../../redux/root';
 
 export interface StateProps {
@@ -12,4 +12,4 @@ const mapStateToProps = (state: ApplicationState): StateProps => {
   };
 };
 
-export default connect(mapStateToProps)(CallCount);
+export default connect<StateProps, {}, {}>(mapStateToProps)(CallCount);

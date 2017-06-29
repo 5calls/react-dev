@@ -2,7 +2,7 @@ import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setAddress, clearAddress } from '../../redux/location';
 import { ApplicationState } from '../../redux/root';
-import Location from './Location';
+import { Location } from './index';
 
 interface StateProps {
   readonly location: string;

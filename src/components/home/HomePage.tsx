@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import Why5calls from './Why5calls';
-import Layout from '../shared/Layout';
+import { Why5calls } from './index';
+import { Layout } from '../shared';
 
 interface Props extends RouteComponentProps<{}> {
 }

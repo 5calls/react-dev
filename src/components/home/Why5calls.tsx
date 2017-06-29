@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import Promotion from '../shared/Promotion';
-import CallCountContainer from '../shared/CallCountContainer';
+import { Promotion, CallCountContainer } from '../shared';
 import * as Constants from '../../common/constants';
 
 /* tslint:disable:max-line-length

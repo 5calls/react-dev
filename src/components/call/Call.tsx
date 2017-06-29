@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Issue, Contact } from '../../common/model';
-import ContactDetails from './ContactDetails';
-import Script from './Script';
-import Outcomes from './Outcomes';
+import { ContactDetails, Script, Outcomes } from './index';
 import { CallState, OutcomeData } from '../../redux/callState';
 
 export interface Props {
