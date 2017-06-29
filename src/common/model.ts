@@ -27,7 +27,7 @@ export interface Contact {
   state: string;
   reason: string;
   area?: string;
-  fieldOffices?: FieldOffice[];
+  field_offices?: FieldOffice[];
 }
 
 export interface Category {

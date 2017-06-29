@@ -58,7 +58,6 @@ class Call extends React.Component<Props, State> {
   }
 
   render() {
-    // TODO: Handle all calls completed use case
     return (
       <section className="call">
         {/* TODO: Move header into a separate component */}
