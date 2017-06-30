@@ -1,6 +1,6 @@
 import * as React from 'react';
-import CallContainer from './CallContainer';
-import Layout from '../shared/Layout';
+import { CallContainer } from './index';
+import { Layout } from '../shared';
 import { RouteComponentProps } from 'react-router-dom';
 
 interface Props extends RouteComponentProps<{}> { }

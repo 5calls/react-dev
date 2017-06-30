@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Done from './Done';
+import { Done } from './index';
 import { Issue } from '../../common/model';
 import { ApplicationState } from '../../redux/root';
 

@@ -49,7 +49,6 @@ const Location: React.StatelessComponent<Props> = ({location, isValid, isLoading
         {/* TODO:
         1. Set className to hidden when fetching location
         2. i18n placeholder attribute
-        3. Change placeholder to: Enter an address or zip code
         */}
         <form onSubmit={submitAddress} className={isLoading ? 'hidden' : ''}>
           <input
@@ -60,7 +59,7 @@ const Location: React.StatelessComponent<Props> = ({location, isValid, isLoading
             aria-labelledby="locationMessage"
             aria-invalid={!isValid}
             disabled={isLoading}
-            placeholder="Enter a zip code"
+            placeholder="Enter an address or zip code"
           />
           <button>Go{/*t("common.go", null, true)*/}</button>
         </form>

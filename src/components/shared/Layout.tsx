@@ -1,7 +1,6 @@
 import * as React from 'react';
-import Navigation from './Navigation';
-import SidebarContainer from './SidebarContainer';
-import LocationContainer from '../location/LocationContainer';
+import { SidebarContainer, Footer } from './index';
+import { LocationContainer } from '../location';
 
 interface Props {
   readonly children?: {};
@@ -28,15 +27,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
         {props.children}
       </main>
     </div>
-
-    <footer>
-      REPLACE WITH FOOTER COMPONENT
-      <Navigation />
-      <div className="colophon">
-        <p>5 Calls Civic Action is a 501(c)4 non-profit,
-          <a href="https://secure.actblue.com/contribute/page/5calls?refcode=footer">donate today</a></p>
-      </div>
-    </footer>
+    <Footer/>
   </div>
 
 );

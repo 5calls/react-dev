@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import {Issue} from '../../common/model';
+import { Issue } from '../../common/model';
 
 interface Props {
   readonly issue: Issue;
   readonly currentIssue: Issue;
-  // readonly completedIssueIds: string[];
   readonly isIssueComplete: boolean;
   readonly isIssueActive: boolean;
   readonly setSelectedIssue:  (issue: Issue) => void;
@@ -24,7 +23,6 @@ class IssuesListItem extends React.Component<Props, State> {
   }
 
   render() {
-    // FIXME: fix this
     const isCompleted = this.props.isIssueComplete ? 'is-complete' : '';
     const isActive = this.props.isIssueActive ? 'is-active' : '';
     return (

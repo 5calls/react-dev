@@ -7,7 +7,6 @@ interface Props {
 }
 
 const Script: React.StatelessComponent<Props> = ({issue, contactIndex = 0}: Props) => {
-  // TODO: Check for contact given the contact index
   if (issue && issue.contacts && issue.contacts.length !== 0 ) {
     return (
       <div className="call__script">

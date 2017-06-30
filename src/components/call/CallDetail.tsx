@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Issue } from '../../common/model';
-import ContactDetails from './ContactDetails';
+import { ContactDetails } from './index';
 
 interface Props {
   selectedIssue: Issue;
@@ -8,7 +8,6 @@ interface Props {
 
 const CallDetail: React.StatelessComponent<Props> = (props: Props) => (
   <div>
-    {/* TODO: Make contactIndex dynamic */}
     <ContactDetails selectedIssue={props.selectedIssue} contactIndex={0}/>
   </div>
 

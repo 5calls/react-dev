@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import Layout from '../shared/Layout';
-import DoneContainer from './DoneContainer';
+import { Layout } from '../shared';
+import { DoneContainer } from './index';
 
 interface Props extends RouteComponentProps<{}> { }
 

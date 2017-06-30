@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Issue} from '../../common/model';
-import IssuesListItem from './IssuesListItem';
+import { IssuesListItem } from './index';
 
 interface Props {
   readonly issues: Issue[];

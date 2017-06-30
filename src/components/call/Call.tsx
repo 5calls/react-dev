@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { Issue, Contact } from '../../common/model';
-import ContactDetails from './ContactDetails';
-import Script from './Script';
-import Outcomes from './Outcomes';
-import { OutcomeData } from '../../redux/callState/callThunk';
-import { CallState } from '../../redux/callState/reducer';
+import { ContactDetails, Script, Outcomes } from './index';
+import { CallState, OutcomeData } from '../../redux/callState';
 
 export interface Props {
   issues: Issue[];
@@ -59,7 +56,6 @@ class Call extends React.Component<Props, State> {
   }
 
   render() {
-    // TODO: Handle all calls completed use case
     return (
       <section className="call">
         {/* TODO: Move header into a separate component */}

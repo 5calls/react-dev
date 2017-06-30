@@ -1,5 +1,5 @@
-import { getIssues } from '../../redux/remoteData/apiThunk';
-import { setLocation } from './actionCreator';
+import { getIssues } from '../../redux/remoteData';
+import { setLocation } from './index';
 
 export function setAddress(address: string) {
   return (dispatch) => {

@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { LocationAction } from './action';
+import { LocationAction } from './index';
 
 export interface LocationState {
   address: string;

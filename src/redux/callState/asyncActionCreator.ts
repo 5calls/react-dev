@@ -1,6 +1,6 @@
 // import { Dispatch } from 'react-redux';
 // import { ApplicationState } from '../root';
-import { completeIssueActionCreator, moveToNextActionCreator } from './actionCreator';
+import { completeIssueActionCreator, moveToNextActionCreator } from './index';
 
 export type OutcomeType =
   'unavailable' |
