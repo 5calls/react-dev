@@ -11,12 +11,16 @@ interface Props {
   onSubmitOutcome: (data: OutcomeData) => Function;
 }
 
-const CallPage: React.StatelessComponent<Props> = (Props: Props) => (
-  <Layout>
+const CallPage: React.StatelessComponent<Props> = (props: Props) => (
+  <Layout
+    issues={props.issues}
+    completedIssueIds={props.callState.completedIssueIds}
+    currentIssue={props.currentIssue}
+  >
     <Call
-      issue={Props.currentIssue}
-      callState={Props.callState}
-      onSubmitOutcome={Props.onSubmitOutcome}
+      issue={props.currentIssue}
+      callState={props.callState}
+      onSubmitOutcome={props.onSubmitOutcome}
     />
   </Layout>
 );

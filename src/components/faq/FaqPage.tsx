@@ -8,8 +8,11 @@ interface Props {
   readonly completedIssueIds: string[];
 }
 
-const FaqPage: React.StatelessComponent<Props> = () => (
-  <Layout>
+const FaqPage: React.StatelessComponent<Props> = (props: Props) => (
+  <Layout
+    issues={props.issues}
+    completedIssueIds={props.completedIssueIds}
+  >
     <Faq />
   </Layout>
 );

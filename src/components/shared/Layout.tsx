@@ -6,7 +6,7 @@ import { LocationContainer } from '../location';
 interface Props {
   readonly children?: {};
   readonly issues: Issue[];
-  readonly currentIssue: Issue;
+  readonly currentIssue?: Issue;
   readonly completedIssueIds: string[];
 }
 
@@ -26,7 +26,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
           </header>
           <Sidebar 
             issues={props.issues}
-            currentIssue={props.currentIssue}
+            currentIssue={props.currentIssue ? props.currentIssue : undefined}
             completedIssueIds={props.completedIssueIds}          
           />
         </div>

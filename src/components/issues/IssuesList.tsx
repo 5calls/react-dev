@@ -4,12 +4,13 @@ import { IssuesListItem } from './index';
 
 interface Props {
   readonly issues: Issue[];
-  readonly currentIssue: Issue;
+  readonly currentIssue?: Issue;
   readonly completedIssueIds: string[];
 }
 
 const IssuesList: React.StatelessComponent<Props> = ( props: Props) => {
-
+    let currentIssueId: string = props.currentIssue ? props.currentIssue.id : '';
+    
     return (
       <ul className="issues-list" role="navigation">
         {props.issues && props.issues.map ? props.issues.map(issue =>
@@ -20,7 +21,7 @@ const IssuesList: React.StatelessComponent<Props> = ( props: Props) => {
               props.completedIssueIds &&
               (props.completedIssueIds.find((issueId: string) => issue.id === issueId) !== undefined)
             }
-            isIssueActive={props.currentIssue && (props.currentIssue.id === issue.id)}
+            isIssueActive={currentIssueId === issue.id}
           />) : <div style={{textAlign: 'center'}}>No Issues Found</div>}
       </ul>
     );

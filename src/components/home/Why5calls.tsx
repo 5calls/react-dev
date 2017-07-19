@@ -68,7 +68,7 @@ const Why5calls: React.StatelessComponent<Props>  = (props: Props) => (
           </a>
         </li>
       </ul>
-      <CallCount />
+      <CallCount totalCount={100} />
     </div>
   </div>
 );

@@ -12,7 +12,7 @@ import { Promotion, CallCount } from '../shared';
 */
 
 interface Props {
-  selectedIssue: Issue;
+  currentIssue: Issue;
 }
 
 const Done: React.StatelessComponent<Props> = (props: Props) => {
@@ -26,14 +26,15 @@ const Done: React.StatelessComponent<Props> = (props: Props) => {
           or spread the word by sharing your work with friends:{/*'callComplete.pickAnotherIssue'*/}
         </p>
         {/*promote(state, prev, send)*/}
-        <Promotion selectedIssue={props.selectedIssue}/>
+        <Promotion selectedIssue={props.currentIssue}/>
         <p className="call__text">
           <Link to="/about">Learn why calling</Link> representatives is the most
           effective way of making your voice heard.{/*'callComplete.learnWhyCallingIsGreat'*/}
           </p>
         {/*townHall(state)*/}
         <strong>TOWN HALL COMPONENT HERE</strong><br/>
-        <CallCount />
+
+         <CallCount totalCount={100} /> 
       </div>
     </section>
   );

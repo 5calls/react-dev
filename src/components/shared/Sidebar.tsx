@@ -4,7 +4,7 @@ import { IssuesList } from '../issues';
 
 interface Props {
   readonly issues: Issue[];
-  readonly currentIssue: Issue;
+  readonly currentIssue?: Issue;
   readonly completedIssueIds: string[];
 }
 

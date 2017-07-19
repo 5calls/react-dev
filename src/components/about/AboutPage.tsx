@@ -9,7 +9,10 @@ interface Props {
 }
 
 const AboutPage: React.StatelessComponent<Props> = (props: Props) => (
-  <Layout>
+  <Layout
+    issues={props.issues}
+    completedIssueIds={props.completedIssueIds}
+  >
     <About />
   </Layout>
 );
