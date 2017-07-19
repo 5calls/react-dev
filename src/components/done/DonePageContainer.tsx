@@ -13,4 +13,4 @@ const mapStateToProps = (state: ApplicationState): StateProps => {
   };
 };
 
-export default connect<StateProps, {}, {}>(mapStateToProps)(Done);
+export default connect<StateProps, {}, {}>(mapStateToProps)(DonePage);

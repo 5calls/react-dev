@@ -7,6 +7,7 @@ import { CallState, OutcomeData } from '../../redux/callState';
 interface Props {
   currentIssue: Issue;
   callState: CallState;
+  issues: Issue[];
   onSubmitOutcome: (data: OutcomeData) => Function;
 }
 

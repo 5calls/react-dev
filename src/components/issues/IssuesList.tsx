@@ -6,7 +6,6 @@ interface Props {
   readonly issues: Issue[];
   readonly currentIssue: Issue;
   readonly completedIssueIds: string[];
-  readonly setSelectedIssue: (issue: Issue) => void;
 }
 
 const IssuesList: React.StatelessComponent<Props> = ( props: Props) => {
@@ -17,8 +16,6 @@ const IssuesList: React.StatelessComponent<Props> = ( props: Props) => {
           <IssuesListItem
             key={issue.id}
             issue={issue}
-            setSelectedIssue={props.setSelectedIssue}
-            currentIssue={props.currentIssue}
             isIssueComplete={
               props.completedIssueIds &&
               (props.completedIssueIds.find((issueId: string) => issue.id === issueId) !== undefined)

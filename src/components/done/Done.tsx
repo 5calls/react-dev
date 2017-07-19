@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Issue } from '../../common/model';
-import { Promotion, CallCountContainer } from '../shared';
+import { Promotion, CallCount } from '../shared';
 /*
     "callComplete": {
       "title":"Great work!",
@@ -33,7 +33,7 @@ const Done: React.StatelessComponent<Props> = (props: Props) => {
           </p>
         {/*townHall(state)*/}
         <strong>TOWN HALL COMPONENT HERE</strong><br/>
-        <CallCountContainer />
+        <CallCount />
       </div>
     </section>
   );

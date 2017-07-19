@@ -1,9 +1,13 @@
 import * as React from 'react';
-import { SidebarContainer, Footer } from './index';
+import { Issue } from '../../common/model';
+import { Sidebar, Footer } from './index';
 import { LocationContainer } from '../location';
 
 interface Props {
   readonly children?: {};
+  readonly issues: Issue[];
+  readonly currentIssue: Issue;
+  readonly completedIssueIds: string[];
 }
 
 const Layout: React.StatelessComponent<Props> = (props: Props) => (
@@ -20,7 +24,11 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
               <LocationContainer />
             </div>
           </header>
-          <SidebarContainer />
+          <Sidebar 
+            issues={props.issues}
+            currentIssue={props.currentIssue}
+            completedIssueIds={props.completedIssueIds}          
+          />
         </div>
       </aside>
       <main id="content" role="main" aria-live="polite" className="layout__main">

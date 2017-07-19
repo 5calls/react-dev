@@ -5,14 +5,13 @@ import { Issue } from '../../common/model';
 
 interface StateProps {
   readonly issues: Issue[];
-  readonly currentIssueId: string;
+  readonly currentIssue?: string;
   readonly completedIssueIds: string[];
 }
 
 function mapStateToProps(state: ApplicationState): StateProps {
   return {
     issues: state.remoteDataState.issues,
-    currentIssueId: state.callState.currentIssueId,
     completedIssueIds: state.callState.completedIssueIds,
   };
 }
