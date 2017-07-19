@@ -1,13 +1,22 @@
 import * as React from 'react';
-import { CallContainer } from './index';
+import { Call } from './index';
 import { Layout } from '../shared';
-import { RouteComponentProps } from 'react-router-dom';
+import { Issue } from '../../common/model';
+import { CallState, OutcomeData } from '../../redux/callState';
 
-interface Props extends RouteComponentProps<{}> { }
+interface Props {
+  currentIssue: Issue;
+  callState: CallState;
+  onSubmitOutcome: (data: OutcomeData) => Function;
+}
 
-const CallPage: React.StatelessComponent<Props> = ({match}: Props) => (
+const CallPage: React.StatelessComponent<Props> = (Props: Props) => (
   <Layout>
-    <CallContainer />
+    <Call
+      issue={Props.currentIssue}
+      callState={Props.callState}
+      onSubmitOutcome={Props.onSubmitOutcome}
+    />
   </Layout>
 );
 

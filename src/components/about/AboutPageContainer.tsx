@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
-import Why5calls from './Why5calls';
+import AboutPage from './AboutPage';
 import { Issue } from '../../common/model';
 
 interface StateProps {
   issues: Issue[];
+  callState: callState;
 }
 
 function mapStateToProps(state: StateProps): StateProps {
@@ -12,4 +13,4 @@ function mapStateToProps(state: StateProps): StateProps {
   };
 }
 
-export default connect<StateProps, {}, {}>(mapStateToProps)(Why5calls);
+export default connect<StateProps, {}, {}>(mapStateToProps)(HomePage);

@@ -26,7 +26,7 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <Switch>
         <Route path="/" exact={true} component={HomePage} />
-        <Route path="/issue" exact={true} component={CallPage} />
+        <Route path="/issue/:id" exact={true} component={CallPage} />
         <Route path="/done" exact={true} component={DonePage} />
         <Route path="/faq" exact={true} component={FaqPage} />
         <Route path="/about" exact={true} component={AboutPage} />

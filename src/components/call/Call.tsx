@@ -4,7 +4,7 @@ import { ContactDetails, Script, Outcomes } from './index';
 import { CallState, OutcomeData } from '../../redux/callState';
 
 export interface Props {
-  issues: Issue[];
+  issue: Issue;
   callState: CallState;
   onSubmitOutcome: (data: OutcomeData) => Function;
 }
@@ -17,7 +17,6 @@ export interface State {
 }
 
 class Call extends React.Component<Props, State> {
-
   constructor(props: Props) {
     super(props);
     // set initial state
@@ -32,20 +31,23 @@ class Call extends React.Component<Props, State> {
    * @returns {State}
    */
   setStateFromProps(props: Props): State {
-    const issue = props.callState.currentIssue;
     let currentContactIndex = 0;
-    if (issue && props.callState.contactIndexes && props.callState.contactIndexes[issue.id]) {
-      currentContactIndex = props.callState.contactIndexes[issue.id];
+    if (props.issue && props.callState.contactIndexes && props.callState.contactIndexes[props.issue.id]) {
+      currentContactIndex = props.callState.contactIndexes[props.issue.id];
     }
 
-    const currentContact = (issue && issue.contacts ? issue.contacts[currentContactIndex] : undefined);
-    const numberContactsLeft = issue && issue.contacts ? issue.contacts.length - (currentContactIndex + 1) : 0;
+    const currentContact = (props.issue && props.issue.contacts 
+                                        ? props.issue.contacts[currentContactIndex] 
+                                        : undefined);
+    const numberContactsLeft = props.issue && props.issue.contacts 
+                                            ? props.issue.contacts.length - (currentContactIndex + 1) 
+                                            : 0;
 
     return {
       currentContact: currentContact,
       currentContactIndex: currentContactIndex,
       numberContactsLeft: numberContactsLeft,
-      issue: issue
+      issue: props.issue
     };
   }
 
