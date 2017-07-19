@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { ApplicationState } from '../../redux/root';
-import HomePage from './HomePage';
+import FaqPage from './FaqPage';
 import { Issue } from '../../common/model';
 import { RouteComponentProps } from 'react-router-dom';
 
@@ -17,5 +17,5 @@ function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProp
     completedIssueIds: state.callState.completedIssueIds,
   };
 }
-
-export default connect<StateProps, {}, OwnProps>(mapStateToProps)(HomePage);
+ 
+export default connect<StateProps, {}, OwnProps>(mapStateToProps)(FaqPage);

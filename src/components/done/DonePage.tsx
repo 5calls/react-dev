@@ -1,13 +1,16 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
-import { Layout } from '../shared';
-import { DoneContainer } from './index';
+import { Done } from './index';
+import { Layout } from '../shared/index';
+import { Issue } from '../../common/model';
 
-interface Props extends RouteComponentProps<{}> { }
+interface Props {
+  readonly issues: Issue[];
+  readonly completedIssueIds: string[];
+}
 
-const DonePage: React.StatelessComponent<Props> = ({match}: Props) => (
+const DonePage: React.StatelessComponent<Props> = () => (
   <Layout>
-    <DoneContainer />
+    <Done />
   </Layout>
 );
 

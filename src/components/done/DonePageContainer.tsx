@@ -1,16 +1,21 @@
 import { connect } from 'react-redux';
-import { Done } from './index';
-import { Issue } from '../../common/model';
 import { ApplicationState } from '../../redux/root';
+import { DonePage } from './index';
+import { Issue } from '../../common/model';
+import { RouteComponentProps } from 'react-router-dom';
+
+interface OwnProps extends RouteComponentProps<{id: string}> {}
 
 interface StateProps {
-  selectedIssue: Issue | null;
+  readonly issues: Issue[];
+  readonly completedIssueIds: string[];
 }
 
-const mapStateToProps = (state: ApplicationState): StateProps => {
+const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
   return {
-    selectedIssue: state.callState.currentIssue
+    issues: state.remoteDataState.issues,
+    completedIssueIds: state.callState.completedIssueIds,
   };
 };
 
-export default connect<StateProps, {}, {}>(mapStateToProps)(DonePage);
+export default connect<StateProps, {}, OwnProps>(mapStateToProps)(DonePage);

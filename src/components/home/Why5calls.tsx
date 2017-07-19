@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Promotion, CallCountContainer } from '../shared';
+import { Promotion, CallCount } from '../shared';
 import * as Constants from '../../common/constants';
 
 /* tslint:disable:max-line-length
@@ -68,7 +68,7 @@ const Why5calls: React.StatelessComponent<Props>  = (props: Props) => (
           </a>
         </li>
       </ul>
-      <CallCountContainer />
+      <CallCount />
     </div>
   </div>
 );

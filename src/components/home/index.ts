@@ -1,5 +1,5 @@
-import HomeContainer from './HomeContainer';
+import HomePageContainer from './HomePageContainer';
 import HomePage from './HomePage';
 import Why5calls from './Why5calls';
 
-export { HomeContainer, HomePage, Why5calls };
+export { HomePageContainer, HomePage, Why5calls };
