@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { Issue } from '../../common/model';
 import { CallPage } from './index';
 import { ApplicationState } from '../../redux/root';
+import { getIssuesIfNeeded } from '../../redux/remoteData';
 import { CallState, OutcomeData, submitOutcome, selectIssueActionCreator } from '../../redux/callState';
 import { RouteComponentProps } from 'react-router-dom';
 
@@ -20,7 +21,11 @@ interface DispatchProps {
 }
 
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
-  let currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.match.params.id);
+  let currentIssue: Issue | undefined = undefined; 
+  if (state.remoteDataState.issues) {
+    currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.match.params.id);
+  } 
+
   return {
     issues: state.remoteDataState.issues,
     callState: state.callState,
@@ -33,6 +38,7 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
     { 
       onSubmitOutcome: submitOutcome, 
       onSelectIssue: selectIssueActionCreator,
+      onGetIssuesIfNeeded: getIssuesIfNeeded,
      },
     dispatch);
 };

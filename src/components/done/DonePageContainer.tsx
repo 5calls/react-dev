@@ -14,7 +14,10 @@ interface StateProps {
 }
 
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
-  let currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.match.params.id);
+  let currentIssue: Issue | undefined = undefined; 
+  if (state.remoteDataState.issues) {
+    currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.match.params.id);
+  } 
 
   return {
     issues: state.remoteDataState.issues,
