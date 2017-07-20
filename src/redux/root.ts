@@ -1,5 +1,5 @@
-import { routerReducer as routing } from 'react-router-redux';
-import { combineReducers } from 'redux';
+import { routerReducer, RouterState } from 'react-router-redux';
+import { Reducer, combineReducers } from 'redux';
 import { LocationState, locationStateReducer } from './location/reducer';
 import { CallState, callStateReducer } from './callState/reducer';
 import { RemoteDataState, remoteDataReducer } from './remoteData/reducer';
@@ -17,7 +17,7 @@ export const DefaultApplicationState: ApplicationState = {
 };
 
 const rootReducer = combineReducers({
-  routing,
+  routing: routerReducer as Reducer<RouterState>,
   remoteDataState: remoteDataReducer,
   callState: callStateReducer,
   locationState: locationStateReducer
