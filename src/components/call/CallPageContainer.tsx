@@ -33,4 +33,4 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
     dispatch);
 };
 
-export default connect<StateProps, DispatchProps, {}>(mapStateToProps, mapDispatchToProps)(CallPage);
+export default connect<StateProps, DispatchProps, OwnProps>(mapStateToProps, mapDispatchToProps)(CallPage);

@@ -28,7 +28,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/" exact={true} component={HomePageContainer} />
         <Route path="/issue/:id" exact={true} component={CallPageContainer} />
-        <Route path="/done" exact={true} component={DonePageContainer} />
+        {/* <Route path="/done/:id" exact={true} component={DonePageContainer} /> */}
         <Route path="/faq" exact={true} component={FaqPageContainer} />
         <Route path="/about" exact={true} component={AboutPageContainer} />
         <Route path="*" component={HomePageContainer} />
