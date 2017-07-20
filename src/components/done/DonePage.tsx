@@ -50,6 +50,7 @@ class DonePage extends React.Component<Props, State> {
         issues={this.props.issues}
         completedIssueIds={this.props.completedIssueIds}
         currentIssue={this.props.currentIssue}
+        onSelectIssue={this.props.onSelectIssue}
       >
         {this.props.currentIssue &&
           <Done currentIssue={this.props.currentIssue} totalCount={this.props.totalCount} />

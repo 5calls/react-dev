@@ -6,6 +6,7 @@ interface Props {
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
   readonly completedIssueIds: string[];
+  onSelectIssue: (issueId: string) => Function;
 }
 
 const Sidebar: React.StatelessComponent<Props> = (props: Props) => {
@@ -14,6 +15,7 @@ const Sidebar: React.StatelessComponent<Props> = (props: Props) => {
       issues={props.issues}
       currentIssue={props.currentIssue}
       completedIssueIds={props.completedIssueIds}
+      onSelectIssue={props.onSelectIssue}
     />
     );
 };

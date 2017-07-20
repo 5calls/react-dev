@@ -6,6 +6,7 @@ interface Props {
   readonly issue: Issue;
   readonly isIssueComplete: boolean;
   readonly isIssueActive: boolean;
+  onSelectIssue: (issueId: string) => Function;
 }
 
 interface State {}
@@ -20,6 +21,7 @@ class IssuesListItem extends React.Component<Props, State> {
             aria-controls="content"
             className={`issues-list__item ${isCompleted} ${isActive}`}
             to={`/issue/${this.props.issue.id}`}
+            onClick={() => this.props.onSelectIssue(this.props.issue.id)}
         >
           <span aria-live="polite" className={`issues-list__item__status ${isCompleted} ${isActive}`}>
             <span className="visually-hidden"/>
