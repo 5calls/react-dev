@@ -26,9 +26,9 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route path="/" component={HomePageContainer} />
-        <Route path="/done/:id" exact={true} component={DonePageContainer} />
+        <Route path="/" exact={true} component={HomePageContainer} />
         <Route path="/issue/:id" exact={true} component={CallPageContainer} />
+        <Route path="/done/:id" exact={true} component={DonePageContainer} />
         <Route path="/faq" exact={true} component={FaqPageContainer} />
         <Route path="/about" exact={true} component={AboutPageContainer} />
         <Route path="*" component={HomePageContainer} />

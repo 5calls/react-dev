@@ -12,20 +12,50 @@ interface Props extends RouteProps {
   readonly callState: CallState;
   readonly currentIssue: Issue;
   onSubmitOutcome: (data: OutcomeData) => Function;
+  onSelectIssue: (issueId: string) => Function;
 }
 
-const CallPage: React.StatelessComponent<Props> = (props: Props) => (
-  <Layout
-    issues={props.issues}
-    completedIssueIds={props.callState.completedIssueIds}
-    currentIssue={props.currentIssue}
-  >
-    <Call
-      issue={props.currentIssue}
-      callState={props.callState}
-      onSubmitOutcome={props.onSubmitOutcome}
-    />
-  </Layout>
-);
+export interface State {
+  currentIssue: Issue;
+  callState: CallState;
+}
 
+class CallPage extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    // set initial state
+    this.state = this.setStateFromProps(props);
+  }
+
+  setStateFromProps(props: Props): State {
+    return {
+      currentIssue: props.currentIssue,
+      callState: props.callState,
+    };
+  }
+
+  componentWillReceiveProps(newProps: Props) {
+    this.setState(this.setStateFromProps(newProps));
+  }
+
+  componentDidMount() {
+    this.props.onSelectIssue(this.state.currentIssue.id);
+  }
+
+  render() {
+    return (
+      <Layout
+        issues={this.props.issues}
+        completedIssueIds={this.props.callState.completedIssueIds}
+        currentIssue={this.props.currentIssue}
+      >
+        <Call
+          issue={this.props.currentIssue}
+          callState={this.props.callState}
+          onSubmitOutcome={this.props.onSubmitOutcome}
+        />
+      </Layout>
+    );
+  }
+}
 export default CallPage;

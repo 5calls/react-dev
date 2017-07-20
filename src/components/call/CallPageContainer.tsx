@@ -1,12 +1,12 @@
 import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {Issue} from '../../common/model';
+import { Issue } from '../../common/model';
 import { CallPage } from './index';
 import { ApplicationState } from '../../redux/root';
-import { CallState, OutcomeData, submitOutcome } from '../../redux/callState';
+import { CallState, OutcomeData, submitOutcome, selectIssueActionCreator } from '../../redux/callState';
 import { RouteComponentProps } from 'react-router-dom';
 
-interface OwnProps extends RouteComponentProps<{id: string}> {}
+interface OwnProps extends RouteComponentProps<{ id: string }> { }
 
 interface StateProps {
   readonly issues: Issue[];
@@ -16,9 +16,10 @@ interface StateProps {
 
 interface DispatchProps {
   onSubmitOutcome: (data: OutcomeData) => void;
+  onSelectIssue: (issueId: string) => void;
 }
 
-const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {  
+const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
   let currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.match.params.id);
   return {
     issues: state.remoteDataState.issues,
@@ -29,7 +30,10 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
 
 const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps => {
   return bindActionCreators(
-    {onSubmitOutcome: submitOutcome},
+    { 
+      onSubmitOutcome: submitOutcome, 
+      onSelectIssue: selectIssueActionCreator,
+     },
     dispatch);
 };
 

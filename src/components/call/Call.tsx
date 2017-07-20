@@ -4,8 +4,8 @@ import { ContactDetails, Script, Outcomes } from './index';
 import { CallState, OutcomeData } from '../../redux/callState';
 
 export interface Props {
-  issue: Issue;
-  callState: CallState;
+  readonly issue: Issue;
+  readonly callState: CallState;
   onSubmitOutcome: (data: OutcomeData) => Function;
 }
 
