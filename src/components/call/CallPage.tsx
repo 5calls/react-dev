@@ -5,9 +5,7 @@ import { Issue } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
 import { RouteComponentProps } from 'react-router-dom';
 
-interface RouteProps extends RouteComponentProps<{id: string}> {}
-
-interface Props extends RouteProps {
+interface Props extends RouteComponentProps<{id: string}> {
   currentIssue: Issue;
   callState: CallState;
   issues: Issue[];
