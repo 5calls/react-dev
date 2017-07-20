@@ -6,11 +6,10 @@ import { RouteComponentProps } from 'react-router-dom';
 
 interface RouteProps extends RouteComponentProps<{id: string}> {}
 
-interface Props {
+interface Props extends RouteProps {
   readonly issues: Issue[];
   readonly completedIssueIds: string[];
   readonly currentIssue: Issue;
-  match: RouteProps;
 }
 
 const DonePage: React.StatelessComponent<Props> = (props: Props) => (
