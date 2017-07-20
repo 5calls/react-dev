@@ -16,7 +16,7 @@ import { Issue } from '../../common/model';
 */
 
 interface Props {
-  selectedIssue: Issue;
+  currentIssue: Issue;
   currentContactId: string;
   numberContactsLeft: number;
   onSubmitOutcome: (data: OutcomeData) => void;
@@ -37,14 +37,14 @@ class Outcomes extends React.Component<Props & RouteComponentProps<any>, State> 
       {
         outcome,
         numberContactsLeft: this.props.numberContactsLeft,
-        issueId: this.props.selectedIssue.id,
+        issueId: this.props.currentIssue.id,
         contactId: this.props.currentContactId,
       }
     );
 
     // navigate to /done when finished
     if (this.props.numberContactsLeft === 0 && this.props.history) {
-      this.props.history.push('/done');
+      this.props.history.push(`/done/${this.props.currentIssue.id}`);
     }
 
     window.scroll(1, 1);

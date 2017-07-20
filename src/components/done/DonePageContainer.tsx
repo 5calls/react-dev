@@ -10,6 +10,7 @@ interface StateProps {
   readonly issues: Issue[];
   readonly completedIssueIds: string[];
   readonly currentIssue?: Issue;
+  readonly totalCount: number;
 }
 
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
@@ -18,7 +19,8 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
   return {
     issues: state.remoteDataState.issues,
     completedIssueIds: state.callState.completedIssueIds,
-    currentIssue: currentIssue
+    currentIssue: currentIssue,
+    totalCount: state.remoteDataState.callTotal,
   };
 };
 

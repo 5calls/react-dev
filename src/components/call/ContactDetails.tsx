@@ -11,13 +11,13 @@ import { Issue, Contact, DefaultContact } from '../../common/model';
 */
 
 interface Props {
-  selectedIssue: Issue;
+  currentIssue: Issue;
   contactIndex: number;
 }
 
-const ContactDetails: React.StatelessComponent<Props> = ({selectedIssue , contactIndex = 0}: Props) => {
-  const contact: Contact = selectedIssue.contacts && selectedIssue.contacts.length !== 0 ?
-    selectedIssue.contacts[contactIndex] : DefaultContact;
+const ContactDetails: React.StatelessComponent<Props> = ({currentIssue , contactIndex = 0}: Props) => {
+  const contact: Contact = currentIssue.contacts && currentIssue.contacts.length !== 0 ?
+    currentIssue.contacts[contactIndex] : DefaultContact;
   if (contact === DefaultContact) {
     return <span/>;
   } else {
@@ -46,7 +46,7 @@ const renderFieldOffices = (contact) => {
       <h3 className="call__contact__field-offices__header">Local office numbers: {/*'contact.localOfficeNumbers'*/}</h3>
       <ul className="call__contact__field-office-list">
         {contact.field_offices ? contact.field_offices.map(office =>
-          <li>{makePhoneLink(office.phone)}{cityFormat(office, contact)}</li>
+          <li key={office.phone}>{makePhoneLink(office.phone)}{cityFormat(office, contact)}</li>
         ) : <span/>}
       </ul>
     </div>

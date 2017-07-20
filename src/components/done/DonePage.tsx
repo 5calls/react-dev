@@ -10,6 +10,7 @@ interface Props extends RouteProps {
   readonly issues: Issue[];
   readonly completedIssueIds: string[];
   readonly currentIssue: Issue;
+  readonly totalCount: number;
 }
 
 const DonePage: React.StatelessComponent<Props> = (props: Props) => (
@@ -18,7 +19,7 @@ const DonePage: React.StatelessComponent<Props> = (props: Props) => (
     completedIssueIds={props.completedIssueIds}
     currentIssue={props.currentIssue}
   >
-    <Done currentIssue={props.currentIssue} />
+    <Done currentIssue={props.currentIssue} totalCount={props.totalCount} />
   </Layout>
 );
 

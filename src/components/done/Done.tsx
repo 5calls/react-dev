@@ -12,7 +12,8 @@ import { Promotion, CallCount } from '../shared';
 */
 
 interface Props {
-  currentIssue: Issue;
+  readonly currentIssue: Issue;
+  readonly totalCount: number;
 }
 
 const Done: React.StatelessComponent<Props> = (props: Props) => {
@@ -34,7 +35,7 @@ const Done: React.StatelessComponent<Props> = (props: Props) => {
         {/*townHall(state)*/}
         <strong>TOWN HALL COMPONENT HERE</strong><br/>
 
-         <CallCount totalCount={100} /> 
+         <CallCount totalCount={props.totalCount} /> 
       </div>
     </section>
   );

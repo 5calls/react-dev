@@ -69,10 +69,10 @@ class Call extends React.Component<Props, State> {
             {this.state.issue.reason}
           </div>
         </header>
-        <ContactDetails selectedIssue={this.state.issue} contactIndex={this.state.currentContactIndex}/>
+        <ContactDetails currentIssue={this.state.issue} contactIndex={this.state.currentContactIndex}/>
         <Script issue={this.state.issue} contactIndex={this.state.currentContactIndex} />
         <Outcomes
-          selectedIssue={this.state.issue}
+          currentIssue={this.state.issue}
           numberContactsLeft={this.state.numberContactsLeft}
           currentContactId={(this.state.currentContact ? this.state.currentContact.id : '')}
           onSubmitOutcome={this.props.onSubmitOutcome}
