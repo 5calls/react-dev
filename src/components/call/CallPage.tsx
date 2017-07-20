@@ -7,12 +7,11 @@ import { RouteComponentProps } from 'react-router-dom';
 
 interface RouteProps extends RouteComponentProps<{id: string}> {}
 
-interface Props {
+interface Props extends RouteProps {
   currentIssue: Issue;
   callState: CallState;
   issues: Issue[];
   onSubmitOutcome: (data: OutcomeData) => Function;
-  match: RouteComponentProps<{id: string}>;
 }
 
 const CallPage: React.StatelessComponent<Props> = (props: Props) => (
