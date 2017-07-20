@@ -1,7 +1,11 @@
-import { connect } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { ApplicationState } from '../../redux/root';
 import { DonePage } from './index';
 import { Issue } from '../../common/model';
+import { getIssuesIfNeeded } from '../../redux/remoteData';
+import { selectIssueActionCreator } from '../../redux/callState';
+
 import { RouteComponentProps } from 'react-router-dom';
 
 interface OwnProps extends RouteComponentProps<{id: string}> {}
@@ -11,6 +15,11 @@ interface StateProps {
   readonly completedIssueIds: string[];
   readonly currentIssue?: Issue;
   readonly totalCount: number;
+}
+
+interface DispatchProps {
+  onSelectIssue: (issueId: string) => void;
+  onGetIssuesIfNeeded: () => void;
 }
 
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
@@ -27,4 +36,13 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
   };
 };
 
-export default connect<StateProps, {}, OwnProps>(mapStateToProps)(DonePage);
+const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps => {
+  return bindActionCreators(
+    { 
+      onSelectIssue: selectIssueActionCreator,
+      onGetIssuesIfNeeded: getIssuesIfNeeded,
+     },
+    dispatch);
+};
+
+export default connect<StateProps, DispatchProps, OwnProps>(mapStateToProps, mapDispatchToProps)(DonePage);

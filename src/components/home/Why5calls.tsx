@@ -22,7 +22,9 @@ import * as Constants from '../../common/constants';
     },
 */
 // tslint: enable
-interface Props {}
+interface Props {
+  readonly totalCount: number;
+}
 
 const Why5calls: React.StatelessComponent<Props>  = (props: Props) => (
   <div className="hypothesis" >
@@ -68,7 +70,7 @@ const Why5calls: React.StatelessComponent<Props>  = (props: Props) => (
           </a>
         </li>
       </ul>
-      <CallCount totalCount={100} />
+      <CallCount totalCount={props.totalCount} />
     </div>
   </div>
 );

@@ -18,6 +18,7 @@ interface StateProps {
 interface DispatchProps {
   onSubmitOutcome: (data: OutcomeData) => void;
   onSelectIssue: (issueId: string) => void;
+  onGetIssuesIfNeeded: () => void;
 }
 
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {

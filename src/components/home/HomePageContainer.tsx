@@ -9,12 +9,14 @@ interface OwnProps extends RouteComponentProps<{id: string}> {}
 interface StateProps {
   readonly issues: Issue[];
   readonly completedIssueIds: string[];
+  readonly totalCount: number;
 }
 
 function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProps {
   return {
     issues: state.remoteDataState.issues,
     completedIssueIds: state.callState.completedIssueIds,
+    totalCount: state.remoteDataState.callTotal,
   };
 }
 

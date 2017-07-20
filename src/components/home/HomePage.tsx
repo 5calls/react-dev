@@ -6,6 +6,7 @@ import { Issue } from '../../common/model';
 interface Props {
   readonly issues: Issue[];
   readonly completedIssueIds: string[];
+  readonly totalCount: number;
 }
 
 const HomePage: React.StatelessComponent<Props> = (props: Props) => (
@@ -13,7 +14,7 @@ const HomePage: React.StatelessComponent<Props> = (props: Props) => (
     issues={props.issues}
     completedIssueIds={props.completedIssueIds}
   >
-    <Why5calls />
+    <Why5calls totalCount={props.totalCount}/>
   </Layout>
 );
 
