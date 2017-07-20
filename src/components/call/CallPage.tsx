@@ -5,10 +5,12 @@ import { Issue } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
 import { RouteComponentProps } from 'react-router-dom';
 
-interface Props extends RouteComponentProps<{id: string}> {
-  currentIssue: Issue;
-  callState: CallState;
-  issues: Issue[];
+interface RouteProps extends RouteComponentProps<{ id: string }> { }
+
+interface Props extends RouteProps {
+  readonly issues: Issue[];
+  readonly callState: CallState;
+  readonly currentIssue: Issue;
   onSubmitOutcome: (data: OutcomeData) => Function;
 }
 

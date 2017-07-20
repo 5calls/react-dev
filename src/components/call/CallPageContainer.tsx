@@ -9,9 +9,9 @@ import { RouteComponentProps } from 'react-router-dom';
 interface OwnProps extends RouteComponentProps<{id: string}> {}
 
 interface StateProps {
-  issues: Issue[];
-  callState: CallState;
-  currentIssue?: Issue;
+  readonly issues: Issue[];
+  readonly callState: CallState;
+  readonly currentIssue?: Issue;
 }
 
 interface DispatchProps {
@@ -23,7 +23,7 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
   return {
     issues: state.remoteDataState.issues,
     callState: state.callState,
-    currentIssue
+    currentIssue: currentIssue
   };
 };
 

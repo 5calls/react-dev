@@ -9,8 +9,8 @@ import registerServiceWorker from './registerServiceWorker';
 import { HomePageContainer } from './components/home';
 import { AboutPageContainer } from './components/about';
 import { FaqPageContainer } from './components/faq';
+import { DonePageContainer } from './components/done';
 import { CallPageContainer } from './components/call';
-// import { DonePageContainer } from './components/done';
 import { fetchLocationByIP, fetchCallCount } from './redux/remoteData';
 import './components/bundle.css';
 import './components/shared/scss/style.css';
@@ -27,8 +27,8 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <Switch>
         <Route path="/" component={HomePageContainer} />
+        <Route path="/done/:id" exact={true} component={DonePageContainer} />
         <Route path="/issue/:id" exact={true} component={CallPageContainer} />
-        {/* <Route path="/done/:id" exact={true} component={DonePageContainer} />   */}
         <Route path="/faq" exact={true} component={FaqPageContainer} />
         <Route path="/about" exact={true} component={AboutPageContainer} />
         <Route path="*" component={HomePageContainer} />

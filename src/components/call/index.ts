@@ -1,8 +1,8 @@
 import Call from './Call';
-import CallPageContainer from './CallPageContainer';
 import CallDetail from './CallDetail';
-import CallPage from './CallPage';
 import ContactDetails from './ContactDetails';
+import CallPage from './CallPage';
+import CallPageContainer from './CallPageContainer';
 import Outcomes from './Outcomes';
 import Script from './Script';
 
