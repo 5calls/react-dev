@@ -4,7 +4,7 @@ import { Navigation } from './index';
 export interface Props {
 }
 
-const Footer = (props: Props) => {
+const Footer: React.StatelessComponent<Props> = (props: Props) => {
     return (
       <footer>
         <div className="tinyletter__form">

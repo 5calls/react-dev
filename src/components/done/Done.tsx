@@ -26,16 +26,15 @@ const Done: React.StatelessComponent<Props> = (props: Props) => {
           Pick another issue to keep calling,
           or spread the word by sharing your work with friends:{/*'callComplete.pickAnotherIssue'*/}
         </p>
-        {/*promote(state, prev, send)*/}
         <Promotion selectedIssue={props.currentIssue}/>
         <p className="call__text">
           <Link to="/about">Learn why calling</Link> representatives is the most
           effective way of making your voice heard.{/*'callComplete.learnWhyCallingIsGreat'*/}
           </p>
-        {/*townHall(state)*/}
+        {/* Choo method: townHall(state) */}
         <strong>TOWN HALL COMPONENT HERE</strong><br/>
 
-         <CallCount totalCount={props.totalCount} /> 
+         <CallCount totalCount={props.totalCount} />
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectIssueActionCreator } from '../../redux/callState';
 import { ApplicationState } from '../../redux/root';
-import AboutPage from './AboutPage';
+import { AboutPage } from './index';
 import { Issue } from '../../common/model';
 import { RouteComponentProps } from 'react-router-dom';
 
