@@ -16,10 +16,10 @@ import { Issue } from '../../common/model';
 */
 
 interface Props {
-  currentIssue: Issue;
-  currentContactId: string;
-  numberContactsLeft: number;
-  onSubmitOutcome: (data: OutcomeData) => void;
+  readonly currentIssue: Issue;
+  readonly currentContactId: string;
+  readonly numberContactsLeft: number;
+  readonly onSubmitOutcome: (data: OutcomeData) => void;
 }
 interface State {}
 

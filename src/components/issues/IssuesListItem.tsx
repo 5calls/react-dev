@@ -6,7 +6,7 @@ interface Props {
   readonly issue: Issue;
   readonly isIssueComplete: boolean;
   readonly isIssueActive: boolean;
-  onSelectIssue: (issueId: string) => Function;
+  readonly onSelectIssue: (issueId: string) => Function;
 }
 
 interface State {}

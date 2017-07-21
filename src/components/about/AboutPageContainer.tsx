@@ -14,7 +14,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  onSelectIssue: (issueId: string) => void;
+  readonly onSelectIssue: (issueId: string) => void;
 }
 
 function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProps {
@@ -23,10 +23,10 @@ function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProp
     completedIssueIds: state.callState.completedIssueIds,
   };
 }
- 
+
 const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps => {
   return bindActionCreators(
-    { 
+    {
       onSelectIssue: selectIssueActionCreator,
      },
     dispatch);

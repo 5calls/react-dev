@@ -11,8 +11,8 @@ interface Props extends RouteProps {
   readonly completedIssueIds: string[];
   readonly currentIssue: Issue;
   readonly totalCount: number;
-  onSelectIssue: (issueId: string) => Function;
-  onGetIssuesIfNeeded: () => Function;
+  readonly onSelectIssue: (issueId: string) => Function;
+  readonly onGetIssuesIfNeeded: () => Function;
 }
 
 export interface State {

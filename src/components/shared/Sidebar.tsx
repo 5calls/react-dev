@@ -6,7 +6,7 @@ interface Props {
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
   readonly completedIssueIds: string[];
-  onSelectIssue: (issueId: string) => Function;
+  readonly onSelectIssue: (issueId: string) => Function;
 }
 
 const Sidebar: React.StatelessComponent<Props> = (props: Props) => {

@@ -3,7 +3,7 @@ import { Issue } from '../../common/model';
 import { ContactDetails } from './index';
 
 interface Props {
-  currentIssue: Issue;
+  readonly currentIssue: Issue;
 }
 
 const CallDetail: React.StatelessComponent<Props> = (props: Props) => (

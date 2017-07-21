@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Issue } from '../../common/model';
 
 interface Props {
-  issue: Issue;
-  contactIndex: number;
+  readonly issue: Issue;
+  readonly contactIndex: number;
 }
 
 const Script: React.StatelessComponent<Props> = ({issue, contactIndex = 0}: Props) => {

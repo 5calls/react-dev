@@ -4,12 +4,10 @@ import { About } from './index';
 import { Layout } from '../shared/index';
 import { Issue } from '../../common/model';
 
-interface RouteProps extends RouteComponentProps<{ id: string }> { }
-
-interface Props extends RouteProps {
+interface Props extends RouteComponentProps<{ id: string }> {
   readonly issues: Issue[];
   readonly completedIssueIds: string[];
-  onSelectIssue: (issueId: string) => Function;
+  readonly onSelectIssue: (issueId: string) => Function;
 }
 
 const AboutPage: React.StatelessComponent<Props> = (props: Props) => (

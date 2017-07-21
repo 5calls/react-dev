@@ -11,9 +11,9 @@ interface Props extends RouteProps {
   readonly issues: Issue[];
   readonly callState: CallState;
   readonly currentIssue: Issue;
-  onSubmitOutcome: (data: OutcomeData) => Function;
-  onSelectIssue: (issueId: string) => Function;
-  onGetIssuesIfNeeded: () => Function;
+  readonly onSubmitOutcome: (data: OutcomeData) => Function;
+  readonly onSelectIssue: (issueId: string) => Function;
+  readonly onGetIssuesIfNeeded: () => Function;
 }
 
 export interface State {
@@ -39,7 +39,7 @@ class CallPage extends React.Component<Props, State> {
     this.setState(this.setStateFromProps(newProps));
 
     // in the case that we have come here directly by the url(not first to home page)
-    // the issues won't be loaded when first rendered. 
+    // the issues won't be loaded when first rendered.
     // On the second render, we'll have the issues and the current issue will have been identified
     // Here we set it on the redux store(note that if we've already set it in local state, in this component)
     // we don't want to set it on the redux store again because that will cause a re-render loop.
@@ -55,7 +55,7 @@ class CallPage extends React.Component<Props, State> {
       // if we have to load them, the component will be re-rendered after the issues are retrieved
       this.props.onGetIssuesIfNeeded();
     } else {
-      // this is the case where the user has clicked on an issue from the sidebar 
+      // this is the case where the user has clicked on an issue from the sidebar
       if (!this.props.callState.currentIssueId) {
         this.props.onSelectIssue(this.props.currentIssue.id);
       }

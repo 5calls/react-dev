@@ -18,15 +18,15 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  onSelectIssue: (issueId: string) => void;
-  onGetIssuesIfNeeded: () => void;
+  readonly onSelectIssue: (issueId: string) => void;
+  readonly onGetIssuesIfNeeded: () => void;
 }
 
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
-  let currentIssue: Issue | undefined = undefined; 
+  let currentIssue: Issue | undefined = undefined;
   if (state.remoteDataState.issues) {
     currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.match.params.id);
-  } 
+  }
 
   return {
     issues: state.remoteDataState.issues,
@@ -38,7 +38,7 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
 
 const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps => {
   return bindActionCreators(
-    { 
+    {
       onSelectIssue: selectIssueActionCreator,
       onGetIssuesIfNeeded: getIssuesIfNeeded,
      },

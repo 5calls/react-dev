@@ -11,8 +11,8 @@ import { Issue, Contact, DefaultContact } from '../../common/model';
 */
 
 interface Props {
-  currentIssue: Issue;
-  contactIndex: number;
+  readonly currentIssue: Issue;
+  readonly contactIndex: number;
 }
 
 const ContactDetails: React.StatelessComponent<Props> = ({currentIssue , contactIndex = 0}: Props) => {
