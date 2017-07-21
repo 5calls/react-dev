@@ -3,6 +3,7 @@ import { autoRehydrate, persistStore } from 'redux-persist';
 import rootReducer from './root';
 // import { createLogger, ReduxLoggerOptions } from 'redux-logger';
 import thunk from 'redux-thunk';
+import { ApplicationStateKeyType, ApplicationStateKey } from '../redux/root';
 
 // declare var process: { env: { NODE_ENV: string } };
 // const env = process.env.NODE_ENV;
@@ -24,10 +25,19 @@ export default (initialState) => {
       typeof window === 'object' && typeof window['devToolsExtension'] !== 'undefined' ? window['devToolsExtension']() : (f) => f
     ));
 
+  // Persist store using redux-persist:
   // "whitelist" tells the redux-persist middleware which reducer keys(parts of the redux store)
   // we want to persist and then grab back and put into the store upon loading the app the next time.
   // It will write to this localstorage key every time there is a change made to this key in redux.
-  persistStore(store, {whitelist: ['locationState']});
+
+  // Use a little TypeScript magic to assure that each whitelist member
+  // is OK.
+  // Make sure every key is of type ApplicationStateKeyType
+  // and every value is an ApplicationStateKey value
+  const localPersistKeys: ApplicationStateKeyType[] = [
+    ApplicationStateKey.locationState
+  ];
+  persistStore(store, {whitelist: localPersistKeys});
 
   return store;
 };
