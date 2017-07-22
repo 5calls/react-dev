@@ -3,12 +3,12 @@ import { Issue } from '../../common/model';
 import { ContactDetails } from './index';
 
 interface Props {
-  selectedIssue: Issue;
+  readonly currentIssue: Issue;
 }
 
 const CallDetail: React.StatelessComponent<Props> = (props: Props) => (
   <div>
-    <ContactDetails selectedIssue={props.selectedIssue} contactIndex={0}/>
+    <ContactDetails currentIssue={props.currentIssue} contactIndex={0}/>
   </div>
 
 );

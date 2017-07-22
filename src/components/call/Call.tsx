@@ -4,8 +4,8 @@ import { ContactDetails, Script, Outcomes } from './index';
 import { CallState, OutcomeData } from '../../redux/callState';
 
 export interface Props {
-  issues: Issue[];
-  callState: CallState;
+  readonly issue: Issue;
+  readonly callState: CallState;
   onSubmitOutcome: (data: OutcomeData) => Function;
 }
 
@@ -17,7 +17,6 @@ export interface State {
 }
 
 class Call extends React.Component<Props, State> {
-
   constructor(props: Props) {
     super(props);
     // set initial state
@@ -32,26 +31,27 @@ class Call extends React.Component<Props, State> {
    * @returns {State}
    */
   setStateFromProps(props: Props): State {
-    const issue = props.callState.currentIssue;
     let currentContactIndex = 0;
-    if (issue && props.callState.contactIndexes && props.callState.contactIndexes[issue.id]) {
-      currentContactIndex = props.callState.contactIndexes[issue.id];
+    if (props.issue && props.callState.contactIndexes && props.callState.contactIndexes[props.issue.id]) {
+      currentContactIndex = props.callState.contactIndexes[props.issue.id];
     }
 
-    const currentContact = (issue && issue.contacts ? issue.contacts[currentContactIndex] : undefined);
-    const numberContactsLeft = issue && issue.contacts ? issue.contacts.length - (currentContactIndex + 1) : 0;
+    const currentContact = (props.issue && props.issue.contacts
+                                        ? props.issue.contacts[currentContactIndex]
+                                        : undefined);
+    const numberContactsLeft = props.issue && props.issue.contacts
+                                            ? props.issue.contacts.length - (currentContactIndex + 1)
+                                            : 0;
 
     return {
       currentContact: currentContact,
       currentContactIndex: currentContactIndex,
       numberContactsLeft: numberContactsLeft,
-      issue: issue
+      issue: props.issue
     };
   }
 
   componentWillReceiveProps(newProps: Props) {
-    // tslint:disable-next-line:no-console
-    console.log('Call.componentWillReceiveProps() props: ', newProps);
     this.setState(this.setStateFromProps(newProps));
   }
 
@@ -67,15 +67,15 @@ class Call extends React.Component<Props, State> {
             {this.state.issue.reason}
           </div>
         </header>
-        <ContactDetails selectedIssue={this.state.issue} contactIndex={this.state.currentContactIndex}/>
+        <ContactDetails currentIssue={this.state.issue} contactIndex={this.state.currentContactIndex}/>
         <Script issue={this.state.issue} contactIndex={this.state.currentContactIndex} />
         <Outcomes
-          selectedIssue={this.state.issue}
+          currentIssue={this.state.issue}
           numberContactsLeft={this.state.numberContactsLeft}
           currentContactId={(this.state.currentContact ? this.state.currentContact.id : '')}
           onSubmitOutcome={this.props.onSubmitOutcome}
         />
-          {/* TODO: Fix people/person for 1 contact left. Move logic to a function */}
+          {/* TODO: Fix people/person text for 1 contact left. Move logic to a function */}
           {this.state.numberContactsLeft > 0 ?
             <h3 aria-live="polite" className="call__contacts__left" >
               {this.state.numberContactsLeft} more people to call for this issue.{/*outcomes.contactsLeft*/}

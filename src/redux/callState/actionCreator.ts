@@ -1,10 +1,9 @@
-import { Issue } from '../../common/model';
 import { OutcomeData, CurrentIssueAction, SubmitOutcomeAction, NextContact } from './index';
 
-export const selectIssueActionCreator = (issue: Issue): CurrentIssueAction => {
+export const selectIssueActionCreator = (issueId: string): CurrentIssueAction => {
   return {
     type: 'CURRENT_ISSUE_SELECTED',
-    payload: issue
+    payload: issueId
   };
 };
 

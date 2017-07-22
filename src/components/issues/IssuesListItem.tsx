@@ -4,24 +4,14 @@ import { Issue } from '../../common/model';
 
 interface Props {
   readonly issue: Issue;
-  readonly currentIssue: Issue;
   readonly isIssueComplete: boolean;
   readonly isIssueActive: boolean;
-  readonly setSelectedIssue:  (issue: Issue) => void;
+  readonly onSelectIssue: (issueId: string) => Function;
 }
 
 interface State {}
 
 class IssuesListItem extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.issueSelected = this.issueSelected.bind(this);
-  }
-
-  issueSelected(issue: Issue) {
-    this.props.setSelectedIssue(issue);
-  }
-
   render() {
     const isCompleted = this.props.isIssueComplete ? 'is-complete' : '';
     const isActive = this.props.isIssueActive ? 'is-active' : '';
@@ -30,8 +20,8 @@ class IssuesListItem extends React.Component<Props, State> {
         <Link
             aria-controls="content"
             className={`issues-list__item ${isCompleted} ${isActive}`}
-            to="/issue"
-            onClick={() => this.issueSelected(this.props.issue)}
+            to={`/issue/${this.props.issue.id}`}
+            onClick={() => this.props.onSelectIssue(this.props.issue.id)}
         >
           <span aria-live="polite" className={`issues-list__item__status ${isCompleted} ${isActive}`}>
             <span className="visually-hidden"/>

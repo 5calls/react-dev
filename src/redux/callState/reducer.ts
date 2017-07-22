@@ -1,9 +1,8 @@
 import { Reducer } from 'redux';
-import { Issue } from '../../common/model';
 import { CallStateAction } from './index';
 
 export interface CallState {
-  currentIssue: Issue;
+  currentIssueId: string;
   contactIndexes: string[];
   completedIssueIds: string[];
   showFieldOfficeNumbers: boolean;
@@ -14,22 +13,22 @@ export const callStateReducer: Reducer<CallState> = (
   action: CallStateAction): CallState => {
     switch (action.type) {
       case 'CURRENT_ISSUE_SELECTED':
-        return Object.assign({}, state, {currentIssue: action.payload});
+        return Object.assign({}, state, {currentIssueId: action.payload});
       case 'COMPLETE_ISSUE':
         let newCompletedIssues: string[] = [];
         if (state.completedIssueIds) {
           newCompletedIssues = [...state.completedIssueIds];
         }
-        newCompletedIssues.push(state.currentIssue.id);
+        newCompletedIssues.push(state.currentIssueId);
         let newState = {...state };
         newState.completedIssueIds = newCompletedIssues;
         return newState;
       case 'NEXT_CONTACT':
         let newIndexes = {...state.contactIndexes};
-        if (!newIndexes[state.currentIssue.id]) {
-          newIndexes[state.currentIssue.id] = 1;
+        if (!newIndexes[state.currentIssueId]) {
+          newIndexes[state.currentIssueId] = 1;
         } else {
-          newIndexes[state.currentIssue.id]++;
+          newIndexes[state.currentIssueId]++;
         }
         return {...state, contactIndexes: newIndexes};
       default:

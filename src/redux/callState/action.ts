@@ -1,6 +1,5 @@
 import { Action } from 'redux';
 import { OutcomeData, CallStateAction } from './index';
-import { Issue } from '../../common/model';
 
 export type CallStateActionType =
   'CURRENT_ISSUE_SELECTED' |
@@ -17,7 +16,7 @@ export interface CallStateAction extends Action {
 
 export interface CurrentIssueAction extends CallStateAction {
     type: 'CURRENT_ISSUE_SELECTED';
-    payload: Issue;
+    payload: string;
 }
 
 export interface SubmitOutcomeAction extends CallStateAction {

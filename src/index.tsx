@@ -6,10 +6,11 @@ import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import createStore from './redux/store';
 import registerServiceWorker from './registerServiceWorker';
-import { HomePage } from './components/home';
-import { AboutPage } from './components/about';
-import { FaqPage } from './components/faq';
-import { CallPage, DonePage } from './components/call';
+import { HomePageContainer } from './components/home';
+import { AboutPageContainer } from './components/about';
+import { FaqPageContainer } from './components/faq';
+import { DonePageContainer } from './components/done';
+import { CallPageContainer } from './components/call';
 import { fetchLocationByIP, fetchCallCount } from './redux/remoteData';
 import './components/bundle.css';
 import './components/shared/scss/style.css';
@@ -25,12 +26,12 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route path="/" exact={true} component={HomePage} />
-        <Route path="/issue" exact={true} component={CallPage} />
-        <Route path="/done" exact={true} component={DonePage} />
-        <Route path="/faq" exact={true} component={FaqPage} />
-        <Route path="/about" exact={true} component={AboutPage} />
-        <Route path="*" component={HomePage} />
+        <Route path="/" exact={true} component={HomePageContainer} />
+        <Route path="/issue/:id" exact={true} component={CallPageContainer} />
+        <Route path="/done/:id" exact={true} component={DonePageContainer} />
+        <Route path="/faq" exact={true} component={FaqPageContainer} />
+        <Route path="/about" exact={true} component={AboutPageContainer} />
+        <Route path="*" component={HomePageContainer} />
       </Switch>
     </ConnectedRouter>
   </Provider>,

@@ -1,5 +1,24 @@
 import * as api from '../../services/apiServices';
 import {issuesActionCreator, callCountActionCreator } from './index';
+import {ApplicationState} from '../root';
+
+export const getIssuesIfNeeded = () => {
+  return (dispatch, getState) => {
+    const state: ApplicationState = getState();
+    let location: string = '';
+    if (state.locationState.address) {
+      location = state.locationState.address;      
+    } else if (state.locationState.address) {
+      location = state.locationState.cachedCity;      
+    }
+
+    // only make the api call if it hasn't already been made
+    // This method is primarily for when a user has navigated directly to a route with an issue id
+    if (!state.remoteDataState.issues || state.remoteDataState.issues.length === 0) {
+      dispatch(getIssues);
+    }
+  };  
+};
 
 export const getIssues = (address: string = '') => {
   return (dispatch, getState) => {

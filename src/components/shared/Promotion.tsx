@@ -15,7 +15,7 @@ import { Issue } from '../../common/model';
     },
 */
 interface Props {
-  selectedIssue: Issue | null;
+  readonly selectedIssue: Issue | null;
 }
 
 const Promotion: React.StatelessComponent<Props> = (props: Props) => {

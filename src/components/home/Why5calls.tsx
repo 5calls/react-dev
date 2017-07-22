@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Promotion, CallCountContainer } from '../shared';
+import { Promotion, CallCount } from '../shared';
 import * as Constants from '../../common/constants';
 
 /* tslint:disable:max-line-length
@@ -22,7 +22,9 @@ import * as Constants from '../../common/constants';
     },
 */
 // tslint: enable
-interface Props {}
+interface Props {
+  readonly totalCount: number;
+}
 
 const Why5calls: React.StatelessComponent<Props>  = (props: Props) => (
   <div className="hypothesis" >
@@ -68,7 +70,7 @@ const Why5calls: React.StatelessComponent<Props>  = (props: Props) => (
           </a>
         </li>
       </ul>
-      <CallCountContainer />
+      <CallCount totalCount={props.totalCount} />
     </div>
   </div>
 );

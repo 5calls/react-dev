@@ -5,7 +5,7 @@ import * as React from 'react';
     },
 */
 export interface Props {
-  totalCount: number;
+  readonly totalCount: number;
 }
 
 export const CallCount: React.StatelessComponent<Props> = (props: Props) => {
