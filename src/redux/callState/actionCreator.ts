@@ -1,6 +1,6 @@
 import { OutcomeData, CurrentIssueAction, SubmitOutcomeAction, NextContact } from './index';
 
-/* Redux Data Flow: The IssueListItem View Component was clicked, the method was 
+/* REDUX DATA FLOW 3: At this point in the data flow, the IssueListItem View Component was clicked, the method was 
     passed up through the Redux Container which called this actionCreator.
     This action creator will create an object(defined as an "action") that has a
     defined type ('CURRENT_ISSUE_SELECTED') which is constrained by an enum in the 
@@ -8,7 +8,7 @@ import { OutcomeData, CurrentIssueAction, SubmitOutcomeAction, NextContact } fro
 
     Redux will then "Dispatch" that object, which will send this object through the reducers.
     A reducers that matches this action type will take charge of it an run its defined reducer logic.
-    See /src/redux/callState/reducer.ts for next step in Redux Data Flow
+    See /src/redux/callState/reducer.ts for next step(4) in Redux Data Flow
  */
 export const selectIssueActionCreator = (issueId: string): CurrentIssueAction => {
   return {

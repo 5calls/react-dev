@@ -14,9 +14,14 @@ export interface CallStateAction extends Action {
   payload?: {};
 }
 
+/*
+  REDUX DATA FLOW 2: Here we define the action that will be returned from the selectIssueActionCreator
+  The type string 'CURRENT_ISSUE_SELECTED', must be in the CallStateActionType enum above.
+  See /src/redux/callState/actionCreator.ts for next step(3) in Redux Data Flow
+*/
 export interface CurrentIssueAction extends CallStateAction {
-    type: 'CURRENT_ISSUE_SELECTED';
-    payload: string;
+  type: 'CURRENT_ISSUE_SELECTED';
+  payload: string;
 }
 
 export interface SubmitOutcomeAction extends CallStateAction {
@@ -29,8 +34,8 @@ export interface NextContact extends CallStateAction {
 }
 
 export interface SetContactIdsAction extends CallStateAction {
-    type: 'SET_CONTACT_IDS';
-    payload: string[];
+  type: 'SET_CONTACT_IDS';
+  payload: string[];
 }
 
 export interface SetShowFieldOfficeNumbers extends CallStateAction {

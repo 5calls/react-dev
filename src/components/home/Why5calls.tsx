@@ -23,6 +23,7 @@ import * as Constants from '../../common/constants';
 */
 // tslint: enable
 
+// This defines the props that we must pass into this component.
 interface Props {
   readonly totalCount: number;
 }

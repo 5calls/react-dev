@@ -38,17 +38,21 @@ interface StateProps {
   readonly totalCount: number;
 }
 
-// This defines the actions that we pass a reference to to our child components.
-//   By calling these methods, child components will be able to dispatch redux actions
+/*
+ This defines the actions that we pass a reference to to our child components.
+   By calling these methods, child components will be able to dispatch redux actions
+*/
 interface DispatchProps {
 
   // This defines a method signature that is going to be passed into the child component 
   readonly onSelectIssue: (issueId: string) => void;
 }
 
-// This is the standard method that takes the Redux store and allows us to pull data off it
-// and pass it into the child component.  You can do logic in this method before passing back
-// the object with the props (see the Call page for an example).
+/*
+ This is the standard method that takes the Redux store and allows us to pull data off it
+ and pass it into the child component.  You can do logic in this method before passing back
+ the object with the props (see the Call page for an example).
+*/
 function mapStateToProps(
   state: ApplicationState,
   ownProps: OwnProps
@@ -60,19 +64,23 @@ function mapStateToProps(
   };
 }
 
-// This is the standard method that takes the Redux store's dispatch method and allows
-// us to pass actions(functions, actionCreators are other words for this) to it and have it
-// map to the child component.
+/* 
+  This is the standard method that takes the Redux store's dispatch method and allows
+ us to pass actions(functions, actionCreators are other words for this) to it and have it
+ map to the child component.
+*/
 const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps => {
   return bindActionCreators(
     {
-      // Redux Data Flow: This connects a method that is passed into the child components to
-      //  an action creator that can take action on the Redux Store.
-      // This particular method will be passed down through following components:
-      //    HomePage -> Layout -> Sidebar -> IssueList -> IssueListItem
-      // When an IssueListItem is clicked on, this method will be called and this action
-      //    will be dispatched.
-      // See /src/redux/callState/actionCreator.ts for next step in Redux Data Flow      
+      /*
+        REDUX DATA FLOW 1: This connects a method that is passed into the child components to
+          an action creator that can take action on the Redux Store.
+        This particular method will be passed down through following components:
+            HomePage -> Layout -> Sidebar -> IssueList -> IssueListItem
+        When an IssueListItem is clicked on, this method will be called and this action
+            will be dispatched.
+        See /src/redux/callState/actionCreator.ts for next step in Redux Data Flow      
+      */
       onSelectIssue: selectIssueActionCreator
     },
     dispatch
