@@ -41,6 +41,8 @@ interface StateProps {
 // This defines the actions that we pass a reference to to our child components.
 //   By calling these methods, child components will be able to dispatch redux actions
 interface DispatchProps {
+
+  // This defines a method signature that is going to be passed into the child component 
   readonly onSelectIssue: (issueId: string) => void;
 }
 
@@ -64,6 +66,13 @@ function mapStateToProps(
 const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps => {
   return bindActionCreators(
     {
+      // Redux Data Flow: This connects a method that is passed into the child components to
+      //  an action creator that can take action on the Redux Store.
+      // This particular method will be passed down through following components:
+      //    HomePage -> Layout -> Sidebar -> IssueList -> IssueListItem
+      // When an IssueListItem is clicked on, this method will be called and this action
+      //    will be dispatched.
+      // See /src/redux/callState/actionCreator.ts for next step in Redux Data Flow      
       onSelectIssue: selectIssueActionCreator
     },
     dispatch
