@@ -84,6 +84,13 @@
   dependencies:
     redux "^3.6.0"
 
+"@types/redux-mock-store@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@types/redux-mock-store/-/redux-mock-store-0.0.9.tgz#0081c362a249776e7016c79c8949923c08c5d14d"
+  dependencies:
+    redux "^3.6.0"
+    redux-mock-store "^1.2.3"
+
 abab@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.3.tgz#b81de5f7274ec4e756d797cd834f303642724e5d"
@@ -4452,6 +4459,10 @@ redux-logger@^3.0.6:
   resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-3.0.6.tgz#f7555966f3098f3c88604c449cf0baf5778274bf"
   dependencies:
     deep-diff "^0.3.5"
+
+redux-mock-store@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/redux-mock-store/-/redux-mock-store-1.2.3.tgz#1b3ad299da91cb41ba30d68e3b6f024475fb9e1b"
 
 redux-persist@^4.8.2:
   version "4.8.2"
