@@ -3,6 +3,10 @@ import * as Constants from '../../common/constants';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 
+export interface Props {
+  readonly t: TranslationFunction;
+}
+
 /* tslint:disable:max-line-length
     "about": {
       "title": "About $t(common.AppName)",
@@ -42,7 +46,6 @@ import { translate } from 'react-i18next';
       }
     },
 */
-interface Props { }
 
 const About: React.StatelessComponent<Props> = (props: Props) => (
   <section className="about">
@@ -150,4 +153,4 @@ const About: React.StatelessComponent<Props> = (props: Props) => (
 
 );
 
-export default About;
+export default translate()(About);

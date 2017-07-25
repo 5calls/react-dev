@@ -2,15 +2,6 @@ import * as React from 'react';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 import { Issue, Contact, DefaultContact } from '../../common/model';
-/* i18n Keys
-   "contact": {
-      "localOfficeNumbers": "Local office numbers:",
-      "busyLine": "Busy line?",
-      "busyLineGuidance": "Click here to see local office numbers",
-      "callThisOffice": "Call this office:",
-      "whyYouAreCallingThisOffice": "Why you’re calling this office:"
-    },
-*/
 
 interface Props {
   readonly currentIssue: Issue;
@@ -32,7 +23,7 @@ const ContactDetails: React.StatelessComponent<Props> = ({ currentIssue, contact
           {contact.name} {contact.party ? `${contact.party.substring(0, 1)}-${contact.state}` : ''}
         </p>
         <p className="call__contact__phone">{makePhoneLink(contact.phone)}</p>
-        {renderFieldOffices(contact)}
+        {renderFieldOffices(contact, t)}
         <h3 className="call__contact__reason__header">
           {t('contact.whyYouAreCallingThisOffice')}
         </h3>
@@ -42,7 +33,7 @@ const ContactDetails: React.StatelessComponent<Props> = ({ currentIssue, contact
   }
 };
 
-const renderFieldOffices = (contact) => {
+const renderFieldOffices = (contact, t) => {
   // TODO: account for state.showFieldOfficeNumbers == false
   return (
     <div>

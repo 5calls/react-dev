@@ -52,7 +52,7 @@ const Location: React.StatelessComponent<Props> = ({ location, isValid, isLoadin
             disabled={isLoading}
             placeholder="Enter an address or zip code"
           />
-          <button>Go{t('common.go')}</button>
+          <button>{t('common.go')}</button>
         </form>
       </div>
     );
