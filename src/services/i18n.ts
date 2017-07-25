@@ -3,7 +3,7 @@ import * as XHR from 'i18next-xhr-backend';
 // import Cache from 'i18next-localstorage-cache';
 import * as LanguageDetector from 'i18next-browser-languagedetector';
 
-i18n
+const instance = i18n
     .use(XHR)
     // .use(Cache)
     .use(LanguageDetector)
@@ -14,13 +14,13 @@ i18n
         fallbackLng: 'en',
 
         react: {
-            // wait: true, // globally set to wait for loaded translations in translate hoc
+            wait: true, // globally set to wait for loaded translations in translate hoc
             // exposeNamespace: true // exposes namespace on data-i18next-options to be used in eg. locize-editor
         },
 
         // have a common namespace used around the full app
-        ns: ['common'],
-        defaultNS: 'common',
+        ns: [''],
+        defaultNS: '',
 
         debug: true,
 
@@ -34,4 +34,4 @@ i18n
         }
     });
 
-export default i18n;
+export default instance;
