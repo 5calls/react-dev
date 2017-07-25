@@ -81,7 +81,7 @@ class Call extends React.Component<Props, State> {
         {/* TODO: Fix people/person text for 1 contact left. Move logic to a function */}
         {this.state.numberContactsLeft > 0 ?
           <h3 aria-live="polite" className="call__contacts__left" >
-            {this.state.numberContactsLeft} {this.props.t('outcomes.contactsLeft')}
+            {this.props.t('outcomes.contactsLeft', { contactsRemaining: this.state.numberContactsLeft })}
           </h3> : ''
         }
       </section>
