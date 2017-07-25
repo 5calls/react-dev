@@ -6,8 +6,8 @@ import { Issue } from '../../common/model';
 
 /*
   This is the top level View component in the HomePage Component Hierarchy.  It is the 
-    child of the Redux container.  Therefore, it's "Props" property must match the
-    merged props that were provided to the Connect function in the "HomePageContainer".
+    child of the Redux container.  Therefore, its "Props" property must match the
+    merged props that were provided to the connect() function in the "HomePageContainer".
 */
 interface Props extends RouteComponentProps<{}> {
   readonly issues: Issue[];
@@ -17,7 +17,7 @@ interface Props extends RouteComponentProps<{}> {
 }
 
 /*
-  This is a StatelessComponent meaning that is just a function. The props are passed in as
+  This is a StatelessComponent meaning that it is just a function. The props are passed in as
   a property.  More complicated components will be instantiated as a class and will often
   have "local" state.  Props for them will be an instance property.
 

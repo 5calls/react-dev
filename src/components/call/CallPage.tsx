@@ -6,8 +6,8 @@ import { Issue } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
 
 /*            
-    Note the "{id: string}" added to the RouteComponentProps. If you look at the Type Definition
-    F12(VSCode) for RouteComponentProps, you'll see this:
+    Note the "{id: string}" added as a generic type parameter to RouteComponentProps. 
+    If you look at the Type Definition F12(VSCode) for RouteComponentProps, you'll see this:
     
     export interface RouteComponentProps<P> {
       match: match<P>;
@@ -23,7 +23,7 @@ import { CallState, OutcomeData } from '../../redux/callState';
     }
 
     This means that the "P" is a generic parameter into that is passed into the match object and then
-    defines the "params" object.  This allows the "params" object to be whatever we have defined
+    defines the "params" object type.  This allows the "params" object to be whatever we have defined
     it in our route.  In this route "/call/:id" (as well as the "/done/:id" route), we've defined
     our params to have simply one key: "id".
 */

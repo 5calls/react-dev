@@ -17,9 +17,12 @@ import { RouteComponentProps } from 'react-router-dom';
   A container maps data from Redux through the "mapStateToProps" method
           and maps actions from Redux through the "mapDispatchToProps" method
 
-  An important Typescript "Gotcha" is that this data and actions(functions) will be passed into the 
-    child component as "Props".  Therefore, Typescript requires that they are defined in this container component
-    but also defined as "Props" to be received by the child component, in the case "HomePage" 
+  In order to maintain type safety in the container and its children, TypeScript requires 
+    that you define both the same data and action (function) properties and types in the 
+    container (HomePageContainer) and its first child (HomePage). The data-related properties
+    used in mapStateToProps() are called StateProps, while the action-related properties 
+    used in mapDispatchToProps() are called DispatchProps. In the children components, these are called 
+    "Props" since they are standard React props.
 
   In this container component, we will pull all of the data/actions(functions) off of Redux that this Page
     (its child components) need and we will pass them down to them through their props.  We call 
@@ -87,10 +90,10 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
   );
 };
 
-/* This the key "magic" function that "connects" this redux container component to the child 
-     component.  It is also where you will get errors.
+/* This is the key "magic" function that "connects" this redux container component to the child 
+     component.  It is also where you often get errors.
     The connect<StateProps, DispatchProps, OwnProps> function will "merge" the interfaces
-    that you've put into the generic area.
+    that you've defined as generic type parameters.
       e.g. in this case <StateProps, DispatchProps, OwnProps>
 
     Therefore, the "HomePage" component must have defined its "Props" to match have 
@@ -98,7 +101,7 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
     a cryptic error message. 
  
     There are many signatures for this connect function, as you'll see in our other containers in this
-    app.  You can click F12(VSCode) on it and try it will take you to the typescript definition.
+    app.  You can click F12(VSCode) on it and try it will take you to the TypeScript definition.
 */
 export default connect<StateProps, DispatchProps, OwnProps>(
   mapStateToProps,
