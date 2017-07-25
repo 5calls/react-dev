@@ -14,6 +14,18 @@ To build the application, you need to install [Yarn](https://yarnpkg.com/) and r
 #   compile .scss files to .css:
 yarn
 
+# Each 'yarn add' to add new dependencies
+# will also rebuild the css from the
+# .scss files and throw an error
+# related to node-sass-chokidar,
+# which can be ignored.
+
+# Run unit tests
+yarn test
+
+# Run unit tests with a code coverage report
+yarn run test:coverage
+
 # start the app running in the
 #   webpack development server:
 yarn start
@@ -27,21 +39,20 @@ yarn build
 yarn build-css
 
 ```
+
+
 For the best development experience, you should install both the React and Redux Development Tools extensions into your browser. Both browser extensions are available for Chrome and Firefox.
+
+## Contributor Guidelines
+Please see the [Contributing.md](https://github.com/5calls/5calls/blob/master/CONTRIBUTING.md) file in the 5calls/5calls repository for information on contributing to this repository.
+
+Initial development in this repository should focus on TODOs identified in [this wiki page](https://github.com/5calls/5calls/wiki/React-Redux-Port-Implementation) in the 5calls/5calls repo.
 
 ## Create React App Code Generation
 
-This project was created with [create-react-app](https://github.com/facebookincubator/create-react-app) (CRA) using the [react-scripts-ts](https://github.com/wmonk/create-react-app-typescript) script to add TypeScript support via the following command run from a parent folder:
+This project was created with [create-react-app](https://github.com/facebookincubator/create-react-app) (CRA, react-scripts ver 1.0.0) using [react-scripts-ts](https://github.com/wmonk/create-react-app-typescript) (ver 2.2.0) to add TypeScript support. In addition, the `node-sass-chokidar` library was added for preprocessing of SASS (.scss files) to CSS.
 
-`create-react-app react-dev --scripts-version=react-scripts-ts`
+Subsequently, the CRA-created configurations were exposed using the eject command (`yarn eject`). This created the `config` and `scripts` folders and added dependencies and other configurations to `package.json`.
 
-All files generated from this command were placed in the `react-dev` folder.
-
-The following configurations and modifications to CRA were used:
-
-* **react-scripts-ts:** Used version 2.2.0 to create the app code, which was up-to-date with CRA react-scripts version 1.0.0.
-* **node-sass-chokidar:** Added as a dev dependency to allow SASS (scss) preprocessing using the create-react-app `build-css` and `watch-css` scripts in `package.json`. Using this also required adding an import for each generated CSS file into `index.tsx`. One of these scripts needs to be run if there are any modifications to `.scss` files followed by restarting the development server or before the `build` script is run for production deployment. It is anticipated that the `webpack.config.js` will eventually be ejected from creat-react-app (using the eject command). At that point,  webpack.config will need to be updated with loader and plugin information related to SASS and CSS.
-* **redux:** Version 3.6.0 of this library was added for state management along with **redux-react** version 5.0.5. Other redux-related libraries used were **redux-logger** version 3.0.6 and **redux-thunk** version 2.2.0 for async state management.
-* **react-router-redux:** Version 5 of this library -- currently in alpha -- is used as it is compatible with React Router version 4.0 used in this project. React Router Redux 5.0 is currently being developed in the React Router repository [here](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux). This library facilitates Redux time-travel debugging using the Redux Development Tools browser extension.
 
 [CRA_README.md](CRA_README.md) is the original README.md file created when the create-react-app command was run.

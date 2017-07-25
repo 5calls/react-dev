@@ -20,7 +20,7 @@ const initialState: LocationState = {
 export const locationStateReducer: Reducer<LocationState> = (
   state: LocationState = initialState,
   action: LocationAction
-  ) => {
+  ): LocationState => {
   switch (action.type) {
     case 'LOCATION_CLEAR':
       return Object.assign({}, state, {
