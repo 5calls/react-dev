@@ -12,7 +12,6 @@ interface Props {
 const Promotion: React.StatelessComponent<Props> = (props: Props) => {
   let url = encodeURIComponent(Constants.APP_URL);
   let additionalTwitterComps = '&via=make5calls';
-  // tslint:disable-next-line:max-line-length
   let tweet = encodeURIComponent(props.t('promote.motto'));
   let twitterTitle = props.t('promote.shareOnTwitter');
   let facebookTitle = props.t('promote.shareOnFacebook');
