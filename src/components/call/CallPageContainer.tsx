@@ -7,6 +7,7 @@ import { getIssuesIfNeeded } from '../../redux/remoteData';
 import { CallState, OutcomeData, submitOutcome, selectIssueActionCreator } from '../../redux/callState';
 import { RouteComponentProps } from 'react-router-dom';
 
+// Note the "{id: string}" added to the RouteComponentProps. See CallPage for explanation
 interface OwnProps extends RouteComponentProps<{ id: string }> { }
 
 interface StateProps {
@@ -40,7 +41,7 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
       onSubmitOutcome: submitOutcome,
       onSelectIssue: selectIssueActionCreator,
       onGetIssuesIfNeeded: getIssuesIfNeeded,
-     },
+    },
     dispatch);
 };
 

@@ -22,7 +22,7 @@ yarn
 # related to node-sass-chokidar,
 # which can be ignored.
 
-# Run unit tests
+# Run unit tests in watch mode
 yarn test
 
 # Run unit tests with a code coverage report
@@ -41,12 +41,36 @@ yarn build
 yarn build-css
 
 ```
-
-
 For the best development experience, you should install both the React and Redux Development Tools extensions into your browser. Both browser extensions are available for Chrome and Firefox.
 
+### Unit testing
+Unit testing in this repository is done using [Jest](https://facebook.github.io/jest/) with [Enzyme](https://github.com/airbnb/enzyme) in addition to the [redux-mock-store](https://github.com/arnaudbenard/redux-mock-store) library to support Redux-related tests.
+
+## Architecture, Data Flow and Strong Typing
+A selection of files in this repository include code comments describing the architecture, data flow and strong typing conventions used in developing the React-Redux-TypeScript version of the 5 Calls application. These include files that illustrate the following (see the individual files for more details):
+
+### Use of TypeScript to Strongly Type Request Parameters Passed by React-Router
+Also illustrates the use of Redux to loosely couple a component to data passed to its props.<br/>
+[CallPageContainer.tsx](https://github.com/5calls/react-dev/blob/master/src/components/call/CallPageContainer.tsx)<br/>
+[CallPage.tsx](https://github.com/5calls/react-dev/blob/master/src/components/call/CallPage.tsx)<br/>
+
+### Data Flow through a Component Heirarcy
+Also note the TypeScript conventions used in these files.<br/>
+[HomePageContainer.tsx](https://github.com/5calls/react-dev/blob/master/src/components/home/HomePageContainer.tsx)<br/>
+[HomePage.tsx](https://github.com/5calls/react-dev/blob/master/src/components/home/HomePage.tsx)<br/>
+[Why5calls.tsx](https://github.com/5calls/react-dev/blob/master/src/components/home/Why5calls.tsx)<br/>
+
+### Redux Data Flow
+
+See code comments containing the token 'REDUX DATA FLOW'. Also note the use of TypeScript in these files.<br/>
+[HomePageContainer.tsx](https://github.com/5calls/react-dev/blob/master/src/components/home/HomePageContainer.tsx)<br/>
+[redux/callState/action.ts](https://github.com/5calls/react-dev/blob/master/src/redux/callState/action.ts)<br/>
+[redux/callState/actionCreator.ts](https://github.com/5calls/react-dev/blob/master/src/redux/callState/actionCreator.ts)<br/>
+[redux/callState/reducer.ts](https://github.com/5calls/react-dev/blob/master/src/redux/callState/reducer.ts)<br/>
+
 ## Contributor Guidelines
-Please see the [Contributing.md](https://github.com/5calls/5calls/blob/master/CONTRIBUTING.md) file in the 5calls/5calls repository for information on contributing to this repository.
+
+Contributions to this repository are welcome. Please see the [Contributing.md](https://github.com/5calls/5calls/blob/master/CONTRIBUTING.md) file in the 5calls/5calls repository for information on contributing to this repository.
 
 Initial development in this repository should focus on TODOs identified in [this wiki page](https://github.com/5calls/5calls/wiki/React-Redux-Port-Implementation) in the 5calls/5calls repo.
 

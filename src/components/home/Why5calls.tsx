@@ -22,11 +22,13 @@ import * as Constants from '../../common/constants';
     },
 */
 // tslint: enable
+
+// This defines the props that we must pass into this component.
 interface Props {
   readonly totalCount: number;
 }
 
-const Why5calls: React.StatelessComponent<Props>  = (props: Props) => (
+const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
   <div className="hypothesis" >
     <header className="hypothesis__header">
       <h2 className="hypothesis__title">Make your voice heard{/* "hypothesis.title" */}</h2>
@@ -38,7 +40,7 @@ const Why5calls: React.StatelessComponent<Props>  = (props: Props) => (
         {/*"hypothesis.p1"*/}
       </p>
       <p><strong>Spend 5 minutes, make 5 calls.{/*"hypothesis.p2"*/}</strong></p>
-      <Promotion selectedIssue={null}/>
+      <Promotion selectedIssue={null} />
     </header>
     <div className="hypothesis__text">
       <p>Calling is the most effective way to influence your representative. Read more about <Link to='/about'>why calling works.</Link>{/*t('hypothesis.p3')*/}</p>
