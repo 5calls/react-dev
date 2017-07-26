@@ -7,6 +7,7 @@ import { Issue } from '../../common/model';
 interface Props extends RouteComponentProps<{ id: string }> {
   readonly issues: Issue[];
   readonly completedIssueIds: string[];
+  readonly currentIssue: Issue;
   readonly totalCount: number;
   readonly onSelectIssue: (issueId: string) => Function;
 }
@@ -17,7 +18,7 @@ const HomePage: React.StatelessComponent<Props> = (props: Props) => (
     completedIssueIds={props.completedIssueIds}
     onSelectIssue={props.onSelectIssue}
   >
-    <Why5calls totalCount={props.totalCount}/>
+    <Why5calls totalCount={props.totalCount} currentIssue={props.currentIssue} />
   </Layout>
 );
 

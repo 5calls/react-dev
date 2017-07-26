@@ -4,12 +4,13 @@ import { Done } from './index';
 import { DefaultIssue } from '../../common/model';
 
 test('Done component snapshot renders correctly', () => {
-  const issue = Object.assign({}, DefaultIssue, {id: 3});
+  const issue = Object.assign({}, DefaultIssue, { id: 3 });
   const count = 10000;
   const component = shallow(
     <Done
       currentIssue={issue}
       totalCount={count}
+      t={key => key}
     />
   );
   expect(component).toMatchSnapshot();

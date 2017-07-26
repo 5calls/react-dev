@@ -14,6 +14,7 @@ test('Location component should show location prop value if it is defined', () =
       location={location}
       isValid={isValid}
       isLoading={isLoading}
+      t={key => key}
       setLocation={setLocation}
       clearLocation={clearLocation}
     />
@@ -44,7 +45,7 @@ test('Location component setLocation() should be called upon submit if isLoading
   const zip = '10001';
   const form = component.find('form').first();
   // console.log('node: \n', form.debug());
-  form.simulate('submit', { preventDefault: jest.fn(), target: {elements: {address: { value: zip } }}} );
+  form.simulate('submit', { preventDefault: jest.fn(), target: { elements: { address: { value: zip } } } });
   expect(setLocation).toBeCalledWith(zip);
 });
 
@@ -65,6 +66,6 @@ test('Location component clearLocation() should be called upon submit if isLoadi
     />
   );
   const button = component.find('button').first();
-  button.simulate('click', { preventDefault: jest.fn()} );
+  button.simulate('click', { preventDefault: jest.fn() });
   expect(clearLocation).toBeCalled();
 });

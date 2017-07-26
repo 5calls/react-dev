@@ -5,8 +5,8 @@ import { DefaultIssue } from '../../common/model';
 
 test('should show IssuesListItem elements', () => {
   const issues = [
-    Object.assign({}, DefaultIssue, {id: '1'}),
-    Object.assign({}, DefaultIssue, {id: '2'})
+    Object.assign({}, DefaultIssue, { id: '1' }),
+    Object.assign({}, DefaultIssue, { id: '2' })
   ];
   const onSelectIssue = jest.fn();
   const component = shallow(
@@ -14,6 +14,7 @@ test('should show IssuesListItem elements', () => {
       issues={issues}
       completedIssueIds={[]}
       onSelectIssue={onSelectIssue}
+      t={key => key}
     />
   );
   const items = component.find('IssuesListItem');
