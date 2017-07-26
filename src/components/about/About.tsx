@@ -49,4 +49,4 @@ export const About: React.StatelessComponent<Props> = (props: Props) => (
   </section>
 );
 
-export default translate()(About);
+export const AboutTranslatable = translate()(About);

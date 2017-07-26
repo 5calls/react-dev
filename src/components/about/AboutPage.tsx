@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { About } from './index';
+import { AboutTranslatable } from './index';
 import { Layout } from '../shared/index';
 import { Issue } from '../../common/model';
 
@@ -16,7 +16,7 @@ const AboutPage: React.StatelessComponent<Props> = (props: Props) => (
     completedIssueIds={props.completedIssueIds}
     onSelectIssue={props.onSelectIssue}
   >
-    <About />
+    <AboutTranslatable />
   </Layout>
 );
 
