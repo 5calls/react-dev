@@ -7,7 +7,7 @@ export interface Props {
   readonly t: TranslationFunction;
 }
 
-const About: React.StatelessComponent<Props> = (props: Props) => (
+export const About: React.StatelessComponent<Props> = (props: Props) => (
   <section className="about">
     <h2 className="about__title">{props.t('about.title')}</h2>
     <h3 className="about__subtitle">{props.t('about.whyCallingWorks.title')}</h3>

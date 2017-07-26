@@ -10,7 +10,7 @@ interface Props {
   readonly t: TranslationFunction;
 }
 
-const Done: React.StatelessComponent<Props> = (props: Props) => {
+export const Done: React.StatelessComponent<Props> = (props: Props) => {
   return (
     <section className="call">
       <div className="call_complete">

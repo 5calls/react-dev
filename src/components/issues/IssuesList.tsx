@@ -12,7 +12,7 @@ interface Props {
   readonly onSelectIssue: (issueId: string) => Function;
 }
 
-const IssuesList: React.StatelessComponent<Props> = (props: Props) => {
+export const IssuesList: React.StatelessComponent<Props> = (props: Props) => {
   let currentIssueId: string = props.currentIssue ? props.currentIssue.id : '';
 
   return (
