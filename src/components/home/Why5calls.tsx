@@ -4,6 +4,7 @@ import { translate } from 'react-i18next';
 import { Promotion, CallCount } from '../shared';
 import * as Constants from '../../common/constants';
 
+// This defines the props that we must pass into this component.
 interface Props {
   readonly totalCount: number;
   readonly t: TranslationFunction;
