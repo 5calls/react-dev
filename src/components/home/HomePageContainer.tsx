@@ -4,7 +4,7 @@ import { selectIssueActionCreator } from '../../redux/callState';
 import { ApplicationState } from '../../redux/root';
 import { setAddress, clearAddress } from '../../redux/location';
 import { LocationState } from '../../redux/location/reducer';
-import { HomePageTranslatable } from './index';
+import { HomePage } from './index';
 import { Issue } from '../../common/model';
 import { RouteComponentProps } from 'react-router-dom';
 
@@ -118,4 +118,4 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
 export default connect<StateProps, DispatchProps, OwnProps>(
   mapStateToProps,
   mapDispatchToProps
-)(HomePageTranslatable);
+)(HomePage);

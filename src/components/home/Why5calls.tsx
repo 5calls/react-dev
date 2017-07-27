@@ -10,7 +10,7 @@ interface Props {
   readonly t: TranslationFunction;
 }
 
-const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
+export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
   <div className="hypothesis" >
     <header className="hypothesis__header">
       <h2 className="hypothesis__title">{props.t('hypothesis.title')}</h2>
@@ -55,4 +55,4 @@ const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
   </div>
 );
 
-export default translate()(Why5calls);
+export const Why5callsTranslatable = translate()(Why5calls);

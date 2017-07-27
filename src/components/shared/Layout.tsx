@@ -2,7 +2,7 @@ import * as React from 'react';
 import { LocationState } from '../../redux/location/reducer';
 import { Issue } from '../../common/model';
 import { Sidebar, Footer } from './index';
-import { Location } from '../location';
+import { LocationTranslatable } from '../location';
 
 interface Props {
   readonly children?: {};
@@ -26,7 +26,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
               <a href="/"><img className="issues__logo" src="/img/5calls-logotype.png" alt="5 Calls" />5 Calls</a>
             </h1>
             <div className="issues__location">
-              <Location
+              <LocationTranslatable
                 locationState={props.locationState}
                 setLocation={props.setLocation}
                 clearLocation={props.clearLocation}

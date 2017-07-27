@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LocationState } from '../../redux/location/reducer';
 import { RouteComponentProps } from 'react-router-dom';
-import { Why5calls } from './index';
+import { Why5callsTranslatable } from './index';
 import { Layout } from '../shared';
 import { Issue } from '../../common/model';
 
@@ -10,7 +10,7 @@ import { Issue } from '../../common/model';
     child of the Redux container.  Therefore, its "Props" property must match the
     merged props that were provided to the connect() function in the "HomePageContainer".
 */
-interface Props extends RouteComponentProps<{}> {
+interface Props extends RouteComponentProps<{ id: string }> {
   readonly issues: Issue[];
   readonly completedIssueIds: string[];
   readonly currentIssue: Issue;
@@ -35,7 +35,7 @@ interface Props extends RouteComponentProps<{}> {
   down this component hierarchy, it will simply be passed up this tree and end up calling the 
   dispatch method on the store corresponding to that method(as defined in the top-level redux container). 
 */
-const HomePage: React.StatelessComponent<Props> = (props: Props) => (
+export const HomePage: React.StatelessComponent<Props> = (props: Props) => (
   <Layout
     issues={props.issues}
     completedIssueIds={props.completedIssueIds}
@@ -44,7 +44,7 @@ const HomePage: React.StatelessComponent<Props> = (props: Props) => (
     setLocation={props.setLocation}
     clearLocation={props.clearLocation}
   >
-    <Why5calls totalCount={props.totalCount} currentIssue={props.currentIssue} />
+    <Why5callsTranslatable totalCount={props.totalCount} currentIssue={props.currentIssue} />
   </Layout>
 );
 
