@@ -16,6 +16,9 @@
             "runtimeArgs": [
                 "--nolazy"
             ],
+            "args": [
+                "--runInBand"
+            ],
             "env": {
                 "NODE_ENV": "development"
             },

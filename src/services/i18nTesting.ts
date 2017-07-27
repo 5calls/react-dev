@@ -1,34 +1,38 @@
-//tslint:disable
-//initialize i18n cache
+// initialize i18n cache
 import * as i18n from 'i18next';
-const en = '../public/locales/en.json';
-const es = '../public/locales/es.json';
+const en: {} = '../public/locales/en.json';
+const es: {} = '../public/locales/es.json';
 
 // put the locale into the correct namespace for the i18n cache.
 // Because we are adding it to the cache manually, we have to give it the hierarchy manually
-const namespacedLocaleObject: any = {
-    "en": {
-        "translation": en
+const namespacedLocaleObject: {} = {
+    'en': {
+        'translation': en
     },
-    "es": {
-        "translation": es
+    'es': {
+        'translation': es
     }
-}
+};
 
-const options = {
+const options: {} = {
     // turn on this flag to see if you're localization keys are not correct.  It will log a message
     'debug': false,
     // the localized data, adding directly to the cache
     'resources': namespacedLocaleObject,
     // the language we're using for all of the regular tests.
-    // There are some tests specific to localization where we reload the cache with another locale, at that point we re-initialize 
+    // There are some tests specific to localization where we reload the cache with another locale,
+    // at that point we re-initialize 
     'lng': 'en',
     // if an unsupported locale is selected, it will fall back to this locale
     'fallbackLng': 'en'
-}
+};
 
 // initialize the i18n cache
-const instance = i18n.init(options);
+const instance: i18n.i18n = i18n.init(options);
+
+// console.log(global);
+
+// global.context = {};
+// global.context.i18n = instance;
 
 export default instance;
-
