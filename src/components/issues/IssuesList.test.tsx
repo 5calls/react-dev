@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 import i18n from '../../services/i18nTesting';
-import { IssuesListTranslatable } from './index';
+import { IssuesList } from './index';
 import { DefaultIssue } from '../../common/model';
 
 test('should show IssuesListItem elements', () => {
@@ -11,7 +11,7 @@ test('should show IssuesListItem elements', () => {
   ];
   const onSelectIssue = jest.fn();
   const component = shallow(
-    <IssuesListTranslatable
+    <IssuesList
       issues={issues}
       completedIssueIds={[]}
       onSelectIssue={onSelectIssue}
@@ -26,10 +26,11 @@ test('should show no IssueListItem elements if there are no issues to show', () 
   const issues = [];
   const onSelectIssue = jest.fn();
   const component = shallow(
-    <IssuesListTranslatable
+    <IssuesList
       issues={issues}
       completedIssueIds={[]}
       onSelectIssue={onSelectIssue}
+      t={i18n.t}
     />
   );
   const node = component.find('ul').find('IssuesListItem');

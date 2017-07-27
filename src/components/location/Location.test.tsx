@@ -1,6 +1,6 @@
 import * as React from 'react';
-import i18n from '../../services/i18nTesting';
 import { shallow } from 'enzyme';
+import i18n from '../../services/i18nTesting';
 import { Location } from './index';
 import { LocationState } from '../../redux/location/reducer';
 
