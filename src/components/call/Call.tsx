@@ -19,7 +19,7 @@ export interface State {
   numberContactsLeft: number;
 }
 
-class Call extends React.Component<Props, State> {
+export class Call extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     // set initial state
@@ -89,4 +89,4 @@ class Call extends React.Component<Props, State> {
   }
 }
 
-export default translate()(Call);
+export const CallTranslatable = translate()(Call);
