@@ -23,7 +23,7 @@ test('Location component should show location prop value if it is defined', () =
   );
   const node = component.find('#locationMessage span');
   // console.log('node: \n', node.text());
-  expect(node.text()).toEqual(location);
+  expect(node.text()).toEqual(locationState.address);
 });
 
 test('Location component setLocation() should be called upon submit if isLoading=true', () => {
@@ -56,7 +56,7 @@ test('Location component clearLocation() should be called upon submit if isLoadi
   const locationState: LocationState = {
     address: '1234',
     cachedCity: '',
-    invalidAddress: false,
+    invalidAddress: true,
     fetchingLocation: false,
     validatingLocation: false
   };
