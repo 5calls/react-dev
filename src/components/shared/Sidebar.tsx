@@ -10,14 +10,14 @@ interface Props {
 }
 
 const Sidebar: React.StatelessComponent<Props> = (props: Props) => {
-    return (
+  return (
     <IssuesList
       issues={props.issues}
       currentIssue={props.currentIssue}
       completedIssueIds={props.completedIssueIds}
       onSelectIssue={props.onSelectIssue}
     />
-    );
+  );
 };
 
 export default Sidebar;

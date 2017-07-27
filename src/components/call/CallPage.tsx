@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { LocationState } from '../../redux/location/reducer';
 import { RouteComponentProps } from 'react-router-dom';
 import { Call } from './index';
 import { Layout } from '../shared';
@@ -36,6 +37,11 @@ interface Props extends RouteProps {
   readonly onSubmitOutcome: (data: OutcomeData) => Function;
   readonly onSelectIssue: (issueId: string) => Function;
   readonly onGetIssuesIfNeeded: () => Function;
+
+  // location widget related
+  readonly locationState: LocationState;
+  readonly setLocation: (location: string) => void;
+  readonly clearLocation: () => void;
 }
 
 export interface State {
@@ -91,6 +97,9 @@ class CallPage extends React.Component<Props, State> {
         completedIssueIds={this.props.callState.completedIssueIds}
         currentIssue={this.props.currentIssue}
         onSelectIssue={this.props.onSelectIssue}
+        locationState={this.props.locationState}
+        setLocation={this.props.setLocation}
+        clearLocation={this.props.clearLocation}
       >
         {this.props.currentIssue &&
           <Call
