@@ -2,7 +2,7 @@ import * as i18n from 'i18next';
 import * as XHR from 'i18next-xhr-backend';
 import * as LanguageDetector from 'i18next-browser-languagedetector';
 
-const instance = i18n
+const instance: i18n.i18n = i18n
     .use(XHR)
     .use(LanguageDetector)
     .init({
