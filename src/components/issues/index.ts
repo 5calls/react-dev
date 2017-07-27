@@ -1,4 +1,4 @@
-import IssuesList from './IssuesList';
+import { IssuesList, IssuesListTranslatable } from './IssuesList';
 import IssuesListItem from './IssuesListItem';
 
-export { IssuesList, IssuesListItem };
+export { IssuesList, IssuesListTranslatable, IssuesListItem };

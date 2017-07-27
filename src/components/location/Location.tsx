@@ -68,4 +68,4 @@ export const Location: React.StatelessComponent<Props> =
 
   };
 
-export default translate()(Location);
+export const LocationTranslatable = translate()(Location);

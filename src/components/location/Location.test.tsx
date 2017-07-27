@@ -1,4 +1,5 @@
 import * as React from 'react';
+import i18n from '../../services/i18nTesting';
 import { shallow } from 'enzyme';
 import { Location } from './index';
 
@@ -14,7 +15,7 @@ test('Location component should show location prop value if it is defined', () =
       location={location}
       isValid={isValid}
       isLoading={isLoading}
-      t={key => key}
+      t={i18n.t}
       setLocation={setLocation}
       clearLocation={clearLocation}
     />
@@ -36,6 +37,7 @@ test('Location component setLocation() should be called upon submit if isLoading
       location={location}
       isValid={isValid}
       isLoading={isLoading}
+      t={i18n.t}
       setLocation={setLocation}
       clearLocation={clearLocation}
     />
@@ -61,6 +63,7 @@ test('Location component clearLocation() should be called upon submit if isLoadi
       location={location}
       isValid={isValid}
       isLoading={isLoading}
+      t={i18n.t}
       setLocation={setLocation}
       clearLocation={clearLocation}
     />

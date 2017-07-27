@@ -2,7 +2,7 @@ import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setAddress, clearAddress } from '../../redux/location';
 import { ApplicationState } from '../../redux/root';
-import { Location } from './index';
+import { LocationTranslatable } from './index';
 
 interface StateProps {
   readonly location: string;
@@ -24,8 +24,8 @@ function mapStateToProps(state: ApplicationState): StateProps {
 }
 
 function mapDispatchToProps(dispatch: Dispatch<DispatchProps>): DispatchProps {
-  return bindActionCreators({setLocation: setAddress, clearLocation: clearAddress}, dispatch);
+  return bindActionCreators({ setLocation: setAddress, clearLocation: clearAddress }, dispatch);
 }
 
 export default connect<StateProps, DispatchProps, {}>(
-    mapStateToProps, mapDispatchToProps)(Location);
+  mapStateToProps, mapDispatchToProps)(LocationTranslatable);

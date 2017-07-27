@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Done } from './index';
+import { DoneTranslatable } from './index';
 import { Layout } from '../shared/index';
 import { Issue } from '../../common/model';
 import { RouteComponentProps } from 'react-router-dom';
@@ -53,7 +53,7 @@ class DonePage extends React.Component<Props, State> {
         onSelectIssue={this.props.onSelectIssue}
       >
         {this.props.currentIssue &&
-          <Done currentIssue={this.props.currentIssue} totalCount={this.props.totalCount} />
+          <DoneTranslatable currentIssue={this.props.currentIssue} totalCount={this.props.totalCount} />
         }
       </Layout>
     );

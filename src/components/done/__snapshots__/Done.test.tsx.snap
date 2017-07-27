@@ -16,15 +16,11 @@ ShallowWrapper {
     >
         <h2
             className="call__title"
-        >
-            Great work!
-        </h2>
+        />
         <p
             className="call__text"
-        >
-            Pick another issue to keep calling, or spread the word by sharing your work with friends:
-        </p>
-        <Promotion
+        />
+        <Translate(Promotion)
             selectedIssue={
                 Object {
                     "categories": Array [],
@@ -38,20 +34,12 @@ ShallowWrapper {
         />
         <p
             className="call__text"
-        >
-            <Link
-                replace={false}
-                to="/about"
-            >
-                Learn why calling
-            </Link>
-             representatives is the most effective way of making your voice heard.
-        </p>
+        />
         <strong>
             TOWN HALL COMPONENT HERE
         </strong>
         <br />
-        <Unknown
+        <Translate(Component)
             totalCount={10000}
         />
     </div>
@@ -65,15 +53,11 @@ ShallowWrapper {
       >
             <h2
                   className="call__title"
-            >
-                  Great work!
-            </h2>
+            />
             <p
                   className="call__text"
-            >
-                  Pick another issue to keep calling, or spread the word by sharing your work with friends:
-            </p>
-            <Promotion
+            />
+            <Translate(Promotion)
                   selectedIssue={
                         Object {
                               "categories": Array [],
@@ -87,20 +71,12 @@ ShallowWrapper {
             />
             <p
                   className="call__text"
-            >
-                  <Link
-                        replace={false}
-                        to="/about"
-                  >
-                        Learn why calling
-                  </Link>
-                   representatives is the most effective way of making your voice heard.
-            </p>
+            />
             <strong>
                   TOWN HALL COMPONENT HERE
             </strong>
             <br />
-            <Unknown
+            <Translate(Component)
                   totalCount={10000}
             />
       </div>
@@ -112,7 +88,7 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 2,
       "_context": Object {},
-      "_currentElement": <Done
+      "_currentElement": <Unknown
         currentIssue={
                 Object {
                         "categories": Array [],
@@ -123,6 +99,7 @@ ShallowWrapper {
                         "script": "",
                       }
         }
+        t={[Function]}
         totalCount={10000}
 />,
       "_debugID": 1,
@@ -140,6 +117,7 @@ ShallowWrapper {
             "reason": "",
             "script": "",
           },
+          "t": [Function],
           "totalCount": 10000,
         },
         "refs": Object {},
@@ -170,15 +148,11 @@ ShallowWrapper {
           >
                     <h2
                               className="call__title"
-                    >
-                              Great work!
-                    </h2>
+                    />
                     <p
                               className="call__text"
-                    >
-                              Pick another issue to keep calling, or spread the word by sharing your work with friends:
-                    </p>
-                    <Promotion
+                    />
+                    <Translate(Promotion)
                               selectedIssue={
                                         Object {
                                                   "categories": Array [],
@@ -192,20 +166,12 @@ ShallowWrapper {
                     />
                     <p
                               className="call__text"
-                    >
-                              <Link
-                                        replace={false}
-                                        to="/about"
-                              >
-                                        Learn why calling
-                              </Link>
-                               representatives is the most effective way of making your voice heard.
-                    </p>
+                    />
                     <strong>
                               TOWN HALL COMPONENT HERE
                     </strong>
                     <br />
-                    <Unknown
+                    <Translate(Component)
                               totalCount={10000}
                     />
           </div>
@@ -219,15 +185,11 @@ ShallowWrapper {
           >
                     <h2
                               className="call__title"
-                    >
-                              Great work!
-                    </h2>
+                    />
                     <p
                               className="call__text"
-                    >
-                              Pick another issue to keep calling, or spread the word by sharing your work with friends:
-                    </p>
-                    <Promotion
+                    />
+                    <Translate(Promotion)
                               selectedIssue={
                                         Object {
                                                   "categories": Array [],
@@ -241,20 +203,12 @@ ShallowWrapper {
                     />
                     <p
                               className="call__text"
-                    >
-                              <Link
-                                        replace={false}
-                                        to="/about"
-                              >
-                                        Learn why calling
-                              </Link>
-                               representatives is the most effective way of making your voice heard.
-                    </p>
+                    />
                     <strong>
                               TOWN HALL COMPONENT HERE
                     </strong>
                     <br />
-                    <Unknown
+                    <Translate(Component)
                               totalCount={10000}
                     />
           </div>
@@ -270,7 +224,7 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Done
+  "unrendered": <Unknown
     currentIssue={
         Object {
             "categories": Array [],
@@ -281,6 +235,7 @@ ShallowWrapper {
             "script": "",
           }
     }
+    t={[Function]}
     totalCount={10000}
 />,
 }

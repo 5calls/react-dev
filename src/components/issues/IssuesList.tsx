@@ -32,4 +32,4 @@ export const IssuesList: React.StatelessComponent<Props> = (props: Props) => {
   );
 };
 
-export default translate()(IssuesList);
+export const IssuesListTranslatable = translate()(IssuesList);

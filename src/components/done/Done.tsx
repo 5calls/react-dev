@@ -32,4 +32,4 @@ export const Done: React.StatelessComponent<Props> = (props: Props) => {
   );
 };
 
-export default translate()(Done);
+export const DoneTranslatable = translate()(Done);
