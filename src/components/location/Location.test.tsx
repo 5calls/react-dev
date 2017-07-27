@@ -17,14 +17,13 @@ test('Location component should show location prop value if it is defined', () =
 
   const component = shallow(
     <Location
+      t={i18n.t}
       locationState={locationState}
       setLocation={setLocation}
       clearLocation={clearLocation}
-      t={i18n.t}
     />
   );
   const node = component.find('#locationMessage span');
-  // console.log('node: \n', node.text());
   expect(node.text()).toEqual(locationState.address);
 });
 

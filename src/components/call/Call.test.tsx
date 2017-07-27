@@ -3,8 +3,7 @@ import { shallow } from 'enzyme';
 import i18n from '../../services/i18nTesting';
 import { Call } from './index';
 import { Issue, DefaultIssue } from '../../common/model';
-import { ContactDetails, Script, Outcomes } from './index';
-import { CallState, OutcomeData } from '../../redux/callState';
+import { CallState } from '../../redux/callState';
 
 test('Call component should call info if it is defined', () => {
   const issue: Issue = Object.assign({}, DefaultIssue, { id: '1' });
@@ -25,6 +24,6 @@ test('Call component should call info if it is defined', () => {
       onSubmitOutcome={onSubmitOutcome}
     />
   );
-  const node = component.find('#locationMessage span');
-  expect(node.text()).toEqual('');
+  const node = component.find('h2');
+  expect(node).not.toBeNull();
 });

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LocationState } from '../../redux/location/reducer';
 import { RouteComponentProps } from 'react-router-dom';
-import { Call } from './index';
+import { CallTranslatable } from './index';
 import { Layout } from '../shared';
 import { Issue } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
@@ -102,7 +102,7 @@ class CallPage extends React.Component<Props, State> {
         clearLocation={this.props.clearLocation}
       >
         {this.props.currentIssue &&
-          <Call
+          <CallTranslatable
             issue={this.props.currentIssue}
             callState={this.props.callState}
             onSubmitOutcome={this.props.onSubmitOutcome}
