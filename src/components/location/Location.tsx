@@ -1,18 +1,20 @@
 import * as React from 'react';
+import { LocationState } from '../../redux/location/reducer';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 
 interface Props {
-  readonly location: string;
-  readonly isValid: boolean;
-  readonly isLoading: boolean;
-  readonly t: TranslationFunction;
+  readonly locationState: LocationState;
   readonly setLocation: (location: string) => void;
   readonly clearLocation: () => void;
+  readonly t: TranslationFunction;
 }
 
 export const Location: React.StatelessComponent<Props> =
-  ({ location, isValid, isLoading, t, setLocation, clearLocation }) => {
+  ({ locationState, t, setLocation, clearLocation }) => {
+    let location = locationState.address || locationState.cachedCity;
+    let isValid = locationState.invalidAddress;
+    let isLoading = locationState.fetchingLocation || locationState.validatingLocation;
     let pretext;
     if (location) {
       pretext = <p id="locationMessage">{t('location.yourLocation')} <span>{location}</span></p>;

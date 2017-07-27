@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { LocationState } from '../../redux/location/reducer';
 import { DoneTranslatable } from './index';
 import { Layout } from '../shared/index';
 import { Issue } from '../../common/model';
@@ -13,6 +14,11 @@ interface Props extends RouteProps {
   readonly totalCount: number;
   readonly onSelectIssue: (issueId: string) => Function;
   readonly onGetIssuesIfNeeded: () => Function;
+
+  // location widget related
+  readonly locationState: LocationState;
+  readonly setLocation: (location: string) => void;
+  readonly clearLocation: () => void;
 }
 
 export interface State {
@@ -51,6 +57,9 @@ class DonePage extends React.Component<Props, State> {
         completedIssueIds={this.props.completedIssueIds}
         currentIssue={this.props.currentIssue}
         onSelectIssue={this.props.onSelectIssue}
+        locationState={this.props.locationState}
+        setLocation={this.props.setLocation}
+        clearLocation={this.props.clearLocation}
       >
         {this.props.currentIssue &&
           <DoneTranslatable currentIssue={this.props.currentIssue} totalCount={this.props.totalCount} />

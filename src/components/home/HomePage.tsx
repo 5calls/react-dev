@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { LocationState } from '../../redux/location/reducer';
 import { RouteComponentProps } from 'react-router-dom';
 import { Why5calls } from './index';
 import { Layout } from '../shared';
@@ -15,6 +16,11 @@ interface Props extends RouteComponentProps<{}> {
   readonly currentIssue: Issue;
   readonly totalCount: number;
   readonly onSelectIssue: (issueId: string) => Function;
+
+  // location widget related
+  readonly locationState: LocationState;
+  readonly setLocation: (location: string) => void;
+  readonly clearLocation: () => void;
 }
 
 /*
@@ -34,6 +40,9 @@ const HomePage: React.StatelessComponent<Props> = (props: Props) => (
     issues={props.issues}
     completedIssueIds={props.completedIssueIds}
     onSelectIssue={props.onSelectIssue}
+    locationState={props.locationState}
+    setLocation={props.setLocation}
+    clearLocation={props.clearLocation}
   >
     <Why5calls totalCount={props.totalCount} currentIssue={props.currentIssue} />
   </Layout>

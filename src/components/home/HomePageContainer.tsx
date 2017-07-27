@@ -2,7 +2,9 @@ import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectIssueActionCreator } from '../../redux/callState';
 import { ApplicationState } from '../../redux/root';
-import { HomePage } from './index';
+import { setAddress, clearAddress } from '../../redux/location';
+import { LocationState } from '../../redux/location/reducer';
+import { HomePageTranslatable } from './index';
 import { Issue } from '../../common/model';
 import { RouteComponentProps } from 'react-router-dom';
 
@@ -40,6 +42,7 @@ interface StateProps {
   readonly completedIssueIds: string[];
   readonly currentIssue?: Issue;
   readonly totalCount: number;
+  readonly locationState: LocationState;
 }
 
 /*
@@ -50,6 +53,8 @@ interface DispatchProps {
 
   // This defines a method signature that is going to be passed into the child component 
   readonly onSelectIssue: (issueId: string) => void;
+  readonly setLocation: (location: string) => void;
+  readonly clearLocation: () => void;
 }
 
 /*
@@ -68,6 +73,7 @@ function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProp
     completedIssueIds: state.callState.completedIssueIds,
     currentIssue: currentIssue,
     totalCount: state.remoteDataState.callTotal,
+    locationState: state.locationState,
   };
 }
 
@@ -88,7 +94,9 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
             will be dispatched.
         See /src/redux/callState/actionCreator.ts for next step in Redux Data Flow      
       */
-      onSelectIssue: selectIssueActionCreator
+      onSelectIssue: selectIssueActionCreator,
+      setLocation: setAddress,
+      clearLocation: clearAddress,
     },
     dispatch
   );
@@ -110,4 +118,4 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
 export default connect<StateProps, DispatchProps, OwnProps>(
   mapStateToProps,
   mapDispatchToProps
-)(HomePage);
+)(HomePageTranslatable);
