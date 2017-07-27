@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { LocationState } from '../../redux/location/reducer';
+
 /*
     "location": {
       "gettingYourLocation": "Getting your location",
@@ -10,14 +12,15 @@ import * as React from 'react';
     },
 */
 interface Props {
-  readonly location: string;
-  readonly isValid: boolean;
-  readonly isLoading: boolean;
+  readonly locationState: LocationState;
   readonly setLocation: (location: string) => void;
   readonly clearLocation: () => void;
 }
 
-const Location: React.StatelessComponent<Props> = ({location, isValid, isLoading, setLocation, clearLocation}) => {
+const Location: React.StatelessComponent<Props> = ({ locationState, setLocation, clearLocation }) => {
+  let location = locationState.address || locationState.cachedCity;
+  let isValid = locationState.invalidAddress;
+  let isLoading = locationState.fetchingLocation || locationState.validatingLocation;
   let pretext;
   if (location) {
     pretext = <p id="locationMessage">Your location:{/*location.yourLocation*/} <span>{location}</span></p>;

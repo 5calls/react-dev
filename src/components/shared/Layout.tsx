@@ -1,14 +1,18 @@
 import * as React from 'react';
+import { LocationState } from '../../redux/location/reducer';
 import { Issue } from '../../common/model';
 import { Sidebar, Footer } from './index';
-import { LocationContainer } from '../location';
+import { Location } from '../location';
 
 interface Props {
   readonly children?: {};
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
   readonly completedIssueIds: string[];
+  readonly locationState: LocationState;
   readonly onSelectIssue: (issueId: string) => Function;
+  readonly setLocation: (location: string) => void;
+  readonly clearLocation: () => void;
 }
 
 const Layout: React.StatelessComponent<Props> = (props: Props) => (
@@ -22,7 +26,11 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
               <a href="/"><img className="issues__logo" src="/img/5calls-logotype.png" alt="5 Calls" />5 Calls</a>
             </h1>
             <div className="issues__location">
-              <LocationContainer />
+              <Location
+                locationState={props.locationState}
+                setLocation={props.setLocation}
+                clearLocation={props.clearLocation}
+              />
             </div>
           </header>
           <Sidebar
@@ -37,7 +45,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
         {props.children}
       </main>
     </div>
-    <Footer/>
+    <Footer />
   </div>
 
 );
