@@ -30,7 +30,7 @@
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.6.0.tgz#093d67ed780d889c9543f6dca24ebee0b6b9fc45"
 
-"@types/i18next@^8.4.1":
+"@types/i18next@*", "@types/i18next@^8.4.1":
   version "8.4.1"
   resolved "https://registry.yarnpkg.com/@types/i18next/-/i18next-8.4.1.tgz#8aebc08c757167105d1fefa8fbd1b89942e5f40e"
 
@@ -46,6 +46,13 @@
   version "15.5.1"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-15.5.1.tgz#f3c3e14c682785923c7d64583537df319442dec1"
   dependencies:
+    "@types/react" "*"
+
+"@types/react-i18next@^4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@types/react-i18next/-/react-i18next-4.6.0.tgz#511b8f7871b81947db27b59b320bc65287f6c920"
+  dependencies:
+    "@types/i18next" "*"
     "@types/react" "*"
 
 "@types/react-redux@^4.4.40":
@@ -130,11 +137,11 @@ acorn@^5.0.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.1.1.tgz#53fe161111f912ab999ee887a90a0bc52822fd75"
 
-address@1.0.1:
+address@1.0.1, address@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/address/-/address-1.0.1.tgz#363f5d3f2be26d0655d8afd5a9562e4fc2194537"
 
-address@1.0.2, address@^1.0.1:
+address@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/address/-/address-1.0.2.tgz#480081e82b587ba319459fef512f516fe03d58af"
 
