@@ -64,10 +64,40 @@ export enum LocationFetchType {
   BROWSER_GEOLOCATION
 }
 
+export interface GeolocationPosition {
+  longitude: number;
+  latitude: number;
+}
+
+/* 5 Calls API data */
 export interface ApiData {
   splitDistrict: boolean;
   invalidAddress: boolean;
   normalizedLocation: string | undefined;
   divisions: string[];
   issues: Issue[];
+}
+
+export interface ReportData {
+  ahcaCounts: AhcaCounts;
+  count: number; // total call count
+}
+
+/* Counts for the American Health Care Act vote */
+export interface AhcaCounts {
+  no: string[];
+  unknown: string[];
+  yes: string[];
+}
+
+/* Data from iponfo.io API */
+export interface IpInfoData {
+  ip: string;
+  hostname: string;
+  city: string;
+  region: string; // state
+  country: string;
+  loc: string; // long, lat - used in issue lookup
+  org: string; // internet service provider
+  postal: string; // zip code
 }
