@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import i18n from '../../services/i18n.fixture';
+import i18n from '../../services/i18n';
 import { IssuesList } from './index';
 import { DefaultIssue } from '../../common/model';
 

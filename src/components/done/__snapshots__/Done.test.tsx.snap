@@ -21,7 +21,7 @@ ShallowWrapper {
             className="call__text"
         />
         <Translate(Promotion)
-            selectedIssue={
+            currentIssue={
                 Object {
                     "categories": Array [],
                     "id": 3,
@@ -31,6 +31,7 @@ ShallowWrapper {
                     "script": "",
                   }
             }
+            t={[Function]}
         />
         <p
             className="call__text"
@@ -40,6 +41,7 @@ ShallowWrapper {
         </strong>
         <br />
         <Translate(Component)
+            t={[Function]}
             totalCount={10000}
         />
     </div>
@@ -58,7 +60,7 @@ ShallowWrapper {
                   className="call__text"
             />
             <Translate(Promotion)
-                  selectedIssue={
+                  currentIssue={
                         Object {
                               "categories": Array [],
                               "id": 3,
@@ -68,6 +70,7 @@ ShallowWrapper {
                               "script": "",
                             }
                   }
+                  t={[Function]}
             />
             <p
                   className="call__text"
@@ -77,6 +80,7 @@ ShallowWrapper {
             </strong>
             <br />
             <Translate(Component)
+                  t={[Function]}
                   totalCount={10000}
             />
       </div>
@@ -153,7 +157,7 @@ ShallowWrapper {
                               className="call__text"
                     />
                     <Translate(Promotion)
-                              selectedIssue={
+                              currentIssue={
                                         Object {
                                                   "categories": Array [],
                                                   "id": 3,
@@ -163,6 +167,7 @@ ShallowWrapper {
                                                   "script": "",
                                                 }
                               }
+                              t={[Function]}
                     />
                     <p
                               className="call__text"
@@ -172,6 +177,7 @@ ShallowWrapper {
                     </strong>
                     <br />
                     <Translate(Component)
+                              t={[Function]}
                               totalCount={10000}
                     />
           </div>
@@ -190,7 +196,7 @@ ShallowWrapper {
                               className="call__text"
                     />
                     <Translate(Promotion)
-                              selectedIssue={
+                              currentIssue={
                                         Object {
                                                   "categories": Array [],
                                                   "id": 3,
@@ -200,6 +206,7 @@ ShallowWrapper {
                                                   "script": "",
                                                 }
                               }
+                              t={[Function]}
                     />
                     <p
                               className="call__text"
@@ -209,6 +216,7 @@ ShallowWrapper {
                     </strong>
                     <br />
                     <Translate(Component)
+                              t={[Function]}
                               totalCount={10000}
                     />
           </div>
