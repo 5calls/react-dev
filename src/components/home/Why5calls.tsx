@@ -1,4 +1,5 @@
 import * as React from 'react';
+import i18n from '../../services/i18n';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 import { Promotion, CallCount } from '../shared';
@@ -18,7 +19,10 @@ export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
         {props.t('hypothesis.p1')}
       </p>
       <p><strong>{props.t('hypothesis.p2')}</strong></p>
-      <Promotion currentIssue={null} />
+      <Promotion
+        currentIssue={null}
+        t={i18n.t}
+      />
     </header>
     <div className="hypothesis__text">
       <p dangerouslySetInnerHTML={{ __html: props.t('hypothesis.p3') }} />
@@ -50,7 +54,10 @@ export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
           </a>
         </li>
       </ul>
-      <CallCount totalCount={props.totalCount} />
+      <CallCount
+        totalCount={props.totalCount}
+        t={i18n.t}
+      />
     </div>
   </div>
 );

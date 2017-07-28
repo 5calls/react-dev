@@ -1,4 +1,5 @@
 import * as React from 'react';
+import i18n from '../../services/i18n';
 import { LocationState } from '../../redux/location/reducer';
 import { DoneTranslatable } from './index';
 import { Layout } from '../shared/index';
@@ -62,7 +63,11 @@ class DonePage extends React.Component<Props, State> {
         clearLocation={this.props.clearLocation}
       >
         {this.props.currentIssue &&
-          <DoneTranslatable currentIssue={this.props.currentIssue} totalCount={this.props.totalCount} />
+          <DoneTranslatable
+            currentIssue={this.props.currentIssue}
+            totalCount={this.props.totalCount}
+            t={i18n.t}
+          />
         }
       </Layout>
     );

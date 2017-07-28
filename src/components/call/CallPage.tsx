@@ -1,4 +1,5 @@
 import * as React from 'react';
+import i18n from '../../services/i18n';
 import { LocationState } from '../../redux/location/reducer';
 import { RouteComponentProps } from 'react-router-dom';
 import { CallTranslatable } from './index';
@@ -106,6 +107,7 @@ class CallPage extends React.Component<Props, State> {
             issue={this.props.currentIssue}
             callState={this.props.callState}
             onSubmitOutcome={this.props.onSubmitOutcome}
+            t={i18n.t}
           />}
       </Layout>
     );

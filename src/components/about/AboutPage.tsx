@@ -1,4 +1,5 @@
 import * as React from 'react';
+import i18n from '../../services/i18n';
 import { LocationState } from '../../redux/location/reducer';
 import { RouteComponentProps } from 'react-router-dom';
 import { AboutTranslatable } from './index';
@@ -25,7 +26,9 @@ const AboutPage: React.StatelessComponent<Props> = (props: Props) => (
     setLocation={props.setLocation}
     clearLocation={props.clearLocation}
   >
-    <AboutTranslatable />
+    <AboutTranslatable
+      t={i18n.t}
+    />
   </Layout>
 );
 

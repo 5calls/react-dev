@@ -1,4 +1,5 @@
 import * as React from 'react';
+import i18n from '../../services/i18n';
 import { LocationState } from '../../redux/location/reducer';
 import { RouteComponentProps } from 'react-router-dom';
 import { Why5callsTranslatable } from './index';
@@ -44,7 +45,10 @@ export const HomePage: React.StatelessComponent<Props> = (props: Props) => (
     setLocation={props.setLocation}
     clearLocation={props.clearLocation}
   >
-    <Why5callsTranslatable totalCount={props.totalCount} currentIssue={props.currentIssue} />
+    <Why5callsTranslatable
+      totalCount={props.totalCount}
+      t={i18n.t}
+    />
   </Layout>
 );
 

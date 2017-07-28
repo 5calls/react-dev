@@ -1,4 +1,5 @@
 import * as React from 'react';
+import i18n from '../../services/i18n';
 import { LocationState } from '../../redux/location/reducer';
 import { Issue } from '../../common/model';
 import { Sidebar, Footer } from './index';
@@ -30,6 +31,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
                 locationState={props.locationState}
                 setLocation={props.setLocation}
                 clearLocation={props.clearLocation}
+                t={i18n.t}
               />
             </div>
           </header>
@@ -45,7 +47,9 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
         {props.children}
       </main>
     </div>
-    <Footer />
+    <Footer
+      t={i18n.t}
+    />
   </div>
 
 );
