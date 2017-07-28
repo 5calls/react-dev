@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import i18n from '../../services/i18nTesting';
+import i18n from '../../services/i18n.fixture';
 import { Call } from './index';
 import { Issue, DefaultIssue } from '../../common/model';
 import { CallState } from '../../redux/callState';
 
-test('Call component should call info if it is defined', () => {
+test('Call component should be rendered if passed a valid object', () => {
   const issue: Issue = Object.assign({}, DefaultIssue, { id: '1' });
   let callState: CallState = {
     currentIssueId: 'test1',
