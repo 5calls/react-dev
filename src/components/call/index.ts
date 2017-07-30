@@ -1,4 +1,4 @@
-import Call from './Call';
+import { Call, CallTranslatable } from './Call';
 import CallDetail from './CallDetail';
 import ContactDetails from './ContactDetails';
 import CallPage from './CallPage';
@@ -7,6 +7,6 @@ import Outcomes from './Outcomes';
 import Script from './Script';
 
 export {
-  Call, CallPageContainer, CallDetail, CallPage,
+  Call, CallTranslatable, CallPageContainer, CallDetail, CallPage,
   ContactDetails, Outcomes, Script
 };

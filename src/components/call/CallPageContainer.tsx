@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import { Issue } from '../../common/model';
 import { CallPage } from './index';
 import { ApplicationState } from '../../redux/root';
+import { setAddress, clearAddress } from '../../redux/location';
+import { LocationState } from '../../redux/location/reducer';
 import { getIssuesIfNeeded } from '../../redux/remoteData';
 import { CallState, OutcomeData, submitOutcome, selectIssueActionCreator } from '../../redux/callState';
 import { RouteComponentProps } from 'react-router-dom';
@@ -14,12 +16,15 @@ interface StateProps {
   readonly issues: Issue[];
   readonly callState: CallState;
   readonly currentIssue?: Issue;
+  readonly locationState: LocationState;
 }
 
 interface DispatchProps {
   readonly onSubmitOutcome: (data: OutcomeData) => void;
   readonly onSelectIssue: (issueId: string) => void;
   readonly onGetIssuesIfNeeded: () => void;
+  readonly setLocation: (location: string) => void;
+  readonly clearLocation: () => void;
 }
 
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
@@ -31,7 +36,8 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
   return {
     issues: state.remoteDataState.issues,
     callState: state.callState,
-    currentIssue: currentIssue
+    currentIssue: currentIssue,
+    locationState: state.locationState,
   };
 };
 
@@ -41,6 +47,8 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
       onSubmitOutcome: submitOutcome,
       onSelectIssue: selectIssueActionCreator,
       onGetIssuesIfNeeded: getIssuesIfNeeded,
+      setLocation: setAddress,
+      clearLocation: clearAddress,
     },
     dispatch);
 };

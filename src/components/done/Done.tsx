@@ -1,43 +1,42 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import i18n from '../../services/i18n';
+import { TranslationFunction } from 'i18next';
+import { translate } from 'react-i18next';
 import { Issue } from '../../common/model';
 import { Promotion, CallCount } from '../shared';
-/*
-    "callComplete": {
-      "title":"Great work!",
-      "pickAnotherIssue": "Pick another issue to keep calling, or spread the word by sharing your work with friends:",
-      "learnWhyCallingIsGreat":
-        "<a href='/about'>Learn why calling</a> representatives is the most effective way of making your voice heard."
-
-*/
 
 interface Props {
   readonly currentIssue: Issue;
   readonly totalCount: number;
+  readonly t: TranslationFunction;
 }
 
-const Done: React.StatelessComponent<Props> = (props: Props) => {
+export const Done: React.StatelessComponent<Props> = (props: Props) => {
   return (
     <section className="call">
       <div className="call_complete">
-        <h2 className="call__title">Great work!{/*'callComplete.title'*/}</h2>
+        <h2 className="call__title">{props.t('callComplete.title')}</h2>
         {/*impactPreview*/}
         <p className="call__text">
-          Pick another issue to keep calling,
-          or spread the word by sharing your work with friends:{/*'callComplete.pickAnotherIssue'*/}
+          {props.t('callComplete.pickAnotherIssue')}
         </p>
-        <Promotion selectedIssue={props.currentIssue}/>
+        <Promotion
+          currentIssue={props.currentIssue}
+          t={i18n.t}
+        />
         <p className="call__text">
-          <Link to="/about">Learn why calling</Link> representatives is the most
-          effective way of making your voice heard.{/*'callComplete.learnWhyCallingIsGreat'*/}
-          </p>
+          {props.t('callComplete.learnWhyCallingIsGreat')}
+        </p>
         {/* Choo method: townHall(state) */}
-        <strong>TOWN HALL COMPONENT HERE</strong><br/>
+        <strong>TOWN HALL COMPONENT HERE</strong><br />
 
-         <CallCount totalCount={props.totalCount} />
+        <CallCount
+          totalCount={props.totalCount}
+          t={i18n.t}
+        />
       </div>
     </section>
   );
 };
 
-export default Done;
+export const DoneTranslatable = translate()(Done);

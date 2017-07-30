@@ -1,6 +1,8 @@
 import * as React from 'react';
+import i18n from '../../services/i18n';
+import { LocationState } from '../../redux/location/reducer';
 import { RouteComponentProps } from 'react-router-dom';
-import { Call } from './index';
+import { CallTranslatable } from './index';
 import { Layout } from '../shared';
 import { Issue } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
@@ -36,6 +38,11 @@ interface Props extends RouteProps {
   readonly onSubmitOutcome: (data: OutcomeData) => Function;
   readonly onSelectIssue: (issueId: string) => Function;
   readonly onGetIssuesIfNeeded: () => Function;
+
+  // location widget related
+  readonly locationState: LocationState;
+  readonly setLocation: (location: string) => void;
+  readonly clearLocation: () => void;
 }
 
 export interface State {
@@ -91,12 +98,16 @@ class CallPage extends React.Component<Props, State> {
         completedIssueIds={this.props.callState.completedIssueIds}
         currentIssue={this.props.currentIssue}
         onSelectIssue={this.props.onSelectIssue}
+        locationState={this.props.locationState}
+        setLocation={this.props.setLocation}
+        clearLocation={this.props.clearLocation}
       >
         {this.props.currentIssue &&
-          <Call
+          <CallTranslatable
             issue={this.props.currentIssue}
             callState={this.props.callState}
             onSubmitOutcome={this.props.onSubmitOutcome}
+            t={i18n.t}
           />}
       </Layout>
     );
