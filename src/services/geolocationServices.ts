@@ -1,8 +1,11 @@
+import { IpInfoData } from './../common/model';
+import axios from 'axios';
 import { GeolocationPosition } from '../common/model';
+import * as Constants from '../common/constants';
 
-export const GEOLOCATION_TIMEOUT = 20000;
+export const GEOLOCATION_TIMEOUT = 5000;
 
-export const browserGeolocation = (): Promise<GeolocationPosition>  => {
+export const getBrowserGeolocation = (): Promise<GeolocationPosition>  => {
   return new Promise<GeolocationPosition>((resolve, reject) => {
     if (navigator.geolocation) {
       const geolocation: Geolocation =  navigator.geolocation;
@@ -51,4 +54,10 @@ export const browserGeolocation = (): Promise<GeolocationPosition>  => {
       reject(new Error('Browser Geolocation API not available'));
     }
   });
+};
+
+export const getLocationByIP = (): Promise<IpInfoData> => {
+  return axios.get(Constants.IP_INFO_URL)
+    .then(response => Promise.resolve(response.data))
+    .catch(e => Promise.reject(e));
 };
