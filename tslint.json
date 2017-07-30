@@ -16,6 +16,7 @@
         "curly": true,
         "eofline": false,
         "forin": true,
+        "import-spacing": true,
         "indent": [ true, "spaces" ],
         "interface-name": [true, "never-prefix"],
         "jsdoc-format": true,
@@ -25,9 +26,15 @@
         "max-line-length": [ true, 120 ],
         "member-ordering": [
             true,
-            "public-before-private",
-            "static-before-instance",
-            "variables-before-functions"
+            {
+                "order": [
+                    "static-field",
+                    "instance-field",
+                    "constructor",
+                    "public-instance-method",
+                    "private-instance-method"
+                ]
+            }
         ],
         "no-any": true,
         "no-arg": true,
@@ -65,9 +72,10 @@
         "radix": true,
         "semicolon": [true, "always"],
         "switch-default": true,
-
-        "trailing-comma": false,
-
+        "trailing-comma": [
+            true,
+            {"multiline": "never", "singleline": "never"}
+        ],
         "triple-equals": [ true, "allow-null-check" ],
         "typedef": [
             true,
