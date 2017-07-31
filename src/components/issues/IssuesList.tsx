@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Issue} from '../../common/model';
+import { Issue } from '../../common/model';
 import { IssuesListItem } from './index';
 
 interface Props {
