@@ -73,8 +73,8 @@
         "semicolon": [true, "always"],
         "switch-default": true,
         "trailing-comma": [
-            true,
-            {"multiline": "never", "singleline": "never"}
+            false,
+            {}
         ],
         "triple-equals": [ true, "allow-null-check" ],
         "typedef": [
