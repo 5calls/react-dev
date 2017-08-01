@@ -1,5 +1,5 @@
-import { ApiData, ReportData } from './../common/model';
 import axios from 'axios';
+import { ApiData, ReportData } from './../common/model';
 import * as Constants from '../common/constants';
 
 export const get5CallsApiData = (address: string): Promise<ApiData> => {

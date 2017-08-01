@@ -1,4 +1,3 @@
-import Location from './Location';
-import LocationContainer from './LocationContainer';
+import { Location, LocationTranslatable } from './Location';
 
-export { Location, LocationContainer };
+export { Location, LocationTranslatable };

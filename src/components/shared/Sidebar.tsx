@@ -1,6 +1,7 @@
 import * as React from 'react';
+import i18n from '../../services/i18n';
 import { Issue } from '../../common/model';
-import { IssuesList } from '../issues';
+import { IssuesListTranslatable } from '../issues';
 
 interface Props {
   readonly issues: Issue[];
@@ -10,14 +11,15 @@ interface Props {
 }
 
 const Sidebar: React.StatelessComponent<Props> = (props: Props) => {
-    return (
-    <IssuesList
+  return (
+    <IssuesListTranslatable
       issues={props.issues}
       currentIssue={props.currentIssue}
       completedIssueIds={props.completedIssueIds}
       onSelectIssue={props.onSelectIssue}
+      t={i18n.t}
     />
-    );
+  );
 };
 
 export default Sidebar;

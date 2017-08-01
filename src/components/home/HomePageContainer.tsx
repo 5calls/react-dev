@@ -2,6 +2,8 @@ import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectIssueActionCreator } from '../../redux/callState';
 import { ApplicationState } from '../../redux/root';
+import { setAddress, clearAddress } from '../../redux/location';
+import { LocationState } from '../../redux/location/reducer';
 import { HomePage } from './index';
 import { Issue } from '../../common/model';
 import { RouteComponentProps } from 'react-router-dom';
@@ -32,13 +34,15 @@ import { RouteComponentProps } from 'react-router-dom';
     component hierarchy.  
 */
 
-interface OwnProps extends RouteComponentProps<{}> { }
+interface OwnProps extends RouteComponentProps<{ id: string }> { }
 
 // This defines the data that we will pull off the Redux store
 interface StateProps {
   readonly issues: Issue[];
   readonly completedIssueIds: string[];
+  readonly currentIssue?: Issue;
   readonly totalCount: number;
+  readonly locationState: LocationState;
 }
 
 /*
@@ -49,6 +53,8 @@ interface DispatchProps {
 
   // This defines a method signature that is going to be passed into the child component 
   readonly onSelectIssue: (issueId: string) => void;
+  readonly setLocation: (location: string) => void;
+  readonly clearLocation: () => void;
 }
 
 /*
@@ -56,14 +62,18 @@ interface DispatchProps {
  and pass it into the child component.  You can do logic in this method before passing back
  the object with the props (see the Call page for an example).
 */
-function mapStateToProps(
-  state: ApplicationState,
-  ownProps: OwnProps
-): StateProps {
+function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProps {
+  let currentIssue: Issue | undefined = undefined;
+  if (state.remoteDataState.issues) {
+    currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.match.params.id);
+  }
+
   return {
     issues: state.remoteDataState.issues,
     completedIssueIds: state.callState.completedIssueIds,
-    totalCount: state.remoteDataState.callTotal
+    currentIssue: currentIssue,
+    totalCount: state.remoteDataState.callTotal,
+    locationState: state.locationState,
   };
 }
 
@@ -84,7 +94,9 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
             will be dispatched.
         See /src/redux/callState/actionCreator.ts for next step in Redux Data Flow      
       */
-      onSelectIssue: selectIssueActionCreator
+      onSelectIssue: selectIssueActionCreator,
+      setLocation: setAddress,
+      clearLocation: clearAddress,
     },
     dispatch
   );

@@ -5,6 +5,9 @@ import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import createStore from './redux/store';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './services/i18n';
+
 import registerServiceWorker from './registerServiceWorker';
 import { HomePageContainer } from './components/home';
 import { AboutPageContainer } from './components/about';
@@ -23,18 +26,20 @@ store.dispatch(fetchBrowserGeolocation());
 store.dispatch(fetchCallCount());
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Switch>
-        <Route path="/" exact={true} component={HomePageContainer} />
-        <Route path="/issue/:id" exact={true} component={CallPageContainer} />
-        <Route path="/done/:id" exact={true} component={DonePageContainer} />
-        <Route path="/faq" exact={true} component={FaqPageContainer} />
-        <Route path="/about" exact={true} component={AboutPageContainer} />
-        <Route path="*" component={HomePageContainer} />
-      </Switch>
-    </ConnectedRouter>
-  </Provider>,
+  <I18nextProvider i18n={i18n}>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <Switch>
+          <Route path="/" exact={true} component={HomePageContainer} />
+          <Route path="/issue/:id" exact={true} component={CallPageContainer} />
+          <Route path="/done/:id" exact={true} component={DonePageContainer} />
+          <Route path="/faq" exact={true} component={FaqPageContainer} />
+          <Route path="/about" exact={true} component={AboutPageContainer} />
+          <Route path="*" component={HomePageContainer} />
+        </Switch>
+      </ConnectedRouter>
+    </Provider>
+  </I18nextProvider>,
   document.getElementById('root')
 );
 registerServiceWorker();

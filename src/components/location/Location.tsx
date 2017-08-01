@@ -1,79 +1,107 @@
 import * as React from 'react';
-/*
-    "location": {
-      "gettingYourLocation": "Getting your location",
-      "invalidAddress": "That address is invalid, please try again",
-      "chooseALocation": "Enter your location",
-      "changeLocation": "Change location",
-      "yourLocation": "Your location",
-      "enterAnAddressOrZipCode": "Enter an address or zip code"
-    },
-*/
+import { LocationState } from '../../redux/location/reducer';
+import { TranslationFunction } from 'i18next';
+import { translate } from 'react-i18next';
+
 interface Props {
-  readonly location: string;
-  readonly isValid: boolean;
-  readonly isLoading: boolean;
+  readonly locationState: LocationState;
   readonly setLocation: (location: string) => void;
   readonly clearLocation: () => void;
+  readonly t: TranslationFunction;
 }
 
-const Location: React.StatelessComponent<Props> = ({location, isValid, isLoading, setLocation, clearLocation}) => {
-  let pretext;
-  if (location) {
-    pretext = <p id="locationMessage">Your location:{/*location.yourLocation*/} <span>{location}</span></p>;
-  } else if (isLoading) {
-    // tslint:disable-next-line:max-line-length
-    pretext = <p id="locationMessage" className="loadingAnimation">Getting your location{/*location.gettingYourLocation*/}</p>;
-  } else if (!isValid) {
-    // tslint:disable-next-line:max-line-length
-    pretext = <p id="locationMessage" role="alert">That address is invalid, please try again{/*location.invalidAddress*/}</p>;
-  } else {
-    pretext = <p id="locationMessage">Enter your location{/*location.chooseALocation*/}</p>;
+// this will be needed
+interface State {
+  location: string;
+  isValid: boolean;
+  isLoading: boolean;
+}
+
+export class Location extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    // set initial state
+    this.state = this.setStateFromProps(props);
   }
 
-  let input;
-  if (!isLoading && isValid && location) {
-    const enterLocation = (e) => {
-      e.preventDefault();
-      clearLocation();
+  /**
+   * Set state from props when props
+   * are initialized or refreshed
+   *
+   * @param {Props} props
+   * @returns {State}
+   */
+  setStateFromProps(props: Props): State {
+    let location = props.locationState.address || props.locationState.cachedCity;
+    let isValid = props.locationState.invalidAddress;
+    let isLoading = props.locationState.fetchingLocation || props.locationState.validatingLocation;
+
+    return {
+      location,
+      isValid,
+      isLoading
     };
-    input = <div><button onClick={enterLocation}>Change location</button></div>;
-  } else {
-    const submitAddress = (e) => {
-      e.preventDefault();
-      const newLocation = e.target.elements.address.value;
-      setLocation(newLocation);
-    };
-    input = (
+  }
+
+  getPretextWidget() {
+    if (this.state.location) {
+      return <p id="locationMessage">{this.props.t('location.yourLocation')} <span>{this.state.location}</span></p>;
+    }
+
+    if (this.state.isLoading) {
+      return <p id="locationMessage" className="loadingAnimation">{this.props.t('location.gettingYourLocation')}</p>;
+    }
+    if (!this.state.isValid) {
+      return <p id="locationMessage" role="alert">{this.props.t('location.invalidAddress')}</p>;
+    }
+
+    return <p id="locationMessage">{this.props.t('location.chooseALocation')}</p>;
+  }
+
+  getInputWidget() {
+    if (!this.state.isLoading && this.state.isValid && this.state.location) {
+      const enterLocation = (e) => {
+        e.preventDefault();
+        this.props.clearLocation();
+      };
+      return <div><button onClick={enterLocation}>{this.props.t('changeLocation')}</button></div>;
+    } else {
+      const submitAddress = (e) => {
+        e.preventDefault();
+        const newLocation = e.target.elements.address.value;
+        this.props.setLocation(newLocation);
+      };
+      return (
+        <div>
+          {/* TODO:
+          1. Set className to hidden when fetching location
+          */}
+          <form onSubmit={submitAddress} className={this.state.isLoading ? 'hidden' : ''}>
+            <input
+              type="text"
+              autoFocus={true}
+              id="address"
+              name="address"
+              aria-labelledby="locationMessage"
+              aria-invalid={!this.state.isValid}
+              disabled={this.state.isLoading}
+              placeholder="Enter an address or zip code"
+            />
+            <button>{this.props.t('common.go')}</button>
+          </form>
+        </div>
+      );
+    }
+  }
+
+  render() {
+    return (
       <div>
-        {/* TODO:
-        1. Set className to hidden when fetching location
-        2. i18n placeholder attribute
-        */}
-        <form onSubmit={submitAddress} className={isLoading ? 'hidden' : ''}>
-          <input
-            type="text"
-            autoFocus={true}
-            id="address"
-            name="address"
-            aria-labelledby="locationMessage"
-            aria-invalid={!isValid}
-            disabled={isLoading}
-            placeholder="Enter an address or zip code"
-          />
-          <button>Go{/*t("common.go", null, true)*/}</button>
-        </form>
+        {this.getPretextWidget()}
+        {this.getInputWidget()}
       </div>
     );
   }
+}
 
-  return (
-    <div>
-      {pretext}
-      {input}
-    </div>
-  );
-
-};
-
-export default Location;
+export const LocationTranslatable = translate()(Location);
