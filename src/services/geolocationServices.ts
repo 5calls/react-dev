@@ -18,22 +18,24 @@ export const getBrowserGeolocation = (): Promise<GeolocationPosition>  => {
           const coords: Coordinates = position.coords;
           // tslint:disable-next-line:no-shadowed-variable
           const geolocation: GeolocationPosition = { latitude: coords.latitude, longitude: coords.longitude };
+          console.log('Browser Geolocation: ', geolocation);
           resolve(geolocation);
         },
         // PositionErrorCallback
         (e: PositionError) => {
           const code = e.code;
           if (
-            code === PositionError.POSITION_UNAVAILABLE ||
-            code === PositionError.TIMEOUT ||
-            code === PositionError.PERMISSION_DENIED
+            code === 3 /* PositionError.POSITION_UNAVAILABLE */ ||
+            code === 2 /* PositionError.TIMEOUT */ ||
+            code === 1 /* PositionError.PERMISSION_DENIED */
           ) {
-            const msg = `Browser geolocation not accomplished;
+            const msg = `Browser geolocation not successfully accomplished;
               PositionError code: ${code};
               PositionError message: ${e.message}`;
             // tslint:disable-next-line:no-console
             console.warn(msg, e);
-            resolve({latitude: 0, longitude: 0});
+            // send back an undefined location
+            resolve({latitude: undefined, longitude: undefined});
           } else {
             const msg = `Problem doing browser geolocation;
             PositionError code: ${code};

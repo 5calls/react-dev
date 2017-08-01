@@ -13,4 +13,3 @@ export const getReportData = (): Promise<ReportData> => {
     .then(response => Promise.resolve(response.data))
     .catch(e => Promise.reject(e));
 };
-

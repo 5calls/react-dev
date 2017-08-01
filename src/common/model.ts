@@ -65,8 +65,8 @@ export enum LocationFetchType {
 }
 
 export interface GeolocationPosition {
-  longitude: number;
-  latitude: number;
+  longitude: number | undefined;
+  latitude: number | undefined;
 }
 
 /* 5 Calls API data */
