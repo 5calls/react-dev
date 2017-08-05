@@ -54,11 +54,11 @@ test('Location component setLocation() should be called upon submit if isLoading
   expect(setLocation).toBeCalledWith(zip);
 });
 
-test('Location component clearLocation() should be called upon submit if isLoading=false', () => {
+test('Location component clearLocation() should be called upon submit if isLoading=false and isValid=true', () => {
   const locationState: LocationState = {
-    address: '1234',
+    address: 'Foobar USA',
     cachedCity: '',
-    invalidAddress: true,
+    invalidAddress: false,
     fetchingLocation: false,
     validatingLocation: false
   };

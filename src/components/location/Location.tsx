@@ -64,7 +64,6 @@ export class Location extends React.Component<Props, State> {
   }
 
   getInputWidget() {
-    // this.setStateFromProps(this.props);
     if (!this.state.isLoading && this.state.isValid && this.state.location) {
       const enterLocation = (e) => {
         e.preventDefault();
