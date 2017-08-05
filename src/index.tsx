@@ -14,7 +14,7 @@ import { AboutPageContainer } from './components/about';
 import { FaqPageContainer } from './components/faq';
 import { DonePageContainer } from './components/done';
 import { CallPageContainer } from './components/call';
-import { fetchBrowserGeolocation, fetchCallCount } from './redux/remoteData';
+import { startup } from './redux/remoteData';
 import './components/bundle.css';
 import './components/shared/scss/style.css';
 import './components/shared/scss/vendor/normalize.css';
@@ -22,8 +22,7 @@ import './components/shared/scss/vendor/normalize.css';
 const history = createHistory();
 
 const store = createStore({});
-store.dispatch(fetchBrowserGeolocation());
-store.dispatch(fetchCallCount());
+store.dispatch(startup());
 
 ReactDOM.render(
   <I18nextProvider i18n={i18n}>

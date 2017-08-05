@@ -24,6 +24,10 @@ export class Location extends React.Component<Props, State> {
     this.state = this.setStateFromProps(props);
   }
 
+  componentWillReceiveProps(nextProps: Props) {
+    this.setState(this.setStateFromProps(nextProps));
+  }
+
   /**
    * Set state from props when props
    * are initialized or refreshed
@@ -33,7 +37,7 @@ export class Location extends React.Component<Props, State> {
    */
   setStateFromProps(props: Props): State {
     let location = props.locationState.address || props.locationState.cachedCity;
-    let isValid = props.locationState.invalidAddress;
+    let isValid = !props.locationState.invalidAddress;
     let isLoading = props.locationState.fetchingLocation || props.locationState.validatingLocation;
 
     return {
@@ -44,27 +48,29 @@ export class Location extends React.Component<Props, State> {
   }
 
   getPretextWidget() {
+    // ADDRESS OR CACHED_CITY
     if (this.state.location) {
       return <p id="locationMessage">{this.props.t('location.yourLocation')} <span>{this.state.location}</span></p>;
-    }
-
-    if (this.state.isLoading) {
+    // FETCHING OR VALIDATING
+    } else if (this.state.isLoading) {
       return <p id="locationMessage" className="loadingAnimation">{this.props.t('location.gettingYourLocation')}</p>;
-    }
-    if (!this.state.isValid) {
+    // INVALID_ADDRESS
+    } else if (!this.state.isValid) {
       return <p id="locationMessage" role="alert">{this.props.t('location.invalidAddress')}</p>;
+    // CHOOSE LOCATION
+    } else {
+      return <p id="locationMessage">{this.props.t('location.chooseALocation')}</p>;
     }
-
-    return <p id="locationMessage">{this.props.t('location.chooseALocation')}</p>;
   }
 
   getInputWidget() {
+    // this.setStateFromProps(this.props);
     if (!this.state.isLoading && this.state.isValid && this.state.location) {
       const enterLocation = (e) => {
         e.preventDefault();
         this.props.clearLocation();
       };
-      return <div><button onClick={enterLocation}>{this.props.t('changeLocation')}</button></div>;
+      return <div><button onClick={enterLocation}>{this.props.t('location.changeLocation')}</button></div>;
     } else {
       const submitAddress = (e) => {
         e.preventDefault();
