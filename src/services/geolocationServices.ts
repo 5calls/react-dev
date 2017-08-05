@@ -1,10 +1,17 @@
-import { IpInfoData } from './../common/model';
 import axios from 'axios';
 import { GeolocationPosition } from '../common/model';
+import { IpInfoData } from './../common/model';
 import * as Constants from '../common/constants';
 
+// Geolocation PositionOptions properties
+// Browser geolocation timeout in milliseconds
 export const GEOLOCATION_TIMEOUT = 5000;
+// Max age for last geolocation attempt in milliseconds
+export const GEOLOCATION_MAX_AGE = 30000;
 
+/**
+ * Use browser geolocation API to find location.
+ */
 export const getBrowserGeolocation = (): Promise<GeolocationPosition>  => {
   return new Promise<GeolocationPosition>((resolve, reject) => {
     if (navigator.geolocation) {
@@ -18,7 +25,6 @@ export const getBrowserGeolocation = (): Promise<GeolocationPosition>  => {
           const coords: Coordinates = position.coords;
           // tslint:disable-next-line:no-shadowed-variable
           const geolocation: GeolocationPosition = { latitude: coords.latitude, longitude: coords.longitude };
-          console.log('Browser Geolocation: ', geolocation);
           resolve(geolocation);
         },
         // PositionErrorCallback
@@ -47,9 +53,9 @@ export const getBrowserGeolocation = (): Promise<GeolocationPosition>  => {
         },
         // PositionOptions
         {
-          enableHighAccuracy: false,
-          timeout: GEOLOCATION_TIMEOUT, // 20 seconds
-          maximumAge: 30000 // 30 seconds
+          enableHighAccuracy: false, // High accuracy not needed
+          timeout: GEOLOCATION_TIMEOUT,
+          maximumAge: GEOLOCATION_MAX_AGE
         }
       );
     } else {
@@ -58,6 +64,9 @@ export const getBrowserGeolocation = (): Promise<GeolocationPosition>  => {
   });
 };
 
+/**
+ * Use ipinfo.io to find location by IP address.
+ */
 export const getLocationByIP = (): Promise<IpInfoData> => {
   return axios.get(Constants.IP_INFO_URL)
     .then(response => Promise.resolve(response.data))

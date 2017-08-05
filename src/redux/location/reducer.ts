@@ -28,7 +28,6 @@ export const locationStateReducer: Reducer<LocationState> = (
         cachedCity: '',
         fetchingLocation: false,
 
-
       });
     case 'LOCATION_SET':
       return Object.assign({}, state, {

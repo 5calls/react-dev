@@ -1,8 +1,8 @@
+import { Dispatch } from 'redux';
 import { ReportData, IpInfoData, ApiData } from './../../common/model';
 import { get5CallsApiData, getReportData } from '../../services/apiServices';
 import { setInvalidAddress, setCachedCity, setFetchingLocation,
   setLocation, setValidatingLocation } from '../location/index';
-import { Dispatch } from 'redux';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
 import { issuesActionCreator, callCountActionCreator } from './index';
 import { ApplicationState } from '../root';
@@ -74,9 +74,9 @@ export const fetchLocationByIP = () => {
       getLocationByIP()
         .then((response: IpInfoData) => {
           const location = response.loc;
-          console.log('fetchLocationByIP() location found', location);
           dispatch(getApiData(location));
           dispatch(setFetchingLocation(false));
+          // TODO: dispatch an error message
           // tslint:disable-next-line:no-console
         }).catch((error) => console.error(`fetchLocationByIP error: ${error.message}`, error));
     }
@@ -86,6 +86,11 @@ export const fetchLocationByIP = () => {
 export const fetchBrowserGeolocation = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
+    // Sometimes, the user ignores the prompt or the browser does not
+    // provide a response when they do not permit browser location.
+    // After GEOLOCATION_TIMEOUT + 1 second, try IP-based location,
+    // but let browser-based continue. This timeout is cleared after
+    // either geolocation or ipinfo.io location succeeds.
     timeout = setTimeout(geolocationTimeoutHandler(dispatch, getState), GEOLOCATION_TIMEOUT + 1000);
     dispatch(setFetchingLocation(true));
     dispatch(setInvalidAddress(true));
@@ -93,14 +98,12 @@ export const fetchBrowserGeolocation = () => {
       .then(location => {
         if (location.latitude && location.longitude) {
           const loc = `${location.latitude} ${location.longitude}`;
-          console.log('fetchGeolocation() success. Setting address:', loc);
-          // set location and fetch issues
           dispatch(setFetchingLocation(true));
           dispatch(getApiData(loc));
           dispatch(setFetchingLocation(false));
           clearTimeout(timeout);
         } else {
-          console.log('fetchGeolocation() no location found. Clearing address');
+          // console.log('fetchGeolocation() no location found. Clearing address');
           dispatch(setFetchingLocation(false));
           fetchLocationByIP();
         }
@@ -114,7 +117,8 @@ export const fetchBrowserGeolocation = () => {
 };
 
 const geolocationTimeoutHandler = (dispatch, getState) => {
-  console.log('geolocationTimeoutHandler() called');
+  // tslint:disable-next-line:no-console
+  console.debug('geolocationTimeoutHandler() called');
   fetchLocationByIP()(dispatch, getState);
 };
 

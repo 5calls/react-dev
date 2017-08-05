@@ -1,5 +1,5 @@
-import { LocationAction } from './action';
 import { Action } from 'redux';
+import { LocationAction } from './action';
 
 export type LocationActionType =
   'LOCATION_CLEAR' |
