@@ -1,7 +1,7 @@
 import { ReportData, IpInfoData, ApiData } from './../../common/model';
 import { get5CallsApiData, getReportData } from '../../services/apiServices';
-import { clearAddress, setInvalidAddress, setCachedCity,
-  setFetchingLocation, setLocation, setValidatingLocation } from '../location/index';
+import { setInvalidAddress, setCachedCity, setFetchingLocation,
+  setLocation, setValidatingLocation } from '../location/index';
 import { Dispatch } from 'redux';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
 import { issuesActionCreator, callCountActionCreator } from './index';
@@ -101,7 +101,8 @@ export const fetchBrowserGeolocation = () => {
           clearTimeout(timeout);
         } else {
           console.log('fetchGeolocation() no location found. Clearing address');
-          dispatch(clearAddress());
+          dispatch(setFetchingLocation(false));
+          fetchLocationByIP();
         }
       })
       .catch(e => {
