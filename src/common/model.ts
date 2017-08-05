@@ -58,12 +58,25 @@ export interface UserStat {
   unavailableCount: number;
 }
 
+/**
+ * Represents the place used to get location.
+ * It may be one of three options:
+ * 1. CACHED_ADDRESS - address stored in local storage
+ * 2. BROWSER_GEOLOCATION - address obtained from the browser geolocation API
+ * 3. IP_INFO - address obtained from ipinfo.io API
+ */
 export enum LocationFetchType {
-  IP_INFO,
-  ADDRESS,
-  BROWSER_GEOLOCATION
+  CACHED_ADDRESS, // 'address' in Choo version
+  BROWSER_GEOLOCATION, // 'browserGeolocation' in Choo version
+  IP_INFO // 'ipAddress' in Choo version
 }
 
+/**
+ * Encapsulates a location using latitude
+ * and longitude. Undefined for either longitude
+ * or latitude indicates that the geolocation has
+ * has not been set.
+ */
 export interface GeolocationPosition {
   longitude: number | undefined;
   latitude: number | undefined;
