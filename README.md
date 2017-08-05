@@ -32,6 +32,10 @@ yarn run test:coverage
 #   webpack development server:
 yarn start
 
+# start the app running in https mode
+# (needed for browser geolocation):
+yarn run start:https
+
 # build the app into build folder
 #  for server deployment:
 yarn build
