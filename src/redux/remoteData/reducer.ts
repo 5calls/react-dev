@@ -5,6 +5,7 @@ import { RemoteDataAction } from './index';
 export interface RemoteDataState {
   issues: Issue[];
   callTotal: number;
+  errorMessage: string;
 }
 
 export const remoteDataReducer: Reducer<RemoteDataState> = (
@@ -16,6 +17,8 @@ export const remoteDataReducer: Reducer<RemoteDataState> = (
       return newState;
     case 'GET_CALL_TOTAL':
       return Object.assign({}, state, {callTotal: action.payload});
+    case 'API_ERROR':
+      return Object.assign({}, state, {errorMessage: action.payload});
     default:
       return state;
   }

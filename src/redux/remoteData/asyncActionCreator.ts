@@ -4,7 +4,7 @@ import { get5CallsApiData, getReportData } from '../../services/apiServices';
 import { setInvalidAddress, setCachedCity, setFetchingLocation,
   setLocation, setValidatingLocation } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
-import { issuesActionCreator, callCountActionCreator } from './index';
+import { issuesActionCreator, callCountActionCreator, apiErrorMessageActionCreator } from './index';
 import { ApplicationState } from '../root';
 
 /**
@@ -43,7 +43,7 @@ export const getApiData = (address: string = '') => {
         dispatch(setLocation(normalizedAddress));
         dispatch(issuesActionCreator(response.issues));
       }).catch((error) => {
-        // TODO: dispatch an error message???
+        dispatch(apiErrorMessageActionCreator(error.message));
         // tslint:disable-next-line:no-console
         console.error(`getIssue error: ${error.message}`, error);
       });
