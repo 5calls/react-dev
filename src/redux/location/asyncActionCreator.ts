@@ -5,7 +5,9 @@ import { ApplicationState } from '../root';
 
 export function setAddress(address: string) {
   return (dispatch: Dispatch<ApplicationState>) => {
-    dispatch(getApiData(address));
-    dispatch(setLocation(address));
+    return dispatch(getApiData(address))
+      .then(() => {
+        dispatch(setLocation(address));
+      });
   };
 }

@@ -11,7 +11,7 @@ import { ApplicationState } from '../root';
  * Timer for calling fetchLocationByIP() if
  * fetchBrowserGeolocation() fails or times out.
  */
-let timeout = 0; //
+let setTimeoutHandle = 0; //
 
 export const getIssuesIfNeeded = () => {
   return (dispatch: Dispatch<ApplicationState>,
@@ -35,8 +35,10 @@ export const getIssuesIfNeeded = () => {
 export const getApiData = (address: string = '') => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
-    get5CallsApiData(address)
+    // console.log('getApiData start');
+    return get5CallsApiData(address)
       .then((response: ApiData) => {
+        // console.log('getApiData then()');
         dispatch(setInvalidAddress(response.invalidAddress));
         const normalizedAddress = response.normalizedLocation as string;
         dispatch(setCachedCity(normalizedAddress));
@@ -53,7 +55,7 @@ export const getApiData = (address: string = '') => {
 export const fetchCallCount = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
-    getReportData()
+    return getReportData()
       .then((response: ReportData) => {
         dispatch(callCountActionCreator(response.count));
         // tslint:disable-next-line:no-console
@@ -64,22 +66,26 @@ export const fetchCallCount = () => {
 export const fetchLocationByIP = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
-    clearTimeout(timeout);
+    // console.log('fetchLocationByIP start');
+    clearTimeout(setTimeoutHandle);
     // check to see if state contains an address already,
     // which means that fetchGeolocation() has been successful
-    const state: ApplicationState = getState();
-    if (!state.locationState.address) {
-      dispatch(setFetchingLocation(true));
-      dispatch(setInvalidAddress(true));
-      getLocationByIP()
+    // const state: ApplicationState = getState();
+    // if (!state.locationState.address) {
+    dispatch(setFetchingLocation(true));
+    dispatch(setInvalidAddress(true));
+    return getLocationByIP()
         .then((response: IpInfoData) => {
+          // console.log('fetchLocationByIP then()');
           const location = response.loc;
-          dispatch(getApiData(location));
-          dispatch(setFetchingLocation(false));
+          dispatch(getApiData(location))
+          .then(() => {
+            dispatch(setFetchingLocation(false));
+          });
           // TODO: dispatch an error message
           // tslint:disable-next-line:no-console
         }).catch((error) => console.error(`fetchLocationByIP error: ${error.message}`, error));
-    }
+    // }
   };
 };
 
@@ -91,7 +97,7 @@ export const fetchBrowserGeolocation = () => {
     // After GEOLOCATION_TIMEOUT + 1 second, try IP-based location,
     // but let browser-based continue. This timeout is cleared after
     // either geolocation or ipinfo.io location succeeds.
-    timeout = setTimeout(geolocationTimeoutHandler(dispatch, getState), GEOLOCATION_TIMEOUT + 1000);
+    setTimeoutHandle = setTimeout(geolocationTimeoutHandler(dispatch, getState), GEOLOCATION_TIMEOUT + 1000);
     dispatch(setFetchingLocation(true));
     dispatch(setInvalidAddress(true));
     getBrowserGeolocation()
@@ -101,7 +107,7 @@ export const fetchBrowserGeolocation = () => {
           dispatch(setFetchingLocation(true));
           dispatch(getApiData(loc));
           dispatch(setFetchingLocation(false));
-          clearTimeout(timeout);
+          clearTimeout(setTimeoutHandle);
         } else {
           // console.log('fetchGeolocation() no location found. Clearing address');
           dispatch(setFetchingLocation(false));
