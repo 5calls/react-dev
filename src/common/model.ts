@@ -92,15 +92,7 @@ export interface ApiData {
 }
 
 export interface ReportData {
-  ahcaCounts: AhcaCounts;
   count: number; // total call count
-}
-
-/* Counts for the American Health Care Act vote */
-export interface AhcaCounts {
-  no: string[];
-  unknown: string[];
-  yes: string[];
 }
 
 /* Data from iponfo.io API */
