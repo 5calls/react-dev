@@ -1,5 +1,6 @@
 import { Action } from 'redux';
 import { LocationAction } from './action';
+import { LocationUiState } from '../../common/model';
 
 export type LocationActionType =
   'LOCATION_CLEAR' |
@@ -7,7 +8,8 @@ export type LocationActionType =
   'INVALID_ADDRESS' |
   'CACHE_CITY' |
   'FETCHING_LOCATION' |
-  'VALIDATING_LOCATION'
+  'VALIDATING_LOCATION' |
+  'SET_UI_STATE'
 ;
 
 export interface LocationAction extends Action {
@@ -42,4 +44,9 @@ export interface FetchingLocationAction extends LocationAction {
 export interface ValidatingLocationAction extends LocationAction {
   type: 'VALIDATING_LOCATION';
   payload: boolean;
+}
+
+export interface SetUiStateAction extends LocationAction {
+  type: 'SET_UI_STATE';
+  payload: LocationUiState;
 }

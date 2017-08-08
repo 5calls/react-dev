@@ -1,4 +1,5 @@
-import { LocationClearedAction, LocationSetAction, InvalidAddressAction } from './index';
+import { LocationClearedAction, LocationSetAction, InvalidAddressAction, SetUiStateAction } from './index';
+import { LocationUiState } from '../../common/model';
 
 export function setLocation(address: string): LocationSetAction {
   return {
@@ -40,5 +41,12 @@ export function setValidatingLocation(isValidating: boolean) {
   return {
     type: 'VALIDATING_LOCATION',
     payload: isValidating
+  };
+}
+
+export function setUiState(uiState: LocationUiState): SetUiStateAction {
+  return {
+    type: 'SET_UI_STATE',
+    payload: uiState
   };
 }

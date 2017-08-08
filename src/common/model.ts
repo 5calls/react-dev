@@ -106,3 +106,10 @@ export interface IpInfoData {
   org: string; // internet service provider
   postal: string; // zip code
 }
+
+export enum LocationUiState {
+  FETCHING_LOCATION = 'FETCHING_LOCATION',
+  LOCATION_FOUND = 'LOCATION_FOUND',
+  ENTERING_LOCATION = 'ENTERING_LOCATION',
+  INVALID_LOCATION = 'INVALID_LOCATION'
+}

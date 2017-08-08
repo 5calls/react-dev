@@ -1,20 +1,17 @@
 import { Reducer } from 'redux';
 import { LocationAction } from './index';
+import { LocationUiState } from '../../common/model';
 
 export interface LocationState {
   address: string;
   cachedCity: string;
-  invalidAddress: boolean;
-  fetchingLocation: boolean;
-  validatingLocation: boolean;
+  uiState: LocationUiState;
 }
 
 const initialState: LocationState = {
   address: '',
   cachedCity: '',
-  invalidAddress: false,
-  fetchingLocation: false,
-  validatingLocation: false
+  uiState: LocationUiState.FETCHING_LOCATION
 };
 
 export const locationStateReducer: Reducer<LocationState> = (
@@ -48,6 +45,10 @@ export const locationStateReducer: Reducer<LocationState> = (
     case 'CACHE_CITY':
       return Object.assign({}, state, {
         cachedCity: action.payload
+      });
+    case 'SET_UI_STATE':
+      return Object.assign({}, state, {
+        uiState: action.payload
       });
     default:
       return state;
