@@ -1,11 +1,12 @@
 import { Dispatch } from 'redux';
 import { ReportData, IpInfoData, ApiData } from './../../common/model';
 import { get5CallsApiData, getReportData } from '../../services/apiServices';
-import { setInvalidAddress, setCachedCity, setFetchingLocation,
-  setLocation, setValidatingLocation } from '../location/index';
+import { setCachedCity, setLocation } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
 import { issuesActionCreator, callCountActionCreator, apiErrorMessageActionCreator } from './index';
 import { ApplicationState } from '../root';
+import { LocationUiState } from '../../common/model';
+import { setUiState } from './../location';
 
 /**
  * Timer for calling fetchLocationByIP() if
@@ -39,7 +40,11 @@ export const getApiData = (address: string = '') => {
     return get5CallsApiData(address)
       .then((response: ApiData) => {
         // console.log('getApiData then()');
-        dispatch(setInvalidAddress(response.invalidAddress));
+        if (response.invalidAddress) {
+          dispatch(setUiState(LocationUiState.LOCATION_ERROR));
+        } else {
+          console.log('SET UI STATE TO SOMETHING ELSE???')
+        }
         const normalizedAddress = response.normalizedLocation as string;
         dispatch(setCachedCity(normalizedAddress));
         dispatch(setLocation(normalizedAddress));
@@ -68,19 +73,19 @@ export const fetchLocationByIP = () => {
           getState: () => ApplicationState) => {
     // console.log('fetchLocationByIP start');
     clearTimeout(setTimeoutHandle);
+    // TODO: Is this necessary???
     // check to see if state contains an address already,
     // which means that fetchGeolocation() has been successful
     // const state: ApplicationState = getState();
     // if (!state.locationState.address) {
-    dispatch(setFetchingLocation(true));
-    dispatch(setInvalidAddress(true));
+    dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
     return getLocationByIP()
         .then((response: IpInfoData) => {
           // console.log('fetchLocationByIP then()');
           const location = response.loc;
           dispatch(getApiData(location))
           .then(() => {
-            dispatch(setFetchingLocation(false));
+            dispatch(setUiState(LocationUiState.LOCATION_FOUND));
           });
           // TODO: dispatch an error message
           // tslint:disable-next-line:no-console
@@ -98,19 +103,15 @@ export const fetchBrowserGeolocation = () => {
     // but let browser-based continue. This timeout is cleared after
     // either geolocation or ipinfo.io location succeeds.
     setTimeoutHandle = setTimeout(geolocationTimeoutHandler(dispatch, getState), GEOLOCATION_TIMEOUT + 1000);
-    dispatch(setFetchingLocation(true));
-    dispatch(setInvalidAddress(true));
+    dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
     getBrowserGeolocation()
       .then(location => {
         if (location.latitude && location.longitude) {
           const loc = `${location.latitude} ${location.longitude}`;
-          dispatch(setFetchingLocation(true));
           dispatch(getApiData(loc));
-          dispatch(setFetchingLocation(false));
           clearTimeout(setTimeoutHandle);
         } else {
           // console.log('fetchGeolocation() no location found. Clearing address');
-          dispatch(setFetchingLocation(false));
           fetchLocationByIP();
         }
       })
@@ -131,9 +132,10 @@ const geolocationTimeoutHandler = (dispatch, getState) => {
 export const startup = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
+        dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
         dispatch(fetchBrowserGeolocation());
         dispatch(fetchCallCount());
-        dispatch(setFetchingLocation(false));
-        dispatch(setValidatingLocation(false));
+        // dispatch(setFetchingLocation(false));
+        // dispatch(setValidatingLocation(false));
       };
 };

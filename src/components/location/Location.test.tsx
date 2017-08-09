@@ -3,14 +3,13 @@ import { shallow } from 'enzyme';
 import i18n from '../../services/i18n';
 import { Location } from './index';
 import { LocationState } from '../../redux/location/reducer';
+import { LocationUiState } from '../../common/model';
 
 test('Location component should show location prop value if locationState.address is defined', () => {
   const locationState: LocationState = {
     address: '1234',
     cachedCity: '',
-    invalidAddress: false,
-    fetchingLocation: false,
-    validatingLocation: false
+    uiState: LocationUiState.LOCATION_FOUND
   };
   const setLocation = jest.fn();
   const clearLocation = jest.fn();
@@ -31,9 +30,7 @@ test('Location component should show location prop value if locationState.cached
   const locationState: LocationState = {
     address: '',
     cachedCity: 'Cached Address',
-    invalidAddress: false,
-    fetchingLocation: false,
-    validatingLocation: false
+    uiState: LocationUiState.LOCATION_FOUND
   };
   const setLocation = jest.fn();
   const clearLocation = jest.fn();
@@ -50,13 +47,11 @@ test('Location component should show location prop value if locationState.cached
   expect(node.text()).toEqual(locationState.cachedCity);
 });
 
-test('Should show "Getting your location" label if isLoading=true', () => {
+test('Should show "Getting your location" label if fetching location', () => {
   const locationState: LocationState = {
     address: '1234',
     cachedCity: '',
-    invalidAddress: false,
-    fetchingLocation: true,
-    validatingLocation: false
+    uiState: LocationUiState.FETCHING_LOCATION
   };
 
   const setLocation = jest.fn();
@@ -78,9 +73,7 @@ test('Location component setLocation() should be called upon submit if isLoading
   const locationState: LocationState = {
     address: '1234',
     cachedCity: '',
-    invalidAddress: false,
-    fetchingLocation: true,
-    validatingLocation: false
+    uiState: LocationUiState.FETCHING_LOCATION
   };
 
   const setLocation = jest.fn();
@@ -101,13 +94,11 @@ test('Location component setLocation() should be called upon submit if isLoading
   expect(setLocation).toBeCalledWith(zip);
 });
 
-test('Location component clearLocation() should be called upon submit if isLoading=false and isValid=true', () => {
+test('Location component clearLocation() should be called upon submit when entering location', () => {
   const locationState: LocationState = {
     address: 'Foobar USA',
     cachedCity: '',
-    invalidAddress: false,
-    fetchingLocation: false,
-    validatingLocation: false
+    uiState: LocationUiState.ENTERING_LOCATION
   };
   const setLocation = jest.fn();
   const clearLocation = jest.fn();
@@ -129,9 +120,7 @@ test('If address is invalid, show proper message and form with input and "Go" bu
   const locationState: LocationState = {
     address: 'Foobar USA',
     cachedCity: '',
-    invalidAddress: true,
-    fetchingLocation: false,
-    validatingLocation: false
+    uiState: LocationUiState.LOCATION_ERROR
   };
   const setLocation = jest.fn();
   const clearLocation = jest.fn();

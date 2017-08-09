@@ -23,24 +23,12 @@ export const locationStateReducer: Reducer<LocationState> = (
       return Object.assign({}, state, {
         address: '',
         cachedCity: '',
-        fetchingLocation: false,
-
+        uiState: LocationUiState.ENTERING_LOCATION
       });
     case 'LOCATION_SET':
       return Object.assign({}, state, {
-        address: action.payload
-      });
-    case 'INVALID_ADDRESS':
-      return Object.assign({}, state, {
-        invalidAddress: action.payload
-      });
-    case 'FETCHING_LOCATION':
-      return Object.assign({}, state, {
-        fetchingLocation: action.payload
-      });
-    case 'VALIDATING_LOCATION':
-      return Object.assign({}, state, {
-        validatingLocation: action.payload
+        address: action.payload,
+        uiState: LocationUiState.LOCATION_FOUND
       });
     case 'CACHE_CITY':
       return Object.assign({}, state, {
