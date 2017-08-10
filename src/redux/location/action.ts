@@ -6,6 +6,7 @@ export type LocationActionType =
   'LOCATION_CLEAR' |
   'LOCATION_SET' |
   'CACHE_CITY' |
+  'NEW_LOCATION_LOOKUP' |
   'SET_UI_STATE'
 ;
 
@@ -31,4 +32,9 @@ export interface CacheCityAction extends LocationAction {
 export interface SetUiStateAction extends LocationAction {
   type: 'SET_UI_STATE';
   payload: LocationUiState;
+}
+
+export interface NewLocationLookupAction extends LocationAction {
+  type: 'NEW_LOCATION_LOOKUP';
+  payload: string;
 }

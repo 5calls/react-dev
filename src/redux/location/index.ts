@@ -3,4 +3,4 @@ export { LocationAction, LocationActionType, LocationClearedAction,
   CacheCityAction } from './action';
 export { setLocation, clearAddress, setCachedCity, setUiState} from './actionCreator';
 export { LocationState, locationStateReducer } from './reducer';
-export { setAddress } from './asyncActionCreator';
+export { setAddress, newLocationLookup } from './asyncActionCreator';

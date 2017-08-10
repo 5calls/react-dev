@@ -41,9 +41,7 @@ export const getApiData = (address: string = '') => {
       .then((response: ApiData) => {
         // console.log('getApiData then()');
         if (response.invalidAddress) {
-          dispatch(setUiState(LocationUiState.LOCATION_ERROR));
-        } else {
-          console.log('SET UI STATE TO SOMETHING ELSE???')
+          throw new Error('Invalid address found');
         }
         const normalizedAddress = response.normalizedLocation as string;
         dispatch(setCachedCity(normalizedAddress));
@@ -53,6 +51,7 @@ export const getApiData = (address: string = '') => {
         dispatch(apiErrorMessageActionCreator(error.message));
         // tslint:disable-next-line:no-console
         console.error(`getIssue error: ${error.message}`, error);
+        throw error;
       });
   };
 };

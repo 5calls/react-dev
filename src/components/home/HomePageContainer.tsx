@@ -2,7 +2,7 @@ import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectIssueActionCreator } from '../../redux/callState';
 import { ApplicationState } from '../../redux/root';
-import { setAddress, clearAddress } from '../../redux/location';
+import { newLocationLookup, clearAddress } from '../../redux/location';
 import { LocationState } from '../../redux/location/reducer';
 import { HomePage } from './index';
 import { Issue } from '../../common/model';
@@ -11,7 +11,7 @@ import { RouteComponentProps } from 'react-router-dom';
 /*
   The Container Component(such as this one) exist to connect a react component to the Redux store.
   The pattern that the 5Calls app is using is to have 1 container component for each
-  "page".  
+  "page".
   A page is represented by a route as defined in the /src/index.tsx file.
   The "page" that this container component provides a connection to Redux for is "Home"
   The route is:
@@ -19,19 +19,19 @@ import { RouteComponentProps } from 'react-router-dom';
   A container maps data from Redux through the "mapStateToProps" method
           and maps actions from Redux through the "mapDispatchToProps" method
 
-  In order to maintain type safety in the container and its children, TypeScript requires 
-    that you define both the same data and action (function) properties and types in the 
+  In order to maintain type safety in the container and its children, TypeScript requires
+    that you define both the same data and action (function) properties and types in the
     container (HomePageContainer) and its first child (HomePage). The data-related properties
-    used in mapStateToProps() are called StateProps, while the action-related properties 
-    used in mapDispatchToProps() are called DispatchProps. In the children components, these are called 
+    used in mapStateToProps() are called StateProps, while the action-related properties
+    used in mapDispatchToProps() are called DispatchProps. In the children components, these are called
     "Props" since they are standard React props.
 
   In this container component, we will pull all of the data/actions(functions) off of Redux that this Page
-    (its child components) need and we will pass them down to them through their props.  We call 
+    (its child components) need and we will pass them down to them through their props.  We call
     the Page and it child components the Component Hierarchy. This leads to passing data through multiple
     components.  However, the benefit of this pattern is that we are not access the "global" Redux state
     from everywhere in the application.  We have one entry point to it for every page, at the top level of the
-    component hierarchy.  
+    component hierarchy.
 */
 
 interface OwnProps extends RouteComponentProps<{ id: string }> { }
@@ -51,7 +51,7 @@ interface StateProps {
 */
 interface DispatchProps {
 
-  // This defines a method signature that is going to be passed into the child component 
+  // This defines a method signature that is going to be passed into the child component
   readonly onSelectIssue: (issueId: string) => void;
   readonly setLocation: (location: string) => void;
   readonly clearLocation: () => void;
@@ -77,7 +77,7 @@ function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProp
   };
 }
 
-/* 
+/*
   This is the standard method that takes the Redux store's dispatch method and allows
  us to pass actions(functions, actionCreators are other words for this) to it and have it
  map to the child component.
@@ -92,26 +92,26 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
             HomePage -> Layout -> Sidebar -> IssueList -> IssueListItem
         When an IssueListItem is clicked on, this method will be called and this action
             will be dispatched.
-        See /src/redux/callState/actionCreator.ts for next step in Redux Data Flow      
+        See /src/redux/callState/actionCreator.ts for next step in Redux Data Flow
       */
       onSelectIssue: selectIssueActionCreator,
-      setLocation: setAddress,
+      setLocation: newLocationLookup,
       clearLocation: clearAddress,
     },
     dispatch
   );
 };
 
-/* This is the key "magic" function that "connects" this redux container component to the child 
+/* This is the key "magic" function that "connects" this redux container component to the child
      component.  It is also where you often get errors.
     The connect<StateProps, DispatchProps, OwnProps> function will "merge" the interfaces
     that you've defined as generic type parameters.
       e.g. in this case <StateProps, DispatchProps, OwnProps>
 
-    Therefore, the "HomePage" component must have defined its "Props" to match have 
+    Therefore, the "HomePage" component must have defined its "Props" to match have
     all of the properties that this merged interface will have.  Otherwise, you will get
-    a cryptic error message. 
- 
+    a cryptic error message.
+
     There are many signatures for this connect function, as you'll see in our other containers in this
     app.  You can click F12(VSCode) on it and try it will take you to the TypeScript definition.
 */
