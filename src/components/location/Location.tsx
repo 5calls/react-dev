@@ -25,7 +25,7 @@ export class Location extends React.Component<Props, State> {
   }
 
   componentWillReceiveProps(nextProps: Props) {
-    console.log('Location.componentWillReceiveProps()', nextProps);
+    // console.log('Location.componentWillReceiveProps()', nextProps);
     this.setState(this.setStateFromProps(nextProps));
   }
 
@@ -48,7 +48,7 @@ export class Location extends React.Component<Props, State> {
 
   getWidgetTitle() {
     let title = <span/>;
-    console.log(`UI State: ${this.state.uiState}`)
+    // console.log(`UI State: ${this.state.uiState}`)
     switch (this.state.uiState) {
       case LocationUiState.LOCATION_FOUND:
         title = <p id="locationMessage">{this.props.t('location.yourLocation')} <span>{this.state.location}</span></p>;

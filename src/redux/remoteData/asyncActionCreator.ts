@@ -70,7 +70,7 @@ export const fetchCallCount = () => {
 export const fetchLocationByIP = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
-    // console.log('fetchLocationByIP start');
+    console.log('fetchLocationByIP() start');
     clearTimeout(setTimeoutHandle);
     // TODO: Is this necessary???
     // check to see if state contains an address already,
@@ -80,7 +80,7 @@ export const fetchLocationByIP = () => {
     dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
     return getLocationByIP()
         .then((response: IpInfoData) => {
-          // console.log('fetchLocationByIP then()');
+          console.log('fetchLocationByIP then()');
           const location = response.loc;
           dispatch(getApiData(location))
           .then(() => {
@@ -101,31 +101,28 @@ export const fetchBrowserGeolocation = () => {
     // After GEOLOCATION_TIMEOUT + 1 second, try IP-based location,
     // but let browser-based continue. This timeout is cleared after
     // either geolocation or ipinfo.io location succeeds.
-    setTimeoutHandle = setTimeout(geolocationTimeoutHandler(dispatch, getState), GEOLOCATION_TIMEOUT + 1000);
     dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
+    // tslint:disable-next-line:no-shadowed-variable
+    setTimeoutHandle = setTimeout(() => dispatch(fetchLocationByIP()), GEOLOCATION_TIMEOUT + 1000);
+    console.log('fetchBrowserGeolocation() start');
     getBrowserGeolocation()
       .then(location => {
         if (location.latitude && location.longitude) {
           const loc = `${location.latitude} ${location.longitude}`;
+          console.log('fetchBrowserGeolocation() location found', loc);
           dispatch(getApiData(loc));
           clearTimeout(setTimeoutHandle);
         } else {
-          // console.log('fetchGeolocation() no location found. Clearing address');
-          fetchLocationByIP();
+          console.log('calling fetchBrowserGeolocation()');
+          // fetchLocationByIP();
         }
       })
       .catch(e => {
         // tslint:disable-next-line:no-console
         console.error('Problem getting browser geolocation', e);
-        fetchLocationByIP();
+        // fetchLocationByIP();
       });
   };
-};
-
-const geolocationTimeoutHandler = (dispatch, getState) => {
-  // tslint:disable-next-line:no-console
-  console.debug('geolocationTimeoutHandler() called');
-  fetchLocationByIP()(dispatch, getState);
 };
 
 export const startup = () => {
