@@ -18,17 +18,11 @@ export const getIssuesIfNeeded = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
     const state: ApplicationState = getState();
-    let location: string = '';
-    if (state.locationState.address) {
-      location = state.locationState.address;
-    } else if (state.locationState.address) {
-      location = state.locationState.cachedCity;
-    }
-
-    // only make the api call if it hasn't already been made
-    // This method is primarily for when a user has navigated directly to a route with an issue id
+    // Only make the api call if it hasn't already been made
+    // This method is primarily for when a user has navigated
+    // directly to a route with an issue id
     if (!state.remoteDataState.issues || state.remoteDataState.issues.length === 0) {
-      dispatch(getApiData());
+      startup();
     }
   };
 };
@@ -77,7 +71,6 @@ export const fetchCallCount = () => {
 export const fetchLocationByIP = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
-    console.log('fetchLocationByIP() start');
     clearTimeout(setTimeoutHandle);
     // TODO: Is this necessary???
     // check to see if state contains an address already,
@@ -87,7 +80,6 @@ export const fetchLocationByIP = () => {
     dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
     return getLocationByIP()
         .then((response: IpInfoData) => {
-          console.log('fetchLocationByIP then()');
           dispatch(setLocationFetchType(LocationFetchType.IP_INFO));
           const location = response.loc;
           dispatch(getApiData(location))
@@ -112,24 +104,21 @@ export const fetchBrowserGeolocation = () => {
     dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
     // tslint:disable-next-line:no-shadowed-variable
     setTimeoutHandle = setTimeout(() => dispatch(fetchLocationByIP()), GEOLOCATION_TIMEOUT + 1000);
-    console.log('fetchBrowserGeolocation() start');
     getBrowserGeolocation()
       .then(location => {
         if (location.latitude && location.longitude) {
           dispatch(setLocationFetchType(LocationFetchType.BROWSER_GEOLOCATION));
           const loc = `${location.latitude} ${location.longitude}`;
-          console.log('fetchBrowserGeolocation() location found', loc);
           dispatch(getApiData(loc));
           clearTimeout(setTimeoutHandle);
         } else {
-          console.log('calling fetchBrowserGeolocation()');
-          // fetchLocationByIP();
+          fetchLocationByIP();
         }
       })
       .catch(e => {
         // tslint:disable-next-line:no-console
         console.error('Problem getting browser geolocation', e);
-        // fetchLocationByIP();
+        fetchLocationByIP();
       });
   };
 };
@@ -139,10 +128,9 @@ export const startup = () => {
           getState: () => ApplicationState) => {
         dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
         const state = getState();
-        console.log('State in startup()', state);
+        // console.log('State in startup()', state);
         const loc = state.locationState.address || state.locationState.cachedCity;
         if (loc) {
-          console.log('Using location stored in state/localStorage');
           dispatch(getApiData(loc))
             .then(() => {
               setLocationFetchType(LocationFetchType.CACHED_ADDRESS);
