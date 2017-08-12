@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
-import { ReportData, IpInfoData, ApiData } from './../../common/model';
+import { ApiData, IpInfoData, LocationFetchType, ReportData } from './../../common/model';
 import { get5CallsApiData, getReportData } from '../../services/apiServices';
-import { setCachedCity, setLocation } from '../location/index';
+import { setCachedCity, setLocation, setLocationFetchType } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
 import { issuesActionCreator, callCountActionCreator, apiErrorMessageActionCreator } from './index';
 import { ApplicationState } from '../root';
@@ -12,7 +12,7 @@ import { setUiState } from './../location';
  * Timer for calling fetchLocationByIP() if
  * fetchBrowserGeolocation() fails or times out.
  */
-let setTimeoutHandle = 0; //
+let setTimeoutHandle; //
 
 export const getIssuesIfNeeded = () => {
   return (dispatch: Dispatch<ApplicationState>,
@@ -39,13 +39,20 @@ export const getApiData = (address: string = '') => {
     // console.log('getApiData start');
     return get5CallsApiData(address)
       .then((response: ApiData) => {
-        // console.log('getApiData then()');
+        // console.log('getApiData then() response', response);
         if (response.invalidAddress) {
           throw new Error('Invalid address found');
         }
         const normalizedAddress = response.normalizedLocation as string;
         dispatch(setCachedCity(normalizedAddress));
-        dispatch(setLocation(normalizedAddress));
+        const state = getState();
+        // do not store geolocation
+        if (state.locationState.locationFetchType === LocationFetchType.BROWSER_GEOLOCATION) {
+          dispatch(setLocation(normalizedAddress));
+        } else {
+          dispatch(setLocation(address));
+        }
+        dispatch(setLocationFetchType(LocationFetchType.CACHED_ADDRESS));
         dispatch(issuesActionCreator(response.issues));
       }).catch((error) => {
         dispatch(apiErrorMessageActionCreator(error.message));
@@ -81,6 +88,7 @@ export const fetchLocationByIP = () => {
     return getLocationByIP()
         .then((response: IpInfoData) => {
           console.log('fetchLocationByIP then()');
+          dispatch(setLocationFetchType(LocationFetchType.IP_INFO));
           const location = response.loc;
           dispatch(getApiData(location))
           .then(() => {
@@ -108,6 +116,7 @@ export const fetchBrowserGeolocation = () => {
     getBrowserGeolocation()
       .then(location => {
         if (location.latitude && location.longitude) {
+          dispatch(setLocationFetchType(LocationFetchType.BROWSER_GEOLOCATION));
           const loc = `${location.latitude} ${location.longitude}`;
           console.log('fetchBrowserGeolocation() location found', loc);
           dispatch(getApiData(loc));
@@ -129,9 +138,18 @@ export const startup = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
         dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
-        dispatch(fetchBrowserGeolocation());
+        const state = getState();
+        console.log('State in startup()', state);
+        const loc = state.locationState.address || state.locationState.cachedCity;
+        if (loc) {
+          console.log('Using location stored in state/localStorage');
+          dispatch(getApiData(loc))
+            .then(() => {
+              setLocationFetchType(LocationFetchType.CACHED_ADDRESS);
+            });
+        } else {
+          dispatch(fetchBrowserGeolocation());
+        }
         dispatch(fetchCallCount());
-        // dispatch(setFetchingLocation(false));
-        // dispatch(setValidatingLocation(false));
       };
 };

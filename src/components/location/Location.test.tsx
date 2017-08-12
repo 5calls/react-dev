@@ -3,13 +3,14 @@ import { shallow } from 'enzyme';
 import i18n from '../../services/i18n';
 import { Location } from './index';
 import { LocationState } from '../../redux/location/reducer';
-import { LocationUiState } from '../../common/model';
+import { LocationFetchType, LocationUiState } from '../../common/model';
 
 test('Location component should show location prop value if locationState.address is defined', () => {
   const locationState: LocationState = {
     address: '1234',
     cachedCity: '',
-    uiState: LocationUiState.LOCATION_FOUND
+    uiState: LocationUiState.LOCATION_FOUND,
+    locationFetchType: LocationFetchType.BROWSER_GEOLOCATION
   };
   const setLocation = jest.fn();
   const clearLocation = jest.fn();
@@ -30,7 +31,8 @@ test('Location component should show location prop value if locationState.cached
   const locationState: LocationState = {
     address: '',
     cachedCity: 'Cached Address',
-    uiState: LocationUiState.LOCATION_FOUND
+    uiState: LocationUiState.LOCATION_FOUND,
+    locationFetchType: LocationFetchType.BROWSER_GEOLOCATION
   };
   const setLocation = jest.fn();
   const clearLocation = jest.fn();
@@ -51,7 +53,8 @@ test('Should show "Getting your location" label if fetching location', () => {
   const locationState: LocationState = {
     address: '1234',
     cachedCity: '',
-    uiState: LocationUiState.FETCHING_LOCATION
+    uiState: LocationUiState.FETCHING_LOCATION,
+    locationFetchType: LocationFetchType.CACHED_ADDRESS
   };
 
   const setLocation = jest.fn();
@@ -69,11 +72,12 @@ test('Should show "Getting your location" label if fetching location', () => {
   expect(label).toBeDefined();
 });
 
-test('Location component setLocation() should be called upon submit if isLoading=true', () => {
+test('Location component setLocation() should be called upon submit when entering location', () => {
   const locationState: LocationState = {
     address: '1234',
     cachedCity: '',
-    uiState: LocationUiState.FETCHING_LOCATION
+    uiState: LocationUiState.ENTERING_LOCATION,
+    locationFetchType: LocationFetchType.CACHED_ADDRESS
   };
 
   const setLocation = jest.fn();
@@ -98,7 +102,8 @@ test('Location component clearLocation() should be called upon submit when enter
   const locationState: LocationState = {
     address: 'Foobar USA',
     cachedCity: '',
-    uiState: LocationUiState.ENTERING_LOCATION
+    uiState: LocationUiState.LOCATION_FOUND,
+    locationFetchType: LocationFetchType.CACHED_ADDRESS
   };
   const setLocation = jest.fn();
   const clearLocation = jest.fn();
@@ -120,7 +125,8 @@ test('If address is invalid, show proper message and form with input and "Go" bu
   const locationState: LocationState = {
     address: 'Foobar USA',
     cachedCity: '',
-    uiState: LocationUiState.LOCATION_ERROR
+    uiState: LocationUiState.LOCATION_ERROR,
+    locationFetchType: LocationFetchType.CACHED_ADDRESS
   };
   const setLocation = jest.fn();
   const clearLocation = jest.fn();

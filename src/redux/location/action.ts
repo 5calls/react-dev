@@ -1,13 +1,14 @@
 import { Action } from 'redux';
 import { LocationAction } from './action';
-import { LocationUiState } from '../../common/model';
+import { LocationFetchType, LocationUiState } from '../../common/model';
 
 export type LocationActionType =
   'LOCATION_CLEAR' |
   'LOCATION_SET' |
   'CACHE_CITY' |
   'NEW_LOCATION_LOOKUP' |
-  'SET_UI_STATE'
+  'SET_UI_STATE' |
+  'SET_LOCATION_FETCH_TYPE'
 ;
 
 export interface LocationAction extends Action {
@@ -32,6 +33,11 @@ export interface CacheCityAction extends LocationAction {
 export interface SetUiStateAction extends LocationAction {
   type: 'SET_UI_STATE';
   payload: LocationUiState;
+}
+
+export interface SetLocationFetchTypeAction extends LocationAction {
+  type: 'SET_LOCATION_FETCH_TYPE';
+  payload: LocationFetchType;
 }
 
 export interface NewLocationLookupAction extends LocationAction {

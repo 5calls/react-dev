@@ -4,7 +4,7 @@ import * as moxios from 'moxios';
 import { RemoteDataActionType } from './action';
 import { fetchCallCount, getApiData, fetchLocationByIP } from './index';
 import { ApplicationState } from './../root';
-import { DefaultIssue, IpInfoData, ApiData } from './../../common/model';
+import { ApiData, DefaultIssue, IpInfoData, LocationFetchType, LocationUiState } from './../../common/model';
 import * as Constants from '../../common/constants';
 
 const middlewares = [thunk];
@@ -18,22 +18,21 @@ afterEach(() => {
   moxios.uninstall();
 });
 
-test('getApiData() action creator ...', () => {
+test('getApiData() action creator functions correctly', () => {
   const address = 'New Gloucester, ME';
   const issueName = 'Issue';
   const apiData: ApiData = getApiDataResponse(address, issueName);
   moxios.stubRequest(`${Constants.ISSUES_API_URL}${encodeURIComponent(address)}`,
                      { response: apiData });
 
-//   moxios.wait(() => {
-//   const request = moxios.requests.mostRecent();
-//   request.respondWith({
-//     status: 200,
-//     response: { mockResponse },
-//     });
-//   });
-
   const initialState = {} as ApplicationState;
+  const locationState = {
+    address: '',
+    cachedCity: '',
+    uiState: LocationUiState.FETCHING_LOCATION,
+    locationFetchType: LocationFetchType.CACHED_ADDRESS
+  };
+  initialState.locationState = locationState;
   const store = mockStore(initialState);
   store.dispatch(getApiData(address))
     .then(() => {
@@ -49,7 +48,7 @@ const getApiDataResponse = (address, issueName): ApiData => {
 
   const mockResponse: ApiData = {
     splitDistrict: false,
-    invalidAddress: true,
+    invalidAddress: false,
     normalizedLocation: address,
     divisions: [],
     issues: [mockIssue]
@@ -70,18 +69,7 @@ test.skip('fetchLocationByIP() action creator works correctly', () => {
     ip: '127.0.0.1',
     region: 'New England'
   };
-  // moxios.stubOnce('GET', /json/, {response: data});
-  // const apiData: ApiData = getApiDataResponse(data.loc, data.city);
-  // moxios.stubOnce('GET', `${Constants.ISSUES_API_URL}${encodeURIComponent(data.loc)}`, { response: apiData });
   moxios.stubRequest(/json/, { response: data });
-  const apiData: ApiData = getApiDataResponse(data.loc, data.city);
-  // moxios.stubRequest(`${Constants.ISSUES_API_URL}${encodeURIComponent(data.loc)}`, { response: apiData });
-  moxios.wait(() => {
-    moxios.stubOnce('GET', `${Constants.ISSUES_API_URL}${encodeURIComponent(data.loc)}`, { response: apiData })
-    // .then(() => {
-
-    // });
-  });
   const initialState = {} as ApplicationState;
   // initialState.locationState = {address: ''};
   const store = mockStore(initialState);

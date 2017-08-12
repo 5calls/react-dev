@@ -66,9 +66,9 @@ export interface UserStat {
  * 3. IP_INFO - address obtained from ipinfo.io API
  */
 export enum LocationFetchType {
-  CACHED_ADDRESS, // 'address' in Choo version
-  BROWSER_GEOLOCATION, // 'browserGeolocation' in Choo version
-  IP_INFO // 'ipAddress' in Choo version
+  CACHED_ADDRESS = 'CACHED_ADDRESS', // 'address' in Choo version
+  BROWSER_GEOLOCATION = 'BROWSER_GEOLOCATION', // 'browserGeolocation' in Choo version
+  IP_INFO = 'IP_INFO' // 'ipAddress' in Choo version
 }
 
 /**
