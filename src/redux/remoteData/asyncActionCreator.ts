@@ -39,13 +39,7 @@ export const getApiData = (address: string = '') => {
         }
         const normalizedAddress = response.normalizedLocation as string;
         dispatch(setCachedCity(normalizedAddress));
-        const state = getState();
-        // do not store geolocation
-        if (state.locationState.locationFetchType === LocationFetchType.BROWSER_GEOLOCATION) {
-          dispatch(setLocation(normalizedAddress));
-        } else {
-          dispatch(setLocation(address));
-        }
+        dispatch(setLocation(address));
         dispatch(setLocationFetchType(LocationFetchType.CACHED_ADDRESS));
         dispatch(issuesActionCreator(response.issues));
       }).catch((error) => {
@@ -72,11 +66,6 @@ export const fetchLocationByIP = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
     clearTimeout(setTimeoutHandle);
-    // TODO: Is this necessary???
-    // check to see if state contains an address already,
-    // which means that fetchGeolocation() has been successful
-    // const state: ApplicationState = getState();
-    // if (!state.locationState.address) {
     dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
     return getLocationByIP()
         .then((response: IpInfoData) => {

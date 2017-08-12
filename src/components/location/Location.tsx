@@ -25,7 +25,6 @@ export class Location extends React.Component<Props, State> {
   }
 
   componentWillReceiveProps(nextProps: Props) {
-    // console.log('Location.componentWillReceiveProps()', nextProps);
     this.setState(this.setStateFromProps(nextProps));
   }
 
@@ -37,7 +36,7 @@ export class Location extends React.Component<Props, State> {
    * @returns {State}
    */
   setStateFromProps(props: Props): State {
-    let location = props.locationState.address || props.locationState.cachedCity;
+    let location = props.locationState.cachedCity || props.locationState.address ;
     let uiState = props.locationState.uiState;
 
     return {
@@ -48,7 +47,6 @@ export class Location extends React.Component<Props, State> {
 
   getWidgetTitle() {
     let title = <span/>;
-    // console.log(`UI State: ${this.state.uiState}`)
     switch (this.state.uiState) {
       case LocationUiState.LOCATION_FOUND:
         title = <p id="locationMessage">{this.props.t('location.yourLocation')} <span>{this.state.location}</span></p>;
@@ -66,19 +64,6 @@ export class Location extends React.Component<Props, State> {
         break;
     }
     return title;
-    // // ADDRESS OR CACHED_CITY
-    // if (this.state.location) {
-    //   return <p id="locationMessage">{this.props.t('location.yourLocation')} <span>{this.state.location}</span></p>;
-    // // FETCHING OR VALIDATING
-    // } else if (this.state.isLoading) {
-    //   return <p id="locationMessage" className="loadingAnimation">{this.props.t('location.gettingYourLocation')}</p>;
-    // // INVALID_ADDRESS
-    // } else if (!this.state.isValid) {
-    //   return <p id="locationMessage" role="alert">{this.props.t('location.invalidAddress')}</p>;
-    // // CHOOSE LOCATION
-    // } else {
-    //   return <p id="locationMessage">{this.props.t('location.chooseALocation')}</p>;
-    // }
   }
 
   getWidget() {
@@ -91,7 +76,6 @@ export class Location extends React.Component<Props, State> {
         const enterLocation = (e) => {
           e.preventDefault();
           this.props.clearLocation();
-          // this.setState({uiState: LocationUiState.ENTERING_LOCATION});
         };
         widget = <div><button onClick={enterLocation}>{this.props.t('location.changeLocation')}</button></div>;
         break;
@@ -100,14 +84,10 @@ export class Location extends React.Component<Props, State> {
         const submitAddress = (e) => {
           e.preventDefault();
           const newLocation = e.target.elements.address.value;
-          // this.setState({uiState: LocationUiState.FETCHING_LOCATION});
           this.props.setLocation(newLocation);
         };
         widget = (
           <div>
-            {/* TODO:
-            1. Set className to hidden when fetching location
-            */}
             <form onSubmit={submitAddress} >
               <input
                 type="text"
@@ -127,39 +107,6 @@ export class Location extends React.Component<Props, State> {
         break;
     }
     return widget;
-    // if (!this.state.isLoading && this.state.isValid && this.state.location) {
-    //   const enterLocation = (e) => {
-    //     e.preventDefault();
-    //     this.props.clearLocation();
-    //   };
-    //   return <div><button onClick={enterLocation}>{this.props.t('location.changeLocation')}</button></div>;
-    // } else {
-    //   const submitAddress = (e) => {
-    //     e.preventDefault();
-    //     const newLocation = e.target.elements.address.value;
-    //     this.props.setLocation(newLocation);
-    //   };
-    //   return (
-    //     <div>
-    //       {/* TODO:
-    //       1. Set className to hidden when fetching location
-    //       */}
-    //       <form onSubmit={submitAddress} className={this.state.isLoading ? 'hidden' : ''}>
-    //         <input
-    //           type="text"
-    //           autoFocus={true}
-    //           id="address"
-    //           name="address"
-    //           aria-labelledby="locationMessage"
-    //           aria-invalid={!this.state.isValid}
-    //           disabled={this.state.isLoading}
-    //           placeholder="Enter an address or zip code"
-    //         />
-    //         <button>{this.props.t('common.go')}</button>
-    //       </form>
-    //     </div>
-    //   );
-    // }
   }
 
   render() {

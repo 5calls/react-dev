@@ -19,7 +19,7 @@ export default (initialState) => {
     initialState,
     compose(
       applyMiddleware(...middlewares),
-      autoRehydrate({log: true}),
+      autoRehydrate({log: false}), // set log:true for debugging
       // This added for Redux Dev Tools - install Chrome or Firefox extension to use
       // tslint:disable-next-line:max-line-length no-string-literal
       typeof window === 'object' && typeof window['devToolsExtension'] !== 'undefined' ? window['devToolsExtension']() : (f) => f
