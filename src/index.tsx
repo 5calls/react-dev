@@ -10,7 +10,7 @@ import i18n from './services/i18n';
 
 import registerServiceWorker from './registerServiceWorker';
 import { HomePageContainer } from './components/home';
-import { AboutPageContainer } from './components/about';
+import { AboutPage } from './components/about';
 import { FaqPageContainer } from './components/faq';
 import { DonePageContainer } from './components/done';
 import { CallPageContainer } from './components/call';
@@ -33,7 +33,7 @@ ReactDOM.render(
           <Route path="/issue/:id" exact={true} component={CallPageContainer} />
           <Route path="/done/:id" exact={true} component={DonePageContainer} />
           <Route path="/faq" exact={true} component={FaqPageContainer} />
-          <Route path="/about" exact={true} component={AboutPageContainer} />
+          <Route path="/about" exact={true} component={AboutPage} />
           <Route path="*" component={HomePageContainer} />
         </Switch>
       </ConnectedRouter>

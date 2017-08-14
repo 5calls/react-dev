@@ -1,8 +1,7 @@
 import * as React from 'react';
 import i18n from '../../services/i18n';
-import { LocationState } from '../../redux/location/reducer';
 import { DoneTranslatable } from './index';
-import { Layout } from '../shared/index';
+import { LayoutContainer } from '../layout';
 import { Issue } from '../../common/model';
 import { RouteComponentProps } from 'react-router-dom';
 
@@ -10,16 +9,10 @@ interface RouteProps extends RouteComponentProps<{ id: string }> { }
 
 interface Props extends RouteProps {
   readonly issues: Issue[];
-  readonly completedIssueIds: string[];
   readonly currentIssue: Issue;
   readonly totalCount: number;
   readonly onSelectIssue: (issueId: string) => Function;
   readonly onGetIssuesIfNeeded: () => Function;
-
-  // location widget related
-  readonly locationState: LocationState;
-  readonly setLocation: (location: string) => void;
-  readonly clearLocation: () => void;
 }
 
 export interface State {
@@ -53,15 +46,7 @@ class DonePage extends React.Component<Props, State> {
 
   render() {
     return (
-      <Layout
-        issues={this.props.issues}
-        completedIssueIds={this.props.completedIssueIds}
-        currentIssue={this.props.currentIssue}
-        onSelectIssue={this.props.onSelectIssue}
-        locationState={this.props.locationState}
-        setLocation={this.props.setLocation}
-        clearLocation={this.props.clearLocation}
-      >
+      <LayoutContainer>
         {this.props.currentIssue &&
           <DoneTranslatable
             currentIssue={this.props.currentIssue}
@@ -69,7 +54,7 @@ class DonePage extends React.Component<Props, State> {
             t={i18n.t}
           />
         }
-      </Layout>
+      </LayoutContainer>
     );
   }
 }

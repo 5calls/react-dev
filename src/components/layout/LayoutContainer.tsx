@@ -4,14 +4,18 @@ import { selectIssueActionCreator } from '../../redux/callState';
 import { ApplicationState } from '../../redux/root';
 import { newLocationLookup, clearAddress } from '../../redux/location';
 import { LocationState } from '../../redux/location/reducer';
-import { AboutPage } from './index';
+import { Layout } from './index';
 import { Issue } from '../../common/model';
 import { RouteComponentProps } from 'react-router-dom';
 
-interface OwnProps extends RouteComponentProps<{ id: string }> { }
+interface OwnProps extends RouteComponentProps<{ id: string }> {
+  readonly children?: {};
+}
 
 interface StateProps {
+  readonly children?: {};
   readonly issues: Issue[];
+  readonly currentIssue?: Issue;
   readonly completedIssueIds: string[];
   readonly locationState: LocationState;
 }
@@ -23,10 +27,17 @@ interface DispatchProps {
 }
 
 function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProps {
+  let currentIssue: Issue | undefined = undefined;
+  if (state.remoteDataState.issues) {
+    currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.match.params.id);
+  }
+
   return {
     issues: state.remoteDataState.issues,
+    currentIssue: currentIssue,
     completedIssueIds: state.callState.completedIssueIds,
     locationState: state.locationState,
+    children: ownProps.children
   };
 }
 
@@ -40,4 +51,4 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
     dispatch);
 };
 
-export default connect<StateProps, DispatchProps, OwnProps>(mapStateToProps, mapDispatchToProps)(AboutPage);
+export default connect<StateProps, DispatchProps, OwnProps>(mapStateToProps, mapDispatchToProps)(Layout);
