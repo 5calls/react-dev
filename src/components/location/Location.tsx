@@ -2,6 +2,7 @@ import * as React from 'react';
 import { LocationState } from '../../redux/location/reducer';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
+import { LocationUiState } from '../../common/model';
 
 interface Props {
   readonly locationState: LocationState;
@@ -13,8 +14,7 @@ interface Props {
 // this will be needed
 interface State {
   location: string;
-  isValid: boolean;
-  isLoading: boolean;
+  uiState: LocationUiState;
 }
 
 export class Location extends React.Component<Props, State> {
@@ -22,6 +22,10 @@ export class Location extends React.Component<Props, State> {
     super(props);
     // set initial state
     this.state = this.setStateFromProps(props);
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    this.setState(this.setStateFromProps(nextProps));
   }
 
   /**
@@ -32,73 +36,84 @@ export class Location extends React.Component<Props, State> {
    * @returns {State}
    */
   setStateFromProps(props: Props): State {
-    let location = props.locationState.address || props.locationState.cachedCity;
-    let isValid = props.locationState.invalidAddress;
-    let isLoading = props.locationState.fetchingLocation || props.locationState.validatingLocation;
+    let location = props.locationState.cachedCity || props.locationState.address ;
+    let uiState = props.locationState.uiState;
 
     return {
       location,
-      isValid,
-      isLoading
+      uiState
     };
   }
 
-  getPretextWidget() {
-    if (this.state.location) {
-      return <p id="locationMessage">{this.props.t('location.yourLocation')} <span>{this.state.location}</span></p>;
+  getWidgetTitle() {
+    let title = <span/>;
+    switch (this.state.uiState) {
+      case LocationUiState.LOCATION_FOUND:
+        title = <p id="locationMessage">{this.props.t('location.yourLocation')} <span>{this.state.location}</span></p>;
+        break;
+      case LocationUiState.FETCHING_LOCATION:
+        title = <p id="locationMessage" className="loadingAnimation">{this.props.t('location.gettingYourLocation')}</p>;
+        break;
+      case LocationUiState.LOCATION_ERROR:
+        title = <p id="locationMessage" role="alert">{this.props.t('location.invalidAddress')}</p>;
+        break;
+      case LocationUiState.ENTERING_LOCATION:
+        title = <p id="locationMessage">{this.props.t('location.chooseALocation')}</p>;
+        break;
+      default:
+        break;
     }
-
-    if (this.state.isLoading) {
-      return <p id="locationMessage" className="loadingAnimation">{this.props.t('location.gettingYourLocation')}</p>;
-    }
-    if (!this.state.isValid) {
-      return <p id="locationMessage" role="alert">{this.props.t('location.invalidAddress')}</p>;
-    }
-
-    return <p id="locationMessage">{this.props.t('location.chooseALocation')}</p>;
+    return title;
   }
 
-  getInputWidget() {
-    if (!this.state.isLoading && this.state.isValid && this.state.location) {
-      const enterLocation = (e) => {
-        e.preventDefault();
-        this.props.clearLocation();
-      };
-      return <div><button onClick={enterLocation}>{this.props.t('changeLocation')}</button></div>;
-    } else {
-      const submitAddress = (e) => {
-        e.preventDefault();
-        const newLocation = e.target.elements.address.value;
-        this.props.setLocation(newLocation);
-      };
-      return (
-        <div>
-          {/* TODO:
-          1. Set className to hidden when fetching location
-          */}
-          <form onSubmit={submitAddress} className={this.state.isLoading ? 'hidden' : ''}>
-            <input
-              type="text"
-              autoFocus={true}
-              id="address"
-              name="address"
-              aria-labelledby="locationMessage"
-              aria-invalid={!this.state.isValid}
-              disabled={this.state.isLoading}
-              placeholder="Enter an address or zip code"
-            />
-            <button>{this.props.t('common.go')}</button>
-          </form>
-        </div>
-      );
+  getWidget() {
+    let widget = <span/>;
+    switch (this.state.uiState) {
+      case LocationUiState.FETCHING_LOCATION:
+        // No widget in this case
+        break;
+      case LocationUiState.LOCATION_FOUND:
+        const enterLocation = (e) => {
+          e.preventDefault();
+          this.props.clearLocation();
+        };
+        widget = <div><button onClick={enterLocation}>{this.props.t('location.changeLocation')}</button></div>;
+        break;
+      case LocationUiState.LOCATION_ERROR:
+      case LocationUiState.ENTERING_LOCATION:
+        const submitAddress = (e) => {
+          e.preventDefault();
+          const newLocation = e.target.elements.address.value;
+          this.props.setLocation(newLocation);
+        };
+        widget = (
+          <div>
+            <form onSubmit={submitAddress} >
+              <input
+                type="text"
+                autoFocus={true}
+                id="address"
+                name="address"
+                aria-labelledby="locationMessage"
+                aria-invalid={this.state.uiState === LocationUiState.LOCATION_ERROR}
+                placeholder="Enter an address or zip code"
+              />
+              <button>{this.props.t('common.go')}</button>
+            </form>
+          </div>
+          );
+        break;
+      default:
+        break;
     }
+    return widget;
   }
 
   render() {
     return (
       <div>
-        {this.getPretextWidget()}
-        {this.getInputWidget()}
+        {this.getWidgetTitle()}
+        {this.getWidget()}
       </div>
     );
   }

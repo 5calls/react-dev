@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { Issue } from '../../common/model';
 import { CallPage } from './index';
 import { ApplicationState } from '../../redux/root';
-import { setAddress, clearAddress } from '../../redux/location';
+import { newLocationLookup, clearAddress } from '../../redux/location';
 import { LocationState } from '../../redux/location/reducer';
 import { getIssuesIfNeeded } from '../../redux/remoteData';
 import { CallState, OutcomeData, submitOutcome, selectIssueActionCreator } from '../../redux/callState';
@@ -47,7 +47,7 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
       onSubmitOutcome: submitOutcome,
       onSelectIssue: selectIssueActionCreator,
       onGetIssuesIfNeeded: getIssuesIfNeeded,
-      setLocation: setAddress,
+      setLocation: newLocationLookup,
       clearLocation: clearAddress,
     },
     dispatch);

@@ -7,10 +7,10 @@ import { Layout } from '../shared';
 import { Issue } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
 
-/*            
-    Note the "{id: string}" added as a generic type parameter to RouteComponentProps. 
+/*
+    Note the "{id: string}" added as a generic type parameter to RouteComponentProps.
     If you look at the Type Definition F12(VSCode) for RouteComponentProps, you'll see this:
-    
+
     export interface RouteComponentProps<P> {
       match: match<P>;
       location: H.Location;
@@ -72,8 +72,8 @@ class CallPage extends React.Component<Props, State> {
     // On the second render, we'll have the issues and the current issue will have been identified
     // Here we set it on the redux store(note that if we've already set it in local state, in this component)
     // we don't want to set it on the redux store again because that will cause a re-render loop.
-    if (!this.props.callState.currentIssueId) {
-      this.props.onSelectIssue(newProps.currentIssue.id);
+    if (!this.props.callState.currentIssueId && newProps.currentIssue) {
+        this.props.onSelectIssue(newProps.currentIssue.id);
     }
   }
 

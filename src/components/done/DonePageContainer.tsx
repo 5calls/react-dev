@@ -1,7 +1,7 @@
 import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ApplicationState } from '../../redux/root';
-import { setAddress, clearAddress } from '../../redux/location';
+import { newLocationLookup, clearAddress } from '../../redux/location';
 import { LocationState } from '../../redux/location/reducer';
 import { DonePage } from './index';
 import { Issue } from '../../common/model';
@@ -47,7 +47,7 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
     {
       onSelectIssue: selectIssueActionCreator,
       onGetIssuesIfNeeded: getIssuesIfNeeded,
-      setLocation: setAddress,
+      setLocation: newLocationLookup,
       clearLocation: clearAddress,
     },
     dispatch);

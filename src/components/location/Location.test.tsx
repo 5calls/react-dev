@@ -3,14 +3,14 @@ import { shallow } from 'enzyme';
 import i18n from '../../services/i18n';
 import { Location } from './index';
 import { LocationState } from '../../redux/location/reducer';
+import { LocationFetchType, LocationUiState } from '../../common/model';
 
-test('Location component should show location prop value if it is defined', () => {
+test('Location component should show location prop value if locationState.address is defined', () => {
   const locationState: LocationState = {
     address: '1234',
     cachedCity: '',
-    invalidAddress: false,
-    fetchingLocation: false,
-    validatingLocation: false
+    uiState: LocationUiState.LOCATION_FOUND,
+    locationFetchType: LocationFetchType.BROWSER_GEOLOCATION
   };
   const setLocation = jest.fn();
   const clearLocation = jest.fn();
@@ -27,13 +27,57 @@ test('Location component should show location prop value if it is defined', () =
   expect(node.text()).toEqual(locationState.address);
 });
 
-test('Location component setLocation() should be called upon submit if isLoading=true', () => {
+test('Location component should show location prop value if locationState.cachedCity is defined', () => {
+  const locationState: LocationState = {
+    address: '',
+    cachedCity: 'Cached Address',
+    uiState: LocationUiState.LOCATION_FOUND,
+    locationFetchType: LocationFetchType.BROWSER_GEOLOCATION
+  };
+  const setLocation = jest.fn();
+  const clearLocation = jest.fn();
+
+  const component = shallow(
+    <Location
+      t={i18n.t}
+      locationState={locationState}
+      setLocation={setLocation}
+      clearLocation={clearLocation}
+    />
+  );
+  const node = component.find('#locationMessage span');
+  expect(node.text()).toEqual(locationState.cachedCity);
+});
+
+test('Should show "Getting your location" label if fetching location', () => {
   const locationState: LocationState = {
     address: '1234',
     cachedCity: '',
-    invalidAddress: false,
-    fetchingLocation: true,
-    validatingLocation: false
+    uiState: LocationUiState.FETCHING_LOCATION,
+    locationFetchType: LocationFetchType.CACHED_ADDRESS
+  };
+
+  const setLocation = jest.fn();
+  const clearLocation = jest.fn();
+
+  const component = shallow(
+    <Location
+      locationState={locationState}
+      setLocation={setLocation}
+      clearLocation={clearLocation}
+      t={i18n.t}
+    />
+  );
+  const label = component.find('p.loadingAnimation').first();
+  expect(label).toBeDefined();
+});
+
+test('Location component setLocation() should be called upon submit when entering location', () => {
+  const locationState: LocationState = {
+    address: '1234',
+    cachedCity: '',
+    uiState: LocationUiState.ENTERING_LOCATION,
+    locationFetchType: LocationFetchType.CACHED_ADDRESS
   };
 
   const setLocation = jest.fn();
@@ -54,13 +98,12 @@ test('Location component setLocation() should be called upon submit if isLoading
   expect(setLocation).toBeCalledWith(zip);
 });
 
-test('Location component clearLocation() should be called upon submit if isLoading=false', () => {
+test('Location component clearLocation() should be called upon submit when entering location', () => {
   const locationState: LocationState = {
-    address: '1234',
+    address: 'Foobar USA',
     cachedCity: '',
-    invalidAddress: true,
-    fetchingLocation: false,
-    validatingLocation: false
+    uiState: LocationUiState.LOCATION_FOUND,
+    locationFetchType: LocationFetchType.CACHED_ADDRESS
   };
   const setLocation = jest.fn();
   const clearLocation = jest.fn();
@@ -76,4 +119,30 @@ test('Location component clearLocation() should be called upon submit if isLoadi
   const button = component.find('button').first();
   button.simulate('click', { preventDefault: jest.fn() });
   expect(clearLocation).toBeCalled();
+});
+
+test('If address is invalid, show proper message and form with input and "Go" button', () => {
+  const locationState: LocationState = {
+    address: 'Foobar USA',
+    cachedCity: '',
+    uiState: LocationUiState.LOCATION_ERROR,
+    locationFetchType: LocationFetchType.CACHED_ADDRESS
+  };
+  const setLocation = jest.fn();
+  const clearLocation = jest.fn();
+
+  const component = shallow(
+    <Location
+      locationState={locationState}
+      setLocation={setLocation}
+      clearLocation={clearLocation}
+      t={i18n.t}
+    />
+  );
+  const label = component.find('p[role="alert"]');
+  expect(label).toBeDefined();
+  const input = component.find('form input');
+  expect(input).toBeDefined();
+  const button = component.find('form button');
+  expect(button).toBeDefined();
 });

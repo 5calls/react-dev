@@ -58,16 +58,58 @@ export interface UserStat {
   unavailableCount: number;
 }
 
+/**
+ * Represents the place used to get location.
+ * It may be one of three options:
+ * 1. CACHED_ADDRESS - address stored in local storage
+ * 2. BROWSER_GEOLOCATION - address obtained from the browser geolocation API
+ * 3. IP_INFO - address obtained from ipinfo.io API
+ */
 export enum LocationFetchType {
-  IP_INFO,
-  ADDRESS,
-  BROWSER_GEOLOCATION
+  CACHED_ADDRESS = 'CACHED_ADDRESS', // 'address' in Choo version
+  BROWSER_GEOLOCATION = 'BROWSER_GEOLOCATION', // 'browserGeolocation' in Choo version
+  IP_INFO = 'IP_INFO' // 'ipAddress' in Choo version
 }
 
+/**
+ * Encapsulates a location using latitude
+ * and longitude. Undefined for either longitude
+ * or latitude indicates that the geolocation has
+ * has not been set.
+ */
+export interface GeolocationPosition {
+  longitude: number | undefined;
+  latitude: number | undefined;
+}
+
+/* 5 Calls API data */
 export interface ApiData {
   splitDistrict: boolean;
   invalidAddress: boolean;
   normalizedLocation: string | undefined;
   divisions: string[];
   issues: Issue[];
+}
+
+export interface ReportData {
+  count: number; // total call count
+}
+
+/* Data from iponfo.io API */
+export interface IpInfoData {
+  ip: string;
+  hostname: string;
+  city: string;
+  region: string; // state
+  country: string;
+  loc: string; // long, lat - used in issue lookup
+  org: string; // internet service provider
+  postal: string; // zip code
+}
+
+export enum LocationUiState {
+  FETCHING_LOCATION = 'FETCHING_LOCATION',
+  LOCATION_FOUND = 'LOCATION_FOUND',
+  ENTERING_LOCATION = 'ENTERING_LOCATION',
+  LOCATION_ERROR = 'LOCATION_ERROR'
 }
