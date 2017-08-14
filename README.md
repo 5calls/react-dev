@@ -60,14 +60,14 @@ Also illustrates the use of Redux to loosely couple a component to data passed t
 
 ### Data Flow through a Component Heirarcy
 Also note the TypeScript conventions used in these files.<br/>
-[HomePageContainer.tsx](https://github.com/5calls/react-dev/blob/master/src/components/home/HomePageContainer.tsx)<br/>
-[HomePage.tsx](https://github.com/5calls/react-dev/blob/master/src/components/home/HomePage.tsx)<br/>
-[Why5calls.tsx](https://github.com/5calls/react-dev/blob/master/src/components/home/Why5calls.tsx)<br/>
+[CallPageContainer.tsx](https://github.com/5calls/react-dev/blob/master/src/components/call/CallPageContainer.tsx)<br/>
+[CallPage.tsx](https://github.com/5calls/react-dev/blob/master/src/components/call/CallPage.tsx)<br/>
+[Why5calls.tsx](https://github.com/5calls/react-dev/blob/master/src/components/call/Call.tsx)<br/>
 
 ### Redux Data Flow
 
 See code comments containing the token 'REDUX DATA FLOW'. Also note the use of TypeScript in these files.<br/>
-[HomePageContainer.tsx](https://github.com/5calls/react-dev/blob/master/src/components/home/HomePageContainer.tsx)<br/>
+[CallPageContainer.tsx](https://github.com/5calls/react-dev/blob/master/src/components/call/CallPageContainer.tsx)<br/>
 [redux/callState/action.ts](https://github.com/5calls/react-dev/blob/master/src/redux/callState/action.ts)<br/>
 [redux/callState/actionCreator.ts](https://github.com/5calls/react-dev/blob/master/src/redux/callState/actionCreator.ts)<br/>
 [redux/callState/reducer.ts](https://github.com/5calls/react-dev/blob/master/src/redux/callState/reducer.ts)<br/>
