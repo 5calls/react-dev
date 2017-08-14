@@ -4,12 +4,10 @@ import { LocationState } from '../../redux/location/reducer';
 import { Issue } from '../../common/model';
 import { Sidebar, Footer } from './index';
 import { LocationTranslatable } from '../location';
-import { RouteComponentProps } from 'react-router-dom';
 
-interface OwnProps extends RouteComponentProps<{ id: string }> { }
-
-interface Props extends OwnProps {
+interface Props {
   readonly children?: {};
+  readonly issueId: string;
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
   readonly completedIssueIds: string[];

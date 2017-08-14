@@ -104,7 +104,7 @@ class CallPage extends React.Component<Props, State> {
 
   render() {
     return (
-      <LayoutContainer >
+      <LayoutContainer issueId={this.props.currentIssue.id} >
         {this.props.currentIssue &&
           <CallTranslatable
             issue={this.props.currentIssue}

@@ -9,9 +9,9 @@ import { I18nextProvider } from 'react-i18next';
 import i18n from './services/i18n';
 
 import registerServiceWorker from './registerServiceWorker';
-import { HomePageContainer } from './components/home';
+import { HomePage } from './components/home';
 import { AboutPage } from './components/about';
-import { FaqPageContainer } from './components/faq';
+import { FaqPage } from './components/faq';
 import { DonePageContainer } from './components/done';
 import { CallPageContainer } from './components/call';
 import { startup } from './redux/remoteData';
@@ -29,12 +29,12 @@ ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <Switch>
-          <Route path="/" exact={true} component={HomePageContainer} />
+          <Route path="/" exact={true} component={HomePage} />
           <Route path="/issue/:id" exact={true} component={CallPageContainer} />
           <Route path="/done/:id" exact={true} component={DonePageContainer} />
-          <Route path="/faq" exact={true} component={FaqPageContainer} />
+          <Route path="/faq" exact={true} component={FaqPage} />
           <Route path="/about" exact={true} component={AboutPage} />
-          <Route path="*" component={HomePageContainer} />
+          <Route path="*" component={HomePage} />
         </Switch>
       </ConnectedRouter>
     </Provider>

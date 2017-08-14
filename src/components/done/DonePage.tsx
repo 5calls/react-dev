@@ -46,7 +46,7 @@ class DonePage extends React.Component<Props, State> {
 
   render() {
     return (
-      <LayoutContainer>
+      <LayoutContainer issueId={this.props.currentIssue.id}>
         {this.props.currentIssue &&
           <DoneTranslatable
             currentIssue={this.props.currentIssue}

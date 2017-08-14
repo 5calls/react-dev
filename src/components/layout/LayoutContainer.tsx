@@ -6,9 +6,9 @@ import { newLocationLookup, clearAddress } from '../../redux/location';
 import { LocationState } from '../../redux/location/reducer';
 import { Layout } from './index';
 import { Issue } from '../../common/model';
-import { RouteComponentProps } from 'react-router-dom';
 
-interface OwnProps extends RouteComponentProps<{ id: string }> {
+interface OwnProps {
+  readonly issueId: string;
   readonly children?: {};
 }
 
@@ -29,7 +29,7 @@ interface DispatchProps {
 function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProps {
   let currentIssue: Issue | undefined = undefined;
   if (state.remoteDataState.issues) {
-    currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.match.params.id);
+    currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.issueId);
   }
 
   return {
