@@ -35,3 +35,10 @@ export function setLocationFetchType(fetchType: LocationFetchType): SetLocationF
     payload: fetchType
   };
 }
+
+export function setSplitDistrict(isDistrictSplit: boolean) {
+  return {
+    type: 'SET_SPLIT_DISTRICT',
+    payload: isDistrictSplit
+  };
+}
