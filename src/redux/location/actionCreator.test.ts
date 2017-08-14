@@ -1,5 +1,5 @@
 import configureStore from 'redux-mock-store';
-import { setLocation, clearAddress } from './index';
+import { setLocation, clearAddress, LocationActionType } from './index';
 
 const middlewares = [];
 const mockStore = configureStore(middlewares);
@@ -13,7 +13,7 @@ test('Location action creator setLocation dispatched correctly', () => {
   store.dispatch(setLocationAction);
   // Test if your store dispatched the expected actions
   const actions = store.getActions();
-  const expectedPayload = { type: 'LOCATION_SET', payload: address };
+  const expectedPayload = { type: LocationActionType.LOCATION_SET, payload: address };
   expect(actions).toEqual([expectedPayload]);
 });
 
@@ -25,6 +25,6 @@ test('Location action creator clearLocation dispatched correctly', () => {
   store.dispatch(clearLocationAction);
   // Test if your store dispatched the expected actions
   const actions = store.getActions();
-  const expectedPayload = { type: 'LOCATION_CLEAR' };
+  const expectedPayload = { type: LocationActionType.LOCATION_CLEAR };
   expect(actions).toEqual([expectedPayload]);
 });
