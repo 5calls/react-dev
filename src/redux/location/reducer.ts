@@ -5,6 +5,7 @@ import { LocationUiState, LocationFetchType } from '../../common/model';
 export interface LocationState {
   address: string;
   cachedCity: string;
+  splitDistrict: boolean;
   uiState: LocationUiState;
   locationFetchType: LocationFetchType;
 }
@@ -12,6 +13,7 @@ export interface LocationState {
 const initialState: LocationState = {
   address: '',
   cachedCity: '',
+  splitDistrict: false,
   uiState: LocationUiState.FETCHING_LOCATION,
   locationFetchType: LocationFetchType.CACHED_ADDRESS
 };
@@ -39,6 +41,10 @@ export const locationStateReducer: Reducer<LocationState> = (
     case 'SET_UI_STATE':
       return Object.assign({}, state, {
         uiState: action.payload
+      });
+    case 'SET_SPLIT_DISTRICT':
+      return Object.assign({}, state, {
+        splitDistrict: action.payload
       });
     case 'SET_LOCATION_FETCH_TYPE':
       return Object.assign({}, state, {

@@ -8,7 +8,8 @@ export type LocationActionType =
   'CACHE_CITY' |
   'NEW_LOCATION_LOOKUP' |
   'SET_UI_STATE' |
-  'SET_LOCATION_FETCH_TYPE'
+  'SET_LOCATION_FETCH_TYPE' |
+  'SET_SPLIT_DISTRICT'
 ;
 
 export interface LocationAction extends Action {
@@ -43,4 +44,8 @@ export interface SetLocationFetchTypeAction extends LocationAction {
 export interface NewLocationLookupAction extends LocationAction {
   type: 'NEW_LOCATION_LOOKUP';
   payload: string;
+}
+
+export interface SetSplitDistrictAction extends LocationAction {
+  type: 'SET_SPLIT_DISTRICT';
 }
