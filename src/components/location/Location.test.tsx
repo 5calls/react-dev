@@ -2,13 +2,14 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import i18n from '../../services/i18n';
 import { Location } from './index';
-import { LocationState } from '../../redux/location/reducer';
+import { LocationState } from '../../redux/location';
 import { LocationFetchType, LocationUiState } from '../../common/model';
 
 test('Location component should show location prop value if locationState.address is defined', () => {
   const locationState: LocationState = {
     address: '1234',
     cachedCity: '',
+    splitDistrict: false,
     uiState: LocationUiState.LOCATION_FOUND,
     locationFetchType: LocationFetchType.BROWSER_GEOLOCATION
   };
@@ -31,6 +32,7 @@ test('Location component should show location prop value if locationState.cached
   const locationState: LocationState = {
     address: '',
     cachedCity: 'Cached Address',
+    splitDistrict: false,
     uiState: LocationUiState.LOCATION_FOUND,
     locationFetchType: LocationFetchType.BROWSER_GEOLOCATION
   };
@@ -53,6 +55,7 @@ test('Should show "Getting your location" label if fetching location', () => {
   const locationState: LocationState = {
     address: '1234',
     cachedCity: '',
+    splitDistrict: false,
     uiState: LocationUiState.FETCHING_LOCATION,
     locationFetchType: LocationFetchType.CACHED_ADDRESS
   };
@@ -76,6 +79,7 @@ test('Location component setLocation() should be called upon submit when enterin
   const locationState: LocationState = {
     address: '1234',
     cachedCity: '',
+    splitDistrict: false,
     uiState: LocationUiState.ENTERING_LOCATION,
     locationFetchType: LocationFetchType.CACHED_ADDRESS
   };
@@ -102,6 +106,7 @@ test('Location component clearLocation() should be called upon submit when enter
   const locationState: LocationState = {
     address: 'Foobar USA',
     cachedCity: '',
+    splitDistrict: false,
     uiState: LocationUiState.LOCATION_FOUND,
     locationFetchType: LocationFetchType.CACHED_ADDRESS
   };
@@ -125,6 +130,7 @@ test('If address is invalid, show proper message and form with input and "Go" bu
   const locationState: LocationState = {
     address: 'Foobar USA',
     cachedCity: '',
+    splitDistrict: false,
     uiState: LocationUiState.LOCATION_ERROR,
     locationFetchType: LocationFetchType.CACHED_ADDRESS
   };
