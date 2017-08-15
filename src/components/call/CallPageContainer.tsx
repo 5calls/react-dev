@@ -17,6 +17,7 @@ interface StateProps {
   readonly callState: CallState;
   readonly currentIssue?: Issue;
   readonly locationState: LocationState;
+  readonly splitDistrict: boolean;
 }
 
 interface DispatchProps {
@@ -38,6 +39,7 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
     callState: state.callState,
     currentIssue: currentIssue,
     locationState: state.locationState,
+    splitDistrict: state.locationState.splitDistrict
   };
 };
 
