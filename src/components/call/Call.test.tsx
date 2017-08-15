@@ -20,6 +20,7 @@ test('Call component should be rendered if passed a valid object', () => {
     <Call
       issue={issue}
       callState={callState}
+      splitDistrict={false}
       t={i18n.t}
       onSubmitOutcome={onSubmitOutcome}
     />

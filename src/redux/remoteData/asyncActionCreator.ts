@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import { ApiData, IpInfoData, LocationFetchType, ReportData } from './../../common/model';
 import { get5CallsApiData, getReportData } from '../../services/apiServices';
-import { setCachedCity, setLocation, setLocationFetchType } from '../location/index';
+import { setCachedCity, setLocation, setLocationFetchType, setSplitDistrict } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
 import { issuesActionCreator, callCountActionCreator, apiErrorMessageActionCreator } from './index';
 import { ApplicationState } from '../root';
@@ -40,6 +40,7 @@ export const getApiData = (address: string = '') => {
         const normalizedAddress = response.normalizedLocation as string;
         dispatch(setCachedCity(normalizedAddress));
         dispatch(setLocation(address));
+        dispatch(setSplitDistrict(response.splitDistrict));
         dispatch(setLocationFetchType(LocationFetchType.CACHED_ADDRESS));
         dispatch(issuesActionCreator(response.issues));
       }).catch((error) => {
