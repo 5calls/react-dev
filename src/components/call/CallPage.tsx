@@ -66,6 +66,8 @@ class CallPage extends React.Component<Props, State> {
     super(props);
     // set initial state
     this.state = this.setStateFromProps(props);
+
+    this.getView = this.getView.bind(this);
   }
 
   setStateFromProps(props: Props): State {
@@ -102,17 +104,29 @@ class CallPage extends React.Component<Props, State> {
     }
   }
 
+  getView() {
+    if (this.props.currentIssue) {
+      return (
+        <LayoutContainer issueId={this.props.currentIssue.id} >
+          {this.props.currentIssue &&
+            <CallTranslatable
+              issue={this.props.currentIssue}
+              callState={this.props.callState}
+              onSubmitOutcome={this.props.onSubmitOutcome}
+              t={i18n.t}
+            />}
+        </LayoutContainer>
+      );
+    } else {
+      return <div />;
+    }
+  }
+
   render() {
     return (
-      <LayoutContainer issueId={this.props.currentIssue.id} >
-        {this.props.currentIssue &&
-          <CallTranslatable
-            issue={this.props.currentIssue}
-            callState={this.props.callState}
-            onSubmitOutcome={this.props.onSubmitOutcome}
-            t={i18n.t}
-          />}
-      </LayoutContainer>
+      <div>
+        {this.getView()}
+      </div>
     );
   }
 }

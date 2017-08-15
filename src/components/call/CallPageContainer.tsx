@@ -4,7 +4,7 @@ import { Issue } from '../../common/model';
 import { CallPage } from './index';
 import { ApplicationState } from '../../redux/root';
 import { getIssuesIfNeeded } from '../../redux/remoteData';
-import { CallState, OutcomeData, submitOutcome } from '../../redux/callState';
+import { CallState, OutcomeData, submitOutcome, selectIssueActionCreator } from '../../redux/callState';
 import { RouteComponentProps } from 'react-router-dom';
 
 /*
@@ -48,6 +48,7 @@ interface DispatchProps {
   // This defines a method signature that is going to be passed into the child component
   readonly onSubmitOutcome: (data: OutcomeData) => void;
   readonly onGetIssuesIfNeeded: () => void;
+  readonly onSelectIssue: (issueId: string) => void;
 }
 
 /*
@@ -86,6 +87,7 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
       */
       onSubmitOutcome: submitOutcome,
       onGetIssuesIfNeeded: getIssuesIfNeeded,
+      onSelectIssue: selectIssueActionCreator,
     },
     dispatch);
 };

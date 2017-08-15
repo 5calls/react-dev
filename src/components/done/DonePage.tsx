@@ -24,6 +24,7 @@ class DonePage extends React.Component<Props, State> {
     super(props);
     // set initial state
     this.state = this.setStateFromProps(props);
+    this.getView = this.getView.bind(this);
   }
 
   setStateFromProps(props: Props): State {
@@ -44,17 +45,29 @@ class DonePage extends React.Component<Props, State> {
     this.props.onGetIssuesIfNeeded();
   }
 
+  getView() {
+    if (this.props.currentIssue) {
+      return (
+        <LayoutContainer issueId={this.props.currentIssue.id}>
+          {this.props.currentIssue &&
+            <DoneTranslatable
+              currentIssue={this.props.currentIssue}
+              totalCount={this.props.totalCount}
+              t={i18n.t}
+            />
+          }
+        </LayoutContainer>
+      );
+    } else {
+      return <div />;
+    }
+  }
+
   render() {
     return (
-      <LayoutContainer issueId={this.props.currentIssue.id}>
-        {this.props.currentIssue &&
-          <DoneTranslatable
-            currentIssue={this.props.currentIssue}
-            totalCount={this.props.totalCount}
-            t={i18n.t}
-          />
-        }
-      </LayoutContainer>
+      <div>
+        {this.getView()}
+      </div>
     );
   }
 }
