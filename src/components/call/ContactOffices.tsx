@@ -14,17 +14,18 @@ export interface State {
 }
 
 export class ContactOffices extends React.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {showFieldOfficeNumbers: false};
   }
 
   showField = () => {
     this.setState({showFieldOfficeNumbers: true});
-  };
+  }
   
   render() {
-    const contact: Contact = this.props.currentIssue.contacts && this.props.currentIssue.contacts.length !== 0 ? this.props.currentIssue.contacts[this.props.contactIndex] : DefaultContact;
+    const contact: Contact = this.props.currentIssue.contacts && this.props.currentIssue.contacts.length !== 0 ?
+      this.props.currentIssue.contacts[this.props.contactIndex] : DefaultContact;
 
     if (this.state.showFieldOfficeNumbers) {
       return (
@@ -40,12 +41,14 @@ export class ContactOffices extends React.Component<Props, State> {
     } else {
       return (
         <div>
-          <p className="call__contact__show-field-offices">{this.props.t('contact.busyLine')}  <a onClick={this.showField}>{this.props.t('contact.busyLineGuidance')}</a></p>
+          <p className="call__contact__show-field-offices">{this.props.t('contact.busyLine')}
+            <a onClick={this.showField}>{this.props.t('contact.busyLineGuidance')}</a>
+          </p>
         </div>
       );
     }  
   }
-};
+}
 
 const makePhoneLink = (phoneNumber: string): JSX.Element => {
   if (phoneNumber) {
