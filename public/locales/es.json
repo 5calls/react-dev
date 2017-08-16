@@ -62,7 +62,7 @@
     "callComplete": {
         "title": "¡Buen trabajo!",
         "pickAnotherIssue": "Escoja otro tema para seguir llamando, o corra la voz por compartir su trabajo con amigos:",
-        "learnWhyCallingIsGreat": "<a href='/about'> Aprenda por qué llamar a </a> los representantes es la manera más efectiva de hacer oír su voz."
+        "learnWhyCallingIsGreat": "<0>Aprenda por qué llamar a</0><1> los representantes es la manera más efectiva de hacer oír su voz.</1>"
     },
     "hypothesis": {
         "title": "Hagase oír",
