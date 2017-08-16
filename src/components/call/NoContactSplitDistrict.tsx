@@ -1,22 +1,35 @@
 import * as React from 'react';
 import { TranslationFunction } from 'i18next';
-import { translate } from 'react-i18next';
+import { translate, Trans } from 'react-i18next';
 
 interface Props {
   readonly splitDistrict: boolean;
+  readonly clearLocation: () => void;
   readonly t: TranslationFunction;
 }
 
-const NoContactSplitDistrict: React.StatelessComponent<Props> = (props: Props) => {
-  return (
-   props.splitDistrict ?
-    // tslint:disable-next-line:jsx-wrap-multiline
-    <div className="call__nocontact">
-      <p>{props.t('noContact.oneOfTwoDistricts')}</p>
-      <p>{props.t('noContact.enterYourLocation')}</p>
-    </div>
-    : <span />
-  );
-};
+class NoContactSplitDistrict extends React.PureComponent<Props> {
+
+  focusTextInput = (e) => {
+    this.props.clearLocation();
+    window.scroll(1, 1);
+  }
+
+  render() {
+    return (
+      this.props.splitDistrict ?
+        // tslint:disable-next-line:jsx-wrap-multiline
+        <div className="call__nocontact">
+          <p>{this.props.t('noContact.oneOfTwoDistricts')}</p>
+          <p>
+            <Trans i18nKey="noContact.enterYourLocation">
+              <a className="location-link" onClick={this.focusTextInput}>link-text-stub</a>
+            </Trans>
+          </p>
+        </div>
+        : <span />
+      );
+  }
+}
 
 export default translate()(NoContactSplitDistrict);

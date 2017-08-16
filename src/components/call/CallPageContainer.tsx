@@ -1,11 +1,12 @@
 import { connect, Dispatch } from 'react-redux';
+import { RouteComponentProps } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { Issue } from '../../common/model';
 import { CallPage } from './index';
 import { ApplicationState } from '../../redux/root';
 import { getIssuesIfNeeded } from '../../redux/remoteData';
 import { CallState, OutcomeData, submitOutcome, selectIssueActionCreator } from '../../redux/callState';
-import { RouteComponentProps } from 'react-router-dom';
+import { clearAddress } from '../../redux/location';
 
 /*
   The Container Component(such as this one) exist to connect a react component to the Redux store.
@@ -49,6 +50,7 @@ interface DispatchProps {
   readonly onSubmitOutcome: (data: OutcomeData) => void;
   readonly onGetIssuesIfNeeded: () => void;
   readonly onSelectIssue: (issueId: string) => void;
+  readonly clearLocation: () => void;
 }
 
 /*
@@ -88,6 +90,7 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
       onSubmitOutcome: submitOutcome,
       onGetIssuesIfNeeded: getIssuesIfNeeded,
       onSelectIssue: selectIssueActionCreator,
+      clearLocation: clearAddress
     },
     dispatch);
 };

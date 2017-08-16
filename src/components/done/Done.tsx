@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import i18n from '../../services/i18n';
 import { TranslationFunction } from 'i18next';
 import { translate, Trans } from 'react-i18next';
@@ -26,11 +27,10 @@ export const Done: React.StatelessComponent<Props> = (props: Props) => {
         />
         <p className="call__text">
           <Trans i18nKey="callComplete.learnWhyCallingIsGreat">
-            <a href="/about">about-link-text-stub</a>
+            <Link to="/about">about-link-text-stub</Link>
           </Trans>
         </p>
-        {/* Choo method: townHall(state) */}
-        <strong>TOWN HALL COMPONENT HERE</strong><br />
+        {/* TODO: Add Town Hall component here */}
 
         <CallCount
           totalCount={props.totalCount}
