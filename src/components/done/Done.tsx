@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import i18n from '../../services/i18n';
 import { TranslationFunction } from 'i18next';
-import { translate } from 'react-i18next';
+import { translate, Trans } from 'react-i18next';
 import { Issue } from '../../common/model';
 import { Promotion, CallCount } from '../shared';
 
@@ -25,10 +26,11 @@ export const Done: React.StatelessComponent<Props> = (props: Props) => {
           t={i18n.t}
         />
         <p className="call__text">
-          {props.t('callComplete.learnWhyCallingIsGreat')}
+          <Trans i18nKey="callComplete.learnWhyCallingIsGreat">
+            <Link to="/about">about-link-text-stub</Link>
+          </Trans>
         </p>
-        {/* Choo method: townHall(state) */}
-        <strong>TOWN HALL COMPONENT HERE</strong><br />
+        {/* TODO: Add Town Hall component here */}
 
         <CallCount
           totalCount={props.totalCount}

@@ -15,11 +15,13 @@ test('Call component should be rendered if passed a valid object', () => {
   };
 
   const onSubmitOutcome = jest.fn();
-
+  const clearLocation = jest.fn();
   const component = shallow(
     <Call
       issue={issue}
       callState={callState}
+      splitDistrict={false}
+      clearLocation={clearLocation}
       t={i18n.t}
       onSubmitOutcome={onSubmitOutcome}
     />
