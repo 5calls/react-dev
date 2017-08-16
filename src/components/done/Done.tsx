@@ -1,7 +1,7 @@
 import * as React from 'react';
 import i18n from '../../services/i18n';
 import { TranslationFunction } from 'i18next';
-import { translate } from 'react-i18next';
+import { translate, Trans } from 'react-i18next';
 import { Issue } from '../../common/model';
 import { Promotion, CallCount } from '../shared';
 
@@ -25,7 +25,9 @@ export const Done: React.StatelessComponent<Props> = (props: Props) => {
           t={i18n.t}
         />
         <p className="call__text">
-          {props.t('callComplete.learnWhyCallingIsGreat')}
+          <Trans i18nKey="callComplete.learnWhyCallingIsGreat">
+            <a href="/about">about-link-text-stub</a>
+          </Trans>
         </p>
         {/* Choo method: townHall(state) */}
         <strong>TOWN HALL COMPONENT HERE</strong><br />
