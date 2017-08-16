@@ -106,7 +106,7 @@
     },
     "noContact": {
         "oneOfTwoDistricts": "Se necesita una dirección más exacta para identificar a su representante",
-        "enterYourLocation": "<a class='location-link'>Introduzca su ubicacicón</a> para encontrar a sus representantes locales.",
+        "enterYourLocation": "<0>Introduzca su ubicacicón</0><1> para encontrar a sus representantes locales.</1>",
         "setYourLocation": "<a class='location-link'> Establezca su ubicación </a> para encontrar a sus representantes"
     },
     "outcomes": {

@@ -106,7 +106,7 @@
     },
     "noContact": {
         "oneOfTwoDistricts": "The location you provided could be in one of two congressional districts.",
-        "enterYourLocation": "<a class='location-link'>Enter your address</a> to identify your representative in the House.",
+        "enterYourLocation": "<0>Enter your address</0><1> to identify your representative in the House.</1>",
         "setYourLocation": "<a class='location-link'>Set your location</a> to find your representatives"
     },
     "outcomes": {

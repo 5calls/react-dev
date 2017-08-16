@@ -13,7 +13,8 @@ export interface Props {
   readonly callState: CallState;
   readonly t: TranslationFunction;
   readonly splitDistrict: boolean;
-  onSubmitOutcome: (data: OutcomeData) => Function;
+  readonly clearLocation: () => void;
+  readonly onSubmitOutcome: (data: OutcomeData) => Function;
 }
 
 export interface State {
@@ -75,7 +76,11 @@ export class Call extends React.Component<Props, State> {
           </div>
         </header>
         {this.props.splitDistrict ?
-        <NoContactSplitDistrict splitDistrict={this.props.splitDistrict} t={i18n.t}/> :
+        <NoContactSplitDistrict
+          splitDistrict={this.props.splitDistrict}
+          clearLocation={this.props.clearLocation}
+          t={i18n.t}
+        /> :
         <ContactDetails
           currentIssue={this.state.issue}
           contactIndex={this.state.currentContactIndex}

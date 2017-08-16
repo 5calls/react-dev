@@ -41,6 +41,7 @@ interface Props extends RouteProps {
   readonly splitDistrict: boolean;
   readonly onSubmitOutcome: (data: OutcomeData) => Function;
   readonly onSelectIssue: (issueId: string) => Function;
+  readonly clearLocation: () => void;
   readonly onGetIssuesIfNeeded: () => Function;
 }
 
@@ -113,6 +114,7 @@ class CallPage extends React.Component<Props, State> {
             <CallTranslatable
               issue={this.props.currentIssue}
               callState={this.props.callState}
+              clearLocation={this.props.clearLocation}
               onSubmitOutcome={this.props.onSubmitOutcome}
               splitDistrict={this.props.splitDistrict}
               t={i18n.t}
