@@ -49,3 +49,23 @@ export interface NewLocationLookupAction extends LocationAction {
 export interface SetSplitDistrictAction extends LocationAction {
   type: LocationActionType.SET_SPLIT_DISTRICT;
 }
+
+export interface CacheCityAction extends LocationAction {
+  type: LocationActionType.CACHE_CITY;
+  payload: string | undefined;
+}
+
+export interface SetUiStateAction extends LocationAction {
+  type: LocationActionType.SET_UI_STATE;
+  payload: LocationUiState;
+}
+
+export interface SetLocationFetchTypeAction extends LocationAction {
+  type: LocationActionType.SET_LOCATION_FETCH_TYPE;
+  payload: LocationFetchType;
+}
+
+export interface NewLocationLookupAction extends LocationAction {
+  type: LocationActionType.NEW_LOCATION_LOOKUP;
+  payload: string;
+}

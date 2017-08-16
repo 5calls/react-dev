@@ -22,6 +22,7 @@ test('getApiData() action creator functions correctly', () => {
   const address = 'New Gloucester, ME';
   const issueName = 'Issue';
   const apiData: ApiData = getApiDataResponse(address, issueName);
+  // console.log('mock apiData ', apiData)
   moxios.stubRequest(`${Constants.ISSUES_API_URL}${encodeURIComponent(address)}`,
                      { response: apiData });
 
@@ -35,13 +36,18 @@ test('getApiData() action creator functions correctly', () => {
   };
   initialState.locationState = locationState;
   const store = mockStore(initialState);
+  let actions;
   store.dispatch(getApiData(address))
     .then(() => {
-      const actions = store.getActions();
+      actions = store.getActions();
       // console.log('Actions', actions);
       expect(actions[1].payload).toEqual(address);
-      expect(actions[3].payload[0].name).toEqual(issueName);
+      expect(actions[4].payload[0].name).toEqual(issueName);
     });
+    // .catch((error) => {
+    //   console.log('Error', error)
+    //   console.log('Actions', actions)
+    // });
 });
 
 const getApiDataResponse = (address, issueName): ApiData => {

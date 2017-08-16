@@ -7,6 +7,7 @@ import { Issue, Contact } from '../../common/model';
 import { ContactDetails, Script, Outcomes, NoContactSplitDistrict } from './index';
 import { CallState, OutcomeData } from '../../redux/callState';
 
+// This defines the props that we must pass into this component.
 export interface Props {
   readonly issue: Issue;
   readonly callState: CallState;

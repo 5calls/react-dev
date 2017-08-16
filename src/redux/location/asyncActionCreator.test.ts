@@ -45,8 +45,8 @@ test.only('Expect setAddress() action creator to dispatch correctly', () => {
     // console.log('Actions', actions);
     expect(actions[0].type).toEqual(LocationActionType.CACHE_CITY);
     expect(actions[0].payload).toEqual(address);
-    expect(actions[4].type).toEqual(LocationActionType.LOCATION_SET);
-    expect(actions[4].payload).toEqual(address);
+    expect(actions[5].type).toEqual(LocationActionType.LOCATION_SET);
+    expect(actions[5].payload).toEqual(address);
   });
 
 });

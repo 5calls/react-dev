@@ -7,6 +7,7 @@ import { LocationTranslatable } from '../location';
 
 interface Props {
   readonly children?: {};
+  readonly issueId: string;
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
   readonly completedIssueIds: string[];
