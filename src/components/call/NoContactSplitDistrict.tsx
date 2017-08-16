@@ -20,12 +20,12 @@ class NoContactSplitDistrict extends React.PureComponent<Props> {
       this.props.splitDistrict ?
         // tslint:disable-next-line:jsx-wrap-multiline
         <div className="call__nocontact">
-          <p>{this.props.t('noContact.oneOfTwoDistricts')}</p>
-          <p>
+          <div>{this.props.t('noContact.oneOfTwoDistricts')}</div>
+          <div>
             <Trans i18nKey="noContact.enterYourLocation">
               <a className="location-link" onClick={this.focusTextInput}>link-text-stub</a>
             </Trans>
-          </p>
+          </div>
         </div>
         : <span />
       );
