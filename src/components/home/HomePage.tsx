@@ -1,27 +1,11 @@
 import * as React from 'react';
 import i18n from '../../services/i18n';
-import { LocationState } from '../../redux/location/reducer';
 import { RouteComponentProps } from 'react-router-dom';
 import { Why5callsTranslatable } from './index';
-import { Layout } from '../shared';
-import { Issue } from '../../common/model';
+import { LayoutContainer } from '../layout';
 
-/*
-  This is the top level View component in the HomePage Component Hierarchy.  It is the 
-    child of the Redux container.  Therefore, its "Props" property must match the
-    merged props that were provided to the connect() function in the "HomePageContainer".
-*/
 interface Props extends RouteComponentProps<{ id: string }> {
-  readonly issues: Issue[];
-  readonly completedIssueIds: string[];
-  readonly currentIssue: Issue;
   readonly totalCount: number;
-  readonly onSelectIssue: (issueId: string) => Function;
-
-  // location widget related
-  readonly locationState: LocationState;
-  readonly setLocation: (location: string) => void;
-  readonly clearLocation: () => void;
 }
 
 /*
@@ -31,25 +15,14 @@ interface Props extends RouteComponentProps<{ id: string }> {
 
   Notice that we are just passing all of the props that we pull off the Redux Store through
   this component to child components
-
-  When the props.onSelectIssue function is called by some component that has access to it
-  down this component hierarchy, it will simply be passed up this tree and end up calling the 
-  dispatch method on the store corresponding to that method(as defined in the top-level redux container). 
 */
 export const HomePage: React.StatelessComponent<Props> = (props: Props) => (
-  <Layout
-    issues={props.issues}
-    completedIssueIds={props.completedIssueIds}
-    onSelectIssue={props.onSelectIssue}
-    locationState={props.locationState}
-    setLocation={props.setLocation}
-    clearLocation={props.clearLocation}
-  >
+  <LayoutContainer issueId={props.match.params.id}>
     <Why5callsTranslatable
       totalCount={props.totalCount}
       t={i18n.t}
     />
-  </Layout>
+  </LayoutContainer>
 );
 
 export default HomePage;

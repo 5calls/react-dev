@@ -1,32 +1,15 @@
 import * as React from 'react';
-import { LocationState } from '../../redux/location/reducer';
+import { withRouter } from 'react-router';
 import { RouteComponentProps } from 'react-router-dom';
 import { Faq } from './index';
-import { Layout } from '../shared/index';
-import { Issue } from '../../common/model';
+import { LayoutContainer } from '../layout';
 
-interface Props extends RouteComponentProps<{ id: string }> {
-  readonly issues: Issue[];
-  readonly completedIssueIds: string[];
-  readonly onSelectIssue: (issueId: string) => Function;
-
-  // location widget related
-  readonly locationState: LocationState;
-  readonly setLocation: (location: string) => void;
-  readonly clearLocation: () => void;
-}
+interface Props extends RouteComponentProps<{ id: string }> { }
 
 const FaqPage: React.StatelessComponent<Props> = (props: Props) => (
-  <Layout
-    issues={props.issues}
-    completedIssueIds={props.completedIssueIds}
-    onSelectIssue={props.onSelectIssue}
-    locationState={props.locationState}
-    setLocation={props.setLocation}
-    clearLocation={props.clearLocation}
-  >
+  <LayoutContainer issueId={props.match.params.id}>
     <Faq />
-  </Layout>
+  </LayoutContainer>
 );
 
-export default FaqPage;
+export default withRouter(FaqPage);
