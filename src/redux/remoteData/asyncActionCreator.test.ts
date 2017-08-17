@@ -38,9 +38,9 @@ test('getApiData() action creator functions correctly', () => {
   store.dispatch(getApiData(address))
     .then(() => {
       const actions = store.getActions();
-      // console.log('Actions', actions);
+      console.log('Actions', actions);
       expect(actions[1].payload).toEqual(address);
-      expect(actions[3].payload[0].name).toEqual(issueName);
+      expect(actions[4].payload[0].name).toEqual(issueName);
     });
 });
 

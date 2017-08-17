@@ -39,6 +39,7 @@ interface OwnProps extends RouteComponentProps<{ id: string }> { }
 interface StateProps {
   readonly callState: CallState;
   readonly currentIssue?: Issue;
+  readonly splitDisrict: boolean;
 }
 
 /*
@@ -67,6 +68,7 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
   return {
     callState: state.callState,
     currentIssue: currentIssue,
+    splitDisrict: state.locationState.splitDistrict
   };
 };
 
@@ -88,8 +90,8 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
         See /src/redux/callState/actionCreator.ts for next step in Redux Data Flow
       */
       onSubmitOutcome: submitOutcome,
-      onGetIssuesIfNeeded: getIssuesIfNeeded,
       onSelectIssue: selectIssueActionCreator,
+      onGetIssuesIfNeeded: getIssuesIfNeeded,
       clearLocation: clearAddress
     },
     dispatch);
