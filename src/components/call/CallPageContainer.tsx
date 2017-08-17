@@ -39,7 +39,7 @@ interface OwnProps extends RouteComponentProps<{ id: string }> { }
 interface StateProps {
   readonly callState: CallState;
   readonly currentIssue?: Issue;
-  readonly splitDisrict: boolean;
+  readonly splitDistrict: boolean;
 }
 
 /*
@@ -68,7 +68,7 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
   return {
     callState: state.callState,
     currentIssue: currentIssue,
-    splitDisrict: state.locationState.splitDistrict
+    splitDistrict: state.locationState.splitDistrict
   };
 };
 
