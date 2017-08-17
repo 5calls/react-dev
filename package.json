@@ -76,7 +76,8 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "build-css": "rimraf src/components/shared/scss/vendor/normalize.css && node-sass-chokidar src/ -o src/",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "clean-build-css": "rimraf src/components/shared/scss/vendor/normalize.css && npm run build-css",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "node scripts/start.js",
     "start:https": "HTTPS=true node scripts/start.js",
