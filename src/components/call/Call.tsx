@@ -70,9 +70,9 @@ export class Call extends React.Component<Props, State> {
         <header className="call__header">
           <h2 className="call__title">{this.state.issue.name}</h2>
           <div className="call__reason">
-            {/* TODO: Split up script lines like this:
-             this.props.selectedIssue.reason.split('\n').map((line) => scriptLine(line, state, prev, send)) */}
-            {this.state.issue.reason}
+            {this.state.issue.reason.split('\n').map(line => 
+              <p>{line}</p>
+            )}
           </div>
         </header>
         {this.props.splitDistrict ?

@@ -16,8 +16,6 @@ export interface State {
 export class ContactOffices extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-
-    console.log("constructor");
     this.state = {showFieldOfficeNumbers: false};
   }
 
@@ -54,7 +52,7 @@ export class ContactOffices extends React.Component<Props, State> {
     } else {
       return (
         <div>
-          <p className="call__contact__show-field-offices">{this.props.t('contact.busyLine')}
+          <p className="call__contact__show-field-offices">{this.props.t('contact.busyLine')}&nbsp;
             <a onClick={this.showField}>{this.props.t('contact.busyLineGuidance')}</a>
           </p>
         </div>
