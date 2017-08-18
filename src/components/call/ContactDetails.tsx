@@ -26,7 +26,7 @@ const ContactDetails: React.StatelessComponent<Props> = ({ currentIssue, contact
         <p className="call__contact__phone">{makePhoneLink(contact.phone)}</p>
         <ContactOffices
           currentIssue={currentIssue}
-          contactIndex={0}
+          contactIndex={contactIndex}
           t={t}
         />
         <h3 className="call__contact__reason__header">

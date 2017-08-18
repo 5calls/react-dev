@@ -10,7 +10,7 @@ interface Props {
 }
 
 export interface State {
-  showFieldOfficeNumbers: Boolean;  
+  showFieldOfficeNumbers: boolean;  
 }
 
 export class ContactOffices extends React.Component<Props, State> {
@@ -26,6 +26,12 @@ export class ContactOffices extends React.Component<Props, State> {
   render() {
     const contact: Contact = this.props.currentIssue.contacts && this.props.currentIssue.contacts.length !== 0 ?
       this.props.currentIssue.contacts[this.props.contactIndex] : DefaultContact;
+
+    console.log("rendering offices", contact);
+
+    if (contact.field_offices == null || contact.field_offices.length == 0) {
+      return (<span />);
+    }
 
     if (this.state.showFieldOfficeNumbers) {
       return (
