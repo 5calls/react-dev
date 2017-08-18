@@ -82,8 +82,9 @@
     "start": "node scripts/start.js",
     "start:https": "HTTPS=true node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
+    "test": "npm run tslint && node scripts/test.js --env=jsdom",
     "test:coverage": "node scripts/test.js --env=jsdom --coverage",
+    "tslint" : "tslint 'src/**/*.ts' 'src/**/*.tsx'",
     "postinstall": "npm run build-css"
   },
   "jest": {
