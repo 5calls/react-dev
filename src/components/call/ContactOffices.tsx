@@ -23,7 +23,8 @@ export class ContactOffices extends React.Component<Props, State> {
     this.setState({showFieldOfficeNumbers: true});
   }
 
-  // this component is reused and the local state is maintained through contact changes, we want the local state to reset when it's updated
+  // this component is reused and the local state is maintained through contact changes,
+  // we want the local state to reset when it's updated
   componentWillReceiveProps(nextProps: Props) {
     this.setState({showFieldOfficeNumbers: false});    
   }
@@ -32,9 +33,7 @@ export class ContactOffices extends React.Component<Props, State> {
     const contact: Contact = this.props.currentIssue.contacts && this.props.currentIssue.contacts.length !== 0 ?
       this.props.currentIssue.contacts[this.props.contactIndex] : DefaultContact;
 
-    console.log("rendering offices", contact);
-
-    if (contact.field_offices == null || contact.field_offices.length == 0) {
+    if (contact.field_offices == null || contact.field_offices.length === 0) {
       return (<span />);
     }
 
