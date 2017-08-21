@@ -7,7 +7,6 @@ import { issuesActionCreator, callCountActionCreator, apiErrorMessageActionCreat
 import { ApplicationState } from '../root';
 import { LocationUiState } from '../../common/model';
 import { setUiState } from './../location';
-
 /**
  * Timer for calling fetchLocationByIP() if
  * fetchBrowserGeolocation() fails or times out.
@@ -117,8 +116,10 @@ export const startup = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
         dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
-        const state = getState();
-        // console.log('State in startup()', state);
+        // const location = localStorage.getItem('reduxPersist:locationState');
+        // const locationState = location ? JSON.parse(location) : undefined;
+        // const loc = locationState ? locationState.address || locationState.cachedCity : undefined;
+        let state = getState();
         const loc = state.locationState.address || state.locationState.cachedCity;
         if (loc) {
           dispatch(getApiData(loc))
