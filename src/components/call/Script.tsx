@@ -15,8 +15,8 @@ const Script: React.StatelessComponent<Props> = ({ issue, contactIndex = 0, t }:
       <div className="call__script">
         <h3 className="call__script__header">{t('script.yourScript')}</h3>
         <div className="call__script__body">
-          {issue.script.split('\n').map(line => 
-          <p>{line}</p>
+          {issue.script.split('\n').map((line, index) => 
+          <p key={index}>{line}</p>
           )}
           {/* TODO: Format script and add issues link */}
           {/* scriptFormat(state, prev, send) */}

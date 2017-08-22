@@ -79,3 +79,5 @@ const cityFormat = (office, contact): JSX.Element => {
 };
 
 export default translate()(ContactOffices);
+
+export const ContactOfficesTranslatable = translate()(ContactOffices);

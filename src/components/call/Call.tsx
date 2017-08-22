@@ -70,8 +70,8 @@ export class Call extends React.Component<Props, State> {
         <header className="call__header">
           <h2 className="call__title">{this.state.issue.name}</h2>
           <div className="call__reason">
-            {this.state.issue.reason.split('\n').map(line => 
-              <p>{line}</p>
+            {this.state.issue.reason.split('\n').map((line, index) => 
+              <p key={index}>{line}</p>
             )}
           </div>
         </header>
