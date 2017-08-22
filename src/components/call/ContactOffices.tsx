@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 import { Issue, Contact, DefaultContact } from '../../common/model';
+import { makePhoneLink, cityFormat } from '../shared/jsxUtils';
 
 interface Props {
   readonly currentIssue: Issue;
@@ -59,24 +60,6 @@ export class ContactOffices extends React.Component<Props, State> {
     }  
   }
 }
-
-const makePhoneLink = (phoneNumber: string): JSX.Element => {
-  if (phoneNumber) {
-    return (
-      <a href={`tel:${phoneNumber.replace(/-| /g, '')}`}>{phoneNumber.replace(/^\+1 /, '')}</a>
-    );
-  } else {
-    return <span />;
-  }
-};
-
-const cityFormat = (office, contact): JSX.Element => {
-  if (office.city) {
-    return <span>{` - ${office.city}, ${contact.state}`}</span>;
-  } else {
-    return <span />;
-  }
-};
 
 export default translate()(ContactOffices);
 

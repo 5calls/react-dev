@@ -3,6 +3,7 @@ import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 import { Issue, Contact, DefaultContact } from '../../common/model';
 import { ContactOffices } from './index';
+import { makePhoneLink } from '../shared/jsxUtils';
 
 interface Props {
   readonly currentIssue: Issue;
@@ -35,16 +36,6 @@ const ContactDetails: React.StatelessComponent<Props> = ({ currentIssue, contact
         <p className="call__contact__reason">{contact.reason}</p>
       </div>
     );
-  }
-};
-
-const makePhoneLink = (phoneNumber: string): JSX.Element => {
-  if (phoneNumber) {
-    return (
-      <a href={`tel:${phoneNumber.replace(/-| /g, '')}`}>{phoneNumber.replace(/^\+1 /, '')}</a>
-    );
-  } else {
-    return <span />;
   }
 };
 
