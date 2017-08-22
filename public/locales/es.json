@@ -114,6 +114,7 @@
         "unavailable": "no disponible",
         "voicemail": "dejé mensaje de voz",
         "madeContact": "contacto hecho",
+        "contact": "contacto hecho",
         "skip": "omitir",
         "contactsLeft": "Quedan {{contactsRemaining}} $t(common.person, {'count': {{contactsRemaining}}}) para llamar sobre este tema."
     },
