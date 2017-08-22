@@ -1,8 +1,9 @@
 
 export const APP_NAME = '5 Calls';
 export const APP_URL = 'https://5calls.org';
+export const API_URL = 'https://api.5calls.org/v1';
 export const ISSUES_API_URL = `${APP_URL}/issues/?address=`;
-export const REPORT_API_URL = `${APP_URL}/report`;
+export const REPORT_API_URL = `${API_URL}/counts`;
 export const IP_INFO_URL = 'https://ipinfo.io/json';
 
 export const contact = {

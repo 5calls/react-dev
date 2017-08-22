@@ -3,7 +3,6 @@ import i18n from '../../services/i18n';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 import { Promotion, CallCount } from '../shared';
-import * as Constants from '../../common/constants';
 
 interface Props {
   readonly totalCount: number;
@@ -42,14 +41,12 @@ export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
       <ul className="hypothesis__apps">
         <li>
           <a href="https://itunes.apple.com/us/app/5-calls/id1202558609?mt=8" target="_blank">
-            {props.t('hypothesis.onAppStore')}
-            <img className="ios" src="/img/app-store.svg" alt={`${Constants.APP_NAME} on the App Store`} />
+            <img className="ios" src="/img/app-store.svg" alt={props.t('hypothesis.onAppStore')}/>
           </a>
         </li>
         <li>
           <a href="https://play.google.com/store/apps/details?id=org.a5calls.android.a5calls&hl=en" target="_blank">
-            {props.t('hypothesis.onGooglePlay')}
-            <img className="play" src="/img/google-play-badge.png" alt={`${Constants.APP_NAME} on Google Play`} />
+            <img className="play" src="/img/google-play-badge.png" alt={props.t('hypothesis.onGooglePlay')} />
           </a>
         </li>
       </ul>
