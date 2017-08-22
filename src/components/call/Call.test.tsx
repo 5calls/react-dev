@@ -11,7 +11,6 @@ test('Call component should be rendered if passed a valid object', () => {
     currentIssueId: 'test1',
     contactIndexes: ['test1', 'test2'],
     completedIssueIds: ['test1', 'test2'],
-    showFieldOfficeNumbers: false
   };
 
   const onSubmitOutcome = jest.fn();

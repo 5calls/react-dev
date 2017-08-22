@@ -14,10 +14,14 @@ const Script: React.StatelessComponent<Props> = ({ issue, contactIndex = 0, t }:
     return (
       <div className="call__script">
         <h3 className="call__script__header">{t('script.yourScript')}</h3>
-        {issue.script}
-        {/* TODO: Format script and add issues link */}
-        {/* scriptFormat(state, prev, send) */}
-        {/* issuesLink(state, prev, send) */}
+        <div className="call__script__body">
+          {issue.script.split('\n').map((line, index) => 
+          <p key={index}>{line}</p>
+          )}
+          {/* TODO: Format script and add issues link */}
+          {/* scriptFormat(state, prev, send) */}
+          {/* issuesLink(state, prev, send) */}
+        </div>
       </div>
     );
   } else {

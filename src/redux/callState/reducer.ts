@@ -22,7 +22,6 @@ export interface CallState {
   currentIssueId: string;
   contactIndexes: string[];
   completedIssueIds: string[];
-  showFieldOfficeNumbers: boolean;
 }
 
 /*
