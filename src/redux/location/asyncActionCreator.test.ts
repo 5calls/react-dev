@@ -17,7 +17,7 @@ afterEach(() => {
   moxios.uninstall();
 });
 
-test.only('Expect setAddress() action creator to dispatch correctly', () => {
+test('Expect setAddress() action creator to dispatch correctly', () => {
   const address = 'New Gloucester, ME';
   const mockIssue = DefaultIssue;
   const apiData: ApiData = {
@@ -33,6 +33,7 @@ test.only('Expect setAddress() action creator to dispatch correctly', () => {
   const locationState = {
     address: '',
     cachedCity: '',
+    useGeolocation: false,
     splitDistrict: false,
     uiState: LocationUiState.FETCHING_LOCATION,
     locationFetchType: LocationFetchType.CACHED_ADDRESS

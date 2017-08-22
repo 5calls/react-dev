@@ -91,44 +91,51 @@ export const fetchBrowserGeolocation = () => {
     // but let browser-based continue. This timeout is cleared after
     // either geolocation or ipinfo.io location succeeds.
     dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
+    const state = getState();
+    const fetchType = state.locationState.locationFetchType;
+    // const useGeolocation = state.locationState.useGeolocation || null;
+
     // tslint:disable-next-line:no-shadowed-variable
     setTimeoutHandle = setTimeout(() => dispatch(fetchLocationByIP()), GEOLOCATION_TIMEOUT + 1000);
-    getBrowserGeolocation()
-      .then(location => {
-        if (location.latitude && location.longitude) {
-          dispatch(setLocationFetchType(LocationFetchType.BROWSER_GEOLOCATION));
-          const loc = `${location.latitude} ${location.longitude}`;
-          dispatch(getApiData(loc));
-          clearTimeout(setTimeoutHandle);
-        } else {
-          fetchLocationByIP();
-        }
-      })
-      .catch(e => {
-        // tslint:disable-next-line:no-console
-        console.error('Problem getting browser geolocation', e);
-        fetchLocationByIP();
-      });
+    // fetchType will be undefined at first
+    if (fetchType === undefined || fetchType === LocationFetchType.BROWSER_GEOLOCATION) {
+      getBrowserGeolocation()
+        .then(location => {
+          if (location.latitude && location.longitude) {
+            dispatch(setLocationFetchType(LocationFetchType.BROWSER_GEOLOCATION));
+            const loc = `${location.latitude} ${location.longitude}`;
+            dispatch(getApiData(loc));
+            clearTimeout(setTimeoutHandle);
+          } else {
+            dispatch(fetchLocationByIP());
+          }
+        })
+        .catch(e => {
+          // tslint:disable-next-line:no-console
+          console.error('Problem getting browser geolocation', e);
+          dispatch(fetchLocationByIP());
+        });
+    } else {
+      dispatch(fetchLocationByIP());
+    }
   };
 };
 
 export const startup = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
-        dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
-        // const location = localStorage.getItem('reduxPersist:locationState');
-        // const locationState = location ? JSON.parse(location) : undefined;
-        // const loc = locationState ? locationState.address || locationState.cachedCity : undefined;
-        let state = getState();
-        const loc = state.locationState.address || state.locationState.cachedCity;
-        if (loc) {
-          dispatch(getApiData(loc))
-            .then(() => {
-              setLocationFetchType(LocationFetchType.CACHED_ADDRESS);
-            });
-        } else {
-          dispatch(fetchBrowserGeolocation());
-        }
-        dispatch(fetchCallCount());
-      };
+    dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
+    let state = getState();
+    const loc = state.locationState.address || state.locationState.cachedCity;
+    if (loc) {
+      // console.log('Using cached address');
+      dispatch(getApiData(loc))
+        .then(() => {
+          setLocationFetchType(LocationFetchType.CACHED_ADDRESS);
+        });
+    } else {
+      dispatch(fetchBrowserGeolocation());
+    }
+    dispatch(fetchCallCount());
+  };
 };

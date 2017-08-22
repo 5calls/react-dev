@@ -1,5 +1,5 @@
 export { LocationAction, LocationActionType, LocationClearedAction,
-  LocationSetAction, SetUiStateAction,
+  LocationSetAction, SetUiStateAction, SetLocationFetchTypeAction, SetSplitDistrictAction,
   CacheCityAction, NewLocationLookupAction } from './action';
 export { setLocation, clearAddress, setCachedCity,
   setUiState, setLocationFetchType, setSplitDistrict } from './actionCreator';

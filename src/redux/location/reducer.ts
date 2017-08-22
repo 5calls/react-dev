@@ -7,7 +7,7 @@ export interface LocationState {
   cachedCity: string;
   splitDistrict: boolean;
   uiState: LocationUiState;
-  locationFetchType: LocationFetchType;
+  locationFetchType: LocationFetchType | undefined;
 }
 
 const initialState: LocationState = {
@@ -15,7 +15,7 @@ const initialState: LocationState = {
   cachedCity: '',
   splitDistrict: false,
   uiState: LocationUiState.FETCHING_LOCATION,
-  locationFetchType: LocationFetchType.CACHED_ADDRESS
+  locationFetchType: undefined
 };
 
 export const locationStateReducer: Reducer<LocationState> = (

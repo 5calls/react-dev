@@ -1,6 +1,6 @@
-import { SetLocationFetchTypeAction } from './action';
 import { LocationClearedAction, LocationSetAction,
-  SetUiStateAction, LocationActionType } from './index';
+  SetUiStateAction, LocationActionType, SetLocationFetchTypeAction,
+  SetSplitDistrictAction } from './index';
 import { LocationFetchType, LocationUiState } from '../../common/model';
 
 export function setLocation(address: string): LocationSetAction {
@@ -37,7 +37,7 @@ export function setLocationFetchType(fetchType: LocationFetchType): SetLocationF
   };
 }
 
-export function setSplitDistrict(isDistrictSplit: boolean) {
+export function setSplitDistrict(isDistrictSplit: boolean): SetSplitDistrictAction {
   return {
     type: LocationActionType.SET_SPLIT_DISTRICT,
     payload: isDistrictSplit
