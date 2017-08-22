@@ -1,6 +1,6 @@
-import { UpdateUserStatsAction, UserStats } from './index';
+import { UpdateUserStatsAction, UserStatsState } from './index';
 
-export const updateUserStatsActionCreator = (userStats: UserStats): UpdateUserStatsAction => {
+export const updateUserStatsActionCreator = (userStats: UserStatsState): UpdateUserStatsAction => {
   return {
     type: 'UPDATE_USER_STATS',
     payload: userStats

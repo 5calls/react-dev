@@ -8,21 +8,27 @@ export interface UserContactEvent {
   time: number;
 }
 
-export interface UserStats {
+export interface UserStatsState {
   all: UserContactEvent[];
-  contacted: number;
-  vm: number;
   unavailable: number;
-  voicemail: number;
-  contact: number;
+  voice_mail: number;
+  made_contact: number;
   yes: number;
 }
 
-export const userStatsReducer: Reducer<UserStats> = (
-  state: UserStats = {} as UserStats, action: UserStatsAction): UserStats => {
+const initialState: UserStatsState = {
+  all: [],
+  unavailable: 0,
+  voice_mail: 0,
+  made_contact: 0,
+  yes: 0,
+};
+
+export const userStatsReducer: Reducer<UserStatsState> = (
+  state: UserStatsState = initialState as UserStatsState, action: UserStatsAction): UserStatsState => {
   switch (action.type) {
     case 'UPDATE_USER_STATS':
-      const userStats: UserStats = action.payload as UserStats;
+      const userStats: UserStatsState = action.payload as UserStatsState;
 
       // create a deep copy of the incoming object to create the new state
       const all: UserContactEvent[] = [...userStats.all];
@@ -30,7 +36,7 @@ export const userStatsReducer: Reducer<UserStats> = (
       // spread the incoming userStats object into a new object
       //  overwrite the "all" property with the new all array, made above
       //  otherwise the "all" array would be a reference to the old/existing "all" array
-      const newState: UserStats = { ...userStats, all: all };
+      const newState: UserStatsState = { ...userStats, all: all };
 
       return newState;
     default:

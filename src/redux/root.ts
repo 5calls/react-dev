@@ -4,17 +4,27 @@ import { Reducer, combineReducers } from 'redux';
 import { LocationState, locationStateReducer } from './location/reducer';
 import { CallState, callStateReducer } from './callState/reducer';
 import { RemoteDataState, remoteDataReducer } from './remoteData/reducer';
+import { UserStatsState, userStatsReducer } from './userStats/reducer';
+
+export type OutcomeType =
+  'unavailable' |
+  'voice_mail' |
+  'made_contact' |
+  'skip'
+  ;
 
 export interface ApplicationState {
   remoteDataState: RemoteDataState;
   callState: CallState;
   locationState: LocationState;
+  userStatsState: UserStatsState;
 }
 
 export const DefaultApplicationState: ApplicationState = {
   remoteDataState: {} as RemoteDataState,
   callState: {} as CallState,
-  locationState: {} as LocationState
+  locationState: {} as LocationState,
+  userStatsState: {} as UserStatsState,
 };
 
 // DANGER: TypeScript magic ahead!!
@@ -28,19 +38,21 @@ export const DefaultApplicationState: ApplicationState = {
 export type ApplicationStateKeyType = keyof ApplicationState;
 // A TS mapped type to type out an object shape that represents
 // all ApplicationState keys and their string equivalents.
-type ApplicationStateKeyTypes = { [K in ApplicationStateKeyType]: ApplicationStateKeyType };
+type ApplicationStateKeyTypes = {[K in ApplicationStateKeyType]: ApplicationStateKeyType };
 // Object that maps out all possible ApplicationState keys
 export const ApplicationStateKey: ApplicationStateKeyTypes = {
   locationState: 'locationState',
   remoteDataState: 'remoteDataState',
-  callState: 'callState'
+  callState: 'callState',
+  userStatsState: 'userStatsState',
 };
 
 const rootReducer = combineReducers({
   routing: routerReducer as Reducer<RouterState>,
   remoteDataState: remoteDataReducer,
   callState: callStateReducer,
-  locationState: locationStateReducer
+  locationState: locationStateReducer,
+  userStatsState: userStatsReducer,
 });
 
 export default rootReducer;

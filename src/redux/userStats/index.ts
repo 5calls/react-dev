@@ -1,5 +1,6 @@
 export {
   UserStatsAction, UserStatsActionType, UpdateUserStatsAction
 } from './action';
-export { completeIssueActionCreator, moveToNextActionCreator, selectIssueActionCreator } from './actionCreator';
-export { userStatsReducer, UserStats } from './reducer';
+export { updateUserStatsActionCreator } from './actionCreator';
+export { updateUserStatsAsyncActionCreator } from './asyncActionCreator';
+export { userStatsReducer, UserStatsState } from './reducer';
