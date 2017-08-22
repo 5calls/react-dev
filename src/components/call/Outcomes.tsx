@@ -49,8 +49,8 @@ class Outcomes extends React.Component<Props & RouteComponentProps<any>, State> 
           {this.props.t('outcomes.enterYourCallResult')}
         </h3>
         <div className="call__outcomes__items">
-          {this.props.currentIssue.outcomeModels.map(outcome => 
-            <button onClick={(e) => this.dispatchOutcome(e, outcome.label)}>
+          {this.props.currentIssue.outcomeModels.map((outcome, index) => 
+            <button key={index} onClick={(e) => this.dispatchOutcome(e, outcome.label)}>
               {this.props.t('outcomes.' + outcome.label)}
             </button>
           )}
