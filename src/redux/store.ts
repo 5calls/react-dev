@@ -1,13 +1,16 @@
 import { applyMiddleware, createStore, compose, Middleware } from 'redux';
-import { autoRehydrate, persistStore } from 'redux-persist';
+import { autoRehydrate, persistStore, Persistor } from 'redux-persist';
 import rootReducer from './root';
 // import { createLogger, ReduxLoggerOptions } from 'redux-logger';
 import thunk from 'redux-thunk';
 import { ApplicationStateKeyType, ApplicationStateKey } from '../redux/root';
+import { startup } from './remoteData';
 
 // declare var process: { env: { NODE_ENV: string } };
 // const env = process.env.NODE_ENV;
 const middlewares: Middleware[] = [thunk];
+
+export let persistor = {} as Persistor;
 
 // NOTE: uncomment these to show the redux log statements
 // const options: ReduxLoggerOptions = {};
@@ -19,7 +22,7 @@ export default (initialState) => {
     initialState,
     compose(
       applyMiddleware(...middlewares),
-      autoRehydrate(),
+      autoRehydrate({log: false}), // set log:true for debugging
       // This added for Redux Dev Tools - install Chrome or Firefox extension to use
       // tslint:disable-next-line:max-line-length no-string-literal
       typeof window === 'object' && typeof window['devToolsExtension'] !== 'undefined' ? window['devToolsExtension']() : (f) => f
@@ -37,7 +40,11 @@ export default (initialState) => {
   const localPersistKeys: ApplicationStateKeyType[] = [
     ApplicationStateKey.locationState
   ];
-  persistStore(store, {whitelist: localPersistKeys});
+  persistor = persistStore(
+    store,
+    {whitelist: localPersistKeys},
+    () => store.dispatch(startup())
+  );
 
   return store;
 };

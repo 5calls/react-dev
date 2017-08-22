@@ -1,19 +1,11 @@
 import * as React from 'react';
+import i18n from '../../services/i18n';
 import { RouteComponentProps } from 'react-router-dom';
-import { Why5calls } from './index';
-import { Layout } from '../shared';
-import { Issue } from '../../common/model';
+import { Why5callsTranslatable } from './index';
+import { LayoutContainer } from '../layout';
 
-/*
-  This is the top level View component in the HomePage Component Hierarchy.  It is the 
-    child of the Redux container.  Therefore, its "Props" property must match the
-    merged props that were provided to the connect() function in the "HomePageContainer".
-*/
-interface Props extends RouteComponentProps<{}> {
-  readonly issues: Issue[];
-  readonly completedIssueIds: string[];
+interface Props extends RouteComponentProps<{ id: string }> {
   readonly totalCount: number;
-  readonly onSelectIssue: (issueId: string) => Function;
 }
 
 /*
@@ -23,19 +15,14 @@ interface Props extends RouteComponentProps<{}> {
 
   Notice that we are just passing all of the props that we pull off the Redux Store through
   this component to child components
-
-  When the props.onSelectIssue function is called by some component that has access to it
-  down this component hierarchy, it will simply be passed up this tree and end up calling the 
-  dispatch method on the store corresponding to that method(as defined in the top-level redux container). 
 */
-const HomePage: React.StatelessComponent<Props> = (props: Props) => (
-  <Layout
-    issues={props.issues}
-    completedIssueIds={props.completedIssueIds}
-    onSelectIssue={props.onSelectIssue}
-  >
-    <Why5calls totalCount={props.totalCount} />
-  </Layout>
+export const HomePage: React.StatelessComponent<Props> = (props: Props) => (
+  <LayoutContainer issueId={props.match.params.id}>
+    <Why5callsTranslatable
+      totalCount={props.totalCount}
+      t={i18n.t}
+    />
+  </LayoutContainer>
 );
 
 export default HomePage;

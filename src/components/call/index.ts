@@ -1,12 +1,13 @@
-import Call from './Call';
+import { Call, CallTranslatable } from './Call';
 import CallDetail from './CallDetail';
 import ContactDetails from './ContactDetails';
 import CallPage from './CallPage';
 import CallPageContainer from './CallPageContainer';
 import Outcomes from './Outcomes';
 import Script from './Script';
+import NoContactSplitDistrict from './NoContactSplitDistrict';
 
 export {
-  Call, CallPageContainer, CallDetail, CallPage,
-  ContactDetails, Outcomes, Script
+  Call, CallTranslatable, CallPageContainer, CallDetail, CallPage,
+  ContactDetails, Outcomes, Script, NoContactSplitDistrict
 };

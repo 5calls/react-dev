@@ -1,0 +1,149 @@
+{
+    "common": {
+        "go": "envíe",
+        "AppName": "5 Calls",
+        "done": "Terminado",
+        "call": "llamada",
+        "call_plural": "llamadas",
+        "callWithCount": "{{count}} llamada",
+        "callWithCount_plural": "{{count}} llamadas",
+        "callCapitalizedWithCount": "{{count}} Llamada",
+        "callCapitalizedWithCount_plural": "{{count}} Llamadas",
+        "timeWithCount": "{{count}} vez",
+        "timeWithCount_plural": "{{count}} veces",
+        "voicemailWithCount": "{{count}} mensaje de voz",
+        "voicemailWithCount_plural": "{{count}} mensajes de voz",
+        "person": "persona",
+        "person_plural": "gente",
+        "personWithCount": "{{count}} persona",
+        "personWithCount_plural": "{{count}} gente"
+    },
+    "about": {
+        "title": "Sobre $t(common.AppName)",
+        "whyCallingWorks": {
+            "title": "Por qué las llamadas funcionan",
+            "justificationForCalling": "Llamar a los miembros del Congreso es la manera más eficaz de hacerse oír su voz. Los personales del Congreso cuentan las llamadas y les dan la cuenta a sus representantes, mostrándoles las opiniones fuertes que tienen sus electores sobre un tema actual. Llama pronto para que <strong> su voz influya en las posiciónes de sus representantes </ strong>.",
+            "justificationArticlesListHeader": "Otros están de acuerdo:",
+            "article1": "<a href='https://www.nytimes.com/2016/11/22/us/politics/heres-why-you-should-call-not-email-your-legislators.html'>'Aquí está la razón por llamar, no enviar un correo electrónico, a sus legisladores.'</a> <span class='about__source'>NY Times</span>",
+            "article2": "<a href='http://www.vox.com/policy-and-politics/2016/11/15/13641920/trump-resist-congress'>'No se limite a escribir a sus representantes. Llámelos - y vaya a los ayuntamientos.'</a> <span class='about__source'>Vox</span>",
+            "article3": "<a href='https://www.washingtonpost.com/powerpost/a-day-of-chaos-at-the-capitol-as-house-republicans-back-down-on-ethics-changes/2017/01/03/50e392ac-d1e6-11e6-9cb0-54ab630851e8_story.html?utm_term=.86c8d3a06832'>'Puedo decirle que las llamadas que hemos recibido en mi oficina del distrito y aquí en Washington me sorprendieron, es decir, el número de llamadas.'</a> <span class='about__source'> Washington Post</span>",
+            "article4": "<a href='https://twitter.com/costareports/status/816373917900161024'>'La mayoría de los miembros me dicen que la frenesí de llamadas de electores enojados era el factor más importante para conseguir que la Cámara abandonara la enmienda.'</a> <span class='about__source'>Robert Costa</span>",
+            "weDoTheResearch": "$t(common.AppName) hace la investigación para cada tema, determinando cuales representantes son los más influyentes en cuales temas, recopilando los números de teléfono para sus oficinas, y escribiendo textos que explican claramente una posición progresiva. Sólo tiene que llamar.",
+            "sendYourIssues": "¿Falta un tema que debe estar aquí?<a href='mailto:{{contactEmail}}'>Por favor contáctenos.</a>"
+        },
+        "callingTips": {
+            "title": "Consejos para llamadas",
+            "callTechnique": "Las llamadas deben durar menos de un minuto. Estará hablando con un miembro del personal, así que haga su punto claramente para que pueda contar su opinión correctamente. Los textos proporcionados son útiles, pero puede agregar sus propias palabras.",
+            "callEtiquette": "Sé respetuoso. Se supone que los empleados que contestan al teléfono no deberían discutir con Ud., y debe tratarles con el mismo respeto que espera de ellos, independientemente del partido de su jefe."
+        },
+        "whoIs5Calls": {
+            "title": "¿Quiénes crearon a $t(common.AppName)?",
+            "overview": "$t(common.AppName) es un esfuerzo voluntario, fundado y dirigido por el equipo de marido y mujer <a href='https://twitter.com/nickoneill'> Nick </a> y <a href='https://twitter.com/syntheticmethod'> Rebecca </a>. Muchos voluntarios dedicados mantienen al diseño, código y resúmenes del sitio, incluyendo:<a href='https://twitter.com/monteiro'>@monteiro</a>, <a href='https://twitter.com/stewartsc'>@stewartsc</a>, <a href='https://twitter.com/liamdanger'>@liamdanger</a>, <a href='https://twitter.com/capndesign'>@capndesign</a>, <a href='https://twitter.com/jameshome'>@jameshome</a>, <a href='https://twitter.com/beau'>@beau</a>, <a href='https://twitter.com/cdoremus'>@cdoremus</a>, <a href='https://twitter.com/ocderby'>@ocderby</a>, <a href='https://twitter.com/mr0grog'>@mr0grog</a> y <a href='https://github.com/5calls/5calls/graphs/contributors'> más partidarios.</a>",
+            "iOSApp": "Nuestra aplicación de iOS es hecho por <a href='https://twitter.com/subdigital'>@subdigital</a>, <a href='https://twitter.com/mccarron'>@mccarron</a>, <a href='https://twitter.com/chrisbrandow'>@chrisbrandow</a> y <a href='https://github.com/5calls/ios/graphs/contributors'> más partidarios.</a>",
+            "androidApp": "Nuestra Android aplicación es hecho por <a href='https://github.com/dektar'>dektar</a>, gregliest y <a href='https://github.com/5calls/android/graphs/contributors'> más partidarios.</a>",
+            "contentAndSocial": "Nuestros resúmenes, textos, y contenido de redes sociales se escriben por <a href='https://twitter.com/charmbtrippin'>@charmbtrippin</a>, <a href='https://www.instagram.com/sara.n.g/'>sara.n.g</a>, amanda.l, <a href='https://twitter.com/djpiebob'>@djpiebob</a>, <a href='https://twitter.com/theRati'>@theRati</a>, <a href='https://twitter.com/Lhhargrave'>@lhhargrave</a>, amanda.n, <a href='https://twitter.com/sagerke'>@sagerke</a>, Eleanor Wertman, y otros partidarios.",
+            "whyStatement": "Queremos que la incidencia política sea accesible. Esperamos que $t(common.AppName) dé voz a la gente regular cuando más se necesita."
+        },
+        "joinUs": {
+            "title": "Únase a nosotros",
+            "contactInvite": "Este proyecto es <a href='https://github.com/5calls'>código abierto</a> y realizado por voluntarios. Si quiere unirse a nosotros para desarrollar herramientas útiles para los ciudadanos, contáctenos por <a href='https://twitter.com/make5calls'> Twitter </a> o <a href='mailto:{{contactEmail}}'> correo electrónico </a>."
+        }
+    },
+    "callCount": {
+        "callCountPhrase": "Juntos hemos hecho {{formattedCallsTotal}} $t(common.call,{'count': {{totalCalls}}})"
+    },
+    "contact": {
+        "localOfficeNumbers": "Números de oficinas locales:",
+        "busyLine": "¿Línea ocupada?",
+        "busyLineGuidance": "Haga clic aquí para ver los números de oficinas locales",
+        "callThisOffice": "Llame a esta oficina:",
+        "whyYouAreCallingThisOffice": "La razón por llamar a esta oficina:"
+    },
+    "callComplete": {
+        "title": "¡Buen trabajo!",
+        "pickAnotherIssue": "Escoja otro tema para seguir llamando, o corra la voz por compartir su trabajo con amigos:",
+        "learnWhyCallingIsGreat": "<0>Aprenda por qué llamar a</0><1> los representantes es la manera más efectiva de hacer oír su voz.</1>"
+    },
+    "hypothesis": {
+        "title": "Hagase oír",
+        "p1": "Convierta su participación pasiva a resistencia activa. Los likes en Facebook y retweets en Twitter no pueden crear el cambio que usted desea ver, pero llamarle al gobierno por teléfono si puede.",
+        "p2": "Tome 5 minutos, haga 5 llamadas",
+        "p3": "Llamar por teléfono es la forma más efectiva de influir a sus representantes. 5 Calls le da contactos y textos para que pueda llamar rápido y fácilmente. Usamos su ubicación para identificar a sus representantes locales para que sus llamadas sean más impactantes.",
+        "contribute": "Puede contribuir para cubrir los costos del mantenimiento de 5 Calls. Nuestro equipo consiste <strong> completamente en voluntarios </strong>, y todas las donaciones que recibimos cubririen gastos básicos como <strong> alojar nuestro sitio, mandar alertas sobre temas, y actualizar las estadísticas </strong>.",
+        "donateCallout": "Done a $t(common.AppName) hoy",
+        "featuresTitle": "$t(common.AppName):",
+        "feature1": "Proporciona números de teléfono y textos para que llamar sea rápido y fácil",
+        "feature2": "Usa su ubicación para encontrar a sus representantes locales para que sus llamadas tengan más impacto",
+        "getApp": "Obtenga la aplicación de $t(common.AppName):",
+        "onAppStore": "$t(common.AppName) en Apple App Store",
+        "onGooglePlay": "$t(common.AppName) en Google Play"
+    },
+    "impact": {
+        "title": "Mi Impacto",
+        "text": "¡Estás marcando una diferencia! Llamar es la forma más efectiva de influir en sus representantes. Mire lo que ha logrado:",
+        "callSummaryText": "Ha hecho contacto <span>$t(common.timeWithCount,{'count': {{contactedCalls}}})</span> y ha dejado<span>$t(common.voicemailWithCount,{'count': {{vmCalls}}})</span>. Sus representantes no han estado disponibles <span>$t(common.timeWithCount,{'count': {{unavailableCalls}}})</span>.",
+        "totalCallCountText": "Tu has hecho <span>$t(common.callWithCount,{'count': {{myTotalCalls}}})</span>!"
+    },
+    "issues": {
+        "whatsImportantToYou": "¿Qué importa para usted?",
+        "issuesListItemSummary": "$t(common.callWithCount,{'count': {{callsToMake}}}) para hacer",
+        "viewAllActiveIssues": "Ver todos los temas activos",
+        "activeIssuesWithCount": "{{count}} Temas Activos",
+        "uncategorizedIssues": "Temas Sin Categorizar"
+    },
+    "location": {
+        "gettingYourLocation": "Obtener su ubicación",
+        "invalidAddress": "Esta dirección no es válida. Por favor actualice su dirección e intente de nuevo.",
+        "chooseALocation": "Elija una ubicación",
+        "changeLocation": "Cambie su localización",
+        "yourLocation": "Su ubicación",
+        "enterAnAddressOrZipCode": "Entre una dirección o código postal"
+    },
+    "noCalls": {
+        "title": "No hay llamadas para hacer",
+        "reason": "Este problema ya no es relevante, o la URL que usó era incorrecto. Si hizo clic en un enlace de este sitio para llegar aquí, <a href='mailto:{{contactEmail}}'> por favor díganos </a> para que podamos arreglarlo!",
+        "nextStep": "A continuación, elija un tema diferente de la lista para hacer más llamadas."
+    },
+    "noContact": {
+        "oneOfTwoDistricts": "Se necesita una dirección más exacta para identificar a su representante",
+        "enterYourLocation": "<0>Introduzca su ubicacicón</0><1> para encontrar a sus representantes locales.</1>",
+        "setYourLocation": "<a class='location-link'> Establezca su ubicación </a> para encontrar a sus representantes"
+    },
+    "outcomes": {
+        "enterYourCallResult": "Meta el resultado de su llamada para obtener la siguiente llamada:",
+        "unavailable": "no disponible",
+        "voicemail": "dejé mensaje de voz",
+        "madeContact": "contacto hecho",
+        "skip": "omitir",
+        "contactsLeft": "Quedan {{contactsRemaining}} $t(common.person, {'count': {{contactsRemaining}}}) para llamar sobre este tema."
+    },
+    "script": {
+        "yourScript": "Su texto:"
+    },
+    "footer": {
+        "emailLabel": "Recibir alertas por email semanalmente",
+        "subscribe": "Subscribir",
+        "twitter": "Actualizaciones en Twitter",
+        "ipGeolocation": "Geolocalización IP por ipinfo.io",
+        "about": "Sobre nosotros",
+        "privacy": "Privada",
+        "faq": "Preguntas frecuentes / Contacto",
+        "contact": "Contacto",
+        "openSource": "Código Abierto",
+        "impact": "Su Impacto"
+    },
+    "promote": {
+        "iJustCalled": "Acabo de llamar a mi representante para ",
+        "youShouldToo": "-- tu también deberías:",
+        "tweetThisIssue": "Tweet esta tema",
+        "shareThisIssue": "Comparte esta tema",
+        "shareOnTwitter": "Comparta en Twitter",
+        "shareOnFacebook": "Comparta en Facebook",
+        "motto": "Tome 5 minutos, haga 5 llamadas"
+    },
+    "townhall": {
+        "findNearYou": " Encuentre un evento inminente cerca a Ud.",
+        "moreInfo": "Más información",
+        "thpCredit": "Eventos del <a href='https://townhallproject.com' target='_new'>Proyecto de Town Hall</a>"
+    }
+}

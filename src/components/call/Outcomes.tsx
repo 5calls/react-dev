@@ -1,27 +1,18 @@
 import * as React from 'react';
-import { RouteComponentProps, withRouter} from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { TranslationFunction } from 'i18next';
+import { translate } from 'react-i18next';
 import { OutcomeData } from '../../redux/callState';
 import { Issue } from '../../common/model';
-/*
-  i18n Keys
-    "outcomes":{
-      "enterYourCallResult":"Enter your call result to get the next call:",
-      "unavailable":"Unavailable",
-      "voicemail":"Left Voicemail",
-      "madeContact":"Made Contact",
-      "skip":"Skip",
-      "contactsLeft":
-        "{{contactsRemaining}} more $t(common.person, {'count': {{contactsRemaining}}}) to call for this issue."
-    },
-*/
 
 interface Props {
   readonly currentIssue: Issue;
   readonly currentContactId: string;
   readonly numberContactsLeft: number;
+  readonly t: TranslationFunction;
   readonly onSubmitOutcome: (data: OutcomeData) => void;
 }
-interface State {}
+interface State { }
 
 // tslint:disable-next-line:no-any
 class Outcomes extends React.Component<Props & RouteComponentProps<any>, State>  {
@@ -55,20 +46,20 @@ class Outcomes extends React.Component<Props & RouteComponentProps<any>, State> 
     return (
       <div className="call__outcomes">
         <h3 className="call__outcomes__header">
-          Enter your call result to get the next call: {/*"outcomes.enterYourCallResult"*/}
+          {this.props.t('outcomes.enterYourCallResult')}
         </h3>
         <div className="call__outcomes__items">
           <button onClick={(e) => this.dispatchOutcome(e, 'unavailable')}>
-            Unavailable {/*"outcomes.unavailable"*/}
+            {this.props.t('outcomes.unavailable')}
           </button>
           <button onClick={(e) => this.dispatchOutcome(e, 'voice_mail')}>
-            Left Voicemail {/*"outcomes.voicemail"*/}
+            {this.props.t('outcomes.voicemail')}
           </button>
           <button onClick={(e) => this.dispatchOutcome(e, 'made_contact')}>
-            Made Contact {/*"outcomes.madeContact"*/}
+            {this.props.t('outcomes.madeContact')}
           </button>
           <button onClick={(e) => this.dispatchOutcome(e, 'skip')}>
-            Skip {/*"outcomes.skip"*/}
+            {this.props.t('outcomes.skip')}
           </button>
         </div>
       </div>
@@ -76,4 +67,4 @@ class Outcomes extends React.Component<Props & RouteComponentProps<any>, State> 
   }
 }
 
-export default withRouter(Outcomes);
+export default translate()(withRouter(Outcomes));

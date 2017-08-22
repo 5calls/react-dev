@@ -1,14 +1,19 @@
 import * as React from 'react';
+import i18n from '../../services/i18n';
 import { RouteComponentProps } from 'react-router-dom';
-import { Call } from './index';
-import { Layout } from '../shared';
+import { CallTranslatable } from './index';
+import { LayoutContainer } from '../layout';
 import { Issue } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
 
-/*            
-    Note the "{id: string}" added as a generic type parameter to RouteComponentProps. 
+/*
+  This is the top level View component in the CallPage Component Hierarchy.  It is the
+    child of the Redux container.  Therefore, its "Props" property must match the
+    merged props that were provided to the connect() function in the "HomePageContainer".
+
+    Note the "{id: string}" added as a generic type parameter to RouteComponentProps.
     If you look at the Type Definition F12(VSCode) for RouteComponentProps, you'll see this:
-    
+
     export interface RouteComponentProps<P> {
       match: match<P>;
       location: H.Location;
@@ -33,8 +38,10 @@ interface Props extends RouteProps {
   readonly issues: Issue[];
   readonly callState: CallState;
   readonly currentIssue: Issue;
+  readonly splitDistrict: boolean;
   readonly onSubmitOutcome: (data: OutcomeData) => Function;
   readonly onSelectIssue: (issueId: string) => Function;
+  readonly clearLocation: () => void;
   readonly onGetIssuesIfNeeded: () => Function;
 }
 
@@ -43,11 +50,26 @@ export interface State {
   callState: CallState;
 }
 
+/*
+  This is a StatelessComponent meaning that it is just a function. The props are passed in as
+  a property.  More complicated components will be instantiated as a class and will often
+  have "local" state.  Props for them will be an instance property.
+
+  Notice that we are just passing all of the props that we pull off the Redux Store through
+  this component to child components
+
+  When the props.onSelectIssue function is called by some component that has access to it
+  down this component hierarchy, it will simply be passed up this tree and end up calling the
+  dispatch method on the store corresponding to that method(as defined in the top-level redux container).
+*/
+
 class CallPage extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     // set initial state
     this.state = this.setStateFromProps(props);
+
+    this.getView = this.getView.bind(this);
   }
 
   setStateFromProps(props: Props): State {
@@ -65,7 +87,7 @@ class CallPage extends React.Component<Props, State> {
     // On the second render, we'll have the issues and the current issue will have been identified
     // Here we set it on the redux store(note that if we've already set it in local state, in this component)
     // we don't want to set it on the redux store again because that will cause a re-render loop.
-    if (!this.props.callState.currentIssueId) {
+    if (!this.props.callState.currentIssueId && newProps.currentIssue) {
       this.props.onSelectIssue(newProps.currentIssue.id);
     }
   }
@@ -84,21 +106,31 @@ class CallPage extends React.Component<Props, State> {
     }
   }
 
+  getView() {
+    if (this.props.currentIssue) {
+      return (
+        <LayoutContainer issueId={this.props.currentIssue.id} >
+          {this.props.currentIssue &&
+            <CallTranslatable
+              issue={this.props.currentIssue}
+              callState={this.props.callState}
+              clearLocation={this.props.clearLocation}
+              onSubmitOutcome={this.props.onSubmitOutcome}
+              splitDistrict={this.props.splitDistrict}
+              t={i18n.t}
+            />}
+        </LayoutContainer>
+      );
+    } else {
+      return <div />;
+    }
+  }
+
   render() {
     return (
-      <Layout
-        issues={this.props.issues}
-        completedIssueIds={this.props.callState.completedIssueIds}
-        currentIssue={this.props.currentIssue}
-        onSelectIssue={this.props.onSelectIssue}
-      >
-        {this.props.currentIssue &&
-          <Call
-            issue={this.props.currentIssue}
-            callState={this.props.callState}
-            onSubmitOutcome={this.props.onSubmitOutcome}
-          />}
-      </Layout>
+      <div>
+        {this.getView()}
+      </div>
     );
   }
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Done } from './index';
-import { Layout } from '../shared/index';
+import i18n from '../../services/i18n';
+import { DoneTranslatable } from './index';
+import { LayoutContainer } from '../layout';
 import { Issue } from '../../common/model';
 import { RouteComponentProps } from 'react-router-dom';
 
@@ -8,7 +9,6 @@ interface RouteProps extends RouteComponentProps<{ id: string }> { }
 
 interface Props extends RouteProps {
   readonly issues: Issue[];
-  readonly completedIssueIds: string[];
   readonly currentIssue: Issue;
   readonly totalCount: number;
   readonly onSelectIssue: (issueId: string) => Function;
@@ -24,6 +24,7 @@ class DonePage extends React.Component<Props, State> {
     super(props);
     // set initial state
     this.state = this.setStateFromProps(props);
+    this.getView = this.getView.bind(this);
   }
 
   setStateFromProps(props: Props): State {
@@ -44,18 +45,29 @@ class DonePage extends React.Component<Props, State> {
     this.props.onGetIssuesIfNeeded();
   }
 
+  getView() {
+    if (this.props.currentIssue) {
+      return (
+        <LayoutContainer issueId={this.props.currentIssue.id}>
+          {this.props.currentIssue &&
+            <DoneTranslatable
+              currentIssue={this.props.currentIssue}
+              totalCount={this.props.totalCount}
+              t={i18n.t}
+            />
+          }
+        </LayoutContainer>
+      );
+    } else {
+      return <div />;
+    }
+  }
+
   render() {
     return (
-      <Layout
-        issues={this.props.issues}
-        completedIssueIds={this.props.completedIssueIds}
-        currentIssue={this.props.currentIssue}
-        onSelectIssue={this.props.onSelectIssue}
-      >
-        {this.props.currentIssue &&
-          <Done currentIssue={this.props.currentIssue} totalCount={this.props.totalCount} />
-        }
-      </Layout>
+      <div>
+        {this.getView()}
+      </div>
     );
   }
 }

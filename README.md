@@ -16,21 +16,19 @@ To build the application, you need to install [Yarn](https://yarnpkg.com/) and r
 #   compile .scss files to .css:
 yarn
 
-# Each 'yarn add' to add new dependencies
-# will also rebuild the css from the
-# .scss files and throw an error
-# related to node-sass-chokidar,
-# which can be ignored.
-
 # Run unit tests in watch mode
 yarn test
 
 # Run unit tests with a code coverage report
-yarn run test:coverage
+yarn test:coverage
 
 # start the app running in the
 #   webpack development server:
 yarn start
+
+# start the app running in https mode
+#   (needed for browser geolocation):
+yarn start:https
 
 # build the app into build folder
 #  for server deployment:
@@ -38,9 +36,12 @@ yarn build
 
 # any updates to .scss files need
 #  to be compiled to css using:
-yarn build-css
+yarn clean-build-css
 
 ```
+Using `yarn add` to add new dependencies
+will throw an error related to node-sass-chokidar, which can be ignored.
+
 For the best development experience, you should install both the React and Redux Development Tools extensions into your browser. Both browser extensions are available for Chrome and Firefox.
 
 ### Unit testing
@@ -56,14 +57,14 @@ Also illustrates the use of Redux to loosely couple a component to data passed t
 
 ### Data Flow through a Component Heirarcy
 Also note the TypeScript conventions used in these files.<br/>
-[HomePageContainer.tsx](https://github.com/5calls/react-dev/blob/master/src/components/home/HomePageContainer.tsx)<br/>
-[HomePage.tsx](https://github.com/5calls/react-dev/blob/master/src/components/home/HomePage.tsx)<br/>
-[Why5calls.tsx](https://github.com/5calls/react-dev/blob/master/src/components/home/Why5calls.tsx)<br/>
+[CallPageContainer.tsx](https://github.com/5calls/react-dev/blob/master/src/components/call/CallPageContainer.tsx)<br/>
+[CallPage.tsx](https://github.com/5calls/react-dev/blob/master/src/components/call/CallPage.tsx)<br/>
+[Why5calls.tsx](https://github.com/5calls/react-dev/blob/master/src/components/call/Call.tsx)<br/>
 
 ### Redux Data Flow
 
 See code comments containing the token 'REDUX DATA FLOW'. Also note the use of TypeScript in these files.<br/>
-[HomePageContainer.tsx](https://github.com/5calls/react-dev/blob/master/src/components/home/HomePageContainer.tsx)<br/>
+[CallPageContainer.tsx](https://github.com/5calls/react-dev/blob/master/src/components/call/CallPageContainer.tsx)<br/>
 [redux/callState/action.ts](https://github.com/5calls/react-dev/blob/master/src/redux/callState/action.ts)<br/>
 [redux/callState/actionCreator.ts](https://github.com/5calls/react-dev/blob/master/src/redux/callState/actionCreator.ts)<br/>
 [redux/callState/reducer.ts](https://github.com/5calls/react-dev/blob/master/src/redux/callState/reducer.ts)<br/>

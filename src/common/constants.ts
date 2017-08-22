@@ -11,10 +11,3 @@ export const contact = {
   twitter: 'https://twitter.com/make5calls',
   facebook: 'https://www.facebook.com/make5calls'
 };
-
-export const localization = {
-  supportedLocales: ['en', 'es'],
-  fallbackLocale: 'en',
-  // TODO: this will be parameterized differently in React
-  loadPath: '/locales/{{lng}}.json'
-};

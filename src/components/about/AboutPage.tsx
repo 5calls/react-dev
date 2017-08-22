@@ -1,23 +1,18 @@
 import * as React from 'react';
+import { withRouter } from 'react-router';
 import { RouteComponentProps } from 'react-router-dom';
-import { About } from './index';
-import { Layout } from '../shared/index';
-import { Issue } from '../../common/model';
+import i18n from '../../services/i18n';
+import { AboutTranslatable } from './index';
+import { LayoutContainer } from '../layout';
 
-interface Props extends RouteComponentProps<{ id: string }> {
-  readonly issues: Issue[];
-  readonly completedIssueIds: string[];
-  readonly onSelectIssue: (issueId: string) => Function;
-}
+interface Props extends RouteComponentProps<{ id: string }> { }
 
 const AboutPage: React.StatelessComponent<Props> = (props: Props) => (
-  <Layout
-    issues={props.issues}
-    completedIssueIds={props.completedIssueIds}
-    onSelectIssue={props.onSelectIssue}
-  >
-    <About />
-  </Layout>
+  <LayoutContainer issueId={props.match.params.id}>
+    <AboutTranslatable
+      t={i18n.t}
+    />
+  </LayoutContainer>
 );
 
-export default AboutPage;
+export default withRouter(AboutPage);
