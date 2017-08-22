@@ -7,6 +7,7 @@ export interface Issue {
   contacts?: Contact[];
   categories: Category[];
   inactive: boolean;
+  outcomeModels: Outcome[];
 }
 
 export const DefaultIssue: Issue = {
@@ -15,8 +16,14 @@ export const DefaultIssue: Issue = {
   reason: '',
   script: '',
   categories: [],
-  inactive: false
+  inactive: false,
+  outcomeModels: [],
 };
+
+export interface Outcome {
+  label: string;
+  status: string;
+}
 
 export interface Contact {
   id: string;
