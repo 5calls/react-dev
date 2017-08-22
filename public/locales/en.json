@@ -114,6 +114,7 @@
         "unavailable": "Unavailable",
         "voicemail": "Left Voicemail",
         "madeContact": "Made Contact",
+        "contact": "Made Contact",
         "skip": "Skip",
         "contactsLeft": "{{contactsRemaining}} more $t(common.person, {'count': {{contactsRemaining}}}) to call for this issue."
     },

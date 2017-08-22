@@ -49,18 +49,11 @@ class Outcomes extends React.Component<Props & RouteComponentProps<any>, State> 
           {this.props.t('outcomes.enterYourCallResult')}
         </h3>
         <div className="call__outcomes__items">
-          <button onClick={(e) => this.dispatchOutcome(e, 'unavailable')}>
-            {this.props.t('outcomes.unavailable')}
-          </button>
-          <button onClick={(e) => this.dispatchOutcome(e, 'voice_mail')}>
-            {this.props.t('outcomes.voicemail')}
-          </button>
-          <button onClick={(e) => this.dispatchOutcome(e, 'made_contact')}>
-            {this.props.t('outcomes.madeContact')}
-          </button>
-          <button onClick={(e) => this.dispatchOutcome(e, 'skip')}>
-            {this.props.t('outcomes.skip')}
-          </button>
+          {this.props.currentIssue.outcomeModels.map(outcome => 
+            <button onClick={(e) => this.dispatchOutcome(e, outcome.label)}>
+              {this.props.t('outcomes.' + outcome.label)}
+            </button>
+          )}
         </div>
       </div>
     );
