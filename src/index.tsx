@@ -15,6 +15,7 @@ import { AboutPage } from './components/about';
 import { FaqPage } from './components/faq';
 import { DonePageContainer } from './components/done';
 import { CallPageContainer } from './components/call';
+import { MyImpactPageContainer } from './components/myimpact';
 import './components/bundle.css';
 import './components/shared/scss/style.css';
 import './components/shared/scss/vendor/normalize.css';
@@ -31,6 +32,7 @@ ReactDOM.render(
           <Route path="/" exact={true} component={HomePageContainer} />
           <Route path="/issue/:id" exact={true} component={CallPageContainer} />
           <Route path="/done/:id" exact={true} component={DonePageContainer} />
+          <Route path="/impact" exact={true} component={MyImpactPageContainer} />
           <Route path="/faq" exact={true} component={FaqPage} />
           <Route path="/about" exact={true} component={AboutPage} />
           <Route path="*" component={HomePageContainer} />
