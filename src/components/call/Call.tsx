@@ -1,9 +1,10 @@
+import { } from './NoContact';
 import * as React from 'react';
 import i18n from '../../services/i18n';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 import { Issue, Contact } from '../../common/model';
-import { ContactDetails, Script, Outcomes } from './index';
+import { ContactDetails, Script, Outcomes, NoContactSplitDistrict } from './index';
 import { CallState, OutcomeData } from '../../redux/callState';
 
 // This defines the props that we must pass into this component.
@@ -11,7 +12,9 @@ export interface Props {
   readonly issue: Issue;
   readonly callState: CallState;
   readonly t: TranslationFunction;
-  onSubmitOutcome: (data: OutcomeData) => Function;
+  readonly splitDistrict: boolean;
+  readonly clearLocation: () => void;
+  readonly onSubmitOutcome: (data: OutcomeData) => Function;
 }
 
 export interface State {
@@ -72,25 +75,33 @@ export class Call extends React.Component<Props, State> {
             {this.state.issue.reason}
           </div>
         </header>
+        {this.props.splitDistrict ?
+        <NoContactSplitDistrict
+          splitDistrict={this.props.splitDistrict}
+          clearLocation={this.props.clearLocation}
+          t={i18n.t}
+        /> :
         <ContactDetails
           currentIssue={this.state.issue}
           contactIndex={this.state.currentContactIndex}
           t={i18n.t}
-        />
+        />}
         <Script
           issue={this.state.issue}
           contactIndex={this.state.currentContactIndex}
           t={i18n.t}
         />
+        {this.props.splitDistrict ? <span/> :
         <Outcomes
           currentIssue={this.state.issue}
           numberContactsLeft={this.state.numberContactsLeft}
           currentContactId={(this.state.currentContact ? this.state.currentContact.id : '')}
           onSubmitOutcome={this.props.onSubmitOutcome}
           t={i18n.t}
-        />
+        />}
         {/* TODO: Fix people/person text for 1 contact left. Move logic to a function */}
-        {this.state.numberContactsLeft > 0 ?
+        {this.props.splitDistrict ? <span/> :
+        this.state.numberContactsLeft > 0 ?
           <h3 aria-live="polite" className="call__contacts__left" >
             {this.props.t('outcomes.contactsLeft', { contactsRemaining: this.state.numberContactsLeft })}
           </h3> : ''

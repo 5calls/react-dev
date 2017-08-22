@@ -7,7 +7,7 @@ import { Issue } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
 
 /*
-  This is the top level View component in the CallPage Component Hierarchy.  It is the 
+  This is the top level View component in the CallPage Component Hierarchy.  It is the
     child of the Redux container.  Therefore, its "Props" property must match the
     merged props that were provided to the connect() function in the "HomePageContainer".
 
@@ -38,8 +38,10 @@ interface Props extends RouteProps {
   readonly issues: Issue[];
   readonly callState: CallState;
   readonly currentIssue: Issue;
+  readonly splitDistrict: boolean;
   readonly onSubmitOutcome: (data: OutcomeData) => Function;
   readonly onSelectIssue: (issueId: string) => Function;
+  readonly clearLocation: () => void;
   readonly onGetIssuesIfNeeded: () => Function;
 }
 
@@ -57,8 +59,8 @@ export interface State {
   this component to child components
 
   When the props.onSelectIssue function is called by some component that has access to it
-  down this component hierarchy, it will simply be passed up this tree and end up calling the 
-  dispatch method on the store corresponding to that method(as defined in the top-level redux container). 
+  down this component hierarchy, it will simply be passed up this tree and end up calling the
+  dispatch method on the store corresponding to that method(as defined in the top-level redux container).
 */
 
 class CallPage extends React.Component<Props, State> {
@@ -112,7 +114,9 @@ class CallPage extends React.Component<Props, State> {
             <CallTranslatable
               issue={this.props.currentIssue}
               callState={this.props.callState}
+              clearLocation={this.props.clearLocation}
               onSubmitOutcome={this.props.onSubmitOutcome}
+              splitDistrict={this.props.splitDistrict}
               t={i18n.t}
             />}
         </LayoutContainer>

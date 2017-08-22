@@ -3,7 +3,7 @@ import configureStore from 'redux-mock-store';
 import * as moxios from 'moxios';
 import { ApplicationState } from './../root';
 import { ApiData, DefaultIssue, LocationUiState, LocationFetchType } from './../../common/model';
-import { setAddress } from './index';
+import { setAddress, LocationActionType } from './index';
 import * as Constants from '../../common/constants';
 
 const middlewares = [thunk];
@@ -17,7 +17,7 @@ afterEach(() => {
   moxios.uninstall();
 });
 
-test.only('Expect setAddress() action creator to dispatch correctly', () => {
+test('Expect setAddress() action creator to dispatch correctly', () => {
   const address = 'New Gloucester, ME';
   const mockIssue = DefaultIssue;
   const apiData: ApiData = {
@@ -33,6 +33,8 @@ test.only('Expect setAddress() action creator to dispatch correctly', () => {
   const locationState = {
     address: '',
     cachedCity: '',
+    useGeolocation: false,
+    splitDistrict: false,
     uiState: LocationUiState.FETCHING_LOCATION,
     locationFetchType: LocationFetchType.CACHED_ADDRESS
   };
@@ -42,10 +44,10 @@ test.only('Expect setAddress() action creator to dispatch correctly', () => {
   .then(() => {
     const actions = store.getActions();
     // console.log('Actions', actions);
-    expect(actions[0].type).toEqual('CACHE_CITY');
+    expect(actions[0].type).toEqual(LocationActionType.CACHE_CITY);
     expect(actions[0].payload).toEqual(address);
-    expect(actions[4].type).toEqual('LOCATION_SET');
-    expect(actions[4].payload).toEqual(address);
+    expect(actions[5].type).toEqual(LocationActionType.LOCATION_SET);
+    expect(actions[5].payload).toEqual(address);
   });
 
 });

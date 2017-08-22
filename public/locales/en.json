@@ -62,7 +62,7 @@
     "callComplete": {
         "title": "Great work!",
         "pickAnotherIssue": "Pick another issue to keep calling, or spread the word by sharing your work with friends:",
-        "learnWhyCallingIsGreat": "<a href='/about'>Learn why calling</a> representatives is the most effective way of making your voice heard."
+        "learnWhyCallingIsGreat": "<0>Learn why calling</0><1> representatives is the most effective way of making your voice heard.</1>"
     },
     "hypothesis": {
         "title": "Make your voice heard",
@@ -106,7 +106,7 @@
     },
     "noContact": {
         "oneOfTwoDistricts": "The location you provided could be in one of two congressional districts.",
-        "enterYourLocation": "<a class='location-link'>Enter your address</a> to identify your representative in the House.",
+        "enterYourLocation": "<0>Enter your address</0><1> to identify your representative in the House.</1>",
         "setYourLocation": "<a class='location-link'>Set your location</a> to find your representatives"
     },
     "outcomes": {

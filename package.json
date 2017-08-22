@@ -75,13 +75,16 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
+    "build-css-from-scss": "node-sass-chokidar src/ -o src/",
+    "clean-built-css": "node scripts/deleteBuiltCss.js",
+    "build-css": "npm run clean-built-css && npm run build-css-from-scss",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "node scripts/start.js",
     "start:https": "HTTPS=true node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
+    "test": "npm run tslint && node scripts/test.js --env=jsdom",
     "test:coverage": "node scripts/test.js --env=jsdom --coverage",
+    "tslint": "tslint 'src/**/*.ts' 'src/**/*.tsx'",
     "postinstall": "npm run build-css"
   },
   "jest": {

@@ -18,6 +18,9 @@ interface State {
 }
 
 export class Location extends React.Component<Props, State> {
+
+  private addressInput: HTMLInputElement | null;
+
   constructor(props: Props) {
     super(props);
     // set initial state
@@ -26,6 +29,12 @@ export class Location extends React.Component<Props, State> {
 
   componentWillReceiveProps(nextProps: Props) {
     this.setState(this.setStateFromProps(nextProps));
+  }
+
+  componentDidMount() {
+    if (this.addressInput) {
+      this.addressInput.focus();
+    }
   }
 
   /**
@@ -80,22 +89,29 @@ export class Location extends React.Component<Props, State> {
         widget = <div><button onClick={enterLocation}>{this.props.t('location.changeLocation')}</button></div>;
         break;
       case LocationUiState.LOCATION_ERROR:
+      // FIXME: clear address text box
+        // console.log('Clear address text box')
+        // console.log('Remove break statement')
+        // break;
       case LocationUiState.ENTERING_LOCATION:
         const submitAddress = (e) => {
           e.preventDefault();
           const newLocation = e.target.elements.address.value;
           this.props.setLocation(newLocation);
         };
+        const clearTextBox = (e) => { e.target.value = ''; };
         widget = (
           <div>
             <form onSubmit={submitAddress} >
               <input
                 type="text"
+                ref={(input) => { this.addressInput = input; }}
                 autoFocus={true}
                 id="address"
                 name="address"
                 aria-labelledby="locationMessage"
                 aria-invalid={this.state.uiState === LocationUiState.LOCATION_ERROR}
+                onFocus={clearTextBox}
                 placeholder="Enter an address or zip code"
               />
               <button>{this.props.t('common.go')}</button>

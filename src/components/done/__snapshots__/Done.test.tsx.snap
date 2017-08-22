@@ -35,11 +35,19 @@ ShallowWrapper {
         />
         <p
             className="call__text"
-        />
-        <strong>
-            TOWN HALL COMPONENT HERE
-        </strong>
-        <br />
+        >
+            <Trans
+                i18nKey="callComplete.learnWhyCallingIsGreat"
+                parent="div"
+            >
+                <Link
+                    replace={false}
+                    to="/about"
+                >
+                    about-link-text-stub
+                </Link>
+            </Trans>
+        </p>
         <Translate(Component)
             t={[Function]}
             totalCount={10000}
@@ -74,11 +82,19 @@ ShallowWrapper {
             />
             <p
                   className="call__text"
-            />
-            <strong>
-                  TOWN HALL COMPONENT HERE
-            </strong>
-            <br />
+            >
+                  <Trans
+                        i18nKey="callComplete.learnWhyCallingIsGreat"
+                        parent="div"
+                  >
+                        <Link
+                              replace={false}
+                              to="/about"
+                        >
+                              about-link-text-stub
+                        </Link>
+                  </Trans>
+            </p>
             <Translate(Component)
                   t={[Function]}
                   totalCount={10000}
@@ -171,11 +187,19 @@ ShallowWrapper {
                     />
                     <p
                               className="call__text"
-                    />
-                    <strong>
-                              TOWN HALL COMPONENT HERE
-                    </strong>
-                    <br />
+                    >
+                              <Trans
+                                        i18nKey="callComplete.learnWhyCallingIsGreat"
+                                        parent="div"
+                              >
+                                        <Link
+                                                  replace={false}
+                                                  to="/about"
+                                        >
+                                                  about-link-text-stub
+                                        </Link>
+                              </Trans>
+                    </p>
                     <Translate(Component)
                               t={[Function]}
                               totalCount={10000}
@@ -210,11 +234,19 @@ ShallowWrapper {
                     />
                     <p
                               className="call__text"
-                    />
-                    <strong>
-                              TOWN HALL COMPONENT HERE
-                    </strong>
-                    <br />
+                    >
+                              <Trans
+                                        i18nKey="callComplete.learnWhyCallingIsGreat"
+                                        parent="div"
+                              >
+                                        <Link
+                                                  replace={false}
+                                                  to="/about"
+                                        >
+                                                  about-link-text-stub
+                                        </Link>
+                              </Trans>
+                    </p>
                     <Translate(Component)
                               t={[Function]}
                               totalCount={10000}

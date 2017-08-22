@@ -1,4 +1,4 @@
-import { NewLocationLookupAction } from './../location/action';
+import { NewLocationLookupAction, LocationActionType } from './../location/index';
 import { CallCountAction, ApiErrorAction } from './index';
 import { Issue } from '../../common/model';
 import { IssuesAction } from './index';
@@ -26,7 +26,7 @@ export const apiErrorMessageActionCreator = (message: string): ApiErrorAction =>
 
 export const newLocationLookup = (location: string): NewLocationLookupAction => {
   return {
-    type: 'NEW_LOCATION_LOOKUP',
+    type: LocationActionType.NEW_LOCATION_LOOKUP,
     payload: location
   };
 };

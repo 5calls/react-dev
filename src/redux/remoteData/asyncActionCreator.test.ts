@@ -29,6 +29,7 @@ test('getApiData() action creator functions correctly', () => {
   const locationState = {
     address: '',
     cachedCity: '',
+    splitDistrict: false,
     uiState: LocationUiState.FETCHING_LOCATION,
     locationFetchType: LocationFetchType.CACHED_ADDRESS
   };
@@ -39,7 +40,7 @@ test('getApiData() action creator functions correctly', () => {
       const actions = store.getActions();
       // console.log('Actions', actions);
       expect(actions[1].payload).toEqual(address);
-      expect(actions[3].payload[0].name).toEqual(issueName);
+      expect(actions[4].payload[0].name).toEqual(issueName);
     });
 });
 
@@ -75,11 +76,9 @@ test.skip('fetchLocationByIP() action creator works correctly', () => {
   const store = mockStore(initialState);
   store.dispatch(fetchLocationByIP())
     .then(() => {
-      const actions = store.getActions();
-      console.log('fetchLocationByIP() Actions', actions);
+      // const actions = store.getActions();
+      // console.log('fetchLocationByIP() Actions', actions);
     });
-  // const actions = store.getActions();
-  // console.log('Actions', actions);
 });
 
 test('fetchCallCount() action creator dispatches proper action', () => {
