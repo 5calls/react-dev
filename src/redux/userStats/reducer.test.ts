@@ -1,4 +1,4 @@
-import { userStatsReducer, UserStatsState, SetUserStatsAction, } from './index';
+import { userStatsReducer, UserStatsState, SetUserStatsAction, AddCallEventAction } from './index';
 
 let defaultState;
 beforeEach(() => {
@@ -11,7 +11,7 @@ beforeEach(() => {
   };
 });
 
-test('UserStats reducer processes UpdateStatsActionCreator action correctly', () => {
+test('UserStats reducer processes SetUserStatsActionCreator action correctly', () => {
   const state: UserStatsState = { ...defaultState };
 
   // add contact
@@ -26,6 +26,32 @@ test('UserStats reducer processes UpdateStatsActionCreator action correctly', ()
   expect(newState.unavailable).toEqual(1);
   expect(newState.voice_mail).toEqual(0);
   expect(newState.all.length).toEqual(1);
+});
+
+test('UserStats reducer processes addCallEventActionCreator action correctly', () => {
+  const state: UserStatsState = { ...defaultState };
+
+  // set up
+  state.all.unshift(getUserContactObject('unavailable'));
+  state.unavailable = 1;
+
+  const action: SetUserStatsAction = {
+    type: 'SET_USER_STATS',
+    payload: state
+  };
+  let newState = userStatsReducer(state, action);
+
+  const callEvent = getUserContactObject('voice_mail');
+
+  const callEventAction: AddCallEventAction = {
+    type: 'ADD_CALL_EVENT',
+    payload: callEvent
+  };
+
+  newState = userStatsReducer(newState, callEventAction);
+  expect(newState.unavailable).toEqual(1);
+  expect(newState.voice_mail).toEqual(1);
+  expect(newState.all.length).toEqual(2);
 });
 
 const getUserContactObject = (result: string) => {
