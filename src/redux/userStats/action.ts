@@ -1,8 +1,9 @@
 import { Action } from 'redux';
-import { UserStatsAction, UserStatsState } from './index';
+import { UserStatsAction, UserStatsState, UserContactEvent } from './index';
 
 export type UserStatsActionType =
-  'UPDATE_USER_STATS'
+  'SET_USER_STATS' |
+  'ADD_CALL_EVENT'
   ;
 
 export interface UserStatsAction extends Action {
@@ -10,7 +11,12 @@ export interface UserStatsAction extends Action {
   payload?: {};
 }
 
-export interface UpdateUserStatsAction extends UserStatsAction {
-  type: 'UPDATE_USER_STATS';
+export interface SetUserStatsAction extends UserStatsAction {
+  type: 'SET_USER_STATS';
   payload: UserStatsState;
+}
+
+export interface AddCallEventAction extends UserStatsAction {
+  type: 'ADD_CALL_EVENT';
+  payload: UserContactEvent;
 }

@@ -27,7 +27,7 @@ const initialState: UserStatsState = {
 export const userStatsReducer: Reducer<UserStatsState> = (
   state: UserStatsState = initialState as UserStatsState, action: UserStatsAction): UserStatsState => {
   switch (action.type) {
-    case 'UPDATE_USER_STATS':
+    case 'SET_USER_STATS': {
       const userStats: UserStatsState = action.payload as UserStatsState;
 
       // create a deep copy of the incoming object to create the new state
@@ -39,7 +39,44 @@ export const userStatsReducer: Reducer<UserStatsState> = (
       const newState: UserStatsState = { ...userStats, all: all };
 
       return newState;
-    default:
+    }
+    case 'ADD_CALL_EVENT': {
+      const callEvent: UserContactEvent = action.payload as UserContactEvent;
+      if (callEvent.result === 'skip') {
+        return state;
+      }
+
+      const createdState: UserStatsState = { ...state, all: [...state.all] };
+      let addEvent: boolean = false;
+      switch (callEvent.result) {
+        case 'unavailable': {
+          createdState.unavailable = createdState.unavailable + 1;
+          addEvent = true;
+          break;
+        }
+        case 'voice_mail': {
+          createdState.voice_mail = createdState.voice_mail + 1;
+          addEvent = true;
+          break;
+        }
+        case 'made_contact': {
+          createdState.made_contact = createdState.made_contact + 1;
+          addEvent = true;
+          break;
+        }
+        default: {
+          // this represents an invalid result string
+          // do nothing and return an unchanged state below
+        }
+      }
+
+      if (addEvent) {
+        createdState.all.unshift(callEvent);
+      }
+      return createdState;
+    }
+    default: {
       return state;
+    }
   }
 };

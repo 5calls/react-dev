@@ -18,13 +18,15 @@ export const MyImpact: React.StatelessComponent<Props> = (props: Props) => {
     unavailableCalls: props.userStats.unavailable
   };
 
+  const myTotalCalls = props.userStats.all.length;
+
   return (
     <section className="impact">
       <h2 className="impact__title">{props.t('impact.title')}</h2>
       <h2
         className="impact_total"
         // eslint-disable-next-line
-        dangerouslySetInnerHTML={{ __html: props.t('impact.totalCallCountText', { myTotalCalls: props.userStats.all.length }) }}
+        dangerouslySetInnerHTML={{ __html: props.t('impact.totalCallCountText', { myTotalCalls }) }}
       />
 
       <p className="impact__text">{props.t('impact.text')}</p>

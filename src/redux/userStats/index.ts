@@ -1,6 +1,6 @@
 export {
-  UserStatsAction, UserStatsActionType, UpdateUserStatsAction
+  UserStatsAction, UserStatsActionType, SetUserStatsAction, AddCallEventAction
 } from './action';
-export { updateUserStatsActionCreator } from './actionCreator';
-export { updateUserStatsAsyncActionCreator } from './asyncActionCreator';
-export { userStatsReducer, UserStatsState } from './reducer';
+export { setUserStatsActionCreator, addCallEventActionCreator } from './actionCreator';
+// export { updateUserStatsAsyncActionCreator } from './asyncActionCreator';
+export { userStatsReducer, UserStatsState, UserContactEvent } from './reducer';

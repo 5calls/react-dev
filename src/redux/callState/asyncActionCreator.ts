@@ -1,7 +1,7 @@
 // import { Dispatch } from 'react-redux';
 // import { ApplicationState } from '../root';
 import { completeIssueActionCreator, moveToNextActionCreator } from './index';
-import { updateUserStatsAsyncActionCreator } from '../userStats';
+import { addCallEventActionCreator } from '../userStats';
 
 export interface OutcomeData {
   outcome: string;
@@ -59,7 +59,7 @@ export function submitOutcome(data: OutcomeData) {
       time: Date.now(),
     };
 
-    dispatch(updateUserStatsAsyncActionCreator(userContactData));
+    dispatch(addCallEventActionCreator(userContactData));
     if (data.numberContactsLeft === 0) {
       return dispatch(completeIssueActionCreator(data));
     } else {

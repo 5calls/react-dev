@@ -1,8 +1,15 @@
-import { UpdateUserStatsAction, UserStatsState } from './index';
+import { SetUserStatsAction, AddCallEventAction, UserStatsState, UserContactEvent } from './index';
 
-export const updateUserStatsActionCreator = (userStats: UserStatsState): UpdateUserStatsAction => {
+export const setUserStatsActionCreator = (userStats: UserStatsState): SetUserStatsAction => {
   return {
-    type: 'UPDATE_USER_STATS',
+    type: 'SET_USER_STATS',
     payload: userStats
+  };
+};
+
+export const addCallEventActionCreator = (callEvent: UserContactEvent): AddCallEventAction => {
+  return {
+    type: 'ADD_CALL_EVENT',
+    payload: callEvent
   };
 };

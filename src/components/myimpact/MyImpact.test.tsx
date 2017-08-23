@@ -4,7 +4,7 @@ import i18n from '../../services/i18n';
 import { MyImpact } from './index';
 import { UserStatsState } from '../../redux/userStats';
 
-test('Done component snapshot renders correctly', () => {
+test('MyImpact component snapshot renders correctly', () => {
   const userStats: UserStatsState = {
     all: [],
     voice_mail: 0,
