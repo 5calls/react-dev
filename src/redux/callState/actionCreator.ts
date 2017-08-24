@@ -1,5 +1,6 @@
 import { OutcomeData, CurrentIssueAction,
-  SubmitOutcomeAction, NextContact, CallStateActionType } from './index';
+  SubmitOutcomeAction, NextContact,
+  CallStateActionType, ClearContactIndexesAction } from './index';
 
 /* REDUX DATA FLOW 3: At this point in the data flow, the IssueListItem View Component was clicked, the method was
     passed up through the Redux Container which called this actionCreator.
@@ -28,5 +29,11 @@ export const completeIssueActionCreator = (outcomeData: OutcomeData): SubmitOutc
 export const moveToNextActionCreator = (): NextContact => {
   return {
     type: CallStateActionType.NEXT_CONTACT
+  };
+};
+
+export const clearContactIndexes = (): ClearContactIndexesAction => {
+  return {
+    type: CallStateActionType.CLEAR_CONTACT_INDEXES
   };
 };

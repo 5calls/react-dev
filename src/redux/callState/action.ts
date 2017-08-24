@@ -6,7 +6,8 @@ export enum CallStateActionType {
   COMPLETE_ISSUE = 'COMPLETE_ISSUE',
   NEXT_CONTACT = 'NEXT_CONTACT',
   SET_CONTACT_IDS = 'SET_CONTACT_IDS',
-  SET_SHOW_FIELD_OFFICE_NUMBERS = 'SET_SHOW_FIELD_OFFICE_NUMBERS'
+  SET_SHOW_FIELD_OFFICE_NUMBERS = 'SET_SHOW_FIELD_OFFICE_NUMBERS',
+  CLEAR_CONTACT_INDEXES = 'CLEAR_CONTACT_INDEXES'
 }
 
 export interface CallStateAction extends Action {
@@ -41,4 +42,8 @@ export interface SetContactIdsAction extends CallStateAction {
 export interface SetShowFieldOfficeNumbers extends CallStateAction {
   type: CallStateActionType.SET_SHOW_FIELD_OFFICE_NUMBERS;
   payload: boolean;
+}
+
+export interface ClearContactIndexesAction extends CallStateAction {
+  type: CallStateActionType.CLEAR_CONTACT_INDEXES;
 }

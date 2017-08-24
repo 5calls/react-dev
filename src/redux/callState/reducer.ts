@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { CallStateAction } from './index';
+import { CallStateAction, CallStateActionType } from './index';
 
 /*
   REDUX DATA FLOW 4: When the selectIssueActionCreator has been dispatched, it returns the
@@ -43,7 +43,7 @@ export const callStateReducer: Reducer<CallState> = (
   state: CallState = {} as CallState,
   action: CallStateAction): CallState => {
   switch (action.type) {
-    case 'CURRENT_ISSUE_SELECTED':
+    case CallStateActionType.CURRENT_ISSUE_SELECTED:
       /*
         REDUX DATA FLOW 5: This type is seen when our action is dispatched and so this reducer switch
         case is run.  In, this case, it takes the existing state and puts it into a new object. It
@@ -65,7 +65,7 @@ export const callStateReducer: Reducer<CallState> = (
         End of Redux Data Flow
       */
       return Object.assign({}, state, { currentIssueId: action.payload });
-    case 'COMPLETE_ISSUE':
+    case CallStateActionType.COMPLETE_ISSUE:
       let newCompletedIssues: string[] = [];
       if (state.completedIssueIds) {
         newCompletedIssues = [...state.completedIssueIds];
@@ -74,7 +74,7 @@ export const callStateReducer: Reducer<CallState> = (
       let newState = { ...state };
       newState.completedIssueIds = newCompletedIssues;
       return newState;
-    case 'NEXT_CONTACT':
+    case CallStateActionType.NEXT_CONTACT:
       let newIndexes = { ...state.contactIndexes };
       if (!newIndexes[state.currentIssueId]) {
         newIndexes[state.currentIssueId] = 1;
@@ -82,6 +82,8 @@ export const callStateReducer: Reducer<CallState> = (
         newIndexes[state.currentIssueId]++;
       }
       return { ...state, contactIndexes: newIndexes };
+    case CallStateActionType.CLEAR_CONTACT_INDEXES:
+      return { ...state, contactIndexes: []};
     default:
       return state;
   }

@@ -1,12 +1,13 @@
 import { Dispatch } from 'redux';
 import { ApiData, IpInfoData, LocationFetchType, ReportData } from './../../common/model';
 import { get5CallsApiData, getReportData } from '../../services/apiServices';
-import { setCachedCity, setLocation, setLocationFetchType, setSplitDistrict } from '../location/index';
+import { setCachedCity, setLocation, setLocationFetchType,
+  setSplitDistrict, setUiState } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
 import { issuesActionCreator, callCountActionCreator, apiErrorMessageActionCreator } from './index';
+import { clearContactIndexes } from '../callState/';
 import { ApplicationState } from '../root';
 import { LocationUiState } from '../../common/model';
-import { setUiState } from './../location';
 /**
  * Timer for calling fetchLocationByIP() if
  * fetchBrowserGeolocation() fails or times out.
@@ -125,7 +126,10 @@ export const startup = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
     dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
-    let state = getState();
+    const state = getState();
+    // clear contact indexes loaded from local storage
+    dispatch(clearContactIndexes());
+
     const loc = state.locationState.address || state.locationState.cachedCity;
     if (loc) {
       // console.log('Using cached address');
