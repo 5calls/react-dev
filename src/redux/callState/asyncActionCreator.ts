@@ -58,7 +58,7 @@ export function submitOutcome(data: OutcomeData) {
       // send('incrementContact', data, done);
 
       if ( data.numberContactsLeft === 0 ) {
-        return dispatch(completeIssueActionCreator(data));
+        return dispatch(completeIssueActionCreator());
       } else {
         return dispatch(moveToNextActionCreator());
       }

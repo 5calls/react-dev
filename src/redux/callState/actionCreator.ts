@@ -1,5 +1,5 @@
-import { OutcomeData, CurrentIssueAction,
-  SubmitOutcomeAction, NextContact,
+import { CurrentIssueAction,
+  CompleteIssueAction, NextContact,
   CallStateActionType, ClearContactIndexesAction } from './index';
 
 /* REDUX DATA FLOW 3: At this point in the data flow, the IssueListItem View Component was clicked, the method was
@@ -19,10 +19,10 @@ export const selectIssueActionCreator = (issueId: string): CurrentIssueAction =>
   };
 };
 
-export const completeIssueActionCreator = (outcomeData: OutcomeData): SubmitOutcomeAction => {
+export const completeIssueActionCreator = (): CompleteIssueAction => {
+  // completes the current issue: callState.currentIssueId
   return {
-    type: CallStateActionType.COMPLETE_ISSUE,
-    payload: outcomeData
+    type: CallStateActionType.COMPLETE_ISSUE
   };
 };
 

@@ -5,7 +5,7 @@ import { setCachedCity, setLocation, setLocationFetchType,
   setSplitDistrict, setUiState } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
 import { issuesActionCreator, callCountActionCreator, apiErrorMessageActionCreator } from './index';
-import { clearContactIndexes } from '../callState/';
+import { clearContactIndexes, completeIssueActionCreator, selectIssueActionCreator } from '../callState/';
 import { ApplicationState } from '../root';
 import { LocationUiState } from '../../common/model';
 /**
@@ -129,7 +129,9 @@ export const startup = () => {
     const state = getState();
     // clear contact indexes loaded from local storage
     dispatch(clearContactIndexes());
-
+    // add completed issues from Choo app in localStorage to
+    // this apps callState.completedIssueIds
+    migrateLegacyCompletedIssues(dispatch);
     const loc = state.locationState.address || state.locationState.cachedCity;
     if (loc) {
       // console.log('Using cached address');
@@ -142,4 +144,17 @@ export const startup = () => {
     }
     dispatch(fetchCallCount());
   };
+};
+
+const migrateLegacyCompletedIssues = (dispatch: Dispatch<ApplicationState>) => {
+  const LEGACY_COMPLETED_ISSUES_KEY = 'org.5calls.completed';
+  const legacyCompletedIssues = localStorage.getItem(LEGACY_COMPLETED_ISSUES_KEY);
+  if (legacyCompletedIssues) {
+    const ids = JSON.parse(legacyCompletedIssues);
+    ids.forEach((id) => {
+      dispatch(selectIssueActionCreator(id));
+      dispatch(completeIssueActionCreator());
+    });
+    localStorage.removeItem(LEGACY_COMPLETED_ISSUES_KEY);
+  }
 };

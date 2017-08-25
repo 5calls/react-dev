@@ -21,7 +21,7 @@ import { CallStateAction, CallStateActionType } from './index';
 export interface CallState {
   currentIssueId: string;
   // key is the issueId, value is the index of the last contact visited
-  contactIndexes: {[key: string]: number}[];
+  contactIndexes: {[key: string]: number};
   completedIssueIds: string[];
 }
 
@@ -83,7 +83,7 @@ export const callStateReducer: Reducer<CallState> = (
       }
       return { ...state, contactIndexes: newIndexes };
     case CallStateActionType.CLEAR_CONTACT_INDEXES:
-      return { ...state, contactIndexes: []};
+      return { ...state, contactIndexes: {}};
     default:
       return state;
   }

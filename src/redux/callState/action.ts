@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { OutcomeData, CallStateAction } from './index';
+import { CallStateAction } from './index';
 
 export enum CallStateActionType {
   CURRENT_ISSUE_SELECTED = 'CURRENT_ISSUE_SELECTED',
@@ -25,9 +25,8 @@ export interface CurrentIssueAction extends CallStateAction {
   payload: string;
 }
 
-export interface SubmitOutcomeAction extends CallStateAction {
+export interface CompleteIssueAction extends CallStateAction {
   type: CallStateActionType.COMPLETE_ISSUE;
-  payload: OutcomeData;
 }
 
 export interface NextContact extends CallStateAction {
