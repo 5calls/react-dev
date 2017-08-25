@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
-import {Contact, Issue} from '../../common/model';
+import { Contact, Issue } from '../../common/model';
 import { LocationState } from '../../redux/location/reducer';
 
 interface Props {
