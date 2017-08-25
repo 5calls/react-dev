@@ -6,6 +6,7 @@ import { translate } from 'react-i18next';
 import { Issue, Contact } from '../../common/model';
 import { ContactDetails, Script, Outcomes, NoContactSplitDistrict } from './index';
 import { CallState, OutcomeData } from '../../redux/callState';
+import { LocationState } from '../../redux/location/reducer';
 
 // This defines the props that we must pass into this component.
 export interface Props {
@@ -15,6 +16,7 @@ export interface Props {
   readonly splitDistrict: boolean;
   readonly clearLocation: () => void;
   readonly onSubmitOutcome: (data: OutcomeData) => Function;
+  readonly locationState: LocationState;
 }
 
 export interface State {
@@ -89,6 +91,7 @@ export class Call extends React.Component<Props, State> {
         <Script
           issue={this.state.issue}
           contactIndex={this.state.currentContactIndex}
+          locationState={this.props.locationState}
           t={i18n.t}
         />
         {this.props.splitDistrict ? <span/> :
