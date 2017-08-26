@@ -35,16 +35,32 @@ test('Call State reducer processes NEXT_CONTACT action', () => {
   expect(newState.contactIndexes[issueId1]).toEqual(issueId1Index + 1);
 });
 
-test('Call State reducer processes COMPLETE_ISSUE action', () => {
+test('Call State reducer processes COMPLETE_ISSUE action with callState.currentIssueId', () => {
   const issueId1 = 'issue1';
   const completedIssues = ['issue2', 'issue3'];
-  const state = { ...defaultState, currentIssueId: issueId1, completedIssues };
+  const state = { ...defaultState, currentIssueId: issueId1, completedIssueIds: completedIssues };
   const action: CompleteIssueAction = {
     type: CallStateActionType.COMPLETE_ISSUE
   };
   const newState = callStateReducer(state, action);
   // console.log('NEW STATE', newState);
   expect(newState.completedIssueIds).toContain(issueId1);
+  expect(newState.completedIssueIds.length).toEqual(3);
+});
+
+test('Call State reducer processes COMPLETE_ISSUE action with issueId argument', () => {
+  const issueId = 'issue4';
+  const completedIssues = ['issue2', 'issue3'];
+  const state = { ...defaultState, completedIssueIds: completedIssues };
+  // console.log('OLD STATE', state);
+  const action: CompleteIssueAction = {
+    type: CallStateActionType.COMPLETE_ISSUE,
+    payload: issueId
+  };
+  const newState = callStateReducer(state, action);
+  // console.log('NEW STATE', newState);
+  expect(newState.completedIssueIds).toContain(issueId);
+  expect(newState.completedIssueIds.length).toEqual(3);
 });
 
 test('Call State reducer processes CLEAR_CONTACT_INDEXES action', () => {

@@ -27,6 +27,7 @@ export interface CurrentIssueAction extends CallStateAction {
 
 export interface CompleteIssueAction extends CallStateAction {
   type: CallStateActionType.COMPLETE_ISSUE;
+  payload?: string;
 }
 
 export interface NextContact extends CallStateAction {

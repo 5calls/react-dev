@@ -5,7 +5,7 @@ import { setCachedCity, setLocation, setLocationFetchType,
   setSplitDistrict, setUiState } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
 import { issuesActionCreator, callCountActionCreator, apiErrorMessageActionCreator } from './index';
-import { clearContactIndexes, completeIssueActionCreator, selectIssueActionCreator } from '../callState/';
+import { clearContactIndexes, completeIssueActionCreator } from '../callState/';
 import { ApplicationState } from '../root';
 import { LocationUiState } from '../../common/model';
 /**
@@ -152,8 +152,7 @@ const migrateLegacyCompletedIssues = (dispatch: Dispatch<ApplicationState>) => {
   if (legacyCompletedIssues) {
     const ids = JSON.parse(legacyCompletedIssues);
     ids.forEach((id) => {
-      dispatch(selectIssueActionCreator(id));
-      dispatch(completeIssueActionCreator());
+      dispatch(completeIssueActionCreator(id));
     });
     localStorage.removeItem(LEGACY_COMPLETED_ISSUES_KEY);
   }

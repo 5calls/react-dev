@@ -70,7 +70,12 @@ export const callStateReducer: Reducer<CallState> = (
       if (state.completedIssueIds) {
         newCompletedIssues = [...state.completedIssueIds];
       }
-      newCompletedIssues.push(state.currentIssueId);
+      const payload = action.payload as string;
+      if (payload) {
+        newCompletedIssues.push(payload);
+      } else {
+        newCompletedIssues.push(state.currentIssueId);
+      }
       let newState = { ...state };
       newState.completedIssueIds = newCompletedIssues;
       return newState;

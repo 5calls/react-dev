@@ -19,10 +19,11 @@ export const selectIssueActionCreator = (issueId: string): CurrentIssueAction =>
   };
 };
 
-export const completeIssueActionCreator = (): CompleteIssueAction => {
+export const completeIssueActionCreator = (issueId?: string): CompleteIssueAction => {
   // completes the current issue: callState.currentIssueId
   return {
-    type: CallStateActionType.COMPLETE_ISSUE
+    type: CallStateActionType.COMPLETE_ISSUE,
+    payload: issueId
   };
 };
 
