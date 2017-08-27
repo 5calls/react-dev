@@ -14,7 +14,7 @@ const Navigation: React.StatelessComponent<Props> = (props: Props) => {
         <span>{props.t('footer.openSource')}</span>
       </a>
       {/*tslint:disable-next-line:max-line-length*/}
-      <a href="https://5calls.org/privacy.html" data-no-routing="data-no-routing"><i aria-hidden="true" className="fa fa-shield" />
+      <a href="/privacy.html" data-no-routing="data-no-routing"><i aria-hidden="true" className="fa fa-shield" />
         <span>{props.t('footer.privacy')}</span>
       </a>
       <Link to="/faq"><i aria-hidden="true" className="fa fa-question-circle" />
