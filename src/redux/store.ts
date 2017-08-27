@@ -38,7 +38,8 @@ export default (initialState) => {
   // Make sure every key is of type ApplicationStateKeyType
   // and every value is an ApplicationStateKey value
   const localPersistKeys: ApplicationStateKeyType[] = [
-    ApplicationStateKey.locationState
+    ApplicationStateKey.locationState,
+    ApplicationStateKey.callState
   ];
   persistor = persistStore(
     store,
