@@ -7,7 +7,13 @@ import { Issue, DefaultIssue, Contact, DefaultContact, FieldOffice } from '../..
 test('Contact offices should display if available', () => {
   const fieldOffice: FieldOffice = {city: 'San Francisco', phone: '5555551212' };
   /*tslint:disable-next-line:max-line-length*/
-  const contact: Contact = Object.assign({}, DefaultContact, { id: '101', name: 'dude', phone: '5555551212', party: '', state: 'CA', reason: 'this is your dude', fieldOffices: [fieldOffice] } );
+  const contact: Contact = Object.assign({}, DefaultContact, {
+    id: '101', name: 'dude',
+    phone: '5555551212', party: '',
+    state: 'CA', reason: 'this is your dude',
+    fieldOffices: [fieldOffice],
+    outcomeModels: [{label: 'vm', status: 'vm'}]
+   } );
   const issue: Issue = Object.assign({}, DefaultIssue, { id: '1', name: 'testName', contacts: [contact] });
 
   const component = shallow(
@@ -23,7 +29,13 @@ test('Contact offices should display if available', () => {
 test('Contact offices should not display if unavailable', () => {
   /*tslint:disable-next-line:max-line-length*/
   const contact: Contact = Object.assign({}, DefaultContact, { id: '101', name: 'dude', phone: '5555551212', party: '', state: 'CA', reason: 'this is your dude' } );
-  const issue: Issue = Object.assign({}, DefaultIssue, { id: '1', name: 'testName', contacts: [contact] });
+  const issue: Issue = Object.assign({}, DefaultIssue, {
+    id: '1', name: 'testName',
+    contacts: [contact],
+    outcomeModels: [
+      {label: 'unavailable', status: 'unavailable'},
+      {label: 'contact', status: 'contact'}]
+   });
 
   const component = shallow(
     <ContactOffices
