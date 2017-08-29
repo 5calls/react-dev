@@ -1,6 +1,8 @@
-// import { Dispatch } from 'react-redux';
-// import { ApplicationState } from '../root';
+import { Dispatch } from 'react-redux';
+import { ApplicationState } from '../root';
 import { completeIssueActionCreator, moveToNextActionCreator } from './index';
+import * as apiServices from '../../services/apiServices';
+import { formatLocationForBackEnd } from '../../components/shared/utils';
 
 export type OutcomeType =
   'unavailable' |
@@ -12,6 +14,7 @@ export interface OutcomeData {
   outcome: string;
   issueId: string;
   numberContactsLeft: number;
+  location?: string; // added in submitOutcome()
   contactId?: string;
   via?: string; // added in submitOutcome()
 }
@@ -23,12 +26,14 @@ export interface OutcomeData {
  * @param payload: OutcomePayload
  */
 export function submitOutcome(data: OutcomeData) {
-    return (dispatch/*: Dispatch<ApplicationState>*/) => {
-      // tslint:disable-next-line
-      // console.log(`submitOutcome() called with data:`, data)
+    return (
+      dispatch: Dispatch<ApplicationState>,
+      getState: () => ApplicationState) => {
 
-      // TODO: set callState.hideFieldOfficeNumbers
-      // send('hideFieldOfficeNumbers', data, done);
+      const state = getState();
+      const location = state.locationState.address;
+      // FIXME: parse out zip code or geolocation
+      data.location = formatLocationForBackEnd(location);
 
       // TODO: notify Google Analytics (ga)
       if (data.outcome === 'unavailable') {
@@ -43,17 +48,15 @@ export function submitOutcome(data: OutcomeData) {
         // TODO: Add to user stats
         // send('setUserStats', data, done);
 
-        // TODO: post outcome data to back end
-
         // This parameter will indicate to the backend api where this call report came from
         // A value of test indicates that it did not come from the production environment
         const viaParameter = window.location.host === '5calls.org' ? 'web' : 'test';
         data.via = viaParameter;
 
-        // const body = queryString.stringify({ location: state.zip,
-        //  result: data.result, contactid: data.contactid, issueid: data.issueid, via: viaParameter });
-        // http.post(appURL+'/report',
-        // { body: body, headers: {"Content-Type": "application/x-www-form-urlencoded"} }, () => {});
+        // console.log(`submitOutcome() called with data:`, data)
+        apiServices.postOutcomeData(data)
+          // tslint:disable-next-line:no-console
+          .catch(e => console.error('Problem posting outcome data', e));
       }
       // send('incrementContact', data, done);
 
