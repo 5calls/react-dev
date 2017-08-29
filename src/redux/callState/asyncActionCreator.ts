@@ -2,7 +2,7 @@ import { Dispatch } from 'react-redux';
 import { ApplicationState } from '../root';
 import { completeIssueActionCreator, moveToNextActionCreator } from './index';
 import * as apiServices from '../../services/apiServices';
-import * as Constants from '../../common/constants';
+import { formatLocationForBackEnd } from '../../components/shared/utils';
 
 export type OutcomeType =
   'unavailable' |
@@ -33,7 +33,7 @@ export function submitOutcome(data: OutcomeData) {
       const state = getState();
       const location = state.locationState.address;
       // FIXME: parse out zip code or geolocation
-      data.location = parseZipCodeOrGeolocation(location);
+      data.location = formatLocationForBackEnd(location);
 
       // TODO: set callState.hideFieldOfficeNumbers
       // send('hideFieldOfficeNumbers', data, done);
@@ -76,28 +76,3 @@ export function submitOutcome(data: OutcomeData) {
       }
     };
 }
-
-export const parseZipCodeOrGeolocation = (location: string | null | undefined): string => {
-  if (!location) {
-    return '';
-  }
-  const zipRegex: RegExp = Constants.zipCodeRegex;
-  // Geolocation contains latitude and logitude which are
-  // two negative or positive floating point numbers
-  // separated by one or more spaces.
-  // First regex group is the latitude
-  // Second regex group is the longitude
-  const geolocationRegex: RegExp = /^([-]?\d+\.\d+)\s+([-]?\d+\.\d+)$/;
-  if (zipRegex.test(location)) {
-    return location;
-  } else if (geolocationRegex.test(location)) {
-    // parse out lat and long
-    const match = geolocationRegex.exec(location);
-    if (match) {
-      // TODO: Format floating point numbers
-      // to 2 places as specified in report.go
-      return `${match[1]} ${match[2]}`;
-    }
-  }
-  return '';
-};

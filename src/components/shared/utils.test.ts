@@ -1,4 +1,4 @@
-import { parseZipCodeOrGeolocation } from './asyncActionCreator';
+import { formatLocationForBackEnd } from './utils';
 
 class Data {
   constructor(private pactual: string | null | undefined, private pexpected: string) {}
@@ -12,7 +12,7 @@ class Data {
   }
 }
 
-test('parseZipCodeOrGeolocation should return empty string', () => {
+test('formatLocationForBackEnd should return empty string', () => {
   const testData: Data[] = [
     new Data('', ''),
     new Data('p12345', ''),
@@ -31,7 +31,7 @@ test('parseZipCodeOrGeolocation should return empty string', () => {
   testData.forEach(data => tester(data));
 });
 
-test('parseZipCodeOrGeolocation should return zip code', () => {
+test('formatLocationForBackEnd should return zip code', () => {
   const testData: Data[] = [
     new Data('12054', '12054'),
     new Data('04260', '04260'),
@@ -41,7 +41,7 @@ test('parseZipCodeOrGeolocation should return zip code', () => {
   testData.forEach(data => tester(data));
 });
 
-test('parseZipCodeOrGeolocation should return geolocation', () => {
+test('formatLocationForBackEnd should return geolocation', () => {
   const testData: Data[] = [
     new Data('-40.12054 -135.54', '-40.12054 -135.54'),
     // extra whitespace should be removed
@@ -53,7 +53,7 @@ test('parseZipCodeOrGeolocation should return geolocation', () => {
 });
 
 const tester = (data: Data) => {
-  const results = parseZipCodeOrGeolocation(data.actual);
+  const results = formatLocationForBackEnd(data.actual);
   expect(results).toEqual(data.expected);
 
 };
