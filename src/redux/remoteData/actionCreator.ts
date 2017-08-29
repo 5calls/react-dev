@@ -1,25 +1,25 @@
 import { NewLocationLookupAction, LocationActionType } from './../location/index';
 import { CallCountAction, ApiErrorAction } from './index';
 import { Issue } from '../../common/model';
-import { IssuesAction } from './index';
+import { IssuesAction, RemoteDataActionType } from './index';
 
 export const issuesActionCreator = (issues: Issue[]): IssuesAction => {
   return {
-    type: 'GET_ISSUES',
+    type: RemoteDataActionType.GET_ISSUES,
     payload: issues
   };
 };
 
 export const callCountActionCreator = (callTotal: number): CallCountAction => {
   return {
-    type: 'GET_CALL_TOTAL',
+    type: RemoteDataActionType.GET_CALL_TOTAL,
     payload: callTotal
   };
 };
 
 export const apiErrorMessageActionCreator = (message: string): ApiErrorAction => {
   return {
-    type: 'API_ERROR',
+    type: RemoteDataActionType.API_ERROR,
     payload: message
   };
 };

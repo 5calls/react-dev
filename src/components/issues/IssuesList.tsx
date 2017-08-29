@@ -28,6 +28,11 @@ export const IssuesList: React.StatelessComponent<Props> = (props: Props) => {
           isIssueActive={currentIssueId === issue.id}
           onSelectIssue={props.onSelectIssue}
         />) : <div style={{ textAlign: 'center' }}>{props.t('noCalls.title')}</div>}
+      <li>
+        <a href="/more" className="issues__footer-link">
+          <span>{props.t('issues.viewAllActiveIssues')}</span>
+        </a>
+      </li>
     </ul>
   );
 };

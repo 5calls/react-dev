@@ -2,7 +2,7 @@ import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import * as moxios from 'moxios';
 import { RemoteDataActionType } from './action';
-import { fetchCallCount, getApiData, fetchLocationByIP } from './index';
+import { fetchCallCount, fetchAllIssues, fetchLocationByIP } from './index';
 import { ApplicationState } from './../root';
 import { ApiData, DefaultIssue, IpInfoData, LocationFetchType, LocationUiState } from './../../common/model';
 import * as Constants from '../../common/constants';
@@ -35,7 +35,7 @@ test('getApiData() action creator functions correctly', () => {
   };
   initialState.locationState = locationState;
   const store = mockStore(initialState);
-  store.dispatch(getApiData(address))
+  store.dispatch(fetchAllIssues(address))
     .then(() => {
       const actions = store.getActions();
       // console.log('Actions', actions);
@@ -83,7 +83,7 @@ test.skip('fetchLocationByIP() action creator works correctly', () => {
 
 test('fetchCallCount() action creator dispatches proper action', () => {
   const count = 999999;
-  const expectedType: RemoteDataActionType = 'GET_CALL_TOTAL';
+  const expectedType: RemoteDataActionType = RemoteDataActionType.GET_CALL_TOTAL;
   moxios.stubRequest(/report/, { response: { count} });
   const initialState = {} as ApplicationState;
   const store = mockStore(initialState);

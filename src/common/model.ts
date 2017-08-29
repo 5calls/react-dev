@@ -41,6 +41,11 @@ export interface Category {
   name: string;
 }
 
+export class CategoryMap {
+  category: Category;
+  issues: Issue[];
+}
+
 export type Party = 'Democrat' | 'Republican' | 'Independent' | '';
 
 // export const DefaultContact: Contact = {

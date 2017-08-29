@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { ApiData, IpInfoData, LocationFetchType, ReportData } from './../../common/model';
-import { get5CallsApiData, getReportData } from '../../services/apiServices';
+import { getAllIssues, getReportData } from '../../services/apiServices';
 import { setCachedCity, setLocation, setLocationFetchType,
   setSplitDistrict, setUiState } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
@@ -27,11 +27,11 @@ export const getIssuesIfNeeded = () => {
   };
 };
 
-export const getApiData = (address: string = '') => {
+export const fetchAllIssues = (address: string = '') => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
     // console.log('getApiData start');
-    return get5CallsApiData(address)
+    return getAllIssues(address)
       .then((response: ApiData) => {
         // console.log('getApiData then() response', response);
         if (response.invalidAddress) {
@@ -72,7 +72,7 @@ export const fetchLocationByIP = () => {
         .then((response: IpInfoData) => {
           dispatch(setLocationFetchType(LocationFetchType.IP_INFO));
           const location = response.loc;
-          dispatch(getApiData(location))
+          dispatch(fetchAllIssues(location))
           .then(() => {
             dispatch(setUiState(LocationUiState.LOCATION_FOUND));
           });
@@ -105,7 +105,7 @@ export const fetchBrowserGeolocation = () => {
           if (location.latitude && location.longitude) {
             dispatch(setLocationFetchType(LocationFetchType.BROWSER_GEOLOCATION));
             const loc = `${location.latitude} ${location.longitude}`;
-            dispatch(getApiData(loc));
+            dispatch(fetchAllIssues(loc));
             clearTimeout(setTimeoutHandle);
           } else {
             dispatch(fetchLocationByIP());
@@ -132,10 +132,10 @@ export const startup = () => {
     // add completed issues from Choo app in localStorage to
     // this apps callState.completedIssueIds
     migrateLegacyCompletedIssues(dispatch);
-    const loc = state.locationState.address || state.locationState.cachedCity;
+    const loc = state.locationState.address;
     if (loc) {
       // console.log('Using cached address');
-      dispatch(getApiData(loc))
+      dispatch(fetchAllIssues(loc))
         .then(() => {
           setLocationFetchType(LocationFetchType.CACHED_ADDRESS);
         });
