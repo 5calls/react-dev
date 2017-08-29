@@ -1,5 +1,6 @@
 import { OutcomeData } from './../redux/callState/asyncActionCreator';
 import axios from 'axios';
+import * as querystring from 'querystring';
 import { ApiData, ReportData } from './../common/model';
 import * as Constants from '../common/constants';
 
@@ -16,13 +17,13 @@ export const getReportData = (): Promise<ReportData> => {
 };
 
 export const postOutcomeData = (data: OutcomeData) => {
-  const postData = {
+  const postData = querystring.stringify({
     location: data.location,
     result: data.outcome,
     contactid: data.contactId,
     issueid: data.issueId,
     via: data.via
-  };
+  });
   console.log('postOutcomeData() posted data:', postData)
   return axios.post(
       `${Constants.REGISTER_CALL_API_URL}`,
