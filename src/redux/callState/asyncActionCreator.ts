@@ -1,6 +1,8 @@
-// import { Dispatch } from 'react-redux';
-// import { ApplicationState } from '../root';
+import { Dispatch } from 'react-redux';
+import { ApplicationState } from '../root';
 import { completeIssueActionCreator, moveToNextActionCreator } from './index';
+import * as apiServices from '../../services/apiServices';
+import * as Constants from '../../common/constants';
 
 export type OutcomeType =
   'unavailable' |
@@ -12,6 +14,7 @@ export interface OutcomeData {
   outcome: string;
   issueId: string;
   numberContactsLeft: number;
+  location?: string; // added in submitOutcome()
   contactId?: string;
   via?: string; // added in submitOutcome()
 }
@@ -23,9 +26,14 @@ export interface OutcomeData {
  * @param payload: OutcomePayload
  */
 export function submitOutcome(data: OutcomeData) {
-    return (dispatch/*: Dispatch<ApplicationState>*/) => {
-      // tslint:disable-next-line
-      // console.log(`submitOutcome() called with data:`, data)
+    return (
+      dispatch: Dispatch<ApplicationState>,
+      getState: () => ApplicationState) => {
+
+      const state = getState();
+      const location = state.locationState.address;
+      // FIXME: parse out zip code or geolocation
+      data.location = parseZipCodeOrGeolocation(location);
 
       // TODO: set callState.hideFieldOfficeNumbers
       // send('hideFieldOfficeNumbers', data, done);
@@ -54,6 +62,10 @@ export function submitOutcome(data: OutcomeData) {
         //  result: data.result, contactid: data.contactid, issueid: data.issueid, via: viaParameter });
         // http.post(appURL+'/report',
         // { body: body, headers: {"Content-Type": "application/x-www-form-urlencoded"} }, () => {});
+        console.log(`submitOutcome() called with data:`, data)
+        apiServices.postOutcomeData(data)
+          // tslint:disable-next-line:no-console
+          .catch(e => console.error('Problem posting outcome data', e));
       }
       // send('incrementContact', data, done);
 
@@ -64,3 +76,28 @@ export function submitOutcome(data: OutcomeData) {
       }
     };
 }
+
+export const parseZipCodeOrGeolocation = (location: string | null | undefined): string => {
+  if (!location) {
+    return '';
+  }
+  const zipRegex: RegExp = Constants.zipCodeRegex;
+  // Geolocation contains latitude and logitude which are
+  // two negative or positive floating point numbers
+  // separated by one or more spaces.
+  // First regex group is the latitude
+  // Second regex group is the longitude
+  const geolocationRegex: RegExp = /^([-]?\d+\.\d+)\s+([-]?\d+\.\d+)$/;
+  if (zipRegex.test(location)) {
+    return location;
+  } else if (geolocationRegex.test(location)) {
+    // parse out lat and long
+    const match = geolocationRegex.exec(location);
+    if (match) {
+      // TODO: Format floating point numbers
+      // to 2 places as specified in report.go
+      return `${match[1]} ${match[2]}`;
+    }
+  }
+  return '';
+};
