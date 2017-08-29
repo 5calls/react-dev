@@ -24,7 +24,7 @@ export const postOutcomeData = (data: OutcomeData) => {
     issueid: data.issueId,
     via: data.via
   });
-  console.log('postOutcomeData() posted data:', postData)
+  // console.log('postOutcomeData() posted data:', postData)
   return axios.post(
       `${Constants.REGISTER_CALL_API_URL}`,
       postData,
@@ -32,7 +32,7 @@ export const postOutcomeData = (data: OutcomeData) => {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       })
     .then(response => {
-    console.log('postOutcomeData() response: ', response.data);
+    // console.log('postOutcomeData() response: ', response.data);
     return Promise.resolve(null);
   })
     .catch(e => Promise.reject(e));
