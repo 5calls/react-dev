@@ -2,12 +2,12 @@ import * as React from 'react';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 import { Issue, CategoryMap } from '../../common/model';
-import { IssuesListItem } from './index'
+import { IssuesListItem } from './index';
 
 interface Props {
   readonly inactiveIssues: Issue[];
   readonly categoryMap: CategoryMap[];
-  readonly totalCount: number;
+  readonly completedIssueIds: string[];
   readonly t: TranslationFunction;
   readonly onSelectIssue: (issueId: string) => Function;  
 }
@@ -17,7 +17,7 @@ export const MoreIssues: React.StatelessComponent<Props> = (props: Props) => {
     <section className="call">
     <div className="call_complete">
       <h2 className="call__title">
-        {props.t('issues.activeIssuesWithCount', {count: 10})}
+        {props.t('issues.activeIssuesWithCount', {count: (props.inactiveIssues ? props.inactiveIssues.length : 0)})}
       </h2>
       {props.categoryMap ? props.categoryMap.map((cat, key) =>
         <div key={key}>
@@ -27,14 +27,17 @@ export const MoreIssues: React.StatelessComponent<Props> = (props: Props) => {
             <IssuesListItem
               key={issue.id}
               issue={issue}
-              isIssueComplete={false}
+              isIssueComplete={
+                props.completedIssueIds &&
+                (props.completedIssueIds.find((issueId: string) => issue.id === issueId) !== undefined)
+              }
               isIssueActive={false}
               onSelectIssue={props.onSelectIssue}
             />
           )}
           </ul>
         </div>
-      ): <span/>}
+      ) : <span/> }
     </div>
     </section>
   );

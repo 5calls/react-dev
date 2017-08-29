@@ -12,18 +12,25 @@ interface OwnProps extends RouteComponentProps<{ id: string }> { }
 
 interface StateProps {
   readonly issues: Issue[];
-  readonly totalCount: number;
+  readonly currentIssue?: Issue;  
+  readonly completedIssueIds: string[];
 }
 
-interface DispatchProps {
+interface DispatchProps { 
   readonly onSelectIssue: (issueId: string) => void;
   readonly onGetIssuesIfNeeded: () => void;
 }
 
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
+  let currentIssue: Issue | undefined = undefined;
+  if (state.remoteDataState.issues) {
+    currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.match.params.id);
+  }
+
   return {
     issues: state.remoteDataState.inactiveIssues,
-    totalCount: state.remoteDataState.callTotal,
+    currentIssue: currentIssue,
+    completedIssueIds: state.callState.completedIssueIds,
   };
 };
 
@@ -36,4 +43,4 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
     dispatch);
 };
 
-export default connect<StateProps, DispatchProps, OwnProps>(mapStateToProps, mapDispatchToProps)(MoreIssuesPage as any);
+export default connect<StateProps, DispatchProps, OwnProps>(mapStateToProps, mapDispatchToProps)(MoreIssuesPage);

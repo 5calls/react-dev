@@ -4,4 +4,5 @@ import MoreIssuesPage from './MoreIssuesPage';
 import { MoreIssues, MoreIssuesTranslatable } from './MoreIssues';
 import MoreIssuesContainer from './MoreIssuesContainer';
 
-export { IssuesList, IssuesListTranslatable, IssuesListItem, MoreIssuesPage, MoreIssues, MoreIssuesTranslatable, MoreIssuesContainer };
+export { IssuesList, IssuesListTranslatable, IssuesListItem, MoreIssuesPage, 
+         MoreIssues, MoreIssuesTranslatable, MoreIssuesContainer };

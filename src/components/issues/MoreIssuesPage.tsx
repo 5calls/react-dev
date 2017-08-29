@@ -9,12 +9,14 @@ interface RouteProps extends RouteComponentProps<{ id: string }> { }
 
 interface Props extends RouteProps {
   readonly issues: Issue[];
-  readonly totalCount: number;
+  readonly currentIssue: Issue;
+  readonly completedIssueIds: string[];
   readonly onSelectIssue: (issueId: string) => Function;
   readonly onGetIssuesIfNeeded: () => Function;
 }
 
 export interface State {
+  currentIssue: Issue;
   issueCategoryMap: CategoryMap[];
 }
 
@@ -28,6 +30,8 @@ class MoreIssuesPage extends React.Component<Props, State> {
   setStateFromProps(props: Props): State {
     let categoryMap: CategoryMap[] = [];
 
+    // this makes more sense as an actual Map<string, Issues[]> but I couldn't get it
+    // to render in the view no matter what I tried, so it's this /shrug
     if (props.issues) {
       props.issues.forEach((issue) => {
         let category: string = 'uncategorized';
@@ -37,10 +41,10 @@ class MoreIssuesPage extends React.Component<Props, State> {
 
           let availableMap;
           categoryMap.forEach((map) => {
-            if (map.category.name == category) {
-              availableMap = map
+            if (map.category.name === category) {
+              availableMap = map;
             }
-          })
+          });
 
           if (availableMap) {
             availableMap.issues.push(issue);
@@ -53,13 +57,32 @@ class MoreIssuesPage extends React.Component<Props, State> {
       });  
     }
 
+    categoryMap.sort((a, b) => {
+      let nameA = a.category.name.toLowerCase();
+      let nameB = b.category.name.toLowerCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+
+      if (nameA > nameB) {
+        return 1;
+      }
+
+      return 0;
+    });
+
     return {
+      currentIssue: props.currentIssue,
       issueCategoryMap: categoryMap,
     };
   }
 
   componentWillReceiveProps(newProps: Props) {
     this.setState(this.setStateFromProps(newProps));
+
+    if (!this.state.currentIssue && newProps.currentIssue) {
+      this.props.onSelectIssue(newProps.currentIssue.id);
+    }
   }
 
   componentDidMount() {
@@ -73,7 +96,7 @@ class MoreIssuesPage extends React.Component<Props, State> {
           <MoreIssuesTranslatable
             inactiveIssues={this.props.issues}
             categoryMap={this.state.issueCategoryMap}
-            totalCount={this.props.totalCount}
+            completedIssueIds={this.props.completedIssueIds}
             t={i18n.t}
             onSelectIssue={this.props.onSelectIssue}
           />
