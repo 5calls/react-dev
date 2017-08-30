@@ -26,7 +26,7 @@ export const postOutcomeData = (data: OutcomeData) => {
   });
   // console.log('postOutcomeData() posted data:', postData)
   return axios.post(
-      `${Constants.REGISTER_CALL_API_URL}`,
+      `${Constants.REPORT_API_URL}`,
       postData,
       {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
