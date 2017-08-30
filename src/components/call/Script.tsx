@@ -34,7 +34,7 @@ function scriptFormat(issue: Issue, locationState: LocationState, contactIndex: 
     return script;
 }
 
-const Script: React.StatelessComponent<Props> = ({ issue, contactIndex = 0, locationState, t }: Props) => {
+export const Script: React.StatelessComponent<Props> = ({ issue, contactIndex = 0, locationState, t }: Props) => {
   if (issue && issue.contacts && issue.contacts.length !== 0) {
     return (
       <div className="call__script">
@@ -52,4 +52,4 @@ const Script: React.StatelessComponent<Props> = ({ issue, contactIndex = 0, loca
   }
 };
 
-export default translate()(Script);
+export const ScriptTranslatable = translate()(Script);
