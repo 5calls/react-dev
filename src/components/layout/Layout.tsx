@@ -35,6 +35,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
                 t={i18n.t}
               />
             </div>
+            <h2>{i18n.t('issues.whatsImportantToYou')}</h2>
           </header>
           <Sidebar
             issues={props.issues}

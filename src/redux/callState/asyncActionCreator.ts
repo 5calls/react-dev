@@ -3,6 +3,7 @@ import { ApplicationState } from '../root';
 import { completeIssueActionCreator, moveToNextActionCreator } from './index';
 import * as apiServices from '../../services/apiServices';
 import { formatLocationForBackEnd } from '../../components/shared/utils';
+import * as ReactGA from 'react-ga';
 
 export type OutcomeType =
   'unavailable' |
@@ -35,11 +36,11 @@ export function submitOutcome(data: OutcomeData) {
       // FIXME: parse out zip code or geolocation
       data.location = formatLocationForBackEnd(location);
 
-      // TODO: notify Google Analytics (ga)
+      const ga = ReactGA.ga();
       if (data.outcome === 'unavailable') {
-        // ga('send', 'event', 'call_result', 'unavailable', 'unavailable');
+        ga('send', 'event', 'call_result', 'unavailable', 'unavailable');
       } else {
-        // ga('send', 'event', 'call_result', 'success', data.result);
+        ga('send', 'event', 'call_result', 'success', data.outcome);
       }
 
       // Don't post or add to user stats a "skipped" outcome
