@@ -1,11 +1,12 @@
 import { Reducer } from 'redux';
-import { Issue } from '../../common/model';
+import { Issue, Donations } from '../../common/model';
 import { RemoteDataAction, RemoteDataActionType } from './index';
 
 export interface RemoteDataState {
   issues: Issue[];
   inactiveIssues: Issue[];
   callTotal: number;
+  donations: Donations;
   errorMessage: string;
 }
 
@@ -27,6 +28,8 @@ export const remoteDataReducer: Reducer<RemoteDataState> = (
       return issuesState;
     case RemoteDataActionType.GET_CALL_TOTAL:
       return Object.assign({}, state, {callTotal: action.payload});
+    case RemoteDataActionType.GET_DONATIONS:
+      return Object.assign({}, state, {donations: action.payload});
     case RemoteDataActionType.API_ERROR:
       return Object.assign({}, state, {errorMessage: action.payload});
     default:

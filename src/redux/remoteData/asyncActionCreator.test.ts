@@ -83,8 +83,8 @@ test.skip('fetchLocationByIP() action creator works correctly', () => {
 
 test('fetchCallCount() action creator dispatches proper action', () => {
   const count = 999999;
-  const expectedType: RemoteDataActionType = RemoteDataActionType.GET_CALL_TOTAL;
-  moxios.stubRequest(/report/, { response: { count} });
+  const expectedType = RemoteDataActionType.GET_CALL_TOTAL;
+  moxios.stubRequest(/counts/, { response: { count} });
   const initialState = {} as ApplicationState;
   const store = mockStore(initialState);
   store.dispatch(fetchCallCount())

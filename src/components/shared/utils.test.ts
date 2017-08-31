@@ -1,7 +1,7 @@
-import { formatLocationForBackEnd } from './utils';
+import { formatLocationForBackEnd, formatNumber } from './utils';
 
 class Data {
-  constructor(private pactual: string | null | undefined, private pexpected: string) {}
+  constructor(private pactual: string | number | null | undefined, private pexpected: string) {}
 
   get actual() {
     return this.pactual;
@@ -28,7 +28,7 @@ test('formatLocationForBackEnd should return empty string', () => {
     new Data('12.4567-34.1234', ''),
   ];
 
-  testData.forEach(data => tester(data));
+  testData.forEach(data => formatLocationForBackEndTester(data));
 });
 
 test('formatLocationForBackEnd should return zip code', () => {
@@ -38,7 +38,7 @@ test('formatLocationForBackEnd should return zip code', () => {
     new Data('12345-3456', '12345-3456'),
   ];
 
-  testData.forEach(data => tester(data));
+  testData.forEach(data => formatLocationForBackEndTester(data));
 });
 
 test('formatLocationForBackEnd should return geolocation', () => {
@@ -49,11 +49,31 @@ test('formatLocationForBackEnd should return geolocation', () => {
     new Data('44.45632 -10.1234', '44.45632 -10.1234'),
   ];
 
-  testData.forEach(data => tester(data));
+  testData.forEach(data => formatLocationForBackEndTester(data));
 });
 
-const tester = (data: Data) => {
-  const results = formatLocationForBackEnd(data.actual);
+const formatLocationForBackEndTester = (data: Data) => {
+  const results = formatLocationForBackEnd(data.actual as string | null | undefined);
   expect(results).toEqual(data.expected);
+};
 
+test('prettyCount() should format number properly', () => {
+  const testData: Data[] = [
+    new Data(1234, '1,234'),
+    new Data('foobar', '0'),
+    new Data(23, '23'),
+    new Data(1234567890, '1,234,567,890'),
+    new Data('99999', '99,999'),
+    new Data('0234', '234'),
+    new Data(undefined, '0'),
+    new Data(null, '0'),
+    new Data('', '0'),
+  ];
+
+  testData.forEach(data => formatNumberTester(data));
+});
+
+const formatNumberTester = (data: Data) => {
+  const results = formatNumber(data.actual as number | string);
+  expect(results).toEqual(data.expected);
 };
