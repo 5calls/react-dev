@@ -1,9 +1,8 @@
 import { DonationsAction } from './action';
 import { Donations } from './../../common/model';
 import { NewLocationLookupAction, LocationActionType } from './../location/index';
-import { CallCountAction, ApiErrorAction, RemoteDataActionType } from './index';
+import { CallCountAction, ApiErrorAction, IssuesAction, RemoteDataActionType } from './index';
 import { Issue } from '../../common/model';
-import { IssuesAction, RemoteDataActionType } from './index';
 
 export const issuesActionCreator = (issues: Issue[]): IssuesAction => {
   return {
