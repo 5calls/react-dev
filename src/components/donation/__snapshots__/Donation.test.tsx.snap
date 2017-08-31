@@ -78,16 +78,16 @@ ShallowWrapper {
   "renderer": ReactShallowRenderer {
     "_instance": ShallowComponentWrapper {
       "_calledComponentWillUnmount": false,
-      "_compositeType": 2,
+      "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <Unknown
+      "_currentElement": <Donation
         goal={5000}
         total={1345}
 />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
-      "_instance": StatelessComponent {
+      "_instance": Donation {
         "_reactInternalInstance": [Circular],
         "context": Object {},
         "props": Object {
@@ -190,7 +190,7 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Unknown
+  "unrendered": <Donation
     goal={5000}
     total={1345}
 />,
