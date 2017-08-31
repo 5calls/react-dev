@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import i18n from '../../services/i18n';
 import { TranslationFunction } from 'i18next';
 import { translate, Trans } from 'react-i18next';
 import { Issue } from '../../common/model';
@@ -23,7 +22,7 @@ export const Done: React.StatelessComponent<Props> = (props: Props) => {
         </p>
         <Promotion
           currentIssue={props.currentIssue}
-          t={i18n.t}
+          t={props.t}
         />
         <p className="call__text">
           <Trans i18nKey="callComplete.learnWhyCallingIsGreat">
@@ -34,7 +33,7 @@ export const Done: React.StatelessComponent<Props> = (props: Props) => {
 
         <CallCount
           totalCount={props.totalCount}
-          t={i18n.t}
+          t={props.t}
         />
       </div>
     </section>
