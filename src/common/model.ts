@@ -103,7 +103,7 @@ export interface ApiData {
   issues: Issue[];
 }
 
-export interface ReportData {
+export interface CountData {
   count: number; // total call count
 }
 

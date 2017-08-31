@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
-import { ApiData, IpInfoData, LocationFetchType, ReportData } from './../../common/model';
-import { getAllIssues, getReportData } from '../../services/apiServices';
+import { ApiData, IpInfoData, LocationFetchType, CountData } from './../../common/model';
+import { getAllIssues, getCountData } from '../../services/apiServices';
 import { setCachedCity, setLocation, setLocationFetchType,
   setSplitDistrict, setUiState } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
@@ -55,8 +55,8 @@ export const fetchAllIssues = (address: string = '') => {
 export const fetchCallCount = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
-    return getReportData()
-      .then((response: ReportData) => {
+    return getCountData()
+      .then((response: CountData) => {
         dispatch(callCountActionCreator(response.count));
         // tslint:disable-next-line:no-console
       }).catch((error) => console.error(`fetchCallCount error: ${error.message}`, error));
