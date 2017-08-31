@@ -1,6 +1,6 @@
 import { DefaultIssue } from './../../common/model';
-import { RemoteDataState, RemoteDataActionType, remoteDataReducer, IssuesAction,
-  CallCountAction, ApiErrorAction } from './index';
+import { RemoteDataState, remoteDataReducer, IssuesAction,
+  CallCountAction, ApiErrorAction, RemoteDataActionType } from './index';
 
 let defaultState;
 beforeEach(() => {

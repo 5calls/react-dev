@@ -4,6 +4,7 @@ import { LocationState } from '../../redux/location/reducer';
 import { Issue } from '../../common/model';
 import { Sidebar, Footer } from './index';
 import { LocationTranslatable } from '../location';
+import DonationContainer from '../donation/DonationContainer';
 
 interface Props {
   readonly children?: {};
@@ -20,6 +21,7 @@ interface Props {
 const Layout: React.StatelessComponent<Props> = (props: Props) => (
   <div>
     <header className="logo__header" role="banner" />
+    <DonationContainer />
     <div className="layout">
       <aside id="nav" role="contentinfo" className="layout__side">
         <div className="issues">

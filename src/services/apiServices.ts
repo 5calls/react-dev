@@ -1,7 +1,7 @@
 import { OutcomeData } from './../redux/callState/asyncActionCreator';
 import axios from 'axios';
 import * as querystring from 'querystring';
-import { ApiData, CountData } from './../common/model';
+import { ApiData, CountData, DonationGoal } from './../common/model';
 import * as Constants from '../common/constants';
 
 export const getAllIssues = (address: string): Promise<ApiData> => {
@@ -35,5 +35,12 @@ export const postOutcomeData = (data: OutcomeData) => {
     // console.log('postOutcomeData() response: ', response.data);
     return Promise.resolve(null);
   })
+    .catch(e => Promise.reject(e));
+};
+
+export const getDonations = (): Promise<DonationGoal> => {
+  const donationUrl = 'https://pgb84kuy7a.execute-api.us-east-2.amazonaws.com/production/donations';
+  return axios.get(`${donationUrl}`)
+    .then(response => Promise.resolve(response.data))
     .catch(e => Promise.reject(e));
 };

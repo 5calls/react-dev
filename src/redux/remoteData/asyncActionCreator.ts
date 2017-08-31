@@ -1,6 +1,7 @@
+import { donationsActionCreator } from './actionCreator';
 import { Dispatch } from 'redux';
-import { ApiData, IpInfoData, LocationFetchType, CountData } from './../../common/model';
-import { getAllIssues, getCountData } from '../../services/apiServices';
+import { ApiData, IpInfoData, LocationFetchType, CountData, DonationGoal, Donations } from './../../common/model';
+import { getAllIssues, getCountData, getDonations } from '../../services/apiServices';
 import { setCachedCity, setLocation, setLocationFetchType,
   setSplitDistrict, setUiState } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
@@ -60,6 +61,19 @@ export const fetchCallCount = () => {
         dispatch(callCountActionCreator(response.count));
         // tslint:disable-next-line:no-console
       }).catch((error) => console.error(`fetchCallCount error: ${error.message}`, error));
+  };
+};
+
+export const fetchDonations = () => {
+  return (dispatch: Dispatch<ApplicationState>,
+          getState: () => ApplicationState) => {
+      return getDonations()
+        .then((response: DonationGoal) => {
+          const donations: Donations = response.goal;
+          dispatch(donationsActionCreator(donations));
+        })
+        // tslint:disable-next-line:no-console
+        .catch(e => console.error(`fetchDonations error: ${e.message}`, e));
   };
 };
 
@@ -125,6 +139,8 @@ export const fetchBrowserGeolocation = () => {
 export const startup = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
+    // dispatch donations
+    dispatch(fetchDonations());
     dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
     const state = getState();
     // clear contact indexes loaded from local storage

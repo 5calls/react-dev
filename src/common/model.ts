@@ -125,3 +125,14 @@ export enum LocationUiState {
   ENTERING_LOCATION = 'ENTERING_LOCATION',
   LOCATION_ERROR = 'LOCATION_ERROR'
 }
+
+export interface DonationGoal {
+  goal: Donations; //
+}
+
+export interface Donations {
+    count: number; // number of donors
+    amount: number; // total collected (api===amount)
+    total: number; // goal (api===total)
+    kind: string; // denomincation (dollars)
+}
