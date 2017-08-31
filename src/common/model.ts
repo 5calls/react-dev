@@ -74,6 +74,11 @@ export interface UserStat {
   unavailableCount: number;
 }
 
+export interface Group {
+  id: string;
+  name: string;
+}
+
 /**
  * Represents the place used to get location.
  * It may be one of three options:
