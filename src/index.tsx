@@ -19,8 +19,19 @@ import { CallPageContainer } from './components/call';
 import './components/bundle.css';
 import './components/shared/scss/style.css';
 import './components/shared/scss/vendor/normalize.css';
+import * as ReactGA from 'react-ga';
+
+ReactGA.initialize('UA-90915119-1');
+const trackPageView = location => {
+  ReactGA.set({
+    page: location.pathname
+  });
+  ReactGA.pageview(location.pathname);
+};
 
 const history = createHistory();
+trackPageView(history.location);
+history.listen(trackPageView);
 
 const store = createStore({});
 
