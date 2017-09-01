@@ -1,4 +1,5 @@
-import { userStatsReducer, UserStatsState, UserStatsActionType, SetUserStatsAction, AddCallEventAction } from './index';
+import { userStatsReducer, UserStatsState, UserStatsActionType, 
+  SetUserStatsAction, AddCallEventAction, UserContactEventType } from './index';
 
 let defaultState;
 beforeEach(() => {
@@ -15,7 +16,7 @@ test('UserStats reducer processes SetUserStatsActionCreator action correctly', (
   const state: UserStatsState = { ...defaultState };
 
   // add contact
-  state.all.unshift(getUserContactObject('unavailable'));
+  state.all.unshift(getUserContactObject(UserContactEventType.UNAVAILABLE));
   state.unavailable = 1;
 
   const action: SetUserStatsAction = {
@@ -32,7 +33,7 @@ test('UserStats reducer processes addCallEventActionCreator action correctly', (
   const state: UserStatsState = { ...defaultState };
 
   // set up
-  state.all.unshift(getUserContactObject('unavailable'));
+  state.all.unshift(getUserContactObject(UserContactEventType.UNAVAILABLE));
   state.unavailable = 1;
 
   const action: SetUserStatsAction = {
@@ -41,7 +42,7 @@ test('UserStats reducer processes addCallEventActionCreator action correctly', (
   };
   let newState = userStatsReducer(state, action);
 
-  const callEvent = getUserContactObject('voicemail');
+  const callEvent = getUserContactObject(UserContactEventType.VOICEMAIL);
 
   const callEventAction: AddCallEventAction = {
     type: UserStatsActionType.ADD_CALL_EVENT,
@@ -54,7 +55,7 @@ test('UserStats reducer processes addCallEventActionCreator action correctly', (
   expect(newState.all.length).toEqual(2);
 });
 
-const getUserContactObject = (result: string) => {
+const getUserContactObject = (result: UserContactEventType) => {
   return {
     result,
     contactid: 'fake-contact-id',

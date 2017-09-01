@@ -1,16 +1,17 @@
 import { Reducer } from 'redux';
-import { UserStatsAction } from './index';
+import { UserStatsAction, UserStatsActionType } from './index';
 
 export enum UserContactEventType {
   UNAVAILABLE = 'unavailable',
   VOICEMAIL = 'voicemail',
-  CONTACT = 'contact'
+  CONTACT = 'contact',
+  SKIP = 'skip'
 }
 
 export interface UserContactEvent {
   contactid: string;
   issueid: string;
-  result: string;
+  result: UserContactEventType;
   time: number;
 }
 
@@ -31,7 +32,7 @@ const initialState: UserStatsState = {
 export const userStatsReducer: Reducer<UserStatsState> = (
   state: UserStatsState = initialState as UserStatsState, action: UserStatsAction): UserStatsState => {
   switch (action.type) {
-    case 'SET_USER_STATS': {
+    case UserStatsActionType.SET_USER_STATS: {
       const userStats: UserStatsState = action.payload as UserStatsState;
 
       // create a deep copy of the incoming object to create the new state
@@ -44,9 +45,9 @@ export const userStatsReducer: Reducer<UserStatsState> = (
 
       return newState;
     }
-    case 'ADD_CALL_EVENT': {
+    case UserStatsActionType.ADD_CALL_EVENT: {
       const callEvent: UserContactEvent = action.payload as UserContactEvent;
-      if (callEvent.result === 'skip') {
+      if (callEvent.result === UserContactEventType.SKIP) {
         return state;
       }
 
