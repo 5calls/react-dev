@@ -9,11 +9,9 @@ import Outcomes from './Outcomes';
 import { Script, ScriptTranslatable } from './Script';
 import IssueLink from './IssueLink';
 import NoContactSplitDistrict from './NoContactSplitDistrict';
-import GroupPageContainer from './GroupPageContainer';
-import GroupPage from './GroupPage';
 
 export {
   Call, CallTranslatable, CallPageContainer, CallDetail, CallHeader, CallHeaderTranslatable, CallPage,
   ContactDetails, ContactOffices, ContactOfficesTranslatable, Outcomes, Script, ScriptTranslatable,
-  IssueLink, GroupPageContainer, GroupPage, NoContactSplitDistrict
+  IssueLink, NoContactSplitDistrict
 };

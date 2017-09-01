@@ -2,7 +2,7 @@ import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ApplicationState } from '../../redux/root';
 // import { newLocationLookup, clearAddress } from '../../redux/location';
-import { GroupPage } from './index';
+import GroupPage from './GroupPage';
 import { Issue } from '../../common/model';
 import { getIssuesIfNeeded } from '../../redux/remoteData';
 import { selectIssueActionCreator } from '../../redux/callState';
@@ -13,7 +13,7 @@ interface OwnProps extends RouteComponentProps<{ id: string }> { }
 
 interface StateProps {
   // readonly issues: Issue[];
-  // readonly currentIssue?: Issue;
+  readonly currentIssue?: Issue;
   readonly totalCount: number;
 }
 
@@ -30,7 +30,7 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
 
   return {
     // issues: state.remoteDataState.issues,
-    // currentIssue: currentIssue,
+    currentIssue: currentIssue,
     totalCount: state.remoteDataState.callTotal,
   };
 };

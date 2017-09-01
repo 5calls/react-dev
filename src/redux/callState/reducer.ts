@@ -23,6 +23,7 @@ export interface CallState {
   // key is the issueId, value is the index of the last contact visited
   contactIndexes: {[key: string]: number};
   completedIssueIds: string[];
+  groupId: string | undefined;
 }
 
 /*
