@@ -44,8 +44,129 @@
     <meta name="msapplication-TileColor" content="#0032FF">
     <meta name="msapplication-TileImage" content="/img/fav/ms-icon-144x144.png">
     <meta name="theme-color" content="#0032FF">
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,400i,700");
+      @keyframes pulseOpacity {
+        0% {
+          opacity: 1; }
+        50% {
+          opacity: .5; }
+        100% {
+          opacity: 1; } }
 
-    <link rel="stylesheet" href="/css/bundle.css">
+      .layout {
+        display: flex;
+        flex-direction: row;
+        min-height: 80%;
+        margin: 0 auto;
+        max-width: 1024px; }
+        @media only screen and (max-width: 768px) {
+          .layout {
+            flex-direction: column; } }
+
+      .layout__main {
+        flex: 2;
+        margin: 16px 24px 24px 6px; }
+        @media only screen and (max-width: 768px) {
+          .layout__main {
+            margin: 0 24px 24px; } }
+
+      .logo__header {
+        background-color: #e53935;
+        min-height: 12px; }
+        .logo__header__inner {
+          padding: 10px 30px 5px 30px; }
+          @media only screen and (max-width: 768px) {
+            .logo__header__inner {
+              padding: 10px 15px; } }
+
+              footer {
+                background-color: #1875d1;
+                text-align: center;
+                font-size: 16px;
+                color: #fff;
+                padding-top: 12px; }
+                footer .colophon {
+                  padding: 12px 0 48px 0;
+                  line-height: 2em; }
+                  footer .colophon a {
+                    padding: 0 12px;
+                    white-space: nowrap; }
+                    footer .colophon a span {
+                      margin-left: 5px; }
+                  footer .colophon p a {
+                    padding: 0;
+                    text-decoration: underline; }
+                footer a {
+                  color: #fff; }
+                footer .emailform {
+                  display: inline-block;
+                  white-space: nowrap; }
+                footer input[type=text] {
+                  width: 120px; }
+
+      body {
+        font-family: "Roboto Condensed", sans-serif;
+        color: #1875d1;
+        background-color: #fff;
+        margin: 0;
+        padding: 0; }
+
+      html, body {
+        height: 100%; }
+
+      p {
+        font-size: 18px;
+        line-height: 1.4em;
+        margin: 0 0 16px 0; }
+
+      h2 {
+        margin: 24px 0 16px 0;
+        font-weight: bold;
+        line-height: 1.1em; }
+
+      h3 {
+        margin: 24px 0 6px 0; }
+
+      a,
+      .subtle-button {
+        color: #e53935;
+        text-decoration: none;
+        border: 0;
+        background-color: transparent;
+        display: inline; }
+        a:hover, a:focus,
+        .subtle-button:hover,
+        .subtle-button:focus {
+          text-decoration: underline; }
+
+      button:not(.subtle-button), input[type=submit]:not(.subtle-button) {
+        font-family: "Roboto Condensed", sans-serif;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #baddfa;
+        color: #1875d1;
+        margin: 2px 3px;
+        padding: 6px 18px;
+        transition-property: background-color, color, border-color;
+        transition-duration: 0.15s;
+        transition-timing-function: ease; }
+        button:not(.subtle-button):hover, button:not(.subtle-button):focus, input[type=submit]:not(.subtle-button):hover, input[type=submit]:not(.subtle-button):focus {
+          color: #fff;
+          background-color: #e53935; }
+        button:not(.subtle-button):active, input[type=submit]:not(.subtle-button):active {
+          box-shadow: inset 0 1px rgba(0, 0, 0, 0.2); }
+
+      input[type=text] {
+        font-family: "Roboto Condensed", sans-serif;
+        padding: 6px;
+        border-radius: 4px;
+        border: 2px solid #1875d1;
+        background-color: #fff; }
+        input[type=text]:focus {
+          outline: 0;
+          border: 2px solid #baddfa; }
+    </style>
     <script src="https://use.fontawesome.com/e87f1bc9b3.js"></script>
   </head>
   <body>
@@ -149,7 +270,7 @@
           <i class="fa fa-twitter" aria-hidden="true"></i> Updates on Twitter
         </a>
         &nbsp;&nbsp;—&nbsp;&nbsp;
-        <a href="/privacy.html">Privacy</a>
+        <a href="/about">About</a>
       </div>
     </footer>
 
