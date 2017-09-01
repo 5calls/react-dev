@@ -46,7 +46,6 @@
         color: $gray;
       }
     }
-
     input {
       width: 200px;
     }
@@ -57,6 +56,10 @@
 
     span {
       font-weight: bold;
+    }
+
+    button {
+      margin: 10px 0;
     }
   }
 

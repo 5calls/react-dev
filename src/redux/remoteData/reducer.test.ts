@@ -1,6 +1,6 @@
 import { DefaultIssue } from './../../common/model';
 import { RemoteDataState, remoteDataReducer, IssuesAction,
-  CallCountAction, ApiErrorAction } from './index';
+  CallCountAction, ApiErrorAction, RemoteDataActionType } from './index';
 
 let defaultState;
 beforeEach(() => {
@@ -16,7 +16,7 @@ test('Remote Data reducer processes GET_ISSUES action correctly', () => {
   const state: RemoteDataState =
     Object.assign({}, defaultState, issues);
   const action: IssuesAction = {
-    type: 'GET_ISSUES',
+    type: RemoteDataActionType.GET_ISSUES,
     payload: issues
   };
   const newState = remoteDataReducer(state, action);
@@ -28,7 +28,7 @@ test('Remote Data reducer processes GET_CALL_TOTAL action correctly', () => {
   const state: RemoteDataState =
     Object.assign({}, defaultState, callTotal);
   const action: CallCountAction = {
-    type: 'GET_CALL_TOTAL',
+    type: RemoteDataActionType.GET_CALL_TOTAL,
     payload: callTotal
   };
   const newState = remoteDataReducer(state, action);
@@ -40,7 +40,7 @@ test('Remote Data reducer processes API_ERROR action correctly', () => {
   const state: RemoteDataState =
     Object.assign({}, defaultState, errorMessage);
   const action: ApiErrorAction = {
-    type: 'API_ERROR',
+    type: RemoteDataActionType.API_ERROR,
     payload: errorMessage
   };
   const newState = remoteDataReducer(state, action);

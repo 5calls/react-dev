@@ -7,6 +7,9 @@ export interface Issue {
   contacts?: Contact[];
   categories: Category[];
   inactive: boolean;
+  outcomeModels: Outcome[];
+  link: string;
+  linkTitle: string;
 }
 
 export const DefaultIssue: Issue = {
@@ -15,8 +18,16 @@ export const DefaultIssue: Issue = {
   reason: '',
   script: '',
   categories: [],
-  inactive: false
+  inactive: false,
+  outcomeModels: [],
+  link: '',
+  linkTitle: '',
 };
+
+export interface Outcome {
+  label: string;
+  status: string;
+}
 
 export interface Contact {
   id: string;
@@ -32,6 +43,11 @@ export interface Contact {
 
 export interface Category {
   name: string;
+}
+
+export class CategoryMap {
+  category: Category;
+  issues: Issue[];
 }
 
 export type Party = 'Democrat' | 'Republican' | 'Independent' | '';
@@ -91,7 +107,7 @@ export interface ApiData {
   issues: Issue[];
 }
 
-export interface ReportData {
+export interface CountData {
   count: number; // total call count
 }
 
@@ -112,4 +128,15 @@ export enum LocationUiState {
   LOCATION_FOUND = 'LOCATION_FOUND',
   ENTERING_LOCATION = 'ENTERING_LOCATION',
   LOCATION_ERROR = 'LOCATION_ERROR'
+}
+
+export interface DonationGoal {
+  goal: Donations; //
+}
+
+export interface Donations {
+    count: number; // number of donors
+    amount: number; // total collected (api===amount)
+    total: number; // goal (api===total)
+    kind: string; // denomincation (dollars)
 }

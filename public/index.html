@@ -28,52 +28,79 @@
   <!-- Schema.org markup for Google+ -->
   <meta itemprop="name" content="5 Calls">
   <meta itemprop="description" content="Spend 5 minutes. Make 5 calls. Make your voice heard.">
-  <meta itemprop="image" content="https://5calls.org/img/5calls-logo.png">
+  <meta itemprop="image" content="%PUBLIC_URL%/img/5calls-logo.png">
 
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@make5calls">
   <meta name="twitter:title" content="5 Calls">
   <meta name="twitter:description" content="Spend 5 minutes. Make 5 calls. Make your voice heard.">
-  <meta name="twitter:image:src" content="https://5calls.org/img/5calls-twitter.png">
+  <meta name="twitter:image:src" content="%PUBLIC_URL%/img/5calls-twitter.png">
 
   <!-- Open Graph data -->
   <meta property="og:title" content="5 Calls" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://5calls.org" />
-  <meta property="og:image" content="https://5calls.org/img/5calls-twitter.png" />
+  <meta property="og:image" content="%PUBLIC_URL%/img/5calls-twitter.png" />
   <meta property="og:description" content="Spend 5 minutes. Make 5 calls. Make your voice heard." />
   <meta property="og:site_name" content="5 Calls" />
   <meta property="fb:app_id" content="1201592636562906" />
 
   <!-- favicons -->
-  <link rel="apple-touch-icon" sizes="57x57" href="/img/fav/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/img/fav/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/img/fav/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fav/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/img/fav/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/img/fav/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/img/fav/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/img/fav/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/img/fav/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/img/fav/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/fav/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/img/fav/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/img/fav/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="57x57" href="%PUBLIC_URL%/img/fav/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="%PUBLIC_URL%/img/fav/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="%PUBLIC_URL%/img/fav/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="%PUBLIC_URL%/img/fav/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="%PUBLIC_URL%/img/fav/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="%PUBLIC_URL%/img/fav/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="%PUBLIC_URL%/img/fav/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/img/fav/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/img/fav/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/img/fav/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/img/fav/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="%PUBLIC_URL%/img/fav/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/img/fav/favicon-16x16.png">
   <meta name="msapplication-TileColor" content="#0032FF">
-  <meta name="msapplication-TileImage" content="/img/fav/ms-icon-144x144.png">
+  <meta name="msapplication-TileImage" content="%PUBLIC_URL%/img/fav/ms-icon-144x144.png">
   <meta name="theme-color" content="#0032FF">
 
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="%PUBLIC_URL%/css/style.css">
   <script src="https://use.fontawesome.com/e87f1bc9b3.js"></script>
-
+  <script src="https://cdn.ravenjs.com/3.17.0/raven.min.js" crossorigin="anonymous"></script>
+  <script>
+    Raven.config('https://7f6e814bc848495aafd63747694a0a30@sentry.io/131886').install()
+  </script>
 </head>
-
 <body>
-  <noscript>
-    You need to enable JavaScript to run this app.
-  </noscript>
-  <div id="root"></div>
+  <div id="root">
+    <header class="logo__header" role="banner"></header>    
+      <div class="layout">
+        <aside id="nav" role="contentinfo" class="layout__side">
+          <div class="issues">
+            <header class="issues__header" role="banner">
+              <h1 class="issues__title">
+                <a href="/"><img class="issues__logo" src="%PUBLIC_URL%/img/5calls-logotype.png" alt="5 Calls" />5 Calls</a>
+              </h1>
+            </header>
+          </div>
+        </aside>
+
+        <main id="content" role="main" class="layout__main">
+          <div class="hypothesis">
+            <header class="hypothesis__header">
+              <h2 class="hypothesis__title">Make your voice heard</h2>
+              <p>Turn your passive participation into active resistance. Facebook likes and Twitter retweets can’t create the change you want to see. Calling your Government on the phone can.</p>
+              <p><strong>Spend 5 minutes, make 5 calls.</strong></p>
+              <noscript>
+                <p>5 Calls requires JavaScript and a relatively modern browser to use.</p>
+                <p>If you prefer, try our <a href="https://crgj.app.link/7R2bEB0R4F">downloading our app</a>.</p>
+              </noscript>
+          </header>
+          </div>
+        </main>
+      </div>
+    </header>
+  </div>
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -85,5 +112,4 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 </body>
-
 </html>

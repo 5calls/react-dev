@@ -2,8 +2,8 @@ export {
   CallStateAction, CallStateActionType,
   CurrentIssueAction, NextContact,
   SetContactIdsAction, SetShowFieldOfficeNumbers,
-  SubmitOutcomeAction
-} from './action';
-export { completeIssueActionCreator, moveToNextActionCreator, selectIssueActionCreator } from './actionCreator';
+  CompleteIssueAction, ClearContactIndexesAction } from './action';
+export {completeIssueActionCreator, moveToNextActionCreator,
+  selectIssueActionCreator, clearContactIndexes } from './actionCreator';
 export { callStateReducer, CallState } from './reducer';
 export { OutcomeData, submitOutcome } from './asyncActionCreator';

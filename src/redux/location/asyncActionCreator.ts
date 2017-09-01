@@ -1,12 +1,12 @@
 import { Dispatch } from 'redux';
-import { getApiData } from '../../redux/remoteData';
+import { fetchAllIssues } from '../../redux/remoteData';
 import { setLocation, setUiState } from './index';
 import { ApplicationState } from '../root';
 import { LocationUiState } from '../../common/model';
 
 export function setAddress(address: string) {
   return (dispatch: Dispatch<ApplicationState>) => {
-    return dispatch(getApiData(address))
+    return dispatch(fetchAllIssues(address))
       .then(() => {
         dispatch(setLocation(address));
       });
@@ -15,7 +15,7 @@ export function setAddress(address: string) {
 
 export function newLocationLookup(location: string) {
   return (dispatch: Dispatch<ApplicationState>) => {
-    return dispatch(getApiData(location))
+    return dispatch(fetchAllIssues(location))
       .then(() => {
         dispatch(setUiState(LocationUiState.LOCATION_FOUND));
       })

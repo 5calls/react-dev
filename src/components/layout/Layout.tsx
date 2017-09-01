@@ -2,7 +2,7 @@ import * as React from 'react';
 import i18n from '../../services/i18n';
 import { LocationState } from '../../redux/location/reducer';
 import { Issue } from '../../common/model';
-import { Sidebar, Footer } from './index';
+import { Sidebar, Footer, Header } from './index';
 import { LocationTranslatable } from '../location';
 
 interface Props {
@@ -19,7 +19,7 @@ interface Props {
 
 const Layout: React.StatelessComponent<Props> = (props: Props) => (
   <div>
-    <header className="logo__header" role="banner" />
+    <Header />
     <div className="layout">
       <aside id="nav" role="contentinfo" className="layout__side">
         <div className="issues">
@@ -35,6 +35,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
                 t={i18n.t}
               />
             </div>
+            <h2>{i18n.t('issues.whatsImportantToYou')}</h2>
           </header>
           <Sidebar
             issues={props.issues}

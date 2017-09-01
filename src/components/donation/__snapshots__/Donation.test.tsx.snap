@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Donation component properly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="logo__header__inner layout"
+>
+    <div
+        className="logo__header__donatebar"
+    >
+        <span
+            className="logo__header__donatebar__total"
+            style={
+                Object {
+                    "width": "26.900000000000002%",
+                  }
+            }
+        >
+            $1,345
+        </span>
+        <span
+            className="logo__header__donatebar__goal"
+        >
+            $5,000
+        </span>
+    </div>
+    <p
+        className="logo__header__donatetext"
+    >
+        <a
+            href="https://secure.actblue.com/donate/5calls-donate"
+        >
+            Donate today to keep 5 Calls running
+        </a>
+    </p>
+</div>,
+  "nodes": Array [
+    <div
+      className="logo__header__inner layout"
+>
+      <div
+            className="logo__header__donatebar"
+      >
+            <span
+                  className="logo__header__donatebar__total"
+                  style={
+                        Object {
+                              "width": "26.900000000000002%",
+                            }
+                  }
+            >
+                  $1,345
+            </span>
+            <span
+                  className="logo__header__donatebar__goal"
+            >
+                  $5,000
+            </span>
+      </div>
+      <p
+            className="logo__header__donatetext"
+      >
+            <a
+                  href="https://secure.actblue.com/donate/5calls-donate"
+            >
+                  Donate today to keep 5 Calls running
+            </a>
+      </p>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <Donation
+        goal={5000}
+        total={1345}
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Donation {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "goal": 5000,
+          "total": 1345,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="logo__header__inner layout"
+>
+          <div
+                    className="logo__header__donatebar"
+          >
+                    <span
+                              className="logo__header__donatebar__total"
+                              style={
+                                        Object {
+                                                  "width": "26.900000000000002%",
+                                                }
+                              }
+                    >
+                              $1,345
+                    </span>
+                    <span
+                              className="logo__header__donatebar__goal"
+                    >
+                              $5,000
+                    </span>
+          </div>
+          <p
+                    className="logo__header__donatetext"
+          >
+                    <a
+                              href="https://secure.actblue.com/donate/5calls-donate"
+                    >
+                              Donate today to keep 5 Calls running
+                    </a>
+          </p>
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div
+          className="logo__header__inner layout"
+>
+          <div
+                    className="logo__header__donatebar"
+          >
+                    <span
+                              className="logo__header__donatebar__total"
+                              style={
+                                        Object {
+                                                  "width": "26.900000000000002%",
+                                                }
+                              }
+                    >
+                              $1,345
+                    </span>
+                    <span
+                              className="logo__header__donatebar__goal"
+                    >
+                              $5,000
+                    </span>
+          </div>
+          <p
+                    className="logo__header__donatetext"
+          >
+                    <a
+                              href="https://secure.actblue.com/donate/5calls-donate"
+                    >
+                              Donate today to keep 5 Calls running
+                    </a>
+          </p>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Donation
+    goal={5000}
+    total={1345}
+/>,
+}
+`;

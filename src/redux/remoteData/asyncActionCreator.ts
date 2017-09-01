@@ -1,12 +1,14 @@
+import { donationsActionCreator } from './actionCreator';
 import { Dispatch } from 'redux';
-import { ApiData, IpInfoData, LocationFetchType, ReportData } from './../../common/model';
-import { get5CallsApiData, getReportData } from '../../services/apiServices';
-import { setCachedCity, setLocation, setLocationFetchType, setSplitDistrict } from '../location/index';
+import { ApiData, IpInfoData, LocationFetchType, CountData, DonationGoal, Donations } from './../../common/model';
+import { getAllIssues, getCountData, getDonations } from '../../services/apiServices';
+import { setCachedCity, setLocation, setLocationFetchType,
+  setSplitDistrict, setUiState } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
 import { issuesActionCreator, callCountActionCreator, apiErrorMessageActionCreator } from './index';
+import { clearContactIndexes, completeIssueActionCreator } from '../callState/';
 import { ApplicationState } from '../root';
 import { LocationUiState } from '../../common/model';
-import { setUiState } from './../location';
 /**
  * Timer for calling fetchLocationByIP() if
  * fetchBrowserGeolocation() fails or times out.
@@ -26,11 +28,11 @@ export const getIssuesIfNeeded = () => {
   };
 };
 
-export const getApiData = (address: string = '') => {
+export const fetchAllIssues = (address: string = '') => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
     // console.log('getApiData start');
-    return get5CallsApiData(address)
+    return getAllIssues(address)
       .then((response: ApiData) => {
         // console.log('getApiData then() response', response);
         if (response.invalidAddress) {
@@ -54,11 +56,24 @@ export const getApiData = (address: string = '') => {
 export const fetchCallCount = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
-    return getReportData()
-      .then((response: ReportData) => {
+    return getCountData()
+      .then((response: CountData) => {
         dispatch(callCountActionCreator(response.count));
         // tslint:disable-next-line:no-console
       }).catch((error) => console.error(`fetchCallCount error: ${error.message}`, error));
+  };
+};
+
+export const fetchDonations = () => {
+  return (dispatch: Dispatch<ApplicationState>,
+          getState: () => ApplicationState) => {
+      return getDonations()
+        .then((response: DonationGoal) => {
+          const donations: Donations = response.goal;
+          dispatch(donationsActionCreator(donations));
+        })
+        // tslint:disable-next-line:no-console
+        .catch(e => console.error(`fetchDonations error: ${e.message}`, e));
   };
 };
 
@@ -71,7 +86,7 @@ export const fetchLocationByIP = () => {
         .then((response: IpInfoData) => {
           dispatch(setLocationFetchType(LocationFetchType.IP_INFO));
           const location = response.loc;
-          dispatch(getApiData(location))
+          dispatch(fetchAllIssues(location))
           .then(() => {
             dispatch(setUiState(LocationUiState.LOCATION_FOUND));
           });
@@ -104,7 +119,7 @@ export const fetchBrowserGeolocation = () => {
           if (location.latitude && location.longitude) {
             dispatch(setLocationFetchType(LocationFetchType.BROWSER_GEOLOCATION));
             const loc = `${location.latitude} ${location.longitude}`;
-            dispatch(getApiData(loc));
+            dispatch(fetchAllIssues(loc));
             clearTimeout(setTimeoutHandle);
           } else {
             dispatch(fetchLocationByIP());
@@ -124,12 +139,19 @@ export const fetchBrowserGeolocation = () => {
 export const startup = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
+    // dispatch donations
+    dispatch(fetchDonations());
     dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
-    let state = getState();
-    const loc = state.locationState.address || state.locationState.cachedCity;
+    const state = getState();
+    // clear contact indexes loaded from local storage
+    dispatch(clearContactIndexes());
+    // add completed issues from Choo app in localStorage to
+    // this apps callState.completedIssueIds
+    migrateLegacyCompletedIssues(dispatch);
+    const loc = state.locationState.address;
     if (loc) {
       // console.log('Using cached address');
-      dispatch(getApiData(loc))
+      dispatch(fetchAllIssues(loc))
         .then(() => {
           setLocationFetchType(LocationFetchType.CACHED_ADDRESS);
         });
@@ -138,4 +160,16 @@ export const startup = () => {
     }
     dispatch(fetchCallCount());
   };
+};
+
+const migrateLegacyCompletedIssues = (dispatch: Dispatch<ApplicationState>) => {
+  const LEGACY_COMPLETED_ISSUES_KEY = 'org.5calls.completed';
+  const legacyCompletedIssues = localStorage.getItem(LEGACY_COMPLETED_ISSUES_KEY);
+  if (legacyCompletedIssues) {
+    const ids = JSON.parse(legacyCompletedIssues);
+    ids.forEach((id) => {
+      dispatch(completeIssueActionCreator(id));
+    });
+    localStorage.removeItem(LEGACY_COMPLETED_ISSUES_KEY);
+  }
 };
