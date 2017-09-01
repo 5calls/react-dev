@@ -14,25 +14,16 @@ ShallowWrapper {
     <h2
         className="impact__title"
     />
-    <h2
-        className="impact_total"
-        dangerouslySetInnerHTML={
-            Object {
-                "__html": undefined,
-              }
-        }
-    />
-    <p
-        className="impact__text"
-    />
-    <div
-        className="impact_result"
-        dangerouslySetInnerHTML={
-            Object {
-                "__html": undefined,
-              }
-        }
-    />
+    <div>
+        <h2
+            className="impact_total"
+            dangerouslySetInnerHTML={
+                Object {
+                    "__html": undefined,
+                  }
+            }
+        />
+    </div>
     <Translate(Component)
         t={[Function]}
         totalCount={1000}
@@ -45,25 +36,16 @@ ShallowWrapper {
       <h2
             className="impact__title"
       />
-      <h2
-            className="impact_total"
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": undefined,
-                      }
-            }
-      />
-      <p
-            className="impact__text"
-      />
-      <div
-            className="impact_result"
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": undefined,
-                      }
-            }
-      />
+      <div>
+            <h2
+                  className="impact_total"
+                  dangerouslySetInnerHTML={
+                        Object {
+                              "__html": undefined,
+                            }
+                  }
+            />
+      </div>
       <Translate(Component)
             t={[Function]}
             totalCount={1000}
@@ -82,10 +64,9 @@ ShallowWrapper {
         userStats={
                 Object {
                         "all": Array [],
-                        "made_contact": 0,
+                        "contact": 0,
                         "unavailable": 0,
-                        "voice_mail": 0,
-                        "yes": 0,
+                        "voicemail": 0,
                       }
         }
 />,
@@ -100,10 +81,9 @@ ShallowWrapper {
           "totalCount": 1000,
           "userStats": Object {
             "all": Array [],
-            "made_contact": 0,
+            "contact": 0,
             "unavailable": 0,
-            "voice_mail": 0,
-            "yes": 0,
+            "voicemail": 0,
           },
         },
         "refs": Object {},
@@ -132,25 +112,16 @@ ShallowWrapper {
           <h2
                     className="impact__title"
           />
-          <h2
-                    className="impact_total"
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": undefined,
-                                      }
-                    }
-          />
-          <p
-                    className="impact__text"
-          />
-          <div
-                    className="impact_result"
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": undefined,
-                                      }
-                    }
-          />
+          <div>
+                    <h2
+                              className="impact_total"
+                              dangerouslySetInnerHTML={
+                                        Object {
+                                                  "__html": undefined,
+                                                }
+                              }
+                    />
+          </div>
           <Translate(Component)
                     t={[Function]}
                     totalCount={1000}
@@ -163,25 +134,16 @@ ShallowWrapper {
           <h2
                     className="impact__title"
           />
-          <h2
-                    className="impact_total"
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": undefined,
-                                      }
-                    }
-          />
-          <p
-                    className="impact__text"
-          />
-          <div
-                    className="impact_result"
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": undefined,
-                                      }
-                    }
-          />
+          <div>
+                    <h2
+                              className="impact_total"
+                              dangerouslySetInnerHTML={
+                                        Object {
+                                                  "__html": undefined,
+                                                }
+                              }
+                    />
+          </div>
           <Translate(Component)
                     t={[Function]}
                     totalCount={1000}
@@ -204,10 +166,9 @@ ShallowWrapper {
     userStats={
         Object {
             "all": Array [],
-            "made_contact": 0,
+            "contact": 0,
             "unavailable": 0,
-            "voice_mail": 0,
-            "yes": 0,
+            "voicemail": 0,
           }
     }
 />,
