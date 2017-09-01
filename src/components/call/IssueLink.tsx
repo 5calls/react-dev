@@ -1,14 +1,11 @@
 import * as React from 'react';
-import { TranslationFunction } from 'i18next';
-// import { translate } from 'react-i18next';
 import { Issue } from '../../common/model';
 
 interface Props {
   readonly issue: Issue;
-  readonly t: TranslationFunction;
 }
 
-const Link: React.StatelessComponent<Props> = ({ issue, t }: Props) => {
+const IssueLink: React.StatelessComponent<Props> = ({ issue }: Props) => {
   let linkTitle = issue.link;
   if (issue.linkTitle) {
     linkTitle = issue.linkTitle;
@@ -23,4 +20,4 @@ const Link: React.StatelessComponent<Props> = ({ issue, t }: Props) => {
   }
 };
 
-export default Link;
+export default IssueLink;

@@ -6,10 +6,10 @@ import CallPage from './CallPage';
 import CallPageContainer from './CallPageContainer';
 import Outcomes from './Outcomes';
 import Script from './Script';
-import Link from './Link';
+import IssueLink from './IssueLink';
 import NoContactSplitDistrict from './NoContactSplitDistrict';
 
 export {
   Call, CallTranslatable, CallPageContainer, CallDetail, CallPage,
-  ContactDetails, ContactOffices, ContactOfficesTranslatable, Outcomes, Script, Link, NoContactSplitDistrict
+  ContactDetails, ContactOffices, ContactOfficesTranslatable, Outcomes, Script, IssueLink, NoContactSplitDistrict
 };
