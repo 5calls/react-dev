@@ -13,8 +13,8 @@ interface Props {
 
 export const MyImpact: React.StatelessComponent<Props> = (props: Props) => {
   const callSummaryParams = {
-    contactedCalls: props.userStats.made_contact,
-    vmCalls: props.userStats.voice_mail,
+    contactedCalls: props.userStats.contact,
+    vmCalls: props.userStats.voicemail,
     unavailableCalls: props.userStats.unavailable
   };
 
@@ -25,7 +25,6 @@ export const MyImpact: React.StatelessComponent<Props> = (props: Props) => {
       <h2 className="impact__title">{props.t('impact.title')}</h2>
       <h2
         className="impact_total"
-        // eslint-disable-next-line
         dangerouslySetInnerHTML={{ __html: props.t('impact.totalCallCountText', { myTotalCalls }) }}
       />
 

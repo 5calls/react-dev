@@ -1,9 +1,15 @@
 import { Reducer } from 'redux';
 import { UserStatsAction } from './index';
 
+export enum UserContactEventType {
+  UNAVAILABLE = 'unavailable',
+  VOICEMAIL = 'voicemail',
+  CONTACT = 'contact'
+}
+
 export interface UserContactEvent {
-  contactId: string;
-  issueId: string;
+  contactid: string;
+  issueid: string;
   result: string;
   time: number;
 }
@@ -11,17 +17,15 @@ export interface UserContactEvent {
 export interface UserStatsState {
   all: UserContactEvent[];
   unavailable: number;
-  voice_mail: number;
-  made_contact: number;
-  yes: number;
+  voicemail: number;
+  contact: number;
 }
 
 const initialState: UserStatsState = {
   all: [],
   unavailable: 0,
-  voice_mail: 0,
-  made_contact: 0,
-  yes: 0,
+  voicemail: 0,
+  contact: 0,
 };
 
 export const userStatsReducer: Reducer<UserStatsState> = (
@@ -49,18 +53,18 @@ export const userStatsReducer: Reducer<UserStatsState> = (
       const createdState: UserStatsState = { ...state, all: [...state.all] };
       let addEvent: boolean = false;
       switch (callEvent.result) {
-        case 'unavailable': {
+        case UserContactEventType.UNAVAILABLE: {
           createdState.unavailable = createdState.unavailable + 1;
           addEvent = true;
           break;
         }
-        case 'voice_mail': {
-          createdState.voice_mail = createdState.voice_mail + 1;
+        case UserContactEventType.VOICEMAIL: {
+          createdState.voicemail = createdState.voicemail + 1;
           addEvent = true;
           break;
         }
-        case 'made_contact': {
-          createdState.made_contact = createdState.made_contact + 1;
+        case UserContactEventType.CONTACT: {
+          createdState.contact = createdState.contact + 1;
           addEvent = true;
           break;
         }

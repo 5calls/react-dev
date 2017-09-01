@@ -54,8 +54,8 @@ export function submitOutcome(data: OutcomeData) {
 
     const userContactData = {
       result: data.outcome,
-      contactId: data.contactId || '',
-      issueId: data.issueId,
+      contactid: data.contactId || '',
+      issueid: data.issueId,
       time: Date.now(),
     };
 

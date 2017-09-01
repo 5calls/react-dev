@@ -7,10 +7,9 @@ import { UserStatsState } from '../../redux/userStats';
 test('MyImpact component snapshot renders correctly', () => {
   const userStats: UserStatsState = {
     all: [],
-    voice_mail: 0,
+    voicemail: 0,
     unavailable: 0,
-    made_contact: 0,
-    yes: 0,
+    contact: 0,
   };
   const count = 1000;
   const component = shallow(

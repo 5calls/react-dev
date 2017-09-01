@@ -6,12 +6,12 @@ import { CallState, callStateReducer } from './callState/reducer';
 import { RemoteDataState, remoteDataReducer } from './remoteData/reducer';
 import { UserStatsState, userStatsReducer } from './userStats/reducer';
 
-export type OutcomeType =
-  'unavailable' |
-  'voice_mail' |
-  'made_contact' |
-  'skip'
-  ;
+export enum OutcomeType {
+  UNAVAILABLE = 'unavailable',
+  VOICEMAIL = 'voicemail',
+  CONTACT = 'contact',
+  SKIP = 'skip'
+}
 
 export interface ApplicationState {
   remoteDataState: RemoteDataState;

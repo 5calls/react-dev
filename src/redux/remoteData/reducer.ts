@@ -13,12 +13,12 @@ export const remoteDataReducer: Reducer<RemoteDataState> = (
   action: RemoteDataAction): RemoteDataState => {
   switch (action.type) {
     case 'GET_ISSUES':
-      const newState = Object.assign({}, state, {issues: action.payload});
+      const newState = Object.assign({}, state, { issues: action.payload });
       return newState;
     case 'GET_CALL_TOTAL':
-      return Object.assign({}, state, {callTotal: action.payload});
+      return Object.assign({}, state, { callTotal: action.payload });
     case 'API_ERROR':
-      return Object.assign({}, state, {errorMessage: action.payload});
+      return Object.assign({}, state, { errorMessage: action.payload });
     default:
       return state;
   }
