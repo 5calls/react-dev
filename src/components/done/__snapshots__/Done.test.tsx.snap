@@ -26,6 +26,8 @@ ShallowWrapper {
                     "categories": Array [],
                     "id": 3,
                     "inactive": false,
+                    "link": "",
+                    "linkTitle": "",
                     "name": "",
                     "outcomeModels": Array [
                       Object {
@@ -79,6 +81,8 @@ ShallowWrapper {
                               "categories": Array [],
                               "id": 3,
                               "inactive": false,
+                              "link": "",
+                              "linkTitle": "",
                               "name": "",
                               "outcomeModels": Array [
                                 Object {
@@ -126,6 +130,8 @@ ShallowWrapper {
                         "categories": Array [],
                         "id": 3,
                         "inactive": false,
+                        "link": "",
+                        "linkTitle": "",
                         "name": "",
                         "outcomeModels": Array [
                           Object {
@@ -151,6 +157,8 @@ ShallowWrapper {
             "categories": Array [],
             "id": 3,
             "inactive": false,
+            "link": "",
+            "linkTitle": "",
             "name": "",
             "outcomeModels": Array [
               Object {
@@ -202,6 +210,8 @@ ShallowWrapper {
                                                   "categories": Array [],
                                                   "id": 3,
                                                   "inactive": false,
+                                                  "link": "",
+                                                  "linkTitle": "",
                                                   "name": "",
                                                   "outcomeModels": Array [
                                                     Object {
@@ -255,6 +265,8 @@ ShallowWrapper {
                                                   "categories": Array [],
                                                   "id": 3,
                                                   "inactive": false,
+                                                  "link": "",
+                                                  "linkTitle": "",
                                                   "name": "",
                                                   "outcomeModels": Array [
                                                     Object {
@@ -306,6 +318,8 @@ ShallowWrapper {
             "categories": Array [],
             "id": 3,
             "inactive": false,
+            "link": "",
+            "linkTitle": "",
             "name": "",
             "outcomeModels": Array [
               Object {

@@ -47,6 +47,8 @@ ShallowWrapper {
                         ],
                         "id": "1",
                         "inactive": false,
+                        "link": "",
+                        "linkTitle": "",
                         "name": "testName",
                         "outcomeModels": Array [],
                         "reason": "",
@@ -89,6 +91,8 @@ ShallowWrapper {
             ],
             "id": "1",
             "inactive": false,
+            "link": "",
+            "linkTitle": "",
             "name": "testName",
             "outcomeModels": Array [],
             "reason": "",
@@ -162,6 +166,8 @@ ShallowWrapper {
             ],
             "id": "1",
             "inactive": false,
+            "link": "",
+            "linkTitle": "",
             "name": "testName",
             "outcomeModels": Array [],
             "reason": "",
@@ -208,6 +214,8 @@ ShallowWrapper {
                         ],
                         "id": "1",
                         "inactive": false,
+                        "link": "",
+                        "linkTitle": "",
                         "name": "testName",
                         "outcomeModels": Array [
                           Object {
@@ -247,6 +255,8 @@ ShallowWrapper {
             ],
             "id": "1",
             "inactive": false,
+            "link": "",
+            "linkTitle": "",
             "name": "testName",
             "outcomeModels": Array [
               Object {
@@ -317,6 +327,8 @@ ShallowWrapper {
             ],
             "id": "1",
             "inactive": false,
+            "link": "",
+            "linkTitle": "",
             "name": "testName",
             "outcomeModels": Array [
               Object {

@@ -8,6 +8,8 @@ export interface Issue {
   categories: Category[];
   inactive: boolean;
   outcomeModels: Outcome[];
+  link: string;
+  linkTitle: string;
 }
 
 export const DefaultIssue: Issue = {
@@ -18,6 +20,8 @@ export const DefaultIssue: Issue = {
   categories: [],
   inactive: false,
   outcomeModels: [],
+  link: '',
+  linkTitle: '',
 };
 
 export interface Outcome {
