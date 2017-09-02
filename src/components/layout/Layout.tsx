@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import i18n from '../../services/i18n';
 import { LocationState } from '../../redux/location/reducer';
 import { Issue } from '../../common/model';
@@ -25,7 +26,11 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
         <div className="issues">
           <header className="issues__header" role="banner">
             <h1 className="issues__title">
-              <a href="/"><img className="issues__logo" src="/img/5calls-logotype.png" alt="5 Calls" />5 Calls</a>
+              <Link
+                to={`/`}
+              >
+                <img className="issues__logo" src="/img/5calls-logotype.png" alt="5 Calls" />5 Calls
+              </Link>
             </h1>
             <div className="issues__location">
               <LocationTranslatable
