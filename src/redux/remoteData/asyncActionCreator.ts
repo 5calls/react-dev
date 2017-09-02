@@ -31,11 +31,10 @@ export const getIssuesIfNeeded = () => {
 export const fetchAllIssues = (address: string = '') => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
-    // console.log('getApiData start');
     return getAllIssues(address)
       .then((response: ApiData) => {
-        // console.log('getApiData then() response', response);
-        if (response.invalidAddress) {
+        if (!address || response.invalidAddress) {
+          dispatch(setUiState(LocationUiState.LOCATION_ERROR));
           throw new Error('Invalid address found');
         }
         const normalizedAddress = response.normalizedLocation as string;
