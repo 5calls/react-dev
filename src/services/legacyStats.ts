@@ -3,8 +3,8 @@ import { UserContactEvent, UserStatsState } from '../redux/userStats';
 export interface LegacyUserStatsState {
   all: UserContactEvent[];
   unavailable: number;
-  voicemail: number;
-  contact: number;
+  vm: number;
+  contacted: number;
 }
 
 export const transform = (legacyStats: LegacyUserStatsState): UserStatsState => {
@@ -18,8 +18,8 @@ export const transform = (legacyStats: LegacyUserStatsState): UserStatsState => 
       };
     }),
     unavailable: legacyStats.unavailable,
-    voicemail: legacyStats.voicemail,
-    contact: legacyStats.contact,
+    voicemail: legacyStats.vm,
+    contact: legacyStats.contacted,
   };
 
   return userStats;
