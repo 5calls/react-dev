@@ -3,6 +3,7 @@ import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 import { Contact, Issue } from '../../common/model';
 import { LocationState } from '../../redux/location/reducer';
+import { IssueLink } from './index';
 
 interface Props {
   readonly issue: Issue;
@@ -38,12 +39,14 @@ export const Script: React.StatelessComponent<Props> = ({ issue, contactIndex = 
   if (issue && issue.contacts && issue.contacts.length !== 0) {
     return (
       <div className="call__script">
+        <IssueLink
+          issue={issue}
+        />
         <h3 className="call__script__header">{t('script.yourScript')}</h3>
         <div className="call__script__body">
           {scriptFormat(issue, locationState, contactIndex).split('\n').map((line, index) =>
           <p key={index}>{line}</p>
           )}
-          {/* issuesLink(state, prev, send) */}
         </div>
       </div>
     );

@@ -1,12 +1,13 @@
 import { RemoteDataAction } from './action';
 import { Action } from 'redux';
-import { Issue } from '../../common/model';
+import { Issue, Donations } from '../../common/model';
 
-export type RemoteDataActionType =
-  'GET_ISSUES' |
-  'GET_CALL_TOTAL' |
-  'API_ERROR'
-  ;
+export enum RemoteDataActionType {
+  GET_ISSUES = 'GET_ISSUES',
+  GET_CALL_TOTAL = 'GET_CALL_TOTAL',
+  GET_DONATIONS = 'GET_DONATIONS',
+  API_ERROR = 'API_ERROR'
+}
 
 export interface RemoteDataAction extends  Action {
   type: RemoteDataActionType;
@@ -14,16 +15,21 @@ export interface RemoteDataAction extends  Action {
 }
 
 export interface IssuesAction extends RemoteDataAction {
-  type: 'GET_ISSUES';
+  type: RemoteDataActionType.GET_ISSUES;
   payload: Issue[];
 }
 
 export interface CallCountAction extends RemoteDataAction {
-  type: 'GET_CALL_TOTAL';
+  type: RemoteDataActionType.GET_CALL_TOTAL;
   payload: number;
 }
 
+export interface DonationsAction extends RemoteDataAction {
+  type: RemoteDataActionType.GET_DONATIONS;
+  payload: Donations;
+}
+
 export interface ApiErrorAction extends RemoteDataAction {
-  type: 'API_ERROR';
+  type: RemoteDataActionType.API_ERROR;
   payload: string;
 }

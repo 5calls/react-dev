@@ -33,6 +33,12 @@ ShallowWrapper {
                             ],
                             "id": "101",
                             "name": "dude",
+                            "outcomeModels": Array [
+                              Object {
+                                "label": "vm",
+                                "status": "vm",
+                              },
+                            ],
                             "party": "",
                             "phone": "5555551212",
                             "reason": "this is your dude",
@@ -41,7 +47,10 @@ ShallowWrapper {
                         ],
                         "id": "1",
                         "inactive": false,
+                        "link": "",
+                        "linkTitle": "",
                         "name": "testName",
+                        "outcomeModels": Array [],
                         "reason": "",
                         "script": "",
                       }
@@ -68,6 +77,12 @@ ShallowWrapper {
                 ],
                 "id": "101",
                 "name": "dude",
+                "outcomeModels": Array [
+                  Object {
+                    "label": "vm",
+                    "status": "vm",
+                  },
+                ],
                 "party": "",
                 "phone": "5555551212",
                 "reason": "this is your dude",
@@ -76,7 +91,10 @@ ShallowWrapper {
             ],
             "id": "1",
             "inactive": false,
+            "link": "",
+            "linkTitle": "",
             "name": "testName",
+            "outcomeModels": Array [],
             "reason": "",
             "script": "",
           },
@@ -134,6 +152,12 @@ ShallowWrapper {
                 ],
                 "id": "101",
                 "name": "dude",
+                "outcomeModels": Array [
+                  Object {
+                    "label": "vm",
+                    "status": "vm",
+                  },
+                ],
                 "party": "",
                 "phone": "5555551212",
                 "reason": "this is your dude",
@@ -142,7 +166,10 @@ ShallowWrapper {
             ],
             "id": "1",
             "inactive": false,
+            "link": "",
+            "linkTitle": "",
             "name": "testName",
+            "outcomeModels": Array [],
             "reason": "",
             "script": "",
           }
@@ -187,7 +214,19 @@ ShallowWrapper {
                         ],
                         "id": "1",
                         "inactive": false,
+                        "link": "",
+                        "linkTitle": "",
                         "name": "testName",
+                        "outcomeModels": Array [
+                          Object {
+                            "label": "unavailable",
+                            "status": "unavailable",
+                          },
+                          Object {
+                            "label": "contact",
+                            "status": "contact",
+                          },
+                        ],
                         "reason": "",
                         "script": "",
                       }
@@ -216,7 +255,19 @@ ShallowWrapper {
             ],
             "id": "1",
             "inactive": false,
+            "link": "",
+            "linkTitle": "",
             "name": "testName",
+            "outcomeModels": Array [
+              Object {
+                "label": "unavailable",
+                "status": "unavailable",
+              },
+              Object {
+                "label": "contact",
+                "status": "contact",
+              },
+            ],
             "reason": "",
             "script": "",
           },
@@ -276,7 +327,19 @@ ShallowWrapper {
             ],
             "id": "1",
             "inactive": false,
+            "link": "",
+            "linkTitle": "",
             "name": "testName",
+            "outcomeModels": Array [
+              Object {
+                "label": "unavailable",
+                "status": "unavailable",
+              },
+              Object {
+                "label": "contact",
+                "status": "contact",
+              },
+            ],
             "reason": "",
             "script": "",
           }

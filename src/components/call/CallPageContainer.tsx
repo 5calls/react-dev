@@ -64,8 +64,10 @@ interface DispatchProps {
 */
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
   let currentIssue: Issue | undefined = undefined;
-  if (state.remoteDataState.issues) {
-    currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.match.params.id);
+  if (state.remoteDataState.issues && state.remoteDataState.inactiveIssues) {
+    currentIssue = state.remoteDataState.issues
+                   .concat(state.remoteDataState.inactiveIssues)
+                   .find(i => i.id === ownProps.match.params.id);
   }
 
   return {

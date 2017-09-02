@@ -26,7 +26,15 @@ ShallowWrapper {
                     "categories": Array [],
                     "id": 3,
                     "inactive": false,
+                    "link": "",
+                    "linkTitle": "",
                     "name": "",
+                    "outcomeModels": Array [
+                      Object {
+                        "label": "contact",
+                        "status": "contact",
+                      },
+                    ],
                     "reason": "",
                     "script": "",
                   }
@@ -73,7 +81,15 @@ ShallowWrapper {
                               "categories": Array [],
                               "id": 3,
                               "inactive": false,
+                              "link": "",
+                              "linkTitle": "",
                               "name": "",
+                              "outcomeModels": Array [
+                                Object {
+                                  "label": "contact",
+                                  "status": "contact",
+                                },
+                              ],
                               "reason": "",
                               "script": "",
                             }
@@ -114,7 +130,15 @@ ShallowWrapper {
                         "categories": Array [],
                         "id": 3,
                         "inactive": false,
+                        "link": "",
+                        "linkTitle": "",
                         "name": "",
+                        "outcomeModels": Array [
+                          Object {
+                            "label": "contact",
+                            "status": "contact",
+                          },
+                        ],
                         "reason": "",
                         "script": "",
                       }
@@ -133,7 +157,15 @@ ShallowWrapper {
             "categories": Array [],
             "id": 3,
             "inactive": false,
+            "link": "",
+            "linkTitle": "",
             "name": "",
+            "outcomeModels": Array [
+              Object {
+                "label": "contact",
+                "status": "contact",
+              },
+            ],
             "reason": "",
             "script": "",
           },
@@ -178,7 +210,15 @@ ShallowWrapper {
                                                   "categories": Array [],
                                                   "id": 3,
                                                   "inactive": false,
+                                                  "link": "",
+                                                  "linkTitle": "",
                                                   "name": "",
+                                                  "outcomeModels": Array [
+                                                    Object {
+                                                      "label": "contact",
+                                                      "status": "contact",
+                                                    },
+                                                  ],
                                                   "reason": "",
                                                   "script": "",
                                                 }
@@ -225,7 +265,15 @@ ShallowWrapper {
                                                   "categories": Array [],
                                                   "id": 3,
                                                   "inactive": false,
+                                                  "link": "",
+                                                  "linkTitle": "",
                                                   "name": "",
+                                                  "outcomeModels": Array [
+                                                    Object {
+                                                      "label": "contact",
+                                                      "status": "contact",
+                                                    },
+                                                  ],
                                                   "reason": "",
                                                   "script": "",
                                                 }
@@ -270,7 +318,15 @@ ShallowWrapper {
             "categories": Array [],
             "id": 3,
             "inactive": false,
+            "link": "",
+            "linkTitle": "",
             "name": "",
+            "outcomeModels": Array [
+              Object {
+                "label": "contact",
+                "status": "contact",
+              },
+            ],
             "reason": "",
             "script": "",
           }

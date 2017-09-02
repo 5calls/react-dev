@@ -22,7 +22,7 @@ export default (initialState) => {
     initialState,
     compose(
       applyMiddleware(...middlewares),
-      autoRehydrate({log: false}), // set log:true for debugging
+      autoRehydrate({ log: false }), // set log:true for debugging
       // This added for Redux Dev Tools - install Chrome or Firefox extension to use
       // tslint:disable-next-line:max-line-length no-string-literal
       typeof window === 'object' && typeof window['devToolsExtension'] !== 'undefined' ? window['devToolsExtension']() : (f) => f
@@ -38,11 +38,13 @@ export default (initialState) => {
   // Make sure every key is of type ApplicationStateKeyType
   // and every value is an ApplicationStateKey value
   const localPersistKeys: ApplicationStateKeyType[] = [
-    ApplicationStateKey.locationState
+    ApplicationStateKey.locationState,
+    ApplicationStateKey.userStatsState,
+    ApplicationStateKey.callState
   ];
   persistor = persistStore(
     store,
-    {whitelist: localPersistKeys},
+    { whitelist: localPersistKeys },
     () => store.dispatch(startup())
   );
 

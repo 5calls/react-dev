@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { Issue } from '../../common/model';
 import { IssuesListItem } from './index';
 
@@ -28,6 +29,14 @@ export const IssuesList: React.StatelessComponent<Props> = (props: Props) => {
           isIssueActive={currentIssueId === issue.id}
           onSelectIssue={props.onSelectIssue}
         />) : <div style={{ textAlign: 'center' }}>{props.t('noCalls.title')}</div>}
+      <li>
+        <Link
+          to={`/more`}
+          className={`issues__footer-link`}
+        >
+          <span>{props.t('issues.viewAllActiveIssues')}</span>
+        </Link>
+      </li>
     </ul>
   );
 };
