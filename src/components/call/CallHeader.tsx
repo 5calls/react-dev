@@ -32,3 +32,5 @@ export const CallHeader: React.StatelessComponent<Props> = ({ currentIssue, t }:
 };
 
 export default translate()(CallHeader);
+
+export const CallHeaderTranslatable = translate()(CallHeader);
