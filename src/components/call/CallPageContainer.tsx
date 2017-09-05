@@ -7,6 +7,7 @@ import { ApplicationState } from '../../redux/root';
 import { getIssuesIfNeeded } from '../../redux/remoteData';
 import { CallState, OutcomeData, submitOutcome, selectIssueActionCreator } from '../../redux/callState';
 import { clearAddress } from '../../redux/location';
+import { LocationState } from '../../redux/location/reducer';
 
 /*
   The Container Component(such as this one) exist to connect a react component to the Redux store.
@@ -40,6 +41,8 @@ interface StateProps {
   readonly callState: CallState;
   readonly currentIssue?: Issue;
   readonly splitDistrict: boolean;
+  readonly locationState: LocationState;
+
 }
 
 /*
@@ -70,7 +73,8 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
   return {
     callState: state.callState,
     currentIssue: currentIssue,
-    splitDistrict: state.locationState.splitDistrict
+    splitDistrict: state.locationState.splitDistrict, // todo: just pass locationState and remove separate splitDistrict
+    locationState: state.locationState
   };
 };
 

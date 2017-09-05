@@ -5,11 +5,12 @@ import { ContactOffices, ContactOfficesTranslatable } from './ContactOffices';
 import CallPage from './CallPage';
 import CallPageContainer from './CallPageContainer';
 import Outcomes from './Outcomes';
-import Script from './Script';
+import { Script, ScriptTranslatable } from './Script';
 import IssueLink from './IssueLink';
 import NoContactSplitDistrict from './NoContactSplitDistrict';
 
 export {
   Call, CallTranslatable, CallPageContainer, CallDetail, CallPage,
-  ContactDetails, ContactOffices, ContactOfficesTranslatable, Outcomes, Script, IssueLink, NoContactSplitDistrict
+  ContactDetails, ContactOffices, ContactOfficesTranslatable, Outcomes, Script, ScriptTranslatable,
+  IssueLink, NoContactSplitDistrict
 };

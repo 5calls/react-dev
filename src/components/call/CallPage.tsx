@@ -5,6 +5,7 @@ import { CallTranslatable } from './index';
 import { LayoutContainer } from '../layout';
 import { Issue } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
+import { LocationState } from '../../redux/location/reducer';
 
 /*
   This is the top level View component in the CallPage Component Hierarchy.  It is the
@@ -37,6 +38,7 @@ interface RouteProps extends RouteComponentProps<{ id: string }> { }
 interface Props extends RouteProps {
   readonly issues: Issue[];
   readonly callState: CallState;
+  readonly locationState: LocationState;
   readonly currentIssue: Issue;
   readonly splitDistrict: boolean;
   readonly onSubmitOutcome: (data: OutcomeData) => Function;
@@ -114,6 +116,7 @@ class CallPage extends React.Component<Props, State> {
             <CallTranslatable
               issue={this.props.currentIssue}
               callState={this.props.callState}
+              locationState={this.props.locationState}
               clearLocation={this.props.clearLocation}
               onSubmitOutcome={this.props.onSubmitOutcome}
               splitDistrict={this.props.splitDistrict}
