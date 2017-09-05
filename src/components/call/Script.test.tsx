@@ -22,6 +22,5 @@ test('Script component should be rendered if passed a valid object', () => {
             t={i18n.t}
         />
     );
-    const node = component.find('call__script__body');
-    expect(node.text()).toBe('');
+    expect(component).toMatchSnapshot(); 
 });
