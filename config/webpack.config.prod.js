@@ -24,6 +24,8 @@ const shouldUseRelativeAssetPaths = publicPath === './';
 const publicUrl = publicPath.slice(0, -1);
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
+// Get current git hash to use as a unique release id
+const gitHash = childProcess.execSync('git rev-parse HEAD').toString();
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
