@@ -68,7 +68,6 @@ export class Call extends React.Component<Props, State> {
   render() {
     return (
       <section className="call">
-        {/* TODO: Move header into a separate component */}
         <CallHeader
           currentIssue={this.state.issue}
           t={i18n.t}
