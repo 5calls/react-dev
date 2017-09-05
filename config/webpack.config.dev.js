@@ -22,7 +22,7 @@ const publicUrl = '';
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
 // Get current git hash to use as a unique release id
-const gitHash = childProcess.execSync('git rev-parse HEAD').toString();
+const gitHash = childProcess.execSync('git rev-parse HEAD').toString().trim();
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
