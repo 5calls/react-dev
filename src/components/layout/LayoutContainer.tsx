@@ -1,5 +1,6 @@
 import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { find } from 'lodash';
 import { selectIssueActionCreator } from '../../redux/callState';
 import { ApplicationState } from '../../redux/root';
 import { newLocationLookup, clearAddress } from '../../redux/location';
@@ -29,7 +30,7 @@ interface DispatchProps {
 function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProps {
   let currentIssue: Issue | undefined = undefined;
   if (state.remoteDataState.issues) {
-    currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.issueId);
+    currentIssue = find(state.remoteDataState.issues, i => i.id === ownProps.issueId);
   }
 
   return {

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { find } from 'lodash';
 import { Issue } from '../../common/model';
 import { IssuesListItem } from './index';
 
@@ -24,7 +25,7 @@ export const IssuesList: React.StatelessComponent<Props> = (props: Props) => {
           issue={issue}
           isIssueComplete={
             props.completedIssueIds &&
-            (props.completedIssueIds.find((issueId: string) => issue.id === issueId) !== undefined)
+            (find(props.completedIssueIds, (issueId: string) => issue.id === issueId) !== undefined)
           }
           isIssueActive={currentIssueId === issue.id}
           onSelectIssue={props.onSelectIssue}
