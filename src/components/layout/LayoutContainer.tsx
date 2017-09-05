@@ -9,7 +9,7 @@ import { Layout } from './index';
 import { Issue } from '../../common/model';
 
 interface OwnProps {
-  readonly issueId: string;
+  readonly issueId?: string;
   readonly children?: {};
 }
 

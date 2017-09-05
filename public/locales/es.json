@@ -102,7 +102,7 @@
     },
     "noCalls": {
         "title": "No hay llamadas para hacer",
-        "reason": "Este problema ya no es relevante, o la URL que usó era incorrecto. Si hizo clic en un enlace de este sitio para llegar aquí, <a href='mailto:{{contactEmail}}'> por favor díganos </a> para que podamos arreglarlo!",
+        "reason": "Este problema ya no es relevante, o la URL que usó era incorrecto.",
         "nextStep": "A continuación, elija un tema diferente de la lista para hacer más llamadas."
     },
     "noContact": {

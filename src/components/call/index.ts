@@ -1,5 +1,6 @@
 import { Call, CallTranslatable } from './Call';
 import CallDetail from './CallDetail';
+import CallHeader from './CallHeader';
 import ContactDetails from './ContactDetails';
 import { ContactOffices, ContactOfficesTranslatable } from './ContactOffices';
 import CallPage from './CallPage';
@@ -10,7 +11,7 @@ import IssueLink from './IssueLink';
 import NoContactSplitDistrict from './NoContactSplitDistrict';
 
 export {
-  Call, CallTranslatable, CallPageContainer, CallDetail, CallPage,
+  Call, CallTranslatable, CallPageContainer, CallDetail, CallHeader, CallPage,
   ContactDetails, ContactOffices, ContactOfficesTranslatable, Outcomes, Script, ScriptTranslatable,
   IssueLink, NoContactSplitDistrict
 };

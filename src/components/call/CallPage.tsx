@@ -109,24 +109,19 @@ class CallPage extends React.Component<Props, State> {
   }
 
   getView() {
-    if (this.props.currentIssue) {
-      return (
-        <LayoutContainer issueId={this.props.currentIssue.id} >
-          {this.props.currentIssue &&
-            <CallTranslatable
-              issue={this.props.currentIssue}
-              callState={this.props.callState}
-              locationState={this.props.locationState}
-              clearLocation={this.props.clearLocation}
-              onSubmitOutcome={this.props.onSubmitOutcome}
-              splitDistrict={this.props.splitDistrict}
-              t={i18n.t}
-            />}
-        </LayoutContainer>
-      );
-    } else {
-      return <div />;
-    }
+    return (
+      <LayoutContainer issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined} >
+        <CallTranslatable
+          issue={this.props.currentIssue}
+          callState={this.props.callState}
+          locationState={this.props.locationState}
+          clearLocation={this.props.clearLocation}
+          onSubmitOutcome={this.props.onSubmitOutcome}
+          splitDistrict={this.props.splitDistrict}
+          t={i18n.t}
+        />
+      </LayoutContainer>
+    );
   }
 
   render() {

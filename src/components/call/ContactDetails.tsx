@@ -12,30 +12,35 @@ interface Props {
 }
 
 const ContactDetails: React.StatelessComponent<Props> = ({ currentIssue, contactIndex = 0, t }: Props) => {
-  const contact: Contact = currentIssue.contacts && currentIssue.contacts.length !== 0 ?
+  if (currentIssue) {
+    const contact: Contact = currentIssue.contacts && currentIssue.contacts.length !== 0 ?
     currentIssue.contacts[contactIndex] : DefaultContact;
-  if (contact === DefaultContact) {
-    return <span />;
+
+    if (contact === DefaultContact) {
+      return <span />;
+    } else {
+      return (
+        <div className="call__contact" id="contact">
+          <div className="call__contact__image"><img alt="" src={contact.photoURL} /></div>
+          <h3 className="call__contact__type">{t('contact.callThisOffice')}</h3>
+          <p className="call__contact__name">
+            {contact.name} {contact.party ? `${contact.party.substring(0, 1)}-${contact.state}` : ''}
+          </p>
+          <p className="call__contact__phone">{makePhoneLink(contact.phone)}</p>
+          <ContactOffices
+            currentIssue={currentIssue}
+            contactIndex={contactIndex}
+            t={t}
+          />
+          <h3 className="call__contact__reason__header">
+            {t('contact.whyYouAreCallingThisOffice')}
+          </h3>
+          <p className="call__contact__reason">{contact.reason}</p>
+        </div>
+      );
+    }
   } else {
-    return (
-      <div className="call__contact" id="contact">
-        <div className="call__contact__image"><img alt="" src={contact.photoURL} /></div>
-        <h3 className="call__contact__type">{t('contact.callThisOffice')}</h3>
-        <p className="call__contact__name">
-          {contact.name} {contact.party ? `${contact.party.substring(0, 1)}-${contact.state}` : ''}
-        </p>
-        <p className="call__contact__phone">{makePhoneLink(contact.phone)}</p>
-        <ContactOffices
-          currentIssue={currentIssue}
-          contactIndex={contactIndex}
-          t={t}
-        />
-        <h3 className="call__contact__reason__header">
-          {t('contact.whyYouAreCallingThisOffice')}
-        </h3>
-        <p className="call__contact__reason">{contact.reason}</p>
-      </div>
-    );
+    return <span />;
   }
 };
 

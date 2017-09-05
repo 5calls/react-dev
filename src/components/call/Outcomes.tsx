@@ -62,20 +62,24 @@ class Outcomes extends React.Component<Props & RouteComponentProps<any>, State> 
   }
 
   render() {
-    return (
-      <div className="call__outcomes">
-        <h3 className="call__outcomes__header">
-          {this.props.t('outcomes.enterYourCallResult')}
-        </h3>
-        <div className="call__outcomes__items">
-          {this.props.currentIssue.outcomeModels.map((outcome, index) =>
-            <button key={index} onClick={(e) => this.dispatchOutcome(e, outcome.label)}>
-              {this.props.t('outcomes.' + outcome.label)}
-            </button>
-          )}
+    if (this.props.currentIssue) {
+      return (
+        <div className="call__outcomes">
+          <h3 className="call__outcomes__header">
+            {this.props.t('outcomes.enterYourCallResult')}
+          </h3>
+          <div className="call__outcomes__items">
+            {this.props.currentIssue.outcomeModels.map((outcome, index) =>
+              <button key={index} onClick={(e) => this.dispatchOutcome(e, outcome.label)}>
+                {this.props.t('outcomes.' + outcome.label)}
+              </button>
+            )}
+          </div>
         </div>
-      </div>
-    );
+      );  
+    } else {
+      return <span />;
+    }
   }
 }
 

@@ -102,7 +102,7 @@
     },
     "noCalls": {
         "title": "No calls to make",
-        "reason": "This issue is no longer relevant, or the URL you used to get here was wrong. If you clicked a link on this site to get here, <a href='mailto:{{contactEmail}}'>please tell us</a> so we can fix it!",
+        "reason": "This issue is no longer relevant, or the URL you used to get here was wrong.",
         "nextStep": "Next choose a different issue from the list to make calls about."
     },
     "noContact": {
