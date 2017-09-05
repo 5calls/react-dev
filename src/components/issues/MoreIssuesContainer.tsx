@@ -12,7 +12,6 @@ interface OwnProps extends RouteComponentProps<{ id: string }> { }
 
 interface StateProps {
   readonly issues: Issue[];
-  readonly currentIssue?: Issue;  
   readonly completedIssueIds: string[];
 }
 
@@ -22,14 +21,8 @@ interface DispatchProps {
 }
 
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
-  let currentIssue: Issue | undefined = undefined;
-  if (state.remoteDataState.issues) {
-    currentIssue = state.remoteDataState.issues.find(i => i.id === ownProps.match.params.id);
-  }
-
   return {
     issues: state.remoteDataState.inactiveIssues,
-    currentIssue: currentIssue,
     completedIssueIds: state.callState.completedIssueIds,
   };
 };
