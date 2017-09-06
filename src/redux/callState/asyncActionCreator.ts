@@ -11,7 +11,8 @@ export interface OutcomeData {
   issueId: string;
   numberContactsLeft: number;
   location?: string; // added in submitOutcome()
-  contactId?: string;
+  contactId: string;
+  groupId?: string;
   via?: string; // added in submitOutcome()
 }
 
@@ -44,6 +45,8 @@ export function submitOutcome(data: OutcomeData) {
       // A value of test indicates that it did not come from the production environment
       const viaParameter = window.location.host === '5calls.org' ? 'web' : 'test';
       data.via = viaParameter;
+
+      data.groupId = state.callState.group ? state.callState.group.id : '';
 
       const userContactData = {
         result: data.outcome,

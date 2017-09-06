@@ -22,6 +22,7 @@ export const postOutcomeData = (data: OutcomeData) => {
     result: data.outcome,
     contactid: data.contactId,
     issueid: data.issueId,
+    groupid: data.groupId,
     via: data.via
   });
   // console.log('postOutcomeData() posted data:', postData)

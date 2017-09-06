@@ -36,7 +36,7 @@ const fileList = (dir, filt = '') =>
 
 const deleteFiles = (files) => {
   files.forEach(file => {
-    console.log('deleting ...' , file);
+    // console.log('deleting ...' , file);
     fs.unlinkSync(file);
   });
 }

@@ -18,7 +18,7 @@ const SidebarHeader: React.StatelessComponent<Props> = (props: Props) => {
   if (props.callState.group) {
     headerIntro = (
       <h3>
-        You're calling with 
+        You're calling with&nbsp;
         <Link to={`/group/${props.callState.group.id}`}>
           {props.callState.group.name}
         </Link>
