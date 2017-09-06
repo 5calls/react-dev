@@ -12,7 +12,7 @@ test('Call component should be rendered if passed a valid object', () => {
     currentIssueId: 'test1',
     contactIndexes: {'test1': 2, 'test2': 1},
     completedIssueIds: ['test1', 'test2'],
-    groupId: undefined,
+    group: undefined,
   };
   const locationState: LocationState = {
     address: '1234',

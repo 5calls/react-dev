@@ -8,7 +8,7 @@ beforeEach(() => {
     currentIssueId: '',
     contactIndexes: {},
     completedIssueIds: [],
-    groupId: undefined,
+    group: undefined,
   };
 });
 

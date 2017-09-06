@@ -9,12 +9,15 @@
     text-align: center;
     background-color: #fff;
 
-    h2 {
+    h2, h3 {
       margin: 0;
       padding: 12px;
-      font-size: $font-large;
       text-align: center;
       background-color: $gray-xlight;
+    }
+
+    h2 {
+      font-size: $font-large;      
     }
   }
 

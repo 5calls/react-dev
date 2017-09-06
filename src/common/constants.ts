@@ -6,6 +6,8 @@ export const API_URL = 'https://api.5calls.org/v1';
 export const ISSUES_API_URL = `${APP_URL}/issues/?all=true&address=`;
 export const REPORT_API_URL = `${APP_URL}/report`;
 export const COUNTS_API_URL = `${API_URL}/counts`;
+export const DONATIONS_API_URL = `${API_URL}/donations`;
+export const GROUP_API_URL = `${API_URL}/groups`;
 export const IP_INFO_URL = 'https://ipinfo.io/json';
 
 export const zipCodeRegex: RegExp = /^\d{5}(-\d{4})?$/;

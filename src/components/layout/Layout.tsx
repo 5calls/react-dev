@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import i18n from '../../services/i18n';
 import { LocationState } from '../../redux/location/reducer';
+import { CallState } from '../../redux/callState/reducer';
 import { Issue } from '../../common/model';
-import { Sidebar, Footer, Header } from './index';
-import { LocationTranslatable } from '../location';
+import { SidebarHeader, Sidebar, Footer, Header } from './index';
 
 interface Props {
   readonly children?: {};
@@ -12,6 +11,7 @@ interface Props {
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
   readonly completedIssueIds: string[];
+  readonly callState: CallState;
   readonly locationState: LocationState;
   readonly onSelectIssue: (issueId: string) => Function;
   readonly setLocation: (location: string) => void;
@@ -24,24 +24,12 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
     <div className="layout">
       <aside id="nav" role="contentinfo" className="layout__side">
         <div className="issues">
-          <header className="issues__header" role="banner">
-            <h1 className="issues__title">
-              <Link
-                to={`/`}
-              >
-                <img className="issues__logo" src="/img/5calls-logotype.png" alt="5 Calls" />5 Calls
-              </Link>
-            </h1>
-            <div className="issues__location">
-              <LocationTranslatable
-                locationState={props.locationState}
-                setLocation={props.setLocation}
-                clearLocation={props.clearLocation}
-                t={i18n.t}
-              />
-            </div>
-            <h2>{i18n.t('issues.whatsImportantToYou')}</h2>
-          </header>
+          <SidebarHeader
+            callState={props.callState}
+            locationState={props.locationState}
+            setLocation={props.setLocation}
+            clearLocation={props.clearLocation}
+          />
           <Sidebar
             issues={props.issues}
             currentIssue={props.currentIssue ? props.currentIssue : undefined}

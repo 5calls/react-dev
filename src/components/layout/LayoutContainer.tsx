@@ -5,6 +5,7 @@ import { selectIssueActionCreator } from '../../redux/callState';
 import { ApplicationState } from '../../redux/root';
 import { newLocationLookup, clearAddress } from '../../redux/location';
 import { LocationState } from '../../redux/location/reducer';
+import { CallState } from '../../redux/callState/reducer';
 import { Layout } from './index';
 import { Issue } from '../../common/model';
 
@@ -18,6 +19,7 @@ interface StateProps {
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
   readonly completedIssueIds: string[];
+  readonly callState: CallState;
   readonly locationState: LocationState;
 }
 
@@ -37,6 +39,7 @@ function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProp
     issues: state.remoteDataState.issues,
     currentIssue: currentIssue,
     completedIssueIds: state.callState.completedIssueIds,
+    callState: state.callState,
     locationState: state.locationState,
     children: ownProps.children
   };
