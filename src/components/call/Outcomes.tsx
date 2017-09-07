@@ -55,9 +55,14 @@ class Outcomes extends React.Component<Props & RouteComponentProps<any>, State> 
     // navigate to /done when finished
     if (this.props.numberContactsLeft === 0 && this.props.history) {
       this.props.history.push(`/done/${this.props.currentIssue.id}`);
+      window.scroll(1, 1);
+    } else {
+      // scroll to the contact element
+      const contact = document.getElementById('contact');
+      const yOffset = contact ? (contact.getBoundingClientRect().top * -1) + 200 : 1; 
+      window.scroll(1, yOffset);
     }
-
-    window.scroll(1, 1);
+    
     return true;
   }
 
