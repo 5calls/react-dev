@@ -25,11 +25,10 @@ export const Done: React.StatelessComponent<Props> = (props: Props) => {
           t={props.t}
         />
         <p className="call__text">
-          <Trans i18nKey="callComplete.learnWhyCallingIsGreat">
+          <Trans i18nKey="callComplete.learnWhyCallingIsGreat" parent="span">
             <Link to="/about">about-link-text-stub</Link>
           </Trans>
         </p>
-        {/* TODO: Add Town Hall component here */}
 
         <CallCount
           totalCount={props.totalCount}

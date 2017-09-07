@@ -46,7 +46,7 @@ ShallowWrapper {
         >
             <Trans
                 i18nKey="callComplete.learnWhyCallingIsGreat"
-                parent="div"
+                parent="span"
             >
                 <Link
                     replace={false}
@@ -101,7 +101,7 @@ ShallowWrapper {
             >
                   <Trans
                         i18nKey="callComplete.learnWhyCallingIsGreat"
-                        parent="div"
+                        parent="span"
                   >
                         <Link
                               replace={false}
@@ -230,7 +230,7 @@ ShallowWrapper {
                     >
                               <Trans
                                         i18nKey="callComplete.learnWhyCallingIsGreat"
-                                        parent="div"
+                                        parent="span"
                               >
                                         <Link
                                                   replace={false}
@@ -285,7 +285,7 @@ ShallowWrapper {
                     >
                               <Trans
                                         i18nKey="callComplete.learnWhyCallingIsGreat"
-                                        parent="div"
+                                        parent="span"
                               >
                                         <Link
                                                   replace={false}
