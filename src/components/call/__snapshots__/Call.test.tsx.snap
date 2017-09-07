@@ -194,6 +194,7 @@ ShallowWrapper {
                           "test2": 1,
                         },
                         "currentIssueId": "test1",
+                        "group": undefined,
                       }
         }
         clearLocation={[Function]}
@@ -240,6 +241,7 @@ ShallowWrapper {
               "test2": 1,
             },
             "currentIssueId": "test1",
+            "group": undefined,
           },
           "clearLocation": [Function],
           "issue": Object {
@@ -489,6 +491,7 @@ ShallowWrapper {
               "test2": 1,
             },
             "currentIssueId": "test1",
+            "group": undefined,
           }
     }
     clearLocation={[Function]}
