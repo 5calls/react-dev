@@ -11,7 +11,7 @@ ShallowWrapper {
   "node": <section
     className="call"
 >
-    <Unknown
+    <Translate(Component)
         currentIssue={
             Object {
                 "categories": Array [],
@@ -95,7 +95,7 @@ ShallowWrapper {
     <section
       className="call"
 >
-      <Unknown
+      <Translate(Component)
             currentIssue={
                   Object {
                         "categories": Array [],
@@ -302,7 +302,7 @@ ShallowWrapper {
         "_currentElement": <section
           className="call"
 >
-          <Unknown
+          <Translate(Component)
                     currentIssue={
                               Object {
                                         "categories": Array [],
@@ -386,7 +386,7 @@ ShallowWrapper {
         "_renderedOutput": <section
           className="call"
 >
-          <Unknown
+          <Translate(Component)
                     currentIssue={
                               Object {
                                         "categories": Array [],
