@@ -219,11 +219,10 @@ button {
   height: 20px;
   margin: 0 20px 10px 0;
   background-color: white;
-  // border-radius: 15px;
 
   &__total {
     display: inline-block;
-    min-width: 5%;
+    min-width: 10%;
     height: 20px;
     background-color: $red;
 
@@ -231,6 +230,7 @@ button {
     text-align: right;
     padding-right: 5px;
     line-height: 21px;
+    border-radius: 5px;
   }
 
   &__goal {

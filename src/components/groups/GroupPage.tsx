@@ -77,7 +77,7 @@ class GroupPage extends React.Component<Props, State> {
           return <span/>;
         }
 
-        const pctDone = (group.totalCalls / 10000) * 100;
+        const pctDone = (group.totalCalls / 1000) * 100;
         const pctStyle = {width: `${pctDone}%`};    
 
         return (
@@ -91,7 +91,7 @@ class GroupPage extends React.Component<Props, State> {
                 </span>
               </div>
               <p>{group.description}</p>
-              <p>Join this group to start making your calls count towards this team's total.</p>
+              <p>{groupId === group.id ? `You're contributing to the call total for this team!` : `Join this group to start making your calls count towards this team's total.`}</p>
             </div>
           </LayoutContainer>
         );
