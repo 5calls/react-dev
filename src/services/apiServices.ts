@@ -1,7 +1,7 @@
 import { OutcomeData } from './../redux/callState/asyncActionCreator';
 import axios from 'axios';
 import * as querystring from 'querystring';
-import { ApiData, CountData, DonationGoal } from './../common/model';
+import { ApiData, CountData, DonationGoal, Group } from './../common/model';
 import * as Constants from '../common/constants';
 
 export const getAllIssues = (address: string): Promise<ApiData> => {
@@ -22,6 +22,7 @@ export const postOutcomeData = (data: OutcomeData) => {
     result: data.outcome,
     contactid: data.contactId,
     issueid: data.issueId,
+    groupid: data.groupId,
     via: data.via
   });
   // console.log('postOutcomeData() posted data:', postData)
@@ -39,8 +40,15 @@ export const postOutcomeData = (data: OutcomeData) => {
 };
 
 export const getDonations = (): Promise<DonationGoal> => {
-  const donationUrl = 'https://pgb84kuy7a.execute-api.us-east-2.amazonaws.com/production/donations';
+  const donationUrl = `${Constants.DONATIONS_API_URL}`;
   return axios.get(`${donationUrl}`)
+    .then(response => Promise.resolve(response.data))
+    .catch(e => Promise.reject(e));
+};
+
+export const getGroup = (groupId: string): Promise<Group> => {
+  const groupUrl = `${Constants.GROUP_API_URL}/${groupId}`;
+  return axios.get(`${groupUrl}`)
     .then(response => Promise.resolve(response.data))
     .catch(e => Promise.reject(e));
 };

@@ -1,5 +1,6 @@
 import { Action } from 'redux';
 import { CallStateAction } from './index';
+import { Group } from '../../common/model';
 
 export enum CallStateActionType {
   CURRENT_ISSUE_SELECTED = 'CURRENT_ISSUE_SELECTED',
@@ -7,7 +8,8 @@ export enum CallStateActionType {
   NEXT_CONTACT = 'NEXT_CONTACT',
   SET_CONTACT_IDS = 'SET_CONTACT_IDS',
   SET_SHOW_FIELD_OFFICE_NUMBERS = 'SET_SHOW_FIELD_OFFICE_NUMBERS',
-  CLEAR_CONTACT_INDEXES = 'CLEAR_CONTACT_INDEXES'
+  CLEAR_CONTACT_INDEXES = 'CLEAR_CONTACT_INDEXES',
+  JOIN_GROUP = 'JOIN_GROUP'
 }
 
 export interface CallStateAction extends Action {
@@ -46,4 +48,9 @@ export interface SetShowFieldOfficeNumbers extends CallStateAction {
 
 export interface ClearContactIndexesAction extends CallStateAction {
   type: CallStateActionType.CLEAR_CONTACT_INDEXES;
+}
+
+export interface JoinGroupAction extends CallStateAction {
+  type: CallStateActionType.JOIN_GROUP;
+  payload: Group;
 }

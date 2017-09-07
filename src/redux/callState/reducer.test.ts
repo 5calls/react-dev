@@ -7,7 +7,8 @@ beforeEach(() => {
   defaultState = {
     currentIssueId: '',
     contactIndexes: {},
-    completedIssueIds: []
+    completedIssueIds: [],
+    group: undefined,
   };
 });
 
