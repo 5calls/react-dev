@@ -31,8 +31,6 @@ test('Call component should be rendered if passed a valid object', () => {
       locationState={locationState}
       t={i18n.t}
       onSubmitOutcome={onSubmitOutcome}
-    />
-  );
-  const node = component.find('h2.call__title');
-  expect(node.text()).toBe('testName');
+    />);
+  expect(component).toMatchSnapshot();
 });

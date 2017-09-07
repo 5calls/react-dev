@@ -4,7 +4,7 @@ import i18n from '../../services/i18n';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 import { Issue, Contact } from '../../common/model';
-import { ContactDetails, Outcomes, ScriptTranslatable, NoContactSplitDistrict } from './index';
+import { CallHeaderTranslatable, ContactDetails, Outcomes, ScriptTranslatable, NoContactSplitDistrict } from './index';
 import { CallState, OutcomeData } from '../../redux/callState';
 import { LocationState } from '../../redux/location/reducer';
 
@@ -68,15 +68,10 @@ export class Call extends React.Component<Props, State> {
   render() {
     return (
       <section className="call">
-        {/* TODO: Move header into a separate component */}
-        <header className="call__header">
-          <h2 className="call__title">{this.state.issue.name}</h2>
-          <div className="call__reason">
-            {this.state.issue.reason.split('\n').map((line, index) =>
-              <p key={index}>{line}</p>
-            )}
-          </div>
-        </header>
+        <CallHeaderTranslatable
+          currentIssue={this.state.issue}
+          t={i18n.t}
+        />
         {this.props.splitDistrict ?
         <NoContactSplitDistrict
           splitDistrict={this.props.splitDistrict}
@@ -94,7 +89,9 @@ export class Call extends React.Component<Props, State> {
           locationState={this.props.locationState}
           t={i18n.t}
         />
-        {this.props.splitDistrict || (this.props.issue.contacts && this.props.issue.contacts.length === 0) ? <span/> :
+        {this.props.splitDistrict || 
+         this.props.issue && 
+         (this.props.issue.contacts && this.props.issue.contacts.length === 0) ? <span/> :
         <Outcomes
           currentIssue={this.state.issue}
           numberContactsLeft={this.state.numberContactsLeft}
