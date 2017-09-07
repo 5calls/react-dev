@@ -5,7 +5,7 @@ import { getAllIssues, getCountData, getDonations } from '../../services/apiServ
 import { setCachedCity, setLocation, setLocationFetchType,
   setSplitDistrict, setUiState } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
-import { issuesActionCreator, callCountActionCreator, apiErrorMessageActionCreator } from './index';
+import { issuesActionCreator, callCountActionCreator } from './index';
 import { clearContactIndexes, completeIssueActionCreator } from '../callState/';
 import { ApplicationState } from '../root';
 import { LocationUiState } from '../../common/model';
@@ -33,21 +33,26 @@ export const fetchAllIssues = (address: string = '') => {
           getState: () => ApplicationState) => {
     return getAllIssues(address)
       .then((response: ApiData) => {
-        if (!address || response.invalidAddress) {
+        if (response.invalidAddress) {
           dispatch(setUiState(LocationUiState.LOCATION_ERROR));
-          throw new Error('Invalid address found');
+          Promise.reject('Invalid address found');
+        } else {
+          const normalizedAddress = response.normalizedLocation as string;
+          dispatch(setCachedCity(normalizedAddress));
+          dispatch(setLocation(address));
+          if (!address) {
+            dispatch(setUiState(LocationUiState.LOCATION_ERROR));
+          }
+          dispatch(setSplitDistrict(response.splitDistrict));
+          dispatch(setLocationFetchType(LocationFetchType.CACHED_ADDRESS));
+          dispatch(issuesActionCreator(response.issues));
         }
-        const normalizedAddress = response.normalizedLocation as string;
-        dispatch(setCachedCity(normalizedAddress));
-        dispatch(setLocation(address));
-        dispatch(setSplitDistrict(response.splitDistrict));
-        dispatch(setLocationFetchType(LocationFetchType.CACHED_ADDRESS));
-        dispatch(issuesActionCreator(response.issues));
       }).catch((error) => {
-        dispatch(apiErrorMessageActionCreator(error.message));
+        // dispatch(apiErrorMessageActionCreator(error.message));
         // tslint:disable-next-line:no-console
         console.error(`getIssue error: ${error.message}`, error);
-        throw error;
+        // throw error;
+        Promise.reject(error);
       });
   };
 };
@@ -90,8 +95,13 @@ export const fetchLocationByIP = () => {
             dispatch(setUiState(LocationUiState.LOCATION_FOUND));
           });
           // TODO: dispatch an error message
+        }).catch((error) => {
           // tslint:disable-next-line:no-console
-        }).catch((error) => console.error(`fetchLocationByIP error: ${error.message}`, error));
+          console.error(`fetchLocationByIP error: ${error.message}`, error);
+          // set location to empty string to trigger location error
+          dispatch(fetchAllIssues(''));
+          Promise.resolve('');
+        });
     // }
   };
 };

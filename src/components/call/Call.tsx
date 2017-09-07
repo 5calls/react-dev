@@ -72,7 +72,7 @@ export class Call extends React.Component<Props, State> {
         <header className="call__header">
           <h2 className="call__title">{this.state.issue.name}</h2>
           <div className="call__reason">
-            {this.state.issue.reason.split('\n').map((line, index) => 
+            {this.state.issue.reason.split('\n').map((line, index) =>
               <p key={index}>{line}</p>
             )}
           </div>
@@ -94,7 +94,7 @@ export class Call extends React.Component<Props, State> {
           locationState={this.props.locationState}
           t={i18n.t}
         />
-        {this.props.splitDistrict ? <span/> :
+        {this.props.splitDistrict || (this.props.issue.contacts && this.props.issue.contacts.length === 0) ? <span/> :
         <Outcomes
           currentIssue={this.state.issue}
           numberContactsLeft={this.state.numberContactsLeft}
