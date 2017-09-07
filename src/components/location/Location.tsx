@@ -46,7 +46,10 @@ export class Location extends React.Component<Props, State> {
    */
   setStateFromProps(props: Props): State {
     let location = props.locationState.cachedCity || props.locationState.address ;
-    let uiState = props.locationState.uiState;
+    let uiState  = props.locationState.uiState ;
+    if (!location  && uiState !== LocationUiState.ENTERING_LOCATION) {
+      uiState = LocationUiState.LOCATION_ERROR;
+    }
 
     return {
       location,

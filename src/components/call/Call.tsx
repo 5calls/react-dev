@@ -89,7 +89,7 @@ export class Call extends React.Component<Props, State> {
           locationState={this.props.locationState}
           t={i18n.t}
         />
-        {this.props.splitDistrict ? <span/> :
+        {this.props.splitDistrict || (this.props.issue.contacts && this.props.issue.contacts.length === 0) ? <span/> :
         <Outcomes
           currentIssue={this.state.issue}
           numberContactsLeft={this.state.numberContactsLeft}
