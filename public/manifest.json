@@ -1,6 +1,9 @@
 {
  "short_name": "5 Calls",
  "name": "5 Calls: Make your voice heard",
+ "start_url": "/",
+ "display": "standalone",
+ "gcm_sender_id": "482941778795",
  "icons": [
   {
    "src": "\/img\/fav\/android-icon-36x36.png",
