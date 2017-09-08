@@ -12,7 +12,6 @@ import { getAll } from './services/localStorage';
 import { transform, LegacyUserStatsState } from './services/legacyStats';
 import { setUserStatsActionCreator } from './redux/userStats';
 
-import { unregister } from './registerServiceWorker';
 import { HomePageContainer } from './components/home';
 import { AboutPage } from './components/about';
 import { FaqPage } from './components/faq';
@@ -72,4 +71,3 @@ ReactDOM.render(
   </I18nextProvider>,
   document.getElementById('root')
 );
-unregister();
