@@ -36,7 +36,7 @@ export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
         <form action="//5calls.us16.list-manage.com/subscribe/post?u=82a164d5fe7f51f4a4efb1f83&amp;id=624ef52208" method="post" target="popupwindow">
           <label htmlFor="email">{props.t('footer.emailLabel')}</label>
           <span className="emailform">
-            <input type="text" placeholder="hello@5calls.org" name="email" id="email" />
+            <input type="text" placeholder="youremail@example.com" name="email" id="email" />
             <input type="submit" value={props.t('footer.subscribe')} />
           </span>
         </form>
