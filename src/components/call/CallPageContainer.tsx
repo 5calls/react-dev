@@ -1,7 +1,7 @@
 import { connect, Dispatch } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import { find } from 'lodash';
+import { getIssue } from '../shared/utils';
 import { Issue } from '../../common/model';
 import { CallPage } from './index';
 import { ApplicationState } from '../../redux/root';
@@ -64,11 +64,7 @@ interface DispatchProps {
  the object with the props (see the Call page for an example).
 */
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
-  let currentIssue: Issue | undefined = undefined;
-  if (state.remoteDataState.issues && state.remoteDataState.inactiveIssues) {
-    currentIssue = find(state.remoteDataState.issues.concat(state.remoteDataState.inactiveIssues),
-                        (i => i.id === ownProps.match.params.id));
-  }
+  const currentIssue: Issue | undefined = getIssue(state, ownProps.match.params.id);
 
   return {
     callState: state.callState,

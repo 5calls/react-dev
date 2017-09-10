@@ -1,4 +1,8 @@
 import * as Constants from '../../common/constants';
+import { ApplicationState } from '../../redux/root';
+import { Issue } from '../../common/model';
+
+import { find } from 'lodash';
 
 /**
  * Formats the location for the back end as
@@ -52,4 +56,15 @@ export const formatNumber = (unformattedNumber: number | string) => {
     // When in doubt, get code from stackoverflow: http://stackoverflow.com/a/2901298/7542666
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
+};
+
+export const getIssue = (state: ApplicationState, issueId: string) => {
+  let currentIssue: Issue | undefined = undefined;
+
+  if (state.remoteDataState.issues && state.remoteDataState.inactiveIssues) {
+    const allIssues = state.remoteDataState.issues.concat(state.remoteDataState.inactiveIssues);
+    currentIssue = find(allIssues, (i => i.id === issueId));
+  }
+
+  return currentIssue;
 };
