@@ -2,7 +2,8 @@ import * as React from 'react';
 import i18n from '../../services/i18n';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
-import { Promotion, CallCount } from '../shared';
+import { CallCount } from '../shared';
+import * as Constants from '../../common/constants';
 
 interface Props {
   readonly totalCount: number;
@@ -16,44 +17,35 @@ export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
       <p>
         {props.t('hypothesis.p1')}
       </p>
-      <p><strong>{props.t('hypothesis.p2')}</strong></p>
+      {/* <p><strong>{props.t('hypothesis.p2')}</strong></p>
       <Promotion
         currentIssue={null}
         t={i18n.t}
-      />
+      /> */}
     </header>
     <div className="hypothesis__text">
-      <p dangerouslySetInnerHTML={{ __html: props.t('hypothesis.p3') }} />
-      <p dangerouslySetInnerHTML={{ __html: props.t('hypothesis.contribute') }} />
-      <p className="hypothesis__callout">
-        <a href="https://secure.actblue.com/contribute/page/5calls?refcode=web" target="_blank">
-          {props.t('hypothesis.donateCallout')}
-        </a>
-      </p>
-      <h3 className="hypothesis__subtitle">{props.t('hypothesis.featuresTitle')}</h3>
-      <ul className="hypothesis__list">
-        <li>{props.t('hypothesis.feature1')}</li>
-        <li>{props.t('hypothesis.feature2')}</li>
-      </ul>
-      <h3 className="hypothesis__subtitle">
-        {props.t('hypothesis.getApp')}
-      </h3>
-      <ul className="hypothesis__apps">
-        <li>
-          <a href="https://itunes.apple.com/us/app/5-calls/id1202558609?mt=8" target="_blank">
-            <img className="ios" src="/img/app-store.svg" alt={props.t('hypothesis.onAppStore')}/>
-          </a>
-        </li>
-        <li>
-          <a href="https://play.google.com/store/apps/details?id=org.a5calls.android.a5calls&hl=en" target="_blank">
-            <img className="play" src="/img/google-play-badge.png" alt={props.t('hypothesis.onGooglePlay')} />
-          </a>
-        </li>
-      </ul>
       <CallCount
         totalCount={props.totalCount}
+        large={true}
         t={i18n.t}
       />
+      <a href={Constants.contact.apps}><img src="/img/5calls-apps.png" className="hypothesis__text__mobile" /></a>
+      <p dangerouslySetInnerHTML={{ __html: props.t('hypothesis.p3') }} />
+      <div className="subscribe">
+        <form action="//5calls.us16.list-manage.com/subscribe/post?u=82a164d5fe7f51f4a4efb1f83&amp;id=624ef52208" method="post" target="popupwindow">
+          <label htmlFor="email">{props.t('footer.emailLabel')}</label>
+          <span className="emailform">
+            <input type="text" placeholder="hello@5calls.org" name="email" id="email" />
+            <input type="submit" value={props.t('footer.subscribe')} />
+          </span>
+        </form>
+      </div>
+      {/* <p dangerouslySetInnerHTML={{ __html: props.t('hypothesis.contribute') }} /> */}
+      {/* <h3 className="hypothesis__subtitle">{props.t('hypothesis.featuresTitle')}</h3> */}
+      {/* <ul className="hypothesis__list">
+        <li>{props.t('hypothesis.feature1')}</li>
+        <li>{props.t('hypothesis.feature2')}</li>
+      </ul> */}
     </div>
   </div>
 );

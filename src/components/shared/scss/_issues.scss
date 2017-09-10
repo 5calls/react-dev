@@ -43,8 +43,9 @@
 
     p {
       margin: 0;
-      font-size: $font-small;
-      padding: 6px 6px 6px;
+      font-size: 19px;
+      padding: 12px 6px 6px 6px;
+
       &.loadingAnimation {
         color: $gray;
       }
@@ -62,7 +63,7 @@
     }
 
     button {
-      margin: 10px 0;
+      margin: 6px 0 18px 0;
     }
   }
 

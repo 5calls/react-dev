@@ -14,6 +14,7 @@ interface OwnProps {
   readonly issues?: Issue[];
   readonly currentGroup?: string;
   readonly children?: {};
+  readonly extraComponent?: {};
 }
 
 interface StateProps {

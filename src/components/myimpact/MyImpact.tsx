@@ -49,6 +49,7 @@ export const MyImpact: React.StatelessComponent<Props> = (props: Props) => {
 
       <CallCount
         totalCount={props.totalCount}
+        large={true}
         t={i18n.t}
       />
     </section>

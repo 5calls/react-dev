@@ -12,22 +12,42 @@
   &__title {
     font-size: $font-xxxlarge;
     text-transform: uppercase;
+    text-align: center;
+
     @include bp(small) {
       font-size: $font-xlarge;
     }
   }
 
+  p {
+    margin-bottom: 30px;
+  }
+
   &__text {
+    .progress {
+      margin-bottom: 30px;
+    }
+
+    &__mobile {
+      float: right;
+      margin: 20px 0;
+      width: 434px;
+      height: 370px;
+    }
+
     p {
       font-size: $font-large;
+
       @include bp(small) {
         font-size: $font-small;
       }
+
       a {
         font-weight: bold;
       }
     }
   }
+
   &__subtitle {
     font-size: $font-large;
     font-weight: bold;
@@ -58,6 +78,18 @@
     }
     .play {
       width: 150px;
+    }
+  }
+
+  .subscribe {
+    label {
+      display: block;
+      font-size: $font-large;
+      margin-bottom: 10px;
+    }
+
+    input[type=text] {
+      width: 200px;
     }
   }
 }

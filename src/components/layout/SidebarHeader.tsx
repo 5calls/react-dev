@@ -28,13 +28,6 @@ const SidebarHeader: React.StatelessComponent<Props> = (props: Props) => {
 
   return (
     <header className="issues__header" role="banner">
-      <h1 className="issues__title">
-        <Link
-          to={`/`}
-        >
-          <img className="issues__logo" src="/img/5calls-logotype.png" alt="5 Calls" />5 Calls
-        </Link>
-      </h1>
       <div className="issues__location">
         <LocationTranslatable
           locationState={props.locationState}
