@@ -44,7 +44,7 @@ const Navigation: React.StatelessComponent<Props> = (props: Props) => {
           </Link>
         </li>
       </ul>
-      <div style={{"clear": "both"}}></div>
+      <div style={{'clear': 'both'}} />
     </div>
   );
 };

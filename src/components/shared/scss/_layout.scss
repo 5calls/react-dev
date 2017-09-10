@@ -144,12 +144,24 @@
   }
 }
 
-.extras__band {
-  width: 100%;
-  clear: both;
-  background-color: $blue;
-  padding: 16px 0 20px 0;
+.extras {
+  &__title {
+    margin: 24px auto 48px auto;
+    max-width: 700px;
   
+    font-size: 32px;
+    font-weight: 100;
+    font-style: italic;
+    text-align: center;
+  }
+
+  &__band {
+    width: 100%;
+    clear: both;
+    background-color: $blue;
+    padding: 26px 0 30px 0;
+  }
+
   ul {
     margin: 0;
     -webkit-padding-start: 0px;
@@ -167,97 +179,99 @@
     @include bp(medium) {
       float: none;
       width: inherit;
-    }  
+    }
 
     .img-contain {
       height: 70px;
     }
   }
-}
-
-.explainer {
-  &__pick img {
-    width: 250px;
-    height: 69px;
-    margin-top: 7px;
+  
+  .explainer {
+    &__pick img {
+      width: 250px;
+      height: 69px;
+      margin-top: 7px;
+    }
+  
+    &__call img {
+      width: 250px;
+      height: 85px;
+    }
+  
+    &__result img {
+      width: 290px;
+      height: 71px;
+      margin-top: 7px;
+    }
+  }
+  
+  .articles {
+    li {
+      width: 25%;
+  
+      @include bp(medium) {
+        width: inherit;
+      }      
+    }
+    li img {
+      width: 260px;
+      height: 80px;
+    }
   }
 
-  &__call img {
-    width: 250px;
-    height: 85px;
-  }
+  &__tweets {
+    margin: 80px 0;
+    ul {
+      li {
+        text-align: left;
+        padding: 0 30px;
+        @include bp(medium) {
+          margin: 30px 0;
+        }          
 
-  &__result img {
-    width: 290px;
-    height: 71px;
-    margin-top: 7px;
-  }
-}
+        img {
+          float: left;
+          width: 42px;
+          height: 42px;
+        }
 
-.media {
-  li {
-    width: 25%;
+        p {
+          margin-left: 48px;
+          margin-bottom: 5px;
+          color: $blue;
 
-    @include bp(medium) {
-      width: inherit;
-    }      
-  }
-  li img {
-    width: 260px;
-    height: 80px;
-  }
-}
+          font-style: italic;
+          font-weight: 100;
+          line-height: 1.2em;
+        }
 
-.town-hall{
-  h4 {
-    margin: 5px 0;
-    text-align: center;
-    font-size: $font-large;
-  }
-  p {
-    font-size: $font-normal;
-  }
-  .list-group{
-    .list-group-item {
-      position: relative;
-      display: block;
-      padding: 10px 15px;
-      margin-bottom: -1px;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      .badge {
-        line-height: 1;
-        white-space: nowrap;
-        font-weight: 700;
-        font-size: 12px;
-        text-align: center;
-        display: inline-block;
-        min-width: 10px;
-        padding: 3px 7px;
-        color: #fff;
-        vertical-align: middle;
-        background-color: #777;
-        border-radius: 10px;
-        position: absolute;
-        right: 10px;
-        top: 22px;
-      }
-      .list-inline{
-        padding-left: 0;
-        list-style: none;
-        margin-left: -5px;
-        margin-bottom: 0;
-        margin-top: 0;
-        li {
-          display: block;
-          padding-left: 5px;
-          padding-right: 5px;
+        .user {
+          font-style: normal;
+          font-size: 16px;
+          font-weight: 600;
         }
       }
-      .list-inline-separated{
-        li{
-          margin-left: 10px;
-        }
+    }
+  }
+
+  &__media {
+    margin: 80px 0;
+    // text-align: center;
+
+    ul {
+      // width: 800px;
+      margin: 0 auto;
+      li  {
+        width: 33%;
+        // margin: 0 10px;
+        @include bp(medium) {
+          width: inherit;
+          margin: 20px 0;
+        }      
+  
+        img {
+          width: 250px;
+        }  
       }
     }
   }

@@ -32,6 +32,7 @@ export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
       <a href={Constants.contact.apps}><img src="/img/5calls-apps.png" className="hypothesis__text__mobile" /></a>
       <p dangerouslySetInnerHTML={{ __html: props.t('hypothesis.p3') }} />
       <div className="subscribe">
+        {/*tslint:disable-next-line:max-line-length*/}
         <form action="//5calls.us16.list-manage.com/subscribe/post?u=82a164d5fe7f51f4a4efb1f83&amp;id=624ef52208" method="post" target="popupwindow">
           <label htmlFor="email">{props.t('footer.emailLabel')}</label>
           <span className="emailform">
