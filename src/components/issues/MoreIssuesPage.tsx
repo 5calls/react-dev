@@ -8,7 +8,8 @@ import { MoreIssuesTranslatable } from './index';
 interface RouteProps extends RouteComponentProps<{ id: string }> { }
 
 interface Props extends RouteProps {
-  readonly issues: Issue[];
+  readonly activeIssues: Issue[];
+  readonly inactiveIssues: Issue[];
   readonly currentIssue: Issue;
   readonly completedIssueIds: string[];
   readonly onSelectIssue: (issueId: string) => Function;
@@ -32,8 +33,8 @@ class MoreIssuesPage extends React.Component<Props, State> {
 
     // this makes more sense as an actual Map<string, Issues[]> but I couldn't get it
     // to render in the view no matter what I tried, so it's this /shrug
-    if (props.issues) {
-      props.issues.forEach((issue) => {
+    if (props.inactiveIssues) {
+      props.inactiveIssues.forEach((issue) => {
         let category: string = 'uncategorized';
 
         if (issue.categories[0]) {
@@ -94,7 +95,8 @@ class MoreIssuesPage extends React.Component<Props, State> {
       <LayoutContainer issueId={this.props.match.params.id}>
         <main role="main" id="content" className="layout__main">
           <MoreIssuesTranslatable
-            inactiveIssues={this.props.issues}
+            activeIssues={this.props.activeIssues}
+            inactiveIssues={this.props.inactiveIssues}
             categoryMap={this.state.issueCategoryMap}
             completedIssueIds={this.props.completedIssueIds}
             t={i18n.t}

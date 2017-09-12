@@ -11,7 +11,8 @@ import { RouteComponentProps } from 'react-router-dom';
 interface OwnProps extends RouteComponentProps<{ id: string }> { }
 
 interface StateProps {
-  readonly issues: Issue[];
+  readonly activeIssues: Issue[];
+  readonly inactiveIssues: Issue[];
   readonly completedIssueIds: string[];
 }
 
@@ -22,7 +23,8 @@ interface DispatchProps {
 
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
   return {
-    issues: state.remoteDataState.inactiveIssues,
+    activeIssues: state.remoteDataState.issues,
+    inactiveIssues: state.remoteDataState.inactiveIssues,
     completedIssueIds: state.callState.completedIssueIds,
   };
 };

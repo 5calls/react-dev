@@ -6,6 +6,7 @@ import { Issue, CategoryMap } from '../../common/model';
 import { IssuesListItem } from './index';
 
 interface Props {
+  readonly activeIssues: Issue[];
   readonly inactiveIssues: Issue[];
   readonly categoryMap: CategoryMap[];
   readonly completedIssueIds: string[];
@@ -14,11 +15,14 @@ interface Props {
 }
 
 export const MoreIssues: React.StatelessComponent<Props> = (props: Props) => {
+  const totalCount = (props.inactiveIssues ? props.inactiveIssues.length : 0) +
+                     (props.activeIssues ? props.activeIssues.length : 0);
+
   return (
     <section className="call">
     <div className="call_complete">
       <h2 className="call__title">
-        {props.t('issues.activeIssuesWithCount', {count: (props.inactiveIssues ? props.inactiveIssues.length : 0)})}
+        {props.t('issues.activeIssuesWithCount', {count: totalCount})}
       </h2>
       {props.categoryMap ? props.categoryMap.map((cat, key) =>
         <div key={key}>
