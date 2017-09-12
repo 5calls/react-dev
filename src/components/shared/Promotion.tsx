@@ -22,7 +22,7 @@ const Promotion: React.StatelessComponent<Props> = (props: Props) => {
     // the additional "via @make5calls" text that the via param introduces doesn't fit with issue titles, remove it
     additionalTwitterComps = '';
     // tslint:disable-next-line:max-line-length
-    tweet = encodeURIComponent('I just called my rep to ' + props.t('promote.iJustCalled') + props.currentIssue.name.substring(0, 72) + props.t('promote.youShouldToo'));
+    tweet = encodeURIComponent(props.t('promote.iJustCalled') + props.currentIssue.name.substring(0, 72) + props.t('promote.youShouldToo'));
     twitterTitle = props.t('promote.tweetThisIssue');
     facebookTitle = props.t('promote.shareThisIssue');
   }
