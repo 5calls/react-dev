@@ -8,7 +8,12 @@ import { LayoutContainer } from '../layout';
 interface Props extends RouteComponentProps<{ id: string }> { }
 
 const AboutPage: React.StatelessComponent<Props> = (props: Props) => (
-  <LayoutContainer issueId={props.match.params.id}>
+  <LayoutContainer
+    issueId={props.match.params.id}
+    match={props.match}
+    location={props.location}
+    history={props.history}
+  >
     <AboutTranslatable
       t={i18n.t}
     />

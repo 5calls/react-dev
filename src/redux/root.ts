@@ -2,6 +2,7 @@ import { ApplicationState } from './root';
 import { routerReducer, RouterState } from 'react-router-redux';
 import { Reducer, combineReducers } from 'redux';
 import { LocationState, locationStateReducer } from './location/reducer';
+// import { Issue } from './../common/model';
 import { CallState, callStateReducer } from './callState/reducer';
 import { RemoteDataState, remoteDataReducer } from './remoteData/reducer';
 import { UserStatsState, userStatsReducer } from './userStats/reducer';
@@ -20,12 +21,12 @@ export interface ApplicationState {
   userStatsState: UserStatsState;
 }
 
-export const DefaultApplicationState: ApplicationState = {
-  remoteDataState: {} as RemoteDataState,
-  callState: {} as CallState,
-  locationState: {} as LocationState,
-  userStatsState: {} as UserStatsState,
-};
+// export const DefaultApplicationState: ApplicationState = {
+//   remoteDataState: {groupIssues: new Map<string, Issue[]>()} as RemoteDataState,
+//   callState: {} as CallState,
+//   locationState: {} as LocationState,
+//   userStatsState: {} as UserStatsState,
+// };
 
 // DANGER: TypeScript magic ahead!!
 // These articles should help your understanding of this section:

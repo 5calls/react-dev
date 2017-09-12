@@ -17,7 +17,12 @@ interface Props extends RouteComponentProps<{ id: string }> {
   this component to child components
 */
 export const HomePage: React.StatelessComponent<Props> = (props: Props) => (
-  <LayoutContainer issueId={props.match.params.id}>
+  <LayoutContainer
+    issueId={props.match.params.id}
+    match={props.match}
+    location={props.location}
+    history={props.history}
+  >
     <Why5callsTranslatable
       totalCount={props.totalCount}
       t={i18n.t}

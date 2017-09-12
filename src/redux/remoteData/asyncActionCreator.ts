@@ -5,7 +5,7 @@ import { getAllIssues, getCountData, getDonations } from '../../services/apiServ
 import { setCachedCity, setLocation, setLocationFetchType,
   setSplitDistrict, setUiState } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
-import { issuesActionCreator, callCountActionCreator } from './index';
+import { issuesActionCreator, groupIssuesActionCreator, callCountActionCreator } from './index';
 import { clearContactIndexes, completeIssueActionCreator } from '../callState/';
 import { ApplicationState } from '../root';
 import { LocationUiState } from '../../common/model';
@@ -28,10 +28,35 @@ export const getIssuesIfNeeded = () => {
   };
 };
 
-export const fetchAllIssues = (address: string = '') => {
+export const getGroupIssuesIfNeeded = (groupID: string) => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
-    return getAllIssues(address)
+    const state: ApplicationState = getState();
+    // Only make the api call if it hasn't already been made
+    // This method is primarily for when a user has navigated
+    // directly to a route with an issue id
+    // if (!state.remoteDataState.issues || state.remoteDataState.issues.length === 0) {
+    //   startup();
+    // }
+    // if (!state.remoteDataState.groupIssues)
+    console.log("getting group issues",state.remoteDataState);
+    if (state.remoteDataState.groupIssues && !state.remoteDataState.groupIssues.get(groupID)) {
+      setTimeout(() => {
+        const updatedState: ApplicationState = getState();
+        console.log("getting",updatedState.locationState.address);
+        if (updatedState.locationState.address) {
+          console.log("going to fetch");
+          dispatch(fetchAllIssues(updatedState.locationState.address, groupID));
+        }
+      },400);
+    }
+  };
+};
+
+export const fetchAllIssues = (address: string = '', groupID: string | undefined) => {
+  return (dispatch: Dispatch<ApplicationState>,
+          getState: () => ApplicationState) => {
+    return getAllIssues(address, groupID)
       .then((response: ApiData) => {
         if (response.invalidAddress) {
           dispatch(setUiState(LocationUiState.LOCATION_ERROR));
@@ -45,7 +70,11 @@ export const fetchAllIssues = (address: string = '') => {
           }
           dispatch(setSplitDistrict(response.splitDistrict));
           dispatch(setLocationFetchType(LocationFetchType.CACHED_ADDRESS));
-          dispatch(issuesActionCreator(response.issues));
+          if (groupID) {
+            dispatch(groupIssuesActionCreator(response.issues, groupID));            
+          } else {
+            dispatch(issuesActionCreator(response.issues));
+          }
         }
       }).catch((error) => {
         // dispatch(apiErrorMessageActionCreator(error.message));
@@ -90,7 +119,7 @@ export const fetchLocationByIP = () => {
         .then((response: IpInfoData) => {
           dispatch(setLocationFetchType(LocationFetchType.IP_INFO));
           const location = response.loc;
-          dispatch(fetchAllIssues(location))
+          dispatch(fetchAllIssues(location, undefined))
           .then(() => {
             dispatch(setUiState(LocationUiState.LOCATION_FOUND));
           });
@@ -99,7 +128,7 @@ export const fetchLocationByIP = () => {
           // tslint:disable-next-line:no-console
           console.error(`fetchLocationByIP error: ${error.message}`, error);
           // set location to empty string to trigger location error
-          dispatch(fetchAllIssues(''));
+          dispatch(fetchAllIssues('', undefined));
           Promise.resolve('');
         });
     // }
@@ -128,7 +157,7 @@ export const fetchBrowserGeolocation = () => {
           if (location.latitude && location.longitude) {
             dispatch(setLocationFetchType(LocationFetchType.BROWSER_GEOLOCATION));
             const loc = `${location.latitude} ${location.longitude}`;
-            dispatch(fetchAllIssues(loc));
+            dispatch(fetchAllIssues(loc, undefined));
             clearTimeout(setTimeoutHandle);
           } else {
             dispatch(fetchLocationByIP());
@@ -160,7 +189,7 @@ export const startup = () => {
     const loc = state.locationState.address;
     if (loc) {
       // console.log('Using cached address');
-      dispatch(fetchAllIssues(loc))
+      dispatch(fetchAllIssues(loc, undefined))
         .then(() => {
           setLocationFetchType(LocationFetchType.CACHED_ADDRESS);
         });

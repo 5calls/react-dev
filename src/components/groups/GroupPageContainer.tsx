@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { ApplicationState } from '../../redux/root';
 import GroupPage from './GroupPage';
 import { Group } from '../../common/model';
-import { getIssuesIfNeeded } from '../../redux/remoteData';
+import { getGroupIssuesIfNeeded } from '../../redux/remoteData';
 import { selectIssueActionCreator, joinGroupActionCreator } from '../../redux/callState';
 
 import { RouteComponentProps } from 'react-router-dom';
@@ -16,7 +16,7 @@ interface StateProps {
 
 interface DispatchProps {
   readonly onSelectIssue: (issueId: string) => void;
-  readonly onGetIssuesIfNeeded: () => void;
+  readonly onGetGroupIssuesIfNeeded: (groupId: string) => void;
   readonly onJoinGroup: (group: Group) => void;
 }
 
@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch: Dispatch<ApplicationState>): DispatchProps
   return bindActionCreators(
     {
       onSelectIssue: selectIssueActionCreator,
-      onGetIssuesIfNeeded: getIssuesIfNeeded,
+      onGetGroupIssuesIfNeeded: getGroupIssuesIfNeeded,
       onJoinGroup: joinGroupActionCreator,
     },
     dispatch);

@@ -35,7 +35,7 @@ test('getApiData() action creator functions correctly', () => {
   };
   initialState.locationState = locationState;
   const store = mockStore(initialState);
-  store.dispatch(fetchAllIssues(address))
+  store.dispatch(fetchAllIssues(address, undefined))
     .then(() => {
       const actions = store.getActions();
       // console.log('Actions', actions);

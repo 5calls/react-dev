@@ -11,7 +11,7 @@ interface RouteProps extends RouteComponentProps<{ id: string }> { }
 interface Props extends RouteProps {
   readonly activeGroup?: Group; 
   readonly onSelectIssue: (issueId: string) => Function;
-  readonly onGetIssuesIfNeeded: () => Function;
+  readonly onGetGroupIssuesIfNeeded: (groupId: string) => Function;
   readonly onJoinGroup: (group: Group) => Function;
 }
 
@@ -41,6 +41,8 @@ class GroupPage extends React.Component<Props, State> {
   }
 
   componentDidMount() {
+    this.props.onGetGroupIssuesIfNeeded(this.props.match.params.id);
+    
     getGroup(this.props.match.params.id).then((response: Group) => {
       this.setState({ loaded: GroupLoadingState.FOUND, pageGroup: response });
     }).catch((e) => {
@@ -60,7 +62,12 @@ class GroupPage extends React.Component<Props, State> {
     switch (this.state.loaded) {
       case GroupLoadingState.LOADING:
         return (
-          <LayoutContainer issueId={this.props.match.params.id}>
+          <LayoutContainer
+            issueId={this.props.match.params.id}
+            match={this.props.match}
+            location={this.props.location}
+            history={this.props.history}
+          >
             <div className="page__group">
               <h2 className="page__title">Getting team...</h2>
             </div>
@@ -81,7 +88,12 @@ class GroupPage extends React.Component<Props, State> {
         const pctStyle = {width: `${pctDone}%`};    
 
         return (
-          <LayoutContainer issueId={this.props.match.params.id}>
+          <LayoutContainer
+            issueId={this.props.match.params.id}
+            match={this.props.match}
+            location={this.props.location}
+            history={this.props.history}
+          >
             <div className="page__group">
               <h2 className="page__title">{group.name}</h2>
               <button onClick={this.joinTeam}>{groupId === group.id ? `You're on this team` : 'Join Team'}</button>
@@ -100,7 +112,12 @@ class GroupPage extends React.Component<Props, State> {
         );
       default:
         return (
-          <LayoutContainer issueId={this.props.match.params.id}>
+          <LayoutContainer
+            issueId={this.props.match.params.id}
+            match={this.props.match}
+            location={this.props.location}
+            history={this.props.history}
+          >
             <div className="page__group">
               <h2 className="page__title">There's no team here 😢</h2>
             </div>

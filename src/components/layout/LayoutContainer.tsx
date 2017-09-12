@@ -1,5 +1,6 @@
 import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { RouteComponentProps } from 'react-router-dom';
 import { find } from 'lodash';
 import { selectIssueActionCreator } from '../../redux/callState';
 import { ApplicationState } from '../../redux/root';
@@ -9,7 +10,9 @@ import { CallState } from '../../redux/callState/reducer';
 import { Layout } from './index';
 import { Issue } from '../../common/model';
 
-interface OwnProps {
+interface RouteProps extends RouteComponentProps<{ id: string }> { }
+
+interface OwnProps extends RouteProps {
   readonly issueId?: string;
   readonly children?: {};
 }
@@ -35,13 +38,25 @@ function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProp
     currentIssue = find(state.remoteDataState.issues, i => i.id === ownProps.issueId);
   }
 
+  let issues: Issue[] = state.remoteDataState.issues;
+  if (ownProps.match.path === '/group/:id') {
+    const groupID = ownProps.match.params.id;
+
+    if (state.remoteDataState.groupIssues) {
+      const groupIssues = state.remoteDataState.groupIssues.get(groupID);
+      if (groupIssues !== undefined) {
+        issues = groupIssues
+      }  
+    }
+  }
+
   return {
-    issues: state.remoteDataState.issues,
+    issues: issues,
     currentIssue: currentIssue,
     completedIssueIds: state.callState.completedIssueIds,
     callState: state.callState,
     locationState: state.locationState,
-    children: ownProps.children
+    children: ownProps.children,
   };
 }
 

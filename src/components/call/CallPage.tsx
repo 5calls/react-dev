@@ -110,7 +110,12 @@ class CallPage extends React.Component<Props, State> {
 
   getView() {
     return (
-      <LayoutContainer issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined} >
+      <LayoutContainer
+        issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined}
+        match={this.props.match}
+        location={this.props.location}
+        history={this.props.history}
+      >
         <CallTranslatable
           issue={this.props.currentIssue}
           callState={this.props.callState}

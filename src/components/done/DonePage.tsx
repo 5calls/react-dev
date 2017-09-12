@@ -48,7 +48,12 @@ class DonePage extends React.Component<Props, State> {
   getView() {
     if (this.props.currentIssue) {
       return (
-        <LayoutContainer issueId={this.props.currentIssue.id}>
+        <LayoutContainer
+          issueId={this.props.currentIssue.id}
+          match={this.props.match}
+          location={this.props.location}
+          history={this.props.history}
+        >
           {this.props.currentIssue &&
             <DoneTranslatable
               currentIssue={this.props.currentIssue}

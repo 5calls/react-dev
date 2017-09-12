@@ -91,7 +91,12 @@ class MoreIssuesPage extends React.Component<Props, State> {
 
   render() {
     return (
-      <LayoutContainer issueId={this.props.match.params.id}>
+      <LayoutContainer
+        issueId={this.props.match.params.id}
+        match={this.props.match}
+        location={this.props.location}
+        history={this.props.history}
+      >
         <main role="main" id="content" className="layout__main">
           <MoreIssuesTranslatable
             inactiveIssues={this.props.issues}
