@@ -39,7 +39,8 @@ function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProp
   }
 
   let issues: Issue[] = state.remoteDataState.issues;
-  if (ownProps.match.path === '/group/:id') {
+  if (ownProps.match.path === '/group/:id' || ownProps.match.path === '/group/:id/:issueid') {
+    console.log("id",ownProps.match.params.id);
     const groupID = ownProps.match.params.id;
 
     if (state.remoteDataState.groupIssues) {

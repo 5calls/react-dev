@@ -62,6 +62,7 @@ ReactDOM.render(
           <Route path="/impact" exact={true} component={MyImpactPageContainer} />
           <Route path="/more" exact={true} component={MoreIssuesContainer} />
           <Route path="/group/:id" exact={true} component={GroupPageContainer} />
+          <Route path="/group/:id/:issueid" exact={true} component={CallPageContainer} />
           <Route path="/faq" exact={true} component={FaqPage} />
           <Route path="/about" exact={true} component={AboutPage} />
           <Route path="*" component={HomePageContainer} />

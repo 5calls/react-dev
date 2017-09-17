@@ -20,11 +20,12 @@ interface Props extends RouteProps {
 export const IssuesList: React.StatelessComponent<Props> = (props: Props) => {
   let currentIssueId: string = props.currentIssue ? props.currentIssue.id : '';
   
-  if (props.match.path === '/group/:id') {
+  console.log("path",props.match.path);
+  if (props.match.path === '/group/:id' || props.match.path === '/group/:id/:issueid') {
     return (
       <ul className="issues-list" role="navigation">
         {props.issues && props.issues.map ? props.issues.map(issue =>
-          <IssuesListItem
+          <IssuesListItem 
             key={issue.id}
             issue={issue}
             isIssueComplete={
@@ -32,7 +33,11 @@ export const IssuesList: React.StatelessComponent<Props> = (props: Props) => {
               (find(props.completedIssueIds, (issueId: string) => issue.id === issueId) !== undefined)
             }
             isIssueActive={currentIssueId === issue.id}
+            showGroupLinks={true}
             onSelectIssue={props.onSelectIssue}
+            match={props.match}
+            location={props.location}
+            history={props.history}
           />) : <div style={{ textAlign: 'center' }}>{props.t('noCalls.title')}</div>}
       </ul>
     );
@@ -48,7 +53,11 @@ export const IssuesList: React.StatelessComponent<Props> = (props: Props) => {
               (find(props.completedIssueIds, (issueId: string) => issue.id === issueId) !== undefined)
             }
             isIssueActive={currentIssueId === issue.id}
+            showGroupLinks={false}
             onSelectIssue={props.onSelectIssue}
+            match={props.match}
+            location={props.location}
+            history={props.history}
           />) : <div style={{ textAlign: 'center' }}>{props.t('noCalls.title')}</div>}
         <li>
           <Link

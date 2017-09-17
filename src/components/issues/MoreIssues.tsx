@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { TranslationFunction } from 'i18next';
+import { RouteComponentProps } from 'react-router-dom';import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 import { find } from 'lodash';
 import { Issue, CategoryMap } from '../../common/model';
 import { IssuesListItem } from './index';
 
-interface Props {
+interface RouteProps extends RouteComponentProps<{ id: string }> { }
+
+interface Props extends RouteProps {
   readonly inactiveIssues: Issue[];
   readonly categoryMap: CategoryMap[];
   readonly completedIssueIds: string[];
@@ -34,6 +36,10 @@ export const MoreIssues: React.StatelessComponent<Props> = (props: Props) => {
               }
               isIssueActive={false}
               onSelectIssue={props.onSelectIssue}
+              showGroupLinks={false}
+              match={props.match}
+              location={props.location}
+              history={props.history}
             />
           )}
           </ul>

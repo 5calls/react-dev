@@ -5,6 +5,7 @@ import { Group } from '../../common/model';
 import { RouteComponentProps } from 'react-router-dom';
 import { formatNumber } from '../shared/utils';
 import { getGroup } from '../../services/apiServices';
+import { SidebarHeader, Sidebar, Footer, Header } from '../layout/index';
 
 interface RouteProps extends RouteComponentProps<{ id: string }> { }
 
@@ -56,6 +57,41 @@ class GroupPage extends React.Component<Props, State> {
     if (this.state.pageGroup) {
       this.props.onJoinGroup(this.state.pageGroup);      
     }
+  }
+
+  layoutWrapper = (children: any) => {
+    return (
+      <div>
+        <Header />
+        <div className="layout">
+          <aside id="nav" role="contentinfo" className="layout__side">
+            <div className="issues">
+              <SidebarHeader
+                callState={this.props.callState}
+                locationState={props.locationState}
+                setLocation={props.setLocation}
+                clearLocation={props.clearLocation}
+              />
+              <Sidebar
+                issues={props.issues}
+                currentIssue={props.currentIssue ? props.currentIssue : undefined}
+                completedIssueIds={props.completedIssueIds}
+                onSelectIssue={props.onSelectIssue}
+                match={props.match}
+                location={props.location}
+                history={props.history}
+              />
+            </div>
+          </aside>
+          <main id="content" role="main" aria-live="polite" className="layout__main">
+            {children}
+          </main>
+        </div>
+        <Footer
+          t={i18n.t}
+        />
+      </div>
+    );
   }
 
   render() {

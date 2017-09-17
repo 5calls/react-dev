@@ -104,6 +104,9 @@ class MoreIssuesPage extends React.Component<Props, State> {
             completedIssueIds={this.props.completedIssueIds}
             t={i18n.t}
             onSelectIssue={this.props.onSelectIssue}
+            match={this.props.match}
+            location={this.props.location}
+            history={this.props.history}
           />
         </main>
       </LayoutContainer>
