@@ -6,7 +6,11 @@
   max-width: 1024px;
 
   @include bp(medium) {
-    flex-direction: column;
+    // some safaris have trouble with this flex switch and both boxes are displayed over top one another
+    // for debugging another day, inline rather than flex resolves the issue
+
+    display: inline;
+    // flex-direction: column;
   }
 }
 
