@@ -24,11 +24,6 @@ ShallowWrapper {
         >
             $1,345
         </span>
-        <span
-            className="logo__header__donatebar__goal"
-        >
-            $5,000
-        </span>
     </div>
     <p
         className="logo__header__donatetext"
@@ -56,11 +51,6 @@ ShallowWrapper {
                   }
             >
                   $1,345
-            </span>
-            <span
-                  className="logo__header__donatebar__goal"
-            >
-                  $5,000
             </span>
       </div>
       <p
@@ -130,11 +120,6 @@ ShallowWrapper {
                     >
                               $1,345
                     </span>
-                    <span
-                              className="logo__header__donatebar__goal"
-                    >
-                              $5,000
-                    </span>
           </div>
           <p
                     className="logo__header__donatetext"
@@ -162,11 +147,6 @@ ShallowWrapper {
                               }
                     >
                               $1,345
-                    </span>
-                    <span
-                              className="logo__header__donatebar__goal"
-                    >
-                              $5,000
                     </span>
           </div>
           <p
