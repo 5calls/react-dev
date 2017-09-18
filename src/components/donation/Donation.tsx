@@ -20,7 +20,7 @@ export class Donation extends React.Component<Props, State> {
             <span style={pctDoneStyle} className="logo__header__donatebar__total">
                 {`\$${formatNumber(this.props.total)}`}
             </span>
-            <span className="logo__header__donatebar__goal">{`\$${formatNumber(this.props.goal)}`}</span>
+            {/* <span className="logo__header__donatebar__goal">{`\$${formatNumber(this.props.goal)}`}</span> */}
           </div>
           <p className="logo__header__donatetext">
             <a href="https://secure.actblue.com/donate/5calls-donate">Donate today to keep 5 Calls running</a>
