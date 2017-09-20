@@ -11,8 +11,8 @@ interface State {}
 export class Donation extends React.Component<Props, State> {
   render () {
     // if goal is zero, percent = 100 to avoid divide by zero error
-    const pctDone = this.props.goal && this.props.goal !== 0 ? (this.props.total / this.props.goal) * 100 : 100;
-    const pctDoneStyle = {width: `${pctDone}%`};
+    // const pctDone = this.props.goal && this.props.goal !== 0 ? (this.props.total / this.props.goal) * 100 : 100;
+    const pctDoneStyle = {width: `100%`};
     if (this.props.goal !== 0 && this.props.total !== 0) {
       return (
         <div className="logo__header__inner layout">
