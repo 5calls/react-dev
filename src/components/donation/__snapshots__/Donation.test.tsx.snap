@@ -18,7 +18,7 @@ ShallowWrapper {
             className="logo__header__donatebar__total"
             style={
                 Object {
-                    "width": "26.900000000000002%",
+                    "width": "100%",
                   }
             }
         >
@@ -46,7 +46,7 @@ ShallowWrapper {
                   className="logo__header__donatebar__total"
                   style={
                         Object {
-                              "width": "26.900000000000002%",
+                              "width": "100%",
                             }
                   }
             >
@@ -114,7 +114,7 @@ ShallowWrapper {
                               className="logo__header__donatebar__total"
                               style={
                                         Object {
-                                                  "width": "26.900000000000002%",
+                                                  "width": "100%",
                                                 }
                               }
                     >
@@ -142,7 +142,7 @@ ShallowWrapper {
                               className="logo__header__donatebar__total"
                               style={
                                         Object {
-                                                  "width": "26.900000000000002%",
+                                                  "width": "100%",
                                                 }
                               }
                     >
