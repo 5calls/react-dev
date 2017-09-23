@@ -1,11 +1,17 @@
 import { OutcomeData } from './../redux/callState/asyncActionCreator';
 import axios from 'axios';
 import * as querystring from 'querystring';
-import { ApiData, CountData, DonationGoal, Group } from './../common/model';
+import { ApiData, CountData, DonationGoal, Group, GroupIssues } from './../common/model';
 import * as Constants from '../common/constants';
 
 export const getAllIssues = (address: string): Promise<ApiData> => {
   return axios.get(`${Constants.ISSUES_API_URL}${encodeURIComponent(address)}`)
+    .then(response => Promise.resolve(response.data))
+    .catch(e => Promise.reject(e));
+};
+
+export const getGroupIssues = (groupid: string, address: string): Promise<GroupIssues> => {
+  return axios.get(`${Constants.GROUP_API_URL}/${groupid}/issues?address=${encodeURIComponent(address)}`)
     .then(response => Promise.resolve(response.data))
     .catch(e => Promise.reject(e));
 };

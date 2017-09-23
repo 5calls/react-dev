@@ -1,12 +1,13 @@
 import { donationsActionCreator } from './actionCreator';
 import { Dispatch } from 'redux';
-import { ApiData, IpInfoData, LocationFetchType, CountData, DonationGoal, Donations } from './../../common/model';
-import { getAllIssues, getCountData, getDonations } from '../../services/apiServices';
+import { ApiData, GroupIssues, IpInfoData, LocationFetchType,
+  CountData, DonationGoal, Donations } from './../../common/model';
+import { getAllIssues, getGroupIssues, getCountData, getDonations } from '../../services/apiServices';
 import { setCachedCity, setLocation, setLocationFetchType,
   setSplitDistrict, setUiState } from '../location/index';
 import { getLocationByIP, getBrowserGeolocation, GEOLOCATION_TIMEOUT } from '../../services/geolocationServices';
-import { issuesActionCreator, callCountActionCreator } from './index';
-import { clearContactIndexes, completeIssueActionCreator } from '../callState/';
+import { issuesActionCreator, groupIssuesActionCreator, callCountActionCreator } from './index';
+import { completeIssueActionCreator, clearContactIndexes } from '../callState/';
 import { ApplicationState } from '../root';
 import { LocationUiState } from '../../common/model';
 /**
@@ -19,11 +20,38 @@ export const getIssuesIfNeeded = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
     const state: ApplicationState = getState();
+
     // Only make the api call if it hasn't already been made
     // This method is primarily for when a user has navigated
     // directly to a route with an issue id
     if (!state.remoteDataState.issues || state.remoteDataState.issues.length === 0) {
-      startup();
+      const loc = state.locationState.address;
+      if (loc) {
+        // console.log('Using cached address');
+        dispatch(fetchAllIssues(loc))
+        .then(() => {
+          setLocationFetchType(LocationFetchType.CACHED_ADDRESS);
+        });
+      }
+    }
+  };
+};
+
+export const getGroupIssuesIfNeeded = (groupid: string) => {
+  return (dispatch: Dispatch<ApplicationState>,
+          getState: () => ApplicationState) => {
+    const state: ApplicationState = getState();
+    // Only make the api call if it hasn't already been made
+    // This method is primarily for when a user has navigated
+    // directly to a route with an issue id
+    if (!state.remoteDataState.groupIssues || state.remoteDataState.groupIssues.length === 0 ||
+        state.remoteDataState.currentGroup !== groupid) {
+      console.log(`starting group issue fetching`);
+        
+      const loc = state.locationState.address;
+      if (loc) {
+        dispatch(fetchGroupIssues(groupid, loc));
+      }
     }
   };
 };
@@ -46,6 +74,37 @@ export const fetchAllIssues = (address: string = '') => {
           dispatch(setSplitDistrict(response.splitDistrict));
           dispatch(setLocationFetchType(LocationFetchType.CACHED_ADDRESS));
           dispatch(issuesActionCreator(response.issues));
+        }
+      }).catch((error) => {
+        // dispatch(apiErrorMessageActionCreator(error.message));
+        // tslint:disable-next-line:no-console
+        console.error(`getIssue error: ${error.message}`, error);
+        // throw error;
+        Promise.reject(error);
+      });
+  };
+};
+
+export const fetchGroupIssues = (groupid: string, address: string = '') => {
+  return (dispatch: Dispatch<ApplicationState>,
+          getState: () => ApplicationState) => {
+    console.log(`fetching group issues`, groupid);
+    return getGroupIssues(groupid, address)
+      .then((response: GroupIssues) => {
+        if (response.invalidAddress) {
+          dispatch(setUiState(LocationUiState.LOCATION_ERROR));
+          Promise.reject('Invalid address found');
+        } else {
+          const normalizedAddress = response.normalizedLocation as string;
+          dispatch(setCachedCity(normalizedAddress));
+          dispatch(setLocation(address));
+          if (!address) {
+            dispatch(setUiState(LocationUiState.LOCATION_ERROR));
+          }
+          console.log(`got issues`, response.issues);
+          dispatch(setSplitDistrict(response.splitDistrict));
+          dispatch(setLocationFetchType(LocationFetchType.CACHED_ADDRESS));
+          dispatch(groupIssuesActionCreator(response.issues));
         }
       }).catch((error) => {
         // dispatch(apiErrorMessageActionCreator(error.message));
@@ -145,30 +204,29 @@ export const fetchBrowserGeolocation = () => {
   };
 };
 
-export const startup = () => {
-  return (dispatch: Dispatch<ApplicationState>,
-          getState: () => ApplicationState) => {
-    // dispatch donations
-    dispatch(fetchDonations());
-    dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
-    const state = getState();
-    // clear contact indexes loaded from local storage
-    dispatch(clearContactIndexes());
-    // add completed issues from Choo app in localStorage to
-    // this apps callState.completedIssueIds
-    migrateLegacyCompletedIssues(dispatch);
-    const loc = state.locationState.address;
-    if (loc) {
-      // console.log('Using cached address');
-      dispatch(fetchAllIssues(loc))
-        .then(() => {
-          setLocationFetchType(LocationFetchType.CACHED_ADDRESS);
-        });
-    } else {
-      dispatch(fetchBrowserGeolocation());
-    }
-    dispatch(fetchCallCount());
-  };
+export const startup = (dispatch: Dispatch<ApplicationState>,
+                        getState: () => ApplicationState) => {
+  console.log(`startup`);
+  // dispatch donations
+  dispatch(fetchDonations());
+  dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
+  const state = getState();
+  // clear contact indexes loaded from local storage
+  dispatch(clearContactIndexes());
+  // add completed issues from Choo app in localStorage to
+  // this apps callState.completedIssueIds
+  migrateLegacyCompletedIssues(dispatch);
+  const loc = state.locationState.address;
+  if (loc) {
+    // console.log('Using cached address');
+    dispatch(fetchAllIssues(loc))
+      .then(() => {
+        setLocationFetchType(LocationFetchType.CACHED_ADDRESS);
+      });
+  } else {
+    dispatch(fetchBrowserGeolocation());
+  }
+  dispatch(fetchCallCount());
 };
 
 const migrateLegacyCompletedIssues = (dispatch: Dispatch<ApplicationState>) => {

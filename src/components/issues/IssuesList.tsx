@@ -17,6 +17,8 @@ interface Props {
 export const IssuesList: React.StatelessComponent<Props> = (props: Props) => {
   let currentIssueId: string = props.currentIssue ? props.currentIssue.id : '';
 
+  // console.log("props",props.match.params.id)
+
   return (
     <ul className="issues-list" role="navigation">
       {props.issues && props.issues.map ? props.issues.map(issue =>

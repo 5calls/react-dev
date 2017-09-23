@@ -5,6 +5,8 @@ import { RemoteDataAction, RemoteDataActionType } from './index';
 export interface RemoteDataState {
   issues: Issue[];
   inactiveIssues: Issue[];
+  currentGroup: string;
+  groupIssues: Issue[];
   callTotal: number;
   donations: Donations;
   errorMessage: string;
@@ -26,6 +28,9 @@ export const remoteDataReducer: Reducer<RemoteDataState> = (
 
       const issuesState = Object.assign({}, state, {issues: activeIssues, inactiveIssues: inactiveIssues});
       return issuesState;
+    case RemoteDataActionType.GET_GROUP_ISSUES:
+      console.log("got some group issues",action.payload);
+      return Object.assign({}, state, {groupIssues: action.payload});
     case RemoteDataActionType.GET_CALL_TOTAL:
       return Object.assign({}, state, {callTotal: action.payload});
     case RemoteDataActionType.GET_DONATIONS:
