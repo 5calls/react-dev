@@ -221,7 +221,6 @@ ShallowWrapper {
                       }
         }
         onSubmitOutcome={[Function]}
-        splitDistrict={false}
         t={[Function]}
 />,
       "_debugID": 1,
@@ -263,7 +262,6 @@ ShallowWrapper {
             "uiState": "LOCATION_FOUND",
           },
           "onSubmitOutcome": [Function],
-          "splitDistrict": false,
           "t": [Function],
         },
         "refs": Object {},
@@ -518,7 +516,6 @@ ShallowWrapper {
           }
     }
     onSubmitOutcome={[Function]}
-    splitDistrict={false}
     t={[Function]}
 />,
 }
