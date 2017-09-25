@@ -1,23 +1,19 @@
 import * as React from 'react';
-import i18n from '../../services/i18n';
-// import { LayoutContainer } from '../layout';
+import { LayoutContainer } from '../layout';
 import { RouteComponentProps } from 'react-router-dom';
-import { find } from 'lodash';
 
 import { Group, Issue } from '../../common/model';
 import { formatNumber } from '../shared/utils';
 import { getGroup } from '../../services/apiServices';
 import { LocationState } from '../../redux/location/reducer';
 import { CallState } from '../../redux/callState/reducer';
-import { SidebarHeader, Footer, Header } from '../layout/index';
-import { IssuesListItem } from '../issues';
 import { queueUntilHydration } from '../../redux/rehydrationUtil';
 
 interface RouteProps extends RouteComponentProps<{ groupid: string, issueid: string }> { }
 
 interface Props extends RouteProps {
   readonly activeGroup?: Group; 
-  readonly groupIssues: Issue[];
+  readonly issues: Issue[];
   readonly currentIssue?: Issue;
   readonly completedIssueIds: string[];
   readonly callState: CallState;
@@ -56,7 +52,6 @@ class GroupPage extends React.Component<Props, State> {
 
   componentDidMount() {
     queueUntilHydration(() => {
-      console.log("fetching group");
       getGroup(this.props.match.params.groupid).then((response: Group) => {      
         this.props.onGetIssuesIfNeeded(this.props.match.params.groupid);
   
@@ -79,11 +74,15 @@ class GroupPage extends React.Component<Props, State> {
     switch (this.state.loaded) {
       case GroupLoadingState.LOADING:
         return (
-          this.layout(
+          <LayoutContainer
+            currentGroup={this.props.match.params.groupid}
+            issues={this.props.issues}
+            issueId={this.props.match.params.issueid}
+          >
             <div className="page__group">
               <h2 className="page__title">Getting team...</h2>
             </div>
-          )
+          </LayoutContainer>
         );
       case GroupLoadingState.FOUND:
         const groupId = this.props.activeGroup ? this.props.activeGroup.id : 'nogroup';
@@ -100,7 +99,11 @@ class GroupPage extends React.Component<Props, State> {
         const pctStyle = {width: `${pctDone}%`};    
 
         return (
-          this.layout(
+          <LayoutContainer 
+            currentGroup={this.props.match.params.groupid}
+            issues={this.props.issues}
+            issueId={this.props.match.params.issueid}
+          >
             <div className="page__group">
               <h2 className="page__title">{group.name}</h2>
               <button onClick={this.joinTeam}>{groupId === group.id ? `You're on this team` : 'Join Team'}</button>
@@ -115,60 +118,21 @@ class GroupPage extends React.Component<Props, State> {
                   `Join this group to start making your calls count towards this team's total.`
               }</p>
             </div>
-          )
+          </LayoutContainer>
         );
       default:
         return (
-          this.layout(
+          <LayoutContainer
+            currentGroup={this.props.match.params.groupid}
+            issues={this.props.issues}
+            issueId={this.props.match.params.issueid}
+          >          
             <div className="page__group">
               <h2 className="page__title">There's no team here 😢</h2>
             </div>
-          )
+          </LayoutContainer>
         );
     }
-  }
-
-  layout(wrapped) {
-    let currentIssueId: string = this.props.currentIssue ? this.props.currentIssue.id : '';
-
-    return (
-      <div>
-      <Header />
-      <div className="layout">
-        <aside id="nav" role="contentinfo" className="layout__side">
-          <div className="issues">
-            <SidebarHeader
-              callState={this.props.callState}
-              locationState={this.props.locationState}
-              setLocation={this.props.setLocation}
-              clearLocation={this.props.clearLocation}
-            />
-            <ul className="issues-list" role="navigation">
-            {this.props.groupIssues && this.props.groupIssues.map ? this.props.groupIssues.map(issue =>
-              <IssuesListItem
-                key={issue.id}
-                issue={issue}
-                isIssueComplete={
-                  this.props.completedIssueIds &&
-                  (find(this.props.completedIssueIds, (issueId: string) => issue.id === issueId) !== undefined)
-                }
-                isIssueActive={currentIssueId === issue.id}
-                onSelectIssue={this.props.onSelectIssue}
-              />) :
-               <li>no issues bro</li>
-              }
-            </ul>
-          </div>
-        </aside>
-        <main id="content" role="main" aria-live="polite" className="layout__main">
-          {wrapped}
-        </main>
-      </div>
-      <Footer
-        t={i18n.t}
-      />
-    </div>
-    );
   }
 }
 

@@ -12,7 +12,7 @@ let rehydrationQueue: Function[] = [];
 export const rehydrated = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
-    console.log(`rehydrated, executing`);
+    // console.log(`rehydrated, executing`);
 
     // startup should always be run first after rehydration is complete
     startup(dispatch, getState);
@@ -29,10 +29,10 @@ export const rehydrated = () => {
 
 export const queueUntilHydration = (f: Function) => {
   if (hasRehydrated) {
-    console.log(`already rehydrated, executing`);
+    // console.log(`already rehydrated, executing`);
     f();
   } else {
-    console.log(`storing for later`);
+    // console.log(`storing for later`);
     rehydrationQueue.push(f);
   }
 };

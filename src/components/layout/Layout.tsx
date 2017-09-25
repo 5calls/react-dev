@@ -10,6 +10,7 @@ interface Props {
   readonly issueId: string;
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
+  readonly currentGroup?: string;
   readonly completedIssueIds: string[];
   readonly callState: CallState;
   readonly locationState: LocationState;
@@ -33,6 +34,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
           <Sidebar
             issues={props.issues}
             currentIssue={props.currentIssue ? props.currentIssue : undefined}
+            currentGroup={props.currentGroup}
             completedIssueIds={props.completedIssueIds}
             onSelectIssue={props.onSelectIssue}
           />

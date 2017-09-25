@@ -39,11 +39,9 @@ interface OwnProps extends RouteComponentProps<{ id: string }> { }
 
 // This defines the data that we will pull off the Redux store
 interface StateProps {
-  readonly callState: CallState;
   readonly currentIssue?: Issue;
-  readonly splitDistrict: boolean;
+  readonly callState: CallState;
   readonly locationState: LocationState;
-
 }
 
 /*
@@ -67,9 +65,8 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
   const currentIssue: Issue | undefined = getIssue(state, ownProps.match.params.id);
 
   return {
-    callState: state.callState,
     currentIssue: currentIssue,
-    splitDistrict: state.locationState.splitDistrict, // todo: just pass locationState and remove separate splitDistrict
+    callState: state.callState,
     locationState: state.locationState
   };
 };

@@ -19,7 +19,7 @@ import { DonePageContainer } from './components/done';
 import { MoreIssuesContainer } from './components/issues';
 import { CallPageContainer } from './components/call';
 import { MyImpactPageContainer } from './components/myimpact';
-import { GroupPageContainer } from './components/groups';
+import { GroupPageContainer, GroupCallPageContainer } from './components/groups';
 import './components/bundle.css';
 import './components/shared/scss/style.css';
 import './components/shared/scss/vendor/normalize.css';
@@ -62,7 +62,7 @@ ReactDOM.render(
           <Route path="/impact" exact={true} component={MyImpactPageContainer} />
           <Route path="/more" exact={true} component={MoreIssuesContainer} />
           <Route path="/group/:groupid" exact={true} component={GroupPageContainer} />
-          <Route path="/group/:groupid/:issueid" exact={true} component={GroupPageContainer} />
+          <Route path="/group/:groupid/:issueid" exact={true} component={GroupCallPageContainer} />
           <Route path="/faq" exact={true} component={FaqPage} />
           <Route path="/about" exact={true} component={AboutPage} />
           <Route path="*" component={HomePageContainer} />

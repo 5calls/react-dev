@@ -46,7 +46,6 @@ export const getGroupIssuesIfNeeded = (groupid: string) => {
     // directly to a route with an issue id
     if (!state.remoteDataState.groupIssues || state.remoteDataState.groupIssues.length === 0 ||
         state.remoteDataState.currentGroup !== groupid) {
-      console.log(`starting group issue fetching`);
         
       const loc = state.locationState.address;
       if (loc) {
@@ -88,7 +87,6 @@ export const fetchAllIssues = (address: string = '') => {
 export const fetchGroupIssues = (groupid: string, address: string = '') => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
-    console.log(`fetching group issues`, groupid);
     return getGroupIssues(groupid, address)
       .then((response: GroupIssues) => {
         if (response.invalidAddress) {
@@ -101,7 +99,6 @@ export const fetchGroupIssues = (groupid: string, address: string = '') => {
           if (!address) {
             dispatch(setUiState(LocationUiState.LOCATION_ERROR));
           }
-          console.log(`got issues`, response.issues);
           dispatch(setSplitDistrict(response.splitDistrict));
           dispatch(setLocationFetchType(LocationFetchType.CACHED_ADDRESS));
           dispatch(groupIssuesActionCreator(response.issues));
@@ -206,7 +203,6 @@ export const fetchBrowserGeolocation = () => {
 
 export const startup = (dispatch: Dispatch<ApplicationState>,
                         getState: () => ApplicationState) => {
-  console.log(`startup`);
   // dispatch donations
   dispatch(fetchDonations());
   dispatch(setUiState(LocationUiState.FETCHING_LOCATION));

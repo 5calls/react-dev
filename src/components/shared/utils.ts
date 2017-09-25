@@ -61,10 +61,17 @@ export const formatNumber = (unformattedNumber: number | string) => {
 export const getIssue = (state: ApplicationState, issueId: string) => {
   let currentIssue: Issue | undefined = undefined;
 
-  if (state.remoteDataState.issues && state.remoteDataState.inactiveIssues) {
-    const allIssues = state.remoteDataState.issues.concat(state.remoteDataState.inactiveIssues);
-    currentIssue = find(allIssues, (i => i.id === issueId));
+  if (state.remoteDataState.issues) {
+    currentIssue = find(state.remoteDataState.issues, (i => i.id === issueId));
   }
 
+  if (state.remoteDataState.inactiveIssues) {
+    currentIssue = find(state.remoteDataState.inactiveIssues, (i => i.id === issueId));    
+  }
+
+  if (state.remoteDataState.groupIssues) {
+    currentIssue = find(state.remoteDataState.groupIssues, (i => i.id === issueId));    
+  }
+  
   return currentIssue;
 };

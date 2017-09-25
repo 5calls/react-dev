@@ -6,6 +6,7 @@ import { IssuesListTranslatable } from '../issues';
 interface Props {
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
+  readonly currentGroup?: string;
   readonly completedIssueIds: string[];
   readonly onSelectIssue: (issueId: string) => Function;
 }
@@ -15,6 +16,7 @@ const Sidebar: React.StatelessComponent<Props> = (props: Props) => {
     <IssuesListTranslatable
       issues={props.issues}
       currentIssue={props.currentIssue}
+      currentGroup={props.currentGroup}
       completedIssueIds={props.completedIssueIds}
       onSelectIssue={props.onSelectIssue}
       t={i18n.t}
