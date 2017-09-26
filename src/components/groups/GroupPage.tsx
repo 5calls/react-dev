@@ -50,16 +50,29 @@ class GroupPage extends React.Component<Props, State> {
     };
   }
 
+  componentWillReceiveProps(newProps: Props) {
+    if (this.state.pageGroup) {
+      if (newProps.match.params.groupid !== this.state.pageGroup.id) {
+        this.setState({ loaded: GroupLoadingState.LOADING });
+        this.getGroupDetails(newProps.match.params.groupid);
+      }      
+    }
+  }
+
   componentDidMount() {
     queueUntilHydration(() => {
-      getGroup(this.props.match.params.groupid).then((response: Group) => {      
-        this.props.onGetIssuesIfNeeded(this.props.match.params.groupid);
-  
-        this.setState({ loaded: GroupLoadingState.FOUND, pageGroup: response });
-      }).catch((e) => {
-        this.setState({ loaded: GroupLoadingState.NOTFOUND });
-      });  
+      this.getGroupDetails(this.props.match.params.groupid);
     });
+  }
+
+  getGroupDetails = (groupid: string) => {
+    getGroup(groupid).then((response: Group) => {      
+      this.props.onGetIssuesIfNeeded(groupid);
+
+      this.setState({ loaded: GroupLoadingState.FOUND, pageGroup: response });
+    }).catch((e) => {
+      this.setState({ loaded: GroupLoadingState.NOTFOUND });
+    });  
   }
 
   joinTeam = (e: React.MouseEvent<HTMLButtonElement>) => {

@@ -1,6 +1,5 @@
 import * as Constants from '../../common/constants';
 import { ApplicationState } from '../../redux/root';
-import { Issue } from '../../common/model';
 
 import { find } from 'lodash';
 
@@ -59,19 +58,26 @@ export const formatNumber = (unformattedNumber: number | string) => {
 };
 
 export const getIssue = (state: ApplicationState, issueId: string) => {
-  let currentIssue: Issue | undefined = undefined;
-
   if (state.remoteDataState.issues) {
-    currentIssue = find(state.remoteDataState.issues, (i => i.id === issueId));
+    const currentActiveIssue = find(state.remoteDataState.issues, (i => i.id === issueId));
+    if (currentActiveIssue) {
+      return currentActiveIssue;
+    }
   }
 
   if (state.remoteDataState.inactiveIssues) {
-    currentIssue = find(state.remoteDataState.inactiveIssues, (i => i.id === issueId));    
+    const currentInactiveIssue = find(state.remoteDataState.inactiveIssues, (i => i.id === issueId));    
+    if (currentInactiveIssue) {
+      return currentInactiveIssue;
+    }
   }
 
   if (state.remoteDataState.groupIssues) {
-    currentIssue = find(state.remoteDataState.groupIssues, (i => i.id === issueId));    
+    const currentGroupIssue = find(state.remoteDataState.groupIssues, (i => i.id === issueId));
+    if (currentGroupIssue) {
+      return currentGroupIssue;
+    }
   }
   
-  return currentIssue;
+  return undefined;
 };
