@@ -4,9 +4,7 @@
 
 This repo holds code for the port of the [5 Calls web site](https://5calls.org) from the [Choo](https://choo.io) front-end framework to [React](https://facebook.github.io/react/) with [Redux](http://redux.js.org/) for state management and [Typescript](https://www.typescriptlang.org/) for type safety and documentation.
 
-The current application build is deployed [here](http://104.236.37.184/).
-
-The code for the Choo version of the 5 Calls front-end is located [here](https://github.com/5calls/5calls).
+It was deployed to production on September 7, 2017 replacing the Choo version of the web application.
 
 ## Development Notes
 
