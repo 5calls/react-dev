@@ -2,7 +2,7 @@ import * as React from 'react';
 import i18n from '../../services/i18n';
 import { RouteComponentProps } from 'react-router-dom';
 
-import { CallTranslatable } from './index';
+import { CallTranslatable, FetchCall } from './index';
 import { LayoutContainer } from '../layout';
 import { Issue, Group } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
@@ -117,22 +117,44 @@ class CallPage extends React.Component<Props, State> {
   }
 
   getView() {
-    return (
-      <LayoutContainer
-        issues={this.props.issues}
-        issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined}
-        currentGroup={this.props.activeGroup ? this.props.activeGroup.id : undefined}
-      >
-        <CallTranslatable
-          issue={this.props.currentIssue}
-          callState={this.props.callState}
-          locationState={this.props.locationState}
-          clearLocation={this.props.clearLocation}
-          onSubmitOutcome={this.props.onSubmitOutcome}
-          t={i18n.t}
-        />
-      </LayoutContainer>
-    );
+    if (this.props.currentIssue && 
+        this.props.currentIssue.contactType && 
+        this.props.currentIssue.contactType === 'FETCH') {
+      return (
+        <LayoutContainer
+          issues={this.props.issues}
+          issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined}
+          currentGroup={this.props.activeGroup ? this.props.activeGroup.id : undefined}
+        >
+          <FetchCall
+            issue={this.props.currentIssue}
+            currentGroup={this.props.activeGroup}
+            callState={this.props.callState}
+            locationState={this.props.locationState}
+            clearLocation={this.props.clearLocation}
+            onSubmitOutcome={this.props.onSubmitOutcome}
+            t={i18n.t}
+          />
+        </LayoutContainer>
+      );
+    } else {
+      return (
+        <LayoutContainer
+          issues={this.props.issues}
+          issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined}
+          currentGroup={this.props.activeGroup ? this.props.activeGroup.id : undefined}
+        >
+          <CallTranslatable
+            issue={this.props.currentIssue}
+            callState={this.props.callState}
+            locationState={this.props.locationState}
+            clearLocation={this.props.clearLocation}
+            onSubmitOutcome={this.props.onSubmitOutcome}
+            t={i18n.t}
+          />
+        </LayoutContainer>
+      );  
+    }
   }
 
   render() {

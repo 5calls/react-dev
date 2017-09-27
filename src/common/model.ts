@@ -5,6 +5,7 @@ export interface Issue {
   reason: string;
   script: string;
   contacts?: Contact[];
+  contactType?: string;
   categories: Category[];
   inactive: boolean;
   outcomeModels: Outcome[];
