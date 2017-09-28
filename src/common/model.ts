@@ -44,6 +44,13 @@ export interface Contact {
   field_offices?: FieldOffice[];
 }
 
+export interface VoterContact {
+  id: string;
+  name: string;
+  city: string;
+  phone: string;
+}
+
 export interface Category {
   name: string;
 }

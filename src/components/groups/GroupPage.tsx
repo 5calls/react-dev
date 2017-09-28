@@ -79,7 +79,7 @@ class GroupPage extends React.Component<Props, State> {
     e.currentTarget.blur();
 
     if (this.state.pageGroup) {
-      this.props.onJoinGroup(this.state.pageGroup);      
+      this.props.onJoinGroup(this.state.pageGroup); 
     }
   }
 

@@ -2,10 +2,12 @@ import { } from './NoContact';
 import * as React from 'react';
 import i18n from '../../services/i18n';
 import { TranslationFunction } from 'i18next';
-import { Issue, Group, Contact } from '../../common/model';
+import { Issue, Group, VoterContact } from '../../common/model';
 import { CallHeaderTranslatable } from './index';
-import { CallState, OutcomeData } from '../../redux/callState';
+import { CallState, FlexibleOutcomeData } from '../../redux/callState';
 import { LocationState } from '../../redux/location/reducer';
+import { getNextContact } from '../../services/apiServices';
+import { queueUntilHydration } from '../../redux/rehydrationUtil';
 
 // This defines the props that we must pass into this component.
 export interface Props {
@@ -15,12 +17,12 @@ export interface Props {
   readonly locationState: LocationState;
   readonly t: TranslationFunction;
   readonly clearLocation: () => void;
-  readonly onSubmitOutcome: (data: OutcomeData) => Function;
+  readonly onSubmitOutcome: (data: FlexibleOutcomeData) => Function;
 }
 
 export interface State {
   issue: Issue;
-  currentContact?: Contact;
+  currentContact?: VoterContact;
   outcomeState?: string;
   supportState?: string;
 }
@@ -43,6 +45,18 @@ export default class FetchCall extends React.Component<Props, State> {
       // currentContact: currentContact,
       issue: props.issue
     };
+  }
+
+  componentDidMount() {
+    queueUntilHydration(() => {
+      this.fillContact();
+    });      
+  }
+
+  fillContact() {
+    getNextContact(this.props.issue.id).then((contact: VoterContact) => {
+      this.setState({ currentContact: contact, outcomeState: undefined, supportState: undefined });
+    });
   }
 
   componentWillReceiveProps(newProps: Props) {
@@ -137,7 +151,23 @@ export default class FetchCall extends React.Component<Props, State> {
   nextContact(e: React.MouseEvent<HTMLButtonElement>) {
     e.currentTarget.blur();
 
-    // take some action
+    let outcomeState = '';
+    if (this.state.outcomeState) {
+      outcomeState += this.state.outcomeState;
+
+      if (this.state.supportState) {
+        outcomeState += ':' + this.state.supportState;
+      }
+    }
+
+    this.props.onSubmitOutcome({
+      outcome: outcomeState,
+      numberContactsLeft: 0,
+      issueId: this.props.issue.id,
+      contactId: this.state.currentContact ? this.state.currentContact.id : 'none',
+    });
+    this.setState({ currentContact: undefined });
+    this.fillContact();
   }
 
   buttonClass(key: string) {
@@ -152,7 +182,7 @@ export default class FetchCall extends React.Component<Props, State> {
     return '';
   }
 
-  render() {
+  contactArea() {
     const outcomeButtons: Button[] = [
       {title: 'Contacted', emoji: '😀', key: 'contacted'},
       {title: 'Not Home', emoji: '😕', key: 'nothome'},
@@ -162,19 +192,18 @@ export default class FetchCall extends React.Component<Props, State> {
       {title: 'Wrong Number', emoji: '👽', key: 'wrongnumber'},
     ];
 
-    return (
-      <section className="call voter">
-        <CallHeaderTranslatable
-          currentIssue={this.state.issue}
-          t={i18n.t}
-        />
+    if (this.state.currentContact) {
+      return (
+        <div>
         <div className="call__contact" id="contact">
           <div className="call__contact__image"><img alt="" src="" /></div>
           <h3 className="call__contact__type">{this.props.t('contact.callThisOffice')}</h3>
           <p className="call__contact__name">
-            John K. <span>from</span> Whositville
+            {this.state.currentContact.name} <span>from</span> {this.state.currentContact.city}
           </p>
-          <p className="call__contact__phone"><a href="tel:4155133151">415-513-3151</a></p>
+          <p className="call__contact__phone">
+            <a href={`tel:${this.state.currentContact.phone}`}>{this.state.currentContact.phone}</a>
+          </p>
         </div>
         <h3 className="call__script__header">{this.props.t('script.yourScript')}</h3>
         <div className="call__script__body">
@@ -206,6 +235,21 @@ export default class FetchCall extends React.Component<Props, State> {
           </h3>
           {this.nextButton()}
         </div>
+        </div>
+      );
+    }
+
+    return <h3 className="call__outcomes__header">Getting your next contact...</h3>;
+  }
+
+  render() {
+    return (
+      <section className="call voter">
+        <CallHeaderTranslatable
+          currentIssue={this.state.issue}
+          t={i18n.t}
+        />
+        {this.contactArea()}
       </section>
     );
   }
