@@ -1,5 +1,6 @@
 import * as Constants from '../../common/constants';
-import { ApplicationState } from '../../redux/root';
+import { Issue } from './../../common/model';
+import { RemoteDataState } from '../../redux/remoteData';
 
 import { find } from 'lodash';
 
@@ -57,27 +58,27 @@ export const formatNumber = (unformattedNumber: number | string) => {
   }
 };
 
-export const getIssue = (state: ApplicationState, issueId: string) => {
-  if (state.remoteDataState.issues) {
-    const currentActiveIssue = find(state.remoteDataState.issues, (i => i.id === issueId));
+export const getIssue = (remoteDataState: RemoteDataState, issueId: string): Issue | undefined => {
+  if (remoteDataState.issues) {
+    const currentActiveIssue = find(remoteDataState.issues, (i => i.id === issueId));
     if (currentActiveIssue) {
       return currentActiveIssue;
     }
   }
 
-  if (state.remoteDataState.inactiveIssues) {
-    const currentInactiveIssue = find(state.remoteDataState.inactiveIssues, (i => i.id === issueId));    
+  if (remoteDataState.inactiveIssues) {
+    const currentInactiveIssue = find(remoteDataState.inactiveIssues, (i => i.id === issueId));
     if (currentInactiveIssue) {
       return currentInactiveIssue;
     }
   }
 
-  if (state.remoteDataState.groupIssues) {
-    const currentGroupIssue = find(state.remoteDataState.groupIssues, (i => i.id === issueId));
+  if (remoteDataState.groupIssues) {
+    const currentGroupIssue = find(remoteDataState.groupIssues, (i => i.id === issueId));
     if (currentGroupIssue) {
       return currentGroupIssue;
     }
   }
-  
+
   return undefined;
 };

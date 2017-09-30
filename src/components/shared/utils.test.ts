@@ -1,4 +1,6 @@
-import { formatLocationForBackEnd, formatNumber } from './utils';
+import { Issue, DefaultIssue } from './../../common/model';
+import { RemoteDataState } from '../../redux/remoteData';
+import { formatLocationForBackEnd, formatNumber, getIssue } from './utils';
 
 class Data {
   constructor(private pactual: string | number | null | undefined, private pexpected: string) {}
@@ -77,3 +79,54 @@ const formatNumberTester = (data: Data) => {
   const results = formatNumber(data.actual as number | string);
   expect(results).toEqual(data.expected);
 };
+
+test('if issueId arg is for an active issue, getIssue should return the current active issue', () => {
+  const id = '1';
+  let issue = Object.assign({}, DefaultIssue, {id, inactive: false});
+  let issues: Issue[] = [
+      issue
+  ];
+  let inactiveIssues: Issue[] = [
+    Object.assign({}, DefaultIssue, {id: '999', inactive: true})
+  ];
+  let state = Object.assign({}, {} as RemoteDataState, {issues, inactiveIssues});
+  let result: Issue = getIssue(state, id) as Issue;
+  expect(result.id).toBe(id);
+});
+
+test('if issueId arg is for an inactive issue, getIssue should return the current inactive issue', () => {
+  const id = 'inactive1';
+  let issue = Object.assign({}, DefaultIssue, {id: '1', inactive: false});
+  let issues: Issue[] = [
+      issue
+  ];
+  let inactiveIssues: Issue[] = [
+    Object.assign({}, DefaultIssue, {id, inactive: true})
+  ];
+  let state = Object.assign({}, {} as RemoteDataState, {issues, inactiveIssues});
+  let result: Issue = getIssue(state, id) as Issue;
+  expect(result.id).toBe(id);
+});
+
+test('if issueId arg is for an unknown issue, getIssue should return undefined', () => {
+  const id = 'unknown1111';
+  const activeId = 'active100';
+  let issue = Object.assign({}, DefaultIssue, {id: activeId, inactive: false});
+  let issues: Issue[] = [
+      issue
+  ];
+  const inactiveId = 'inactive101';
+  let inactiveIssues: Issue[] = [
+    Object.assign({}, DefaultIssue, {id: inactiveId, inactive: true})
+  ];
+  let state = Object.assign({}, {} as RemoteDataState, {issues, inactiveIssues});
+  let result = getIssue(state, id);
+  expect(result).toBeUndefined();
+});
+
+test('if remote data state has no active or inactive issues, getIssue should return undefined', () => {
+  const id = 'unknown1111';
+  let state = {} as RemoteDataState;
+  let result = getIssue(state, id);
+  expect(result).toBeUndefined();
+});

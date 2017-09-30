@@ -30,7 +30,7 @@ interface DispatchProps {
 
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
   let groupPageIssues: Issue[] = [];
-  
+
   // send group issues if they exist, normal active ones if they don't
   if (state.remoteDataState.groupIssues && state.remoteDataState.groupIssues.length !== 0) {
     groupPageIssues = state.remoteDataState.groupIssues;
@@ -38,8 +38,8 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
     groupPageIssues = state.remoteDataState.issues;
   }
 
-  const currentIssue: Issue | undefined = getIssue(state, ownProps.match.params.issueid);
-  
+  const currentIssue: Issue | undefined = getIssue(state.remoteDataState, ownProps.match.params.issueid);
+
   return {
     activeGroup: state.callState.group,
     issues: groupPageIssues,
