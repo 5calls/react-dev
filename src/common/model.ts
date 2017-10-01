@@ -114,6 +114,14 @@ export interface ApiData {
   issues: Issue[];
 }
 
+export interface GroupIssues {
+  splitDistrict: boolean;
+  invalidAddress: boolean;
+  normalizedLocation: string | undefined;
+  divisions: string[];
+  issues: Issue[];
+}
+
 export interface CountData {
   count: number; // total call count
 }

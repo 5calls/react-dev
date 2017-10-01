@@ -6,6 +6,7 @@ interface Props {
   readonly issue: Issue;
   readonly isIssueComplete: boolean;
   readonly isIssueActive: boolean;
+  readonly currentGroup?: string;
   readonly onSelectIssue: (issueId: string) => Function;
 }
 
@@ -15,12 +16,16 @@ export class IssuesListItem extends React.Component<Props, State> {
   render() {
     const isCompleted = this.props.isIssueComplete ? 'is-complete' : '';
     const isActive = this.props.isIssueActive ? 'is-active' : '';
+
+    // need to provide alternative links for on group page
+    const issueLink = this.props.currentGroup ?
+      `/group/${this.props.currentGroup}/${this.props.issue.id}` : `/issue/${this.props.issue.id}`;
     return (
       <li>
         <Link
           aria-controls="content"
           className={`issues-list__item ${isCompleted} ${isActive}`}
-          to={`/issue/${this.props.issue.id}`}
+          to={issueLink}
           onClick={() => this.props.onSelectIssue(this.props.issue.id)}
         >
           <span aria-live="polite" className={`issues-list__item__status ${isCompleted} ${isActive}`}>

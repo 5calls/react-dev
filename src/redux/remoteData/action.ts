@@ -4,6 +4,7 @@ import { Issue, Donations } from '../../common/model';
 
 export enum RemoteDataActionType {
   GET_ISSUES = 'GET_ISSUES',
+  GET_GROUP_ISSUES = 'GET_GROUP_ISSUES',
   GET_CALL_TOTAL = 'GET_CALL_TOTAL',
   GET_DONATIONS = 'GET_DONATIONS',
   API_ERROR = 'API_ERROR'
@@ -16,6 +17,11 @@ export interface RemoteDataAction extends  Action {
 
 export interface IssuesAction extends RemoteDataAction {
   type: RemoteDataActionType.GET_ISSUES;
+  payload: Issue[];
+}
+
+export interface GroupIssuesAction extends RemoteDataAction {
+  type: RemoteDataActionType.GET_GROUP_ISSUES;
   payload: Issue[];
 }
 

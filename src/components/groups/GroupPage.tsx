@@ -1,22 +1,32 @@
 import * as React from 'react';
-// import i18n from '../../services/i18n';
 import { LayoutContainer } from '../layout';
-import { Group } from '../../common/model';
 import { RouteComponentProps } from 'react-router-dom';
+
+import { Group, Issue } from '../../common/model';
 import { formatNumber } from '../shared/utils';
 import { getGroup } from '../../services/apiServices';
+import { LocationState } from '../../redux/location/reducer';
+import { CallState } from '../../redux/callState/reducer';
+import { queueUntilRehydration } from '../../redux/rehydrationUtil';
 
-interface RouteProps extends RouteComponentProps<{ id: string }> { }
+interface RouteProps extends RouteComponentProps<{ groupid: string, issueid: string }> { }
 
 interface Props extends RouteProps {
   readonly activeGroup?: Group; 
+  readonly issues: Issue[];
+  readonly currentIssue?: Issue;
+  readonly completedIssueIds: string[];
+  readonly callState: CallState;
+  readonly locationState: LocationState;
+  readonly setLocation: (location: string) => void;
+  readonly clearLocation: () => void;
   readonly onSelectIssue: (issueId: string) => Function;
-  readonly onGetIssuesIfNeeded: () => Function;
+  readonly onGetIssuesIfNeeded: (groupid: string) => Function;
   readonly onJoinGroup: (group: Group) => Function;
 }
 
 export interface State {
-  loaded: GroupLoadingState;
+  loadingState: GroupLoadingState;
   pageGroup?: Group;
 }
 
@@ -35,17 +45,34 @@ class GroupPage extends React.Component<Props, State> {
 
   setStateFromProps(props: Props): State {
     return {
-      loaded: GroupLoadingState.LOADING,
+      loadingState: GroupLoadingState.LOADING,
       pageGroup: undefined,
     };
   }
 
+  componentWillReceiveProps(newProps: Props) {
+    if (this.state.pageGroup) {
+      if (newProps.match.params.groupid !== this.state.pageGroup.id) {
+        this.setState({ loadingState: GroupLoadingState.LOADING });
+        this.getGroupDetails(newProps.match.params.groupid);
+      }      
+    }
+  }
+
   componentDidMount() {
-    getGroup(this.props.match.params.id).then((response: Group) => {
-      this.setState({ loaded: GroupLoadingState.FOUND, pageGroup: response });
-    }).catch((e) => {
-      this.setState({ loaded: GroupLoadingState.NOTFOUND });
+    queueUntilRehydration(() => {
+      this.getGroupDetails(this.props.match.params.groupid);
     });
+  }
+
+  getGroupDetails = (groupid: string) => {
+    getGroup(groupid).then((response: Group) => {      
+      this.props.onGetIssuesIfNeeded(groupid);
+
+      this.setState({ loadingState: GroupLoadingState.FOUND, pageGroup: response });
+    }).catch((e) => {
+      this.setState({ loadingState: GroupLoadingState.NOTFOUND });
+    });  
   }
 
   joinTeam = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -57,10 +84,14 @@ class GroupPage extends React.Component<Props, State> {
   }
 
   render() {
-    switch (this.state.loaded) {
+    switch (this.state.loadingState) {
       case GroupLoadingState.LOADING:
         return (
-          <LayoutContainer issueId={this.props.match.params.id}>
+          <LayoutContainer
+            currentGroup={this.props.match.params.groupid}
+            issues={this.props.issues}
+            issueId={this.props.match.params.issueid}
+          >
             <div className="page__group">
               <h2 className="page__title">Getting team...</h2>
             </div>
@@ -81,7 +112,11 @@ class GroupPage extends React.Component<Props, State> {
         const pctStyle = {width: `${pctDone}%`};    
 
         return (
-          <LayoutContainer issueId={this.props.match.params.id}>
+          <LayoutContainer 
+            currentGroup={this.props.match.params.groupid}
+            issues={this.props.issues}
+            issueId={this.props.match.params.issueid}
+          >
             <div className="page__group">
               <h2 className="page__title">{group.name}</h2>
               <button onClick={this.joinTeam}>{groupId === group.id ? `You're on this team` : 'Join Team'}</button>
@@ -100,7 +135,11 @@ class GroupPage extends React.Component<Props, State> {
         );
       default:
         return (
-          <LayoutContainer issueId={this.props.match.params.id}>
+          <LayoutContainer
+            currentGroup={this.props.match.params.groupid}
+            issues={this.props.issues}
+            issueId={this.props.match.params.issueid}
+          >          
             <div className="page__group">
               <h2 className="page__title">There's no team here 😢</h2>
             </div>

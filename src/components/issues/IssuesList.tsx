@@ -9,6 +9,7 @@ import { IssuesListItem } from './index';
 interface Props {
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
+  readonly currentGroup?: string;
   readonly completedIssueIds: string[];
   readonly t: TranslationFunction;
   readonly onSelectIssue: (issueId: string) => Function;
@@ -16,6 +17,23 @@ interface Props {
 
 export const IssuesList: React.StatelessComponent<Props> = (props: Props) => {
   let currentIssueId: string = props.currentIssue ? props.currentIssue.id : '';
+
+  const listFooter = () => {
+    if (!props.currentGroup) {
+      return (
+        <li>
+          <Link
+            to={`/more`}
+            className={`issues__footer-link`}
+          >
+            <span>{props.t('issues.viewAllActiveIssues')}</span>
+          </Link>
+        </li>
+      );
+    } else {
+      return <span />;
+    }
+  };
 
   return (
     <ul className="issues-list" role="navigation">
@@ -28,16 +46,10 @@ export const IssuesList: React.StatelessComponent<Props> = (props: Props) => {
             (find(props.completedIssueIds, (issueId: string) => issue.id === issueId) !== undefined)
           }
           isIssueActive={currentIssueId === issue.id}
+          currentGroup={props.currentGroup}
           onSelectIssue={props.onSelectIssue}
         />) : <div style={{ textAlign: 'center' }}>{props.t('noCalls.title')}</div>}
-      <li>
-        <Link
-          to={`/more`}
-          className={`issues__footer-link`}
-        >
-          <span>{props.t('issues.viewAllActiveIssues')}</span>
-        </Link>
-      </li>
+      {listFooter()}
     </ul>
   );
 };

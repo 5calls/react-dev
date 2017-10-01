@@ -11,6 +11,8 @@ import { Issue } from '../../common/model';
 
 interface OwnProps {
   readonly issueId?: string;
+  readonly issues?: Issue[];
+  readonly currentGroup?: string;
   readonly children?: {};
 }
 
@@ -18,6 +20,7 @@ interface StateProps {
   readonly children?: {};
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
+  readonly currentGroup?: string;
   readonly completedIssueIds: string[];
   readonly callState: CallState;
   readonly locationState: LocationState;
@@ -35,9 +38,14 @@ function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProp
     currentIssue = find(state.remoteDataState.issues, i => i.id === ownProps.issueId);
   }
 
+  let issues: Issue[] = [];
+  // overrise issues from above the layout container if needed
+  issues = ownProps.issues ? ownProps.issues : state.remoteDataState.issues;
+
   return {
-    issues: state.remoteDataState.issues,
+    issues: issues,
     currentIssue: currentIssue,
+    currentGroup: ownProps.currentGroup,
     completedIssueIds: state.callState.completedIssueIds,
     callState: state.callState,
     locationState: state.locationState,

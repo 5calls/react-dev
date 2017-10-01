@@ -5,6 +5,7 @@ import rootReducer from './root';
 import thunk from 'redux-thunk';
 import { ApplicationStateKeyType, ApplicationStateKey } from '../redux/root';
 import { startup } from './remoteData';
+import { onStorageRehydrated } from './rehydrationUtil';
 
 // declare var process: { env: { NODE_ENV: string } };
 // const env = process.env.NODE_ENV;
@@ -45,7 +46,10 @@ export default (initialState) => {
   persistor = persistStore(
     store,
     { whitelist: localPersistKeys },
-    () => store.dispatch(startup())
+    () => {
+      store.dispatch(startup());
+      store.dispatch(onStorageRehydrated());
+    }
   );
 
   return store;

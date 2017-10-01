@@ -27,7 +27,6 @@ test('Call component should be rendered if passed a valid object', () => {
     <Call
       issue={issue}
       callState={callState}
-      splitDistrict={false}
       clearLocation={clearLocation}
       locationState={locationState}
       t={i18n.t}

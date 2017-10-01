@@ -12,11 +12,10 @@ import { LocationState } from '../../redux/location/reducer';
 export interface Props {
   readonly issue: Issue;
   readonly callState: CallState;
+  readonly locationState: LocationState;
   readonly t: TranslationFunction;
-  readonly splitDistrict: boolean;
   readonly clearLocation: () => void;
   readonly onSubmitOutcome: (data: OutcomeData) => Function;
-  readonly locationState: LocationState;
 }
 
 export interface State {
@@ -72,9 +71,9 @@ export class Call extends React.Component<Props, State> {
           currentIssue={this.state.issue}
           t={i18n.t}
         />
-        {this.props.splitDistrict ?
+        {this.props.locationState.splitDistrict ?
         <NoContactSplitDistrict
-          splitDistrict={this.props.splitDistrict}
+          splitDistrict={this.props.locationState.splitDistrict}
           clearLocation={this.props.clearLocation}
           t={i18n.t}
         /> :
@@ -89,7 +88,7 @@ export class Call extends React.Component<Props, State> {
           locationState={this.props.locationState}
           t={i18n.t}
         />
-        {this.props.splitDistrict || 
+        {this.props.locationState.splitDistrict || 
          this.props.issue && 
          (this.props.issue.contacts && this.props.issue.contacts.length === 0) ? <span/> :
         <Outcomes
@@ -100,7 +99,7 @@ export class Call extends React.Component<Props, State> {
           t={i18n.t}
         />}
         {/* TODO: Fix people/person text for 1 contact left. Move logic to a function */}
-        {this.props.splitDistrict ? <span/> :
+        {this.props.locationState.splitDistrict ? <span/> :
         this.state.numberContactsLeft > 0 ?
           <h3 aria-live="polite" className="call__contacts__left" >
             {this.props.t('outcomes.contactsLeft', { contactsRemaining: this.state.numberContactsLeft })}

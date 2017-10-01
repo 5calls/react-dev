@@ -24,7 +24,7 @@ interface DispatchProps {
 }
 
 const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => {
-  const currentIssue: Issue | undefined = getIssue(state, ownProps.match.params.id);
+  const currentIssue: Issue | undefined = getIssue(state.remoteDataState, ownProps.match.params.id);
 
   return {
     issues: state.remoteDataState.issues,

@@ -3,9 +3,10 @@ import i18n from '../../services/i18n';
 import { RouteComponentProps } from 'react-router-dom';
 import { CallTranslatable } from './index';
 import { LayoutContainer } from '../layout';
-import { Issue } from '../../common/model';
+import { Issue, Group } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
 import { LocationState } from '../../redux/location/reducer';
+import { queueUntilRehydration } from '../../redux/rehydrationUtil';
 
 /*
   This is the top level View component in the CallPage Component Hierarchy.  It is the
@@ -33,18 +34,22 @@ import { LocationState } from '../../redux/location/reducer';
     it in our route.  In this route "/call/:id" (as well as the "/done/:id" route), we've defined
     our params to have simply one key: "id".
 */
-interface RouteProps extends RouteComponentProps<{ id: string }> { }
+
+// feels a bit smelly to do <any> here but the route could either be normal { id } or group { groupid, issueid }
+// but we don't actually use this below, we just need it for types, so...?
+// tslint:disable-next-line:no-any
+interface RouteProps extends RouteComponentProps<any> { }
 
 interface Props extends RouteProps {
   readonly issues: Issue[];
+  readonly currentIssue: Issue;
+  readonly activeGroup?: Group;
   readonly callState: CallState;
   readonly locationState: LocationState;
-  readonly currentIssue: Issue;
-  readonly splitDistrict: boolean;
   readonly onSubmitOutcome: (data: OutcomeData) => Function;
   readonly onSelectIssue: (issueId: string) => Function;
-  readonly clearLocation: () => void;
   readonly onGetIssuesIfNeeded: () => Function;
+  readonly clearLocation: () => void;
 }
 
 export interface State {
@@ -99,10 +104,12 @@ class CallPage extends React.Component<Props, State> {
       // On the first render, if the issues haven't been loaded(came here directly, not first to home page)
       // here we'll check to see if issues are in the redux store and if not we'll load them
       // if we have to load them, the component will be re-rendered after the issues are retrieved
-      this.props.onGetIssuesIfNeeded();
+      queueUntilRehydration(() => {
+        this.props.onGetIssuesIfNeeded();
+      });
     } else {
       // this is the case where the user has clicked on an issue from the sidebar
-      if (!this.props.callState.currentIssueId) {
+      if (!this.props.callState.currentIssueId && this.props.currentIssue) {
         this.props.onSelectIssue(this.props.currentIssue.id);
       }
     }
@@ -110,14 +117,17 @@ class CallPage extends React.Component<Props, State> {
 
   getView() {
     return (
-      <LayoutContainer issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined} >
+      <LayoutContainer
+        issues={this.props.issues}
+        issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined}
+        currentGroup={this.props.activeGroup ? this.props.activeGroup.id : undefined}
+      >
         <CallTranslatable
           issue={this.props.currentIssue}
           callState={this.props.callState}
           locationState={this.props.locationState}
           clearLocation={this.props.clearLocation}
           onSubmitOutcome={this.props.onSubmitOutcome}
-          splitDistrict={this.props.splitDistrict}
           t={i18n.t}
         />
       </LayoutContainer>
