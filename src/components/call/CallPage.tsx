@@ -6,7 +6,7 @@ import { LayoutContainer } from '../layout';
 import { Issue, Group } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
 import { LocationState } from '../../redux/location/reducer';
-import { queueUntilHydration } from '../../redux/rehydrationUtil';
+import { queueUntilRehydration } from '../../redux/rehydrationUtil';
 
 /*
   This is the top level View component in the CallPage Component Hierarchy.  It is the
@@ -104,7 +104,7 @@ class CallPage extends React.Component<Props, State> {
       // On the first render, if the issues haven't been loaded(came here directly, not first to home page)
       // here we'll check to see if issues are in the redux store and if not we'll load them
       // if we have to load them, the component will be re-rendered after the issues are retrieved
-      queueUntilHydration(() => {
+      queueUntilRehydration(() => {
         this.props.onGetIssuesIfNeeded();
       });
     } else {

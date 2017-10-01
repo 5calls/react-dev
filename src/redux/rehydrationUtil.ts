@@ -1,6 +1,5 @@
 import { Dispatch } from 'redux';
 import { ApplicationState } from './root';
-import { startup } from './remoteData/asyncActionCreator';
 
 // when things are dispatched on component mount on first page load, 
 // it's possible that this can occur before rehydration is complete.
@@ -9,13 +8,10 @@ import { startup } from './remoteData/asyncActionCreator';
 let hasRehydrated = false;
 let rehydrationQueue: Function[] = [];
 
-export const rehydrated = () => {
+export const onStorageRehydrated = () => {
   return (dispatch: Dispatch<ApplicationState>,
           getState: () => ApplicationState) => {
     // console.log(`rehydrated, executing`);
-
-    // startup should always be run first after rehydration is complete
-    startup(dispatch, getState);
 
     hasRehydrated = true;
     
@@ -27,7 +23,7 @@ export const rehydrated = () => {
   };
 };
 
-export const queueUntilHydration = (f: Function) => {
+export const queueUntilRehydration = (f: Function) => {
   if (hasRehydrated) {
     // console.log(`already rehydrated, executing`);
     f();

@@ -201,28 +201,30 @@ export const fetchBrowserGeolocation = () => {
   };
 };
 
-export const startup = (dispatch: Dispatch<ApplicationState>,
-                        getState: () => ApplicationState) => {
-  // dispatch donations
-  dispatch(fetchDonations());
-  dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
-  const state = getState();
-  // clear contact indexes loaded from local storage
-  dispatch(clearContactIndexes());
-  // add completed issues from Choo app in localStorage to
-  // this apps callState.completedIssueIds
-  migrateLegacyCompletedIssues(dispatch);
-  const loc = state.locationState.address;
-  if (loc) {
-    // console.log('Using cached address');
-    dispatch(fetchAllIssues(loc))
-      .then(() => {
-        setLocationFetchType(LocationFetchType.CACHED_ADDRESS);
-      });
-  } else {
-    dispatch(fetchBrowserGeolocation());
-  }
-  dispatch(fetchCallCount());
+export const startup = () => {
+  return (dispatch: Dispatch<ApplicationState>,
+          getState: () => ApplicationState) => {
+    // dispatch donations
+    dispatch(fetchDonations());
+    dispatch(setUiState(LocationUiState.FETCHING_LOCATION));
+    const state = getState();
+    // clear contact indexes loaded from local storage
+    dispatch(clearContactIndexes());
+    // add completed issues from Choo app in localStorage to
+    // this apps callState.completedIssueIds
+    migrateLegacyCompletedIssues(dispatch);
+    const loc = state.locationState.address;
+    if (loc) {
+      // console.log('Using cached address');
+      dispatch(fetchAllIssues(loc))
+        .then(() => {
+          setLocationFetchType(LocationFetchType.CACHED_ADDRESS);
+        });
+    } else {
+      dispatch(fetchBrowserGeolocation());
+    }
+    dispatch(fetchCallCount());
+  };
 };
 
 const migrateLegacyCompletedIssues = (dispatch: Dispatch<ApplicationState>) => {

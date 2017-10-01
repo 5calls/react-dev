@@ -7,7 +7,7 @@ import { formatNumber } from '../shared/utils';
 import { getGroup } from '../../services/apiServices';
 import { LocationState } from '../../redux/location/reducer';
 import { CallState } from '../../redux/callState/reducer';
-import { queueUntilHydration } from '../../redux/rehydrationUtil';
+import { queueUntilRehydration } from '../../redux/rehydrationUtil';
 
 interface RouteProps extends RouteComponentProps<{ groupid: string, issueid: string }> { }
 
@@ -26,7 +26,7 @@ interface Props extends RouteProps {
 }
 
 export interface State {
-  loaded: GroupLoadingState;
+  loadingState: GroupLoadingState;
   pageGroup?: Group;
 }
 
@@ -45,7 +45,7 @@ class GroupPage extends React.Component<Props, State> {
 
   setStateFromProps(props: Props): State {
     return {
-      loaded: GroupLoadingState.LOADING,
+      loadingState: GroupLoadingState.LOADING,
       pageGroup: undefined,
     };
   }
@@ -53,14 +53,14 @@ class GroupPage extends React.Component<Props, State> {
   componentWillReceiveProps(newProps: Props) {
     if (this.state.pageGroup) {
       if (newProps.match.params.groupid !== this.state.pageGroup.id) {
-        this.setState({ loaded: GroupLoadingState.LOADING });
+        this.setState({ loadingState: GroupLoadingState.LOADING });
         this.getGroupDetails(newProps.match.params.groupid);
       }      
     }
   }
 
   componentDidMount() {
-    queueUntilHydration(() => {
+    queueUntilRehydration(() => {
       this.getGroupDetails(this.props.match.params.groupid);
     });
   }
@@ -69,9 +69,9 @@ class GroupPage extends React.Component<Props, State> {
     getGroup(groupid).then((response: Group) => {      
       this.props.onGetIssuesIfNeeded(groupid);
 
-      this.setState({ loaded: GroupLoadingState.FOUND, pageGroup: response });
+      this.setState({ loadingState: GroupLoadingState.FOUND, pageGroup: response });
     }).catch((e) => {
-      this.setState({ loaded: GroupLoadingState.NOTFOUND });
+      this.setState({ loadingState: GroupLoadingState.NOTFOUND });
     });  
   }
 
@@ -84,7 +84,7 @@ class GroupPage extends React.Component<Props, State> {
   }
 
   render() {
-    switch (this.state.loaded) {
+    switch (this.state.loadingState) {
       case GroupLoadingState.LOADING:
         return (
           <LayoutContainer
