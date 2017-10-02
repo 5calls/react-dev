@@ -2,7 +2,7 @@ import { connect, Dispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ApplicationState } from '../../redux/root';
 import { CallPage } from '../call/index';
-import { Issue, Group } from '../../common/model';
+import { Issue } from '../../common/model';
 import { getIssue } from '../shared/utils';
 import { getGroupIssuesIfNeeded } from '../../redux/remoteData';
 import { LocationState } from '../../redux/location/reducer';
@@ -17,7 +17,7 @@ interface OwnProps extends RouteComponentProps<{ groupid: string, issueid: strin
 interface StateProps {
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
-  readonly activeGroup?: Group;
+  readonly currentGroupId?: String;
   readonly callState: CallState;
   readonly locationState: LocationState;
 }
@@ -42,7 +42,7 @@ const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProp
   const currentIssue: Issue | undefined = getIssue(state.remoteDataState, ownProps.match.params.issueid);
 
   return {
-    activeGroup: state.callState.group,
+    currentGroupId: ownProps.match.params.groupid,
     issues: groupPageIssues,
     currentIssue: currentIssue,
     callState: state.callState,

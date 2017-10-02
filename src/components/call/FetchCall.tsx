@@ -2,17 +2,17 @@ import { } from './NoContact';
 import * as React from 'react';
 import i18n from '../../services/i18n';
 import { TranslationFunction } from 'i18next';
-import { Issue, Group, VoterContact } from '../../common/model';
+import { Issue, VoterContact } from '../../common/model';
 import { CallHeaderTranslatable } from './index';
 import { CallState, FlexibleOutcomeData } from '../../redux/callState';
 import { LocationState } from '../../redux/location/reducer';
 import { getNextContact } from '../../services/apiServices';
-import { queueUntilHydration } from '../../redux/rehydrationUtil';
+import { queueUntilRehydration } from '../../redux/rehydrationUtil';
 
 // This defines the props that we must pass into this component.
 export interface Props {
   readonly issue: Issue;
-  readonly currentGroup?: Group;
+  readonly currentGroupId?: string;
   readonly callState: CallState;
   readonly locationState: LocationState;
   readonly t: TranslationFunction;
@@ -48,7 +48,7 @@ export default class FetchCall extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    queueUntilHydration(() => {
+    queueUntilRehydration(() => {
       this.fillContact();
     });      
   }
@@ -187,7 +187,7 @@ export default class FetchCall extends React.Component<Props, State> {
       {title: 'Contacted', emoji: '😀', key: 'contacted'},
       {title: 'Not Home', emoji: '😕', key: 'nothome'},
       {title: 'Refused', emoji: '🤐', key: 'refused'},
-      {title: 'Left Message', emoji: '📼', key: 'voicemail'},
+      // {title: 'Left Message', emoji: '📼', key: 'voicemail'},
       {title: 'Disconnected', emoji: '📵', key: 'disconnected'},
       {title: 'Wrong Number', emoji: '👽', key: 'wrongnumber'},
     ];

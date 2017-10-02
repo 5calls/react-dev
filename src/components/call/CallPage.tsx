@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router-dom';
 
 import { CallTranslatable, FetchCall } from './index';
 import { LayoutContainer } from '../layout';
-import { Issue, Group } from '../../common/model';
+import { Issue } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
 import { LocationState } from '../../redux/location/reducer';
 import { queueUntilRehydration } from '../../redux/rehydrationUtil';
@@ -44,7 +44,7 @@ interface RouteProps extends RouteComponentProps<any> { }
 interface Props extends RouteProps {
   readonly issues: Issue[];
   readonly currentIssue: Issue;
-  readonly activeGroup?: Group;
+  readonly currentGroupId?: string;
   readonly callState: CallState;
   readonly locationState: LocationState;
   readonly onSubmitOutcome: (data: OutcomeData) => Function;
@@ -124,11 +124,11 @@ class CallPage extends React.Component<Props, State> {
         <LayoutContainer
           issues={this.props.issues}
           issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined}
-          currentGroup={this.props.activeGroup ? this.props.activeGroup.id : undefined}
+          currentGroupId={this.props.currentGroupId ? this.props.currentGroupId : undefined}
         >
           <FetchCall
             issue={this.props.currentIssue}
-            currentGroup={this.props.activeGroup}
+            currentGroupId={this.props.currentGroupId}
             callState={this.props.callState}
             locationState={this.props.locationState}
             clearLocation={this.props.clearLocation}
@@ -142,7 +142,7 @@ class CallPage extends React.Component<Props, State> {
         <LayoutContainer
           issues={this.props.issues}
           issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined}
-          currentGroup={this.props.activeGroup ? this.props.activeGroup.id : undefined}
+          currentGroupId={this.props.currentGroupId ? this.props.currentGroupId : undefined}
         >
           <CallTranslatable
             issue={this.props.currentIssue}

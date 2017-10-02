@@ -88,7 +88,7 @@ class GroupPage extends React.Component<Props, State> {
       case GroupLoadingState.LOADING:
         return (
           <LayoutContainer
-            currentGroup={this.props.match.params.groupid}
+            currentGroupId={this.props.match.params.groupid}
             issues={this.props.issues}
             issueId={this.props.match.params.issueid}
           >
@@ -113,13 +113,12 @@ class GroupPage extends React.Component<Props, State> {
 
         return (
           <LayoutContainer 
-            currentGroup={this.props.match.params.groupid}
+            currentGroupId={this.props.match.params.groupid}
             issues={this.props.issues}
             issueId={this.props.match.params.issueid}
           >
             <div className="page__group">
               <h2 className="page__title">{group.name}</h2>
-              <button onClick={this.joinTeam}>{groupId === group.id ? `You're on this team` : 'Join Team'}</button>
               <div className="progress">
                 <span style={pctStyle} className="progress__total">
                     {formatNumber(group.totalCalls)} Calls
@@ -136,7 +135,7 @@ class GroupPage extends React.Component<Props, State> {
       default:
         return (
           <LayoutContainer
-            currentGroup={this.props.match.params.groupid}
+            currentGroupId={this.props.match.params.groupid}
             issues={this.props.issues}
             issueId={this.props.match.params.issueid}
           >          
