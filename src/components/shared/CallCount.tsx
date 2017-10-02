@@ -17,6 +17,7 @@ export const CallCount: React.StatelessComponent<Props> = (props: Props) => {
 
   return (
     <div className={`progress${className}`}>
+      <span className="progress__goal">{formatNumber(2000000)}</span>
       <span style={pctStyle} className="progress__total">
           {formatNumber(props.totalCount)} Calls
       </span>

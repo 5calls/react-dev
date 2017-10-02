@@ -299,6 +299,8 @@ button {
   background-color: white;
 
   &__total {
+    z-index: 2;
+    position: relative;
     display: inline-block;
     min-width: 10%;
     height: 20px;
@@ -312,10 +314,17 @@ button {
   }
 
   &__goal {
-    display: none;
+    z-index: 1;
     position: absolute;
-    right: 5px;
+    text-align: right;
+    width: 100%;
+    text-align: right;
+    height: 20px;
+    padding-right: 5px;
     line-height: 21px;
+    border-radius: 5px;
+    color: $blue-light;
+    border: 1px solid $blue-light;
   }
 }
 
@@ -326,5 +335,11 @@ button {
     font-size: 20px;
     height: 25px;
     line-height: 26px;
+  }
+
+  .progress__goal {
+    font-size: 20px;
+    height: 25px;
+    line-height: 25px;    
   }
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { DonationContainer } from '../donation/';
+// import { DonationContainer } from '../donation/';
 
 interface Props {}
 
@@ -16,7 +16,7 @@ export const Header: React.StatelessComponent<Props> = (props: Props) => {
         </h1>
         <img className="stars" src="/img/5calls-stars.png" alt="Make your voice heard" />
       </div>
-      <DonationContainer />
+      {/* <DonationContainer /> */}
     </header>
   );
 };
