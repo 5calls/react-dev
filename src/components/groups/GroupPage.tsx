@@ -130,7 +130,7 @@ class GroupPage extends React.Component<Props, State> {
                     {formatNumber(group.totalCalls)} Calls
                 </span>
               </div>
-              <ReactMarkdown source={group.description} />
+              <ReactMarkdown source={group.description}/>
               {/* <p>{groupId === group.id ? 
                   `You're contributing to the call total for this team!` : 
                   `Join this group to start making your calls count towards this team's total.`

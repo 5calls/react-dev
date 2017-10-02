@@ -1,7 +1,9 @@
-import { } from './NoContact';
 import * as React from 'react';
+
 import i18n from '../../services/i18n';
 import { TranslationFunction } from 'i18next';
+import * as ReactMarkdown from 'react-markdown';
+
 import { Issue, VoterContact } from '../../common/model';
 import { CallHeaderTranslatable } from './index';
 import { CallState, FlexibleOutcomeData } from '../../redux/callState';
@@ -207,9 +209,7 @@ export default class FetchCall extends React.Component<Props, State> {
         </div>
         <h3 className="call__script__header">{this.props.t('script.yourScript')}</h3>
         <div className="call__script__body">
-          {this.props.issue.script.split('\n').map((line, index) =>
-            <p key={index}>{line}</p>
-          )}
+          <ReactMarkdown source={this.props.issue.script}/>
         </div>
         <div className="call__outcomes">
           <h3 className="call__outcomes__header">
