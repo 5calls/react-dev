@@ -98,10 +98,10 @@ class GroupPage extends React.Component<Props, State> {
           </LayoutContainer>
         );
       case GroupLoadingState.FOUND:
-        const groupId = this.props.activeGroup ? this.props.activeGroup.id : 'nogroup';
+        // const groupId = this.props.activeGroup ? this.props.activeGroup.id : 'nogroup';
 
         // I hate handling optionals this way, swift is so much better on this
-        let group;
+        let group: Group;
         if (this.state.pageGroup) {
           group = this.state.pageGroup;
         } else {
@@ -118,17 +118,20 @@ class GroupPage extends React.Component<Props, State> {
             issueId={this.props.match.params.issueid}
           >
             <div className="page__group">
+            {group.photoURL !== "" ? <div className="page__group__image"><img alt={group.name} src={group.photoURL} /></div> : <span/> }
               <h2 className="page__title">{group.name}</h2>
               <div className="progress">
                 <span style={pctStyle} className="progress__total">
                     {formatNumber(group.totalCalls)} Calls
                 </span>
               </div>
-              <p>{group.description}</p>
-              <p>{groupId === group.id ? 
+              {group.description.split('\n').map((line, index) =>
+                <p key={index}>{line}</p>
+              )}
+              {/* <p>{groupId === group.id ? 
                   `You're contributing to the call total for this team!` : 
                   `Join this group to start making your calls count towards this team's total.`
-              }</p>
+              }</p> */}
             </div>
           </LayoutContainer>
         );

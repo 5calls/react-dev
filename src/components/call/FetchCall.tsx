@@ -196,7 +196,7 @@ export default class FetchCall extends React.Component<Props, State> {
       return (
         <div>
         <div className="call__contact" id="contact">
-          <div className="call__contact__image"><img alt="" src="" /></div>
+          {/* <div className="call__contact__image"><img alt="" src="" /></div> */}
           <h3 className="call__contact__type">{this.props.t('contact.callThisOffice')}</h3>
           <p className="call__contact__name">
             {this.state.currentContact.name} <span>from</span> {this.state.currentContact.city}
