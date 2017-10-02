@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { LayoutContainer } from '../layout';
 import { RouteComponentProps } from 'react-router-dom';
+import * as ReactMarkdown from 'react-markdown';
 
 import { Group, Issue } from '../../common/model';
 import { formatNumber } from '../shared/utils';
@@ -118,16 +119,18 @@ class GroupPage extends React.Component<Props, State> {
             issueId={this.props.match.params.issueid}
           >
             <div className="page__group">
-            {group.photoURL !== "" ? <div className="page__group__image"><img alt={group.name} src={group.photoURL} /></div> : <span/> }
+            {group.photoURL !== '' ?
+             <div className="page__group__image"><img alt={group.name} src={group.photoURL} /></div>
+             :
+             <span/>
+            }
               <h2 className="page__title">{group.name}</h2>
               <div className="progress">
                 <span style={pctStyle} className="progress__total">
                     {formatNumber(group.totalCalls)} Calls
                 </span>
               </div>
-              {group.description.split('\n').map((line, index) =>
-                <p key={index}>{line}</p>
-              )}
+              <ReactMarkdown source={group.description} />
               {/* <p>{groupId === group.id ? 
                   `You're contributing to the call total for this team!` : 
                   `Join this group to start making your calls count towards this team's total.`
