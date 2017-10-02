@@ -207,7 +207,7 @@ export default class FetchCall extends React.Component<Props, State> {
             <a href={`tel:${this.state.currentContact.phone}`}>{this.state.currentContact.phone}</a>
           </p>
         </div>
-        <h3 className="call__script__header">{this.props.t('script.yourScript')}</h3>
+        <h3 className="call__script__header">{i18n.t('script.yourScript')}</h3>
         <div className="call__script__body">
           <ReactMarkdown source={this.props.issue.script}/>
         </div>
@@ -227,11 +227,11 @@ export default class FetchCall extends React.Component<Props, State> {
             )}
           </div>
           <h3 className="call__outcomes__header">
-            Contacted? Result here.           
+            If contacted: do they support Danica?           
           </h3>
           {this.supportButtons()}
           <h3 className="call__outcomes__header">
-            All done           
+            Done? Move on to the next voter           
           </h3>
           {this.nextButton()}
         </div>

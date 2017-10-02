@@ -109,8 +109,8 @@ class GroupPage extends React.Component<Props, State> {
           return <span/>;
         }
 
-        const pctDone = (group.totalCalls / 1000) * 100;
-        const pctStyle = {width: `${pctDone}%`};    
+        // const pctDone = (group.totalCalls / 1000) * 100;
+        // const pctStyle = {width: `${pctDone}%`};    
 
         return (
           <LayoutContainer 
@@ -125,11 +125,12 @@ class GroupPage extends React.Component<Props, State> {
              <span/>
             }
               <h2 className="page__title">{group.name}</h2>
-              <div className="progress">
+              <h3>Together we've made {formatNumber(group.totalCalls)} calls!</h3>
+              {/* <div className="progress">
                 <span style={pctStyle} className="progress__total">
                     {formatNumber(group.totalCalls)} Calls
                 </span>
-              </div>
+              </div> */}
               <ReactMarkdown source={group.description}/>
               {/* <p>{groupId === group.id ? 
                   `You're contributing to the call total for this team!` : 
