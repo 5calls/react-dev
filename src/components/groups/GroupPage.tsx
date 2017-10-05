@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LayoutContainer } from '../layout';
-import { RouteComponentProps } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 import * as ReactMarkdown from 'react-markdown';
 
 import { Group, Issue } from '../../common/model';
@@ -112,6 +112,12 @@ class GroupPage extends React.Component<Props, State> {
         // const pctDone = (group.totalCalls / 1000) * 100;
         // const pctStyle = {width: `${pctDone}%`};    
 
+        const introStyle = {
+          backgroundColor: '#ddd',
+          borderRadius: '6px',
+          padding: '10px 10px 1px 10px',
+        }
+
         return (
           <LayoutContainer 
             currentGroupId={this.props.match.params.groupid}
@@ -126,6 +132,12 @@ class GroupPage extends React.Component<Props, State> {
             }
               <h2 className="page__title">{group.name}</h2>
               <h3>Together we've made {formatNumber(group.totalCalls)} calls!</h3>
+              { (group.id === 'danicaroem') ?
+              <blockquote style={introStyle}>
+                <p>Welcome to the phone bank for Danica Roem, candidate for Virginia’s House of Delegates for District 13!</p>
+                <p>Before making these important calls, please read through all the materials below to familiarize yourself with Danica and what she stands for. You don’t need to be an expert, but you should know a little about her before making your first call. If you’ve never made voter calls before, that’s perfectly ok! <Link to="/phonebanks">Please head over here</Link> for tips on phone banking and a great video that will make you feel ready!</p>
+              </blockquote>
+              : <span />}
               {/* <div className="progress">
                 <span style={pctStyle} className="progress__total">
                     {formatNumber(group.totalCalls)} Calls
