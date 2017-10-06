@@ -60,21 +60,21 @@ export const formatNumber = (unformattedNumber: number | string) => {
 
 export const getIssue = (remoteDataState: RemoteDataState, issueId: string): Issue | undefined => {
   if (remoteDataState.issues) {
-    const currentActiveIssue = find(remoteDataState.issues, (i => i.id === issueId));
+    const currentActiveIssue = find(remoteDataState.issues, (i => i.id === issueId || i.slug === issueId));
     if (currentActiveIssue) {
       return currentActiveIssue;
     }
   }
 
   if (remoteDataState.inactiveIssues) {
-    const currentInactiveIssue = find(remoteDataState.inactiveIssues, (i => i.id === issueId));
+    const currentInactiveIssue = find(remoteDataState.inactiveIssues, (i => i.id === issueId || i.slug === issueId));
     if (currentInactiveIssue) {
       return currentInactiveIssue;
     }
   }
 
   if (remoteDataState.groupIssues) {
-    const currentGroupIssue = find(remoteDataState.groupIssues, (i => i.id === issueId));
+    const currentGroupIssue = find(remoteDataState.groupIssues, (i => i.id === issueId || i.slug === issueId));
     if (currentGroupIssue) {
       return currentGroupIssue;
     }
