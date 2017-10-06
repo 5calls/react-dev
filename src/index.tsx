@@ -4,9 +4,10 @@ import * as ReactDOM from 'react-dom';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
+import { I18nextProvider } from 'react-i18next';
+
 import createHistory from 'history/createBrowserHistory';
 import createStore from './redux/store';
-import { I18nextProvider } from 'react-i18next';
 import i18n from './services/i18n';
 import { getAll } from './services/localStorage';
 import { transform, LegacyUserStatsState } from './services/legacyStats';

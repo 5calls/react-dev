@@ -1,6 +1,7 @@
 import * as React from 'react';
 import i18n from '../../services/i18n';
 import { RouteComponentProps } from 'react-router-dom';
+
 import { CallTranslatable } from './index';
 import { LayoutContainer } from '../layout';
 import { Issue, Group } from '../../common/model';
@@ -116,12 +117,17 @@ class CallPage extends React.Component<Props, State> {
   }
 
   getView() {
+    // const title = this.props.currentIssue ? `${this.props.currentIssue.name}: 5 Calls` : '5 Calls: Make your voice heard';
+
     return (
       <LayoutContainer
         issues={this.props.issues}
         issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined}
         currentGroup={this.props.activeGroup ? this.props.activeGroup.id : undefined}
       >
+        {/* <Helmet>
+          <title>{title}</title>
+        </Helmet> */}
         <CallTranslatable
           issue={this.props.currentIssue}
           callState={this.props.callState}

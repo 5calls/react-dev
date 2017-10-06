@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Helmet } from 'react-helmet';
+
 import i18n from '../../services/i18n';
 import { LocationState } from '../../redux/location/reducer';
 import { CallState } from '../../redux/callState/reducer';
@@ -21,6 +23,9 @@ interface Props {
 
 const Layout: React.StatelessComponent<Props> = (props: Props) => (
   <div>
+    <Helmet>
+      <title>5 Calls: Make your voice heard</title>
+    </Helmet>
     <Header />
     <div className="layout">
       <aside id="nav" role="contentinfo" className="layout__side">
