@@ -18,7 +18,9 @@ const Promotion: React.StatelessComponent<Props> = (props: Props) => {
 
   // for selected issues, customize the share text a bit more
   if (props.currentIssue) {
-    url = encodeURIComponent(`${Constants.APP_URL}/issue/${props.currentIssue.id}`);
+    const issueID = props.currentIssue.slug ? props.currentIssue.slug : props.currentIssue.id;
+
+    url = encodeURIComponent(`${Constants.APP_URL}/issue/${issueID}`);
     // the additional "via @make5calls" text that the via param introduces doesn't fit with issue titles, remove it
     additionalTwitterComps = '';
     // tslint:disable-next-line:max-line-length

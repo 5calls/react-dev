@@ -23,6 +23,7 @@ ShallowWrapper {
                 "outcomeModels": Array [],
                 "reason": "",
                 "script": "",
+                "slug": "",
               }
         }
         t={[Function]}
@@ -40,6 +41,7 @@ ShallowWrapper {
                 "outcomeModels": Array [],
                 "reason": "",
                 "script": "",
+                "slug": "",
               }
         }
         t={[Function]}
@@ -57,6 +59,7 @@ ShallowWrapper {
                 "outcomeModels": Array [],
                 "reason": "",
                 "script": "",
+                "slug": "",
               }
         }
         locationState={
@@ -83,6 +86,7 @@ ShallowWrapper {
                 "outcomeModels": Array [],
                 "reason": "",
                 "script": "",
+                "slug": "",
               }
         }
         numberContactsLeft={0}
@@ -107,6 +111,7 @@ ShallowWrapper {
                         "outcomeModels": Array [],
                         "reason": "",
                         "script": "",
+                        "slug": "",
                       }
             }
             t={[Function]}
@@ -124,6 +129,7 @@ ShallowWrapper {
                         "outcomeModels": Array [],
                         "reason": "",
                         "script": "",
+                        "slug": "",
                       }
             }
             t={[Function]}
@@ -141,6 +147,7 @@ ShallowWrapper {
                         "outcomeModels": Array [],
                         "reason": "",
                         "script": "",
+                        "slug": "",
                       }
             }
             locationState={
@@ -167,6 +174,7 @@ ShallowWrapper {
                         "outcomeModels": Array [],
                         "reason": "",
                         "script": "",
+                        "slug": "",
                       }
             }
             numberContactsLeft={0}
@@ -209,6 +217,7 @@ ShallowWrapper {
                         "outcomeModels": Array [],
                         "reason": "",
                         "script": "",
+                        "slug": "",
                       }
         }
         locationState={
@@ -253,6 +262,7 @@ ShallowWrapper {
             "outcomeModels": Array [],
             "reason": "",
             "script": "",
+            "slug": "",
           },
           "locationState": Object {
             "address": "1234",
@@ -278,6 +288,7 @@ ShallowWrapper {
             "outcomeModels": Array [],
             "reason": "",
             "script": "",
+            "slug": "",
           },
           "numberContactsLeft": 0,
         },
@@ -314,6 +325,7 @@ ShallowWrapper {
                                         "outcomeModels": Array [],
                                         "reason": "",
                                         "script": "",
+                                        "slug": "",
                                       }
                     }
                     t={[Function]}
@@ -331,6 +343,7 @@ ShallowWrapper {
                                         "outcomeModels": Array [],
                                         "reason": "",
                                         "script": "",
+                                        "slug": "",
                                       }
                     }
                     t={[Function]}
@@ -348,6 +361,7 @@ ShallowWrapper {
                                         "outcomeModels": Array [],
                                         "reason": "",
                                         "script": "",
+                                        "slug": "",
                                       }
                     }
                     locationState={
@@ -374,6 +388,7 @@ ShallowWrapper {
                                         "outcomeModels": Array [],
                                         "reason": "",
                                         "script": "",
+                                        "slug": "",
                                       }
                     }
                     numberContactsLeft={0}
@@ -398,6 +413,7 @@ ShallowWrapper {
                                         "outcomeModels": Array [],
                                         "reason": "",
                                         "script": "",
+                                        "slug": "",
                                       }
                     }
                     t={[Function]}
@@ -415,6 +431,7 @@ ShallowWrapper {
                                         "outcomeModels": Array [],
                                         "reason": "",
                                         "script": "",
+                                        "slug": "",
                                       }
                     }
                     t={[Function]}
@@ -432,6 +449,7 @@ ShallowWrapper {
                                         "outcomeModels": Array [],
                                         "reason": "",
                                         "script": "",
+                                        "slug": "",
                                       }
                     }
                     locationState={
@@ -458,6 +476,7 @@ ShallowWrapper {
                                         "outcomeModels": Array [],
                                         "reason": "",
                                         "script": "",
+                                        "slug": "",
                                       }
                     }
                     numberContactsLeft={0}
@@ -504,6 +523,7 @@ ShallowWrapper {
             "outcomeModels": Array [],
             "reason": "",
             "script": "",
+            "slug": "",
           }
     }
     locationState={

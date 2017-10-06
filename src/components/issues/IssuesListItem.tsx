@@ -17,9 +17,11 @@ export class IssuesListItem extends React.Component<Props, State> {
     const isCompleted = this.props.isIssueComplete ? 'is-complete' : '';
     const isActive = this.props.isIssueActive ? 'is-active' : '';
 
+    const issueID = this.props.issue.slug ? this.props.issue.slug : this.props.issue.id;
+
     // need to provide alternative links for on group page
     const issueLink = this.props.currentGroup ?
-      `/group/${this.props.currentGroup}/${this.props.issue.id}` : `/issue/${this.props.issue.id}`;
+      `/group/${this.props.currentGroup}/${issueID}` : `/issue/${issueID}`;
     return (
       <li>
         <Link

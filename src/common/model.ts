@@ -10,6 +10,7 @@ export interface Issue {
   outcomeModels: Outcome[];
   link: string;
   linkTitle: string;
+  slug: string;
 }
 
 export const DefaultIssue: Issue = {
@@ -22,6 +23,7 @@ export const DefaultIssue: Issue = {
   outcomeModels: [],
   link: '',
   linkTitle: '',
+  slug: '',
 };
 
 export interface Outcome {
