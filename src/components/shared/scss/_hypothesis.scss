@@ -10,6 +10,7 @@
   }
 
   &__title {
+    margin: 24px 0;
     font-size: $font-xxxlarge;
     text-transform: uppercase;
     text-align: center;
@@ -49,9 +50,11 @@
   }
 
   &__subtitle {
-    font-size: $font-large;
-    font-weight: bold;
+    margin-bottom: 26px;
+    font-size: 32px;
+    font-weight: 100;
     font-style: italic;
+    text-align: center;
   }
 
   &__list {

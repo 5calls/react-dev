@@ -12,7 +12,7 @@ export const CallHeader: React.StatelessComponent<Props> = ({ currentIssue, t }:
   if (currentIssue) {
     return (
       <header className="call__header">
-        <h2 className="call__title">{currentIssue.name}</h2>
+        <h1 className="call__title">{currentIssue.name}</h1>
         <div className="call__reason">
           {currentIssue.reason.split('\n').map((line, index) => 
             <p key={index}>{line}</p>
@@ -23,7 +23,7 @@ export const CallHeader: React.StatelessComponent<Props> = ({ currentIssue, t }:
   } else {
     return (
       <header className="call__header">
-        <h2 className="call__title">{t('noCalls.title')}</h2>
+        <h1 className="call__title">{t('noCalls.title')}</h1>
         <p>{t('noCalls.reason')}</p>
         <p>{t('noCalls.nextStep')}</p>
       </header>

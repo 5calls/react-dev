@@ -13,7 +13,10 @@ interface Props {
 export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
   <div className="hypothesis" >
     <header className="hypothesis__header">
-      <h2 className="hypothesis__title">{props.t('hypothesis.title')}</h2>
+      <h1 className="hypothesis__title">{props.t('hypothesis.title')}</h1>
+      <h2 className="hypothesis__subtitle">
+        5 Calls is the easiest and most effective way for citizens to make an impact in national and local politics
+      </h2>
       <p>
         {props.t('hypothesis.p1')}
       </p>
@@ -41,12 +44,7 @@ export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
           </span>
         </form>
       </div>
-      {/* <p dangerouslySetInnerHTML={{ __html: props.t('hypothesis.contribute') }} /> */}
-      {/* <h3 className="hypothesis__subtitle">{props.t('hypothesis.featuresTitle')}</h3> */}
-      {/* <ul className="hypothesis__list">
-        <li>{props.t('hypothesis.feature1')}</li>
-        <li>{props.t('hypothesis.feature2')}</li>
-      </ul> */}
+      <div style={{'clear': 'both'}} />
     </div>
   </div>
 );

@@ -15,7 +15,7 @@ export const Done: React.StatelessComponent<Props> = (props: Props) => {
   return (
     <section className="call">
       <div className="call_complete">
-        <h2 className="call__title">{props.t('callComplete.title')}</h2>
+        <h1 className="call__title">{props.t('callComplete.title')}</h1>
         {/*impactPreview*/}
         <p className="call__text">
           {props.t('callComplete.pickAnotherIssue')}

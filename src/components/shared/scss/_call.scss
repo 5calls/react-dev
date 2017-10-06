@@ -1,6 +1,7 @@
 .call {
 
   &__title {
+    margin: 12px 0;
   	font-size: $font-xxlarge;
   	text-transform: uppercase;
   	text-align: left;
@@ -74,7 +75,7 @@
   }
 
   &__nocontact {
-    h2 {
+    h1 {
       font-size: $font-xxlarge;
       text-align: center;
     }

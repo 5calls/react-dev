@@ -16,11 +16,14 @@ export const CallCount: React.StatelessComponent<Props> = (props: Props) => {
   const className = props.large ? ' progress__large' : '';
 
   return (
-    <div className={`progress${className}`}>
-      <span className="progress__goal">{formatNumber(2000000)}</span>
-      <span style={pctStyle} className="progress__total">
-          {formatNumber(props.totalCount)} Calls
-      </span>
+    <div>
+      <p>Together we've made nearly 2 Million calls to your elected officials!</p>
+      <div className={`progress${className}`}>
+        <span className="progress__goal">{formatNumber(2000000)}</span>
+        <span style={pctStyle} className="progress__total">
+            {formatNumber(props.totalCount)} Calls
+        </span>
+      </div>
     </div>
 
     // <h2 className="callcount">
