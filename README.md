@@ -4,7 +4,7 @@
 
 This repo holds the current frontend for the [5 Calls web site](https://5calls.org). Please check the [issues list on the 5calls/5calls repo](https://github.com/5calls/5calls/issues), pull requests and contributor guidelines before starting work so we can ensure you're not duplicating work! We're all volunteers and want to treat the time you dedicate to the site with respect. Ping [@make5calls](https://twitter.com/make5calls) on Twitter with your email to get an invite to our Slack.
 
-The [Choo](https://choo.io/) version of the site, held in the [5calls/5calls repository](https://github.com/5calls/5calls/), is no longer in use. It which was replaced by this version on September 7, 2017. Although all frontend code now lives in this repository, [issue tracking](https://github.com/5calls/5calls/issues), the [wiki](https://github.com/5calls/5calls/wiki), and [contributor guidlines](./CONTRIBUTING.md) still live in the 5calls/5calls repository.
+The [Choo](https://choo.io/) version of the site, held in the [5calls/5calls repository](https://github.com/5calls/5calls/), is no longer in use. It was replaced by this version on September 7, 2017. Although all frontend code now lives in this repository, [issue tracking](https://github.com/5calls/5calls/issues), the [wiki](https://github.com/5calls/5calls/wiki), and [contributor guidlines](./CONTRIBUTING.md) still live in the 5calls/5calls repository.
 
 ## Development Notes
 
