@@ -187,7 +187,7 @@ export default class FetchCall extends React.Component<Props, State> {
   contactArea() {
     const outcomeButtons: Button[] = [
       {title: 'Contacted', emoji: '😀', key: 'contacted'},
-      {title: 'Not Available', emoji: '😕', key: 'nothome'},
+      {title: 'No Answer', emoji: '😕', key: 'nothome'},
       {title: 'Refused', emoji: '🤐', key: 'refused'},
       // {title: 'Left Message', emoji: '📼', key: 'voicemail'},
       {title: 'Out of Service', emoji: '📵', key: 'disconnected'},

@@ -135,7 +135,9 @@ class GroupPage extends React.Component<Props, State> {
               { (group.id === 'danicaroem') ?
               <blockquote style={introStyle}>
                 <p>Welcome to the phone bank for Danica Roem, candidate for Virginia’s House of Delegates for District 13!</p>
-                <p>Before making these important calls, please read through all the materials below to familiarize yourself with Danica and what she stands for. You don’t need to be an expert, but you should know a little about her before making your first call. If you’ve never made voter calls before, that’s perfectly ok! <Link to="/phonebanks">Please head over here</Link> for tips on phone banking and a great video that will make you feel ready!</p>
+                <p>We'll be making calls to voters in District 13 to help spread the word about Danica and the upcoming election on November 7th.</p>
+                <p>These are a little different from calling your Congressperson, so before making these important calls, please read through all the materials below and familiarize yourself with Danica.</p>
+                <p>If you’ve never made voter calls before, that’s perfectly ok! <Link to="/phonebanks">Please head over here</Link> for tips on phone banking and a great video that will make you feel ready!</p>
               </blockquote>
               : <span />}
               {/* <div className="progress">
