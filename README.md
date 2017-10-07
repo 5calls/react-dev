@@ -1,12 +1,14 @@
-# 5 Calls React Port
+# 5calls
 
 [![CircleCI](https://circleci.com/gh/5calls/react-dev.svg?style=svg)](https://circleci.com/gh/5calls/react-dev)
 
-This repo holds code for the port of the [5 Calls web site](https://5calls.org) from the [Choo](https://choo.io) front-end framework to [React](https://facebook.github.io/react/) with [Redux](http://redux.js.org/) for state management and [Typescript](https://www.typescriptlang.org/) for type safety and documentation.
+This repo holds the current frontend for the [5 Calls web site](https://5calls.org). Please check the [issues list on the 5calls/5calls repo](https://github.com/5calls/5calls/issues), pull requests and contributor guidelines before starting work so we can ensure you're not duplicating work! We're all volunteers and want to treat the time you dedicate to the site with respect. Ping [@make5calls](https://twitter.com/make5calls) on Twitter with your email to get an invite to our Slack.
 
-It was deployed to production on September 7, 2017 replacing the Choo version of the web application.
+The [Choo](https://choo.io/) version of the site, held in the [5calls/5calls repository](https://github.com/5calls/5calls/), is no longer in use. It which was replaced by this version on September 7, 2017. Although all frontend code now lives in this repository, [issue tracking](https://github.com/5calls/5calls/issues), the [wiki](https://github.com/5calls/5calls/wiki), and [contributor guidlines](./CONTRIBUTING.md) still live in the 5calls/5calls repository.
 
 ## Development Notes
+
+The frontend is written in [React](https://facebook.github.io/react/) with [Redux](http://redux.js.org/) for state management and [Typescript](https://www.typescriptlang.org/) for type safety and documentation. The application server back end -- for data processing -- is written in [Go](https://golang.org/).
 
 To build the application, you need to install [Yarn](https://yarnpkg.com/) and run the following commands:
 ```
@@ -71,7 +73,22 @@ See code comments containing the token 'REDUX DATA FLOW'. Also note the use of T
 
 Contributions to this repository are welcome. Please see the [Contributing.md](https://github.com/5calls/5calls/blob/master/CONTRIBUTING.md) file in the 5calls/5calls repository for information on contributing to this repository.
 
-Initial development in this repository should focus on TODOs identified in [this wiki page](https://github.com/5calls/5calls/wiki/React-Redux-Port-Implementation) in the 5calls/5calls repo.
+<a id="Contributors"></a>
+## Contributors
+ - [Nick O'Neill](https://github.com/nickoneill)
+ - [Matt Jacobs](https://github.com/capndesign)
+ - [Liam Campbell](https://github.com/liamdanger)
+ - [James Home](https://github.com/jameshome)
+ - [Beau Smith](https://github.com/beausmith)
+ - [Anthony Johnson](https://github.com/agjohnson)
+ - [Craig Doremus](https://github.com/cdoremus)
+ - [Owen Derby](https://github.com/oderby)
+ - [All contributors](https://github.com/5calls/5calls/graphs/contributors)
+
+ <a id="Other_Client_Projects"></a>
+## Other Client Projects
+ - [Android](https://github.com/5calls/android)
+ - [iOS](https://github.com/5calls/ios)
 
 ## Create React App Code Generation
 
