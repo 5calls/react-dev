@@ -25,6 +25,7 @@ export interface Props {
 export interface State {
   issue: Issue;
   currentContact?: VoterContact;
+  checkedForContact: boolean;
   outcomeState?: string;
   supportState?: string;
 }
@@ -45,6 +46,7 @@ export default class FetchCall extends React.Component<Props, State> {
   setStateFromProps(props: Props): State {
     return {
       // currentContact: currentContact,
+      checkedForContact: false,
       issue: props.issue
     };
   }
@@ -52,12 +54,16 @@ export default class FetchCall extends React.Component<Props, State> {
   componentDidMount() {
     queueUntilRehydration(() => {
       this.fillContact();
-    });      
+    });
   }
 
   fillContact() {
-    getNextContact(this.props.issue.id).then((contact: VoterContact) => {
-      this.setState({ currentContact: contact, outcomeState: undefined, supportState: undefined });
+    getNextContact(this.props.issue.id).then((contacts: VoterContact[]) => {
+      var contact: VoterContact | undefined = undefined;
+      if (contacts.length === 1) {
+        contact = contacts[0];
+      }
+      this.setState({ currentContact: contact, checkedForContact: true, outcomeState: undefined, supportState: undefined });
     });
   }
 
@@ -187,7 +193,7 @@ export default class FetchCall extends React.Component<Props, State> {
   contactArea() {
     const outcomeButtons: Button[] = [
       {title: 'Contacted', emoji: '😀', key: 'contacted'},
-      {title: 'No Answer', emoji: '😕', key: 'nothome'},
+      {title: 'Not Available', emoji: '😕', key: 'nothome'},
       {title: 'Refused', emoji: '🤐', key: 'refused'},
       // {title: 'Left Message', emoji: '📼', key: 'voicemail'},
       {title: 'Out of Service', emoji: '📵', key: 'disconnected'},
@@ -239,7 +245,16 @@ export default class FetchCall extends React.Component<Props, State> {
       );
     }
 
-    return <h3 className="call__outcomes__header">Getting your next contact...</h3>;
+    if (!this.state.checkedForContact) {
+      return <h3 className="call__outcomes__header">Getting your next contact...</h3>;      
+    } else {
+      return (
+        <blockquote>
+          <h2 className="call__outcomes__header">All done for today!</h2>
+          <p>Looks like we're all out of calls to make for today, or we're outside of normal calling hours. Come back tomorrow for more calls!</p>
+        </blockquote>
+      );      
+    }
   }
 
   render() {

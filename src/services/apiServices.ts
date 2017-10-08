@@ -82,7 +82,7 @@ export const getGroup = (groupId: string): Promise<Group> => {
     .catch(e => Promise.reject(e));
 };
 
-export const getNextContact = (issueId: string): Promise<VoterContact> => {
+export const getNextContact = (issueId: string): Promise<VoterContact[]> => {
   const contactsUrl = `${Constants.CONTACTS_API_URL}?issueID=${issueId}`;
   return axios.get(contactsUrl)
     .then(response => Promise.resolve(response.data))
