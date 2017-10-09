@@ -174,7 +174,7 @@ export default class FetchCall extends React.Component<Props, State> {
       issueId: this.props.issue.id,
       contactId: this.state.currentContact ? this.state.currentContact.id : 'none',
     });
-    this.setState({ currentContact: undefined });
+    this.setState({ currentContact: undefined, checkedForContact: false });
     this.fillContact();
   }
 
