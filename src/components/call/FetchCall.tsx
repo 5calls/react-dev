@@ -106,8 +106,8 @@ export default class FetchCall extends React.Component<Props, State> {
       {title: 'Strong Support', emoji: '🎉', key: 'strongsupport'},
       {title: 'Lean Support', emoji: '⭐', key: 'leansupport'},
       {title: 'Undecided', emoji: '🌀', key: 'undecided'},
-      {title: 'Lean Opponent', emoji: '🚫', key: 'leanopp'},
-      {title: 'Strong Opponent', emoji: '💔', key: 'strongopp'},
+      {title: 'Lean Opponent', emoji: '😰', key: 'leanopp'},
+      {title: 'Strong Opponent', emoji: '🚫', key: 'strongopp'},
       {title: 'Not Voting', emoji: '😡', key: 'novote'},
     ];
 
@@ -168,6 +168,8 @@ export default class FetchCall extends React.Component<Props, State> {
       }
     }
 
+
+
     this.props.onSubmitOutcome({
       outcome: outcomeState,
       numberContactsLeft: 0,
@@ -193,7 +195,7 @@ export default class FetchCall extends React.Component<Props, State> {
   contactArea() {
     const outcomeButtons: Button[] = [
       {title: 'Contacted', emoji: '😀', key: 'contacted'},
-      {title: 'Not Available', emoji: '😕', key: 'nothome'},
+      {title: 'Not Available / VM', emoji: '😕', key: 'nothome'},
       {title: 'Refused', emoji: '🤐', key: 'refused'},
       // {title: 'Left Message', emoji: '📼', key: 'voicemail'},
       {title: 'Out of Service', emoji: '📵', key: 'disconnected'},
@@ -233,7 +235,7 @@ export default class FetchCall extends React.Component<Props, State> {
             )}
           </div>
           <h3 className="call__outcomes__header">
-            If contacted: do they support Danica?           
+            If contacted: do they support Danica? Use your judgement.    
           </h3>
           {this.supportButtons()}
           <h3 className="call__outcomes__header">
