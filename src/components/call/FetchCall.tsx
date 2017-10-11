@@ -253,7 +253,7 @@ export default class FetchCall extends React.Component<Props, State> {
       return (
         <blockquote>
           <h2 className="call__outcomes__header">All done for today!</h2>
-          <p>Looks like we're all out of calls to make for today, or we're outside of normal calling hours. Come back tomorrow for more calls!</p>
+          <p>Looks like we're all out of calls to make for today, or we're outside of normal calling hours (9am-9pm in the candidate's local time zone). Come back tomorrow for more calls!</p>
         </blockquote>
       );      
     }
