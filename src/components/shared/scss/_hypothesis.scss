@@ -1,4 +1,7 @@
 .hypothesis {
+  hr {
+    margin: 20px 0;
+  }
 
   &__header, &__list {
     p, li {
@@ -94,5 +97,21 @@
     input[type=text] {
       width: 180px;
     }
+  }
+}
+
+.phonebank-promo {
+  h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  img {
+    float: right;
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+
+    margin: 8px 10px;
   }
 }

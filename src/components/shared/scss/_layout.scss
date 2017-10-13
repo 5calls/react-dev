@@ -300,13 +300,22 @@ button {
   margin: 0 20px 10px 0;
   background-color: white;
 
+  p.totaltext {
+    z-index: 3;
+    position: absolute;
+    margin: 0 8px;
+
+    font-size: 28px;
+    color: #fff;
+  }
+
   &__total {
     z-index: 2;
     position: relative;
     display: inline-block;
     min-width: 10%;
     height: 20px;
-    background-color: $red;
+    background-color: $blue;
 
     color: white;
     text-align: right;
@@ -315,8 +324,16 @@ button {
     border-radius: 5px;
   }
 
-  &__goal {
+  &__border {
     z-index: 1;
+    position: absolute;
+    width: 100%;
+    border: 1px solid $blue-light;    
+    border-radius: 5px;
+  }
+
+  &__goal {
+    z-index: 3;
     position: absolute;
     text-align: right;
     width: 100%;
@@ -324,24 +341,25 @@ button {
     height: 20px;
     padding-right: 5px;
     line-height: 21px;
-    border-radius: 5px;
     color: $blue-light;
-    border: 1px solid $blue-light;
   }
 }
 
 .progress__large {
-  height: 25px;
+  height: 40px;
 
   .progress__total {
-    font-size: 20px;
-    height: 25px;
-    line-height: 26px;
+    height: 40px;
+    // line-height: 26px;
+  }
+
+  .progress__border {
+    height: 40px;
   }
 
   .progress__goal {
-    font-size: 20px;
-    height: 25px;
-    line-height: 25px;    
+    font-size: 28px;
+    height: 40px;
+    line-height: 40px;   
   }
 }

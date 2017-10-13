@@ -1,5 +1,6 @@
 import * as React from 'react';
 import i18n from '../../services/i18n';
+import { Link } from 'react-router-dom';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
 import { CallCount } from '../shared';
@@ -20,11 +21,6 @@ export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
       <p>
         {props.t('hypothesis.p1')}
       </p>
-      {/* <p><strong>{props.t('hypothesis.p2')}</strong></p>
-      <Promotion
-        currentIssue={null}
-        t={i18n.t}
-      /> */}
     </header>
     <div className="hypothesis__text">
       <CallCount
@@ -32,6 +28,13 @@ export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
         large={true}
         t={i18n.t}
       />
+      <hr />
+      <div className="phonebank-promo">
+        <img src="https://5calls.org/img/danica.jpg" alt="Danica Roem" />
+        <h3>Take Back Your Country by Making Calls</h3>
+        <p>Getting progressives elected at the local level is the first step to blocking harmful legislation like gerrymandering. We're proud to offer new tools for calling voters nationally in support of candidates like <Link to="/team/danicaroem">Danica Roem</Link>, <strong>Candidate for VA House Delegate in District 13</strong>. You can <Link to="/team/danicaroem">learn more about her campaign and make calls here</Link>.</p>
+      </div>
+      <hr />
       <a href={Constants.contact.apps}><img src="/img/5calls-apps.png" className="hypothesis__text__mobile" /></a>
       <p dangerouslySetInnerHTML={{ __html: props.t('hypothesis.p3') }} />
       <div className="subscribe">

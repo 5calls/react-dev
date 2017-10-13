@@ -40,6 +40,11 @@ const Navigation: React.StatelessComponent<Props> = (props: Props) => {
             <span>Your Impact</span>
           </Link>
         </li>
+        <li>
+          <a href="https://secure.actblue.com/contribute/page/5calls?refcode=web"><i aria-hidden="true" className="fa fa-money" />
+            <span>Be a Supporter</span>
+          </a>
+        </li>
       </ul>
       <div className="colophon__center">
         <p>© 2017 5 Calls Civic Action is a 501(c)4 non-profit that helps citizens make their voices heard.</p>
