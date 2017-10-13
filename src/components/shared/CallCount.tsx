@@ -21,7 +21,7 @@ export const CallCount: React.StatelessComponent<Props> = (props: Props) => {
         <p className="totaltext">Together we've made {formatNumber(props.totalCount)} Calls!</p>
         <span className="progress__border">&nbsp;</span>
         <span className="progress__goal">{formatNumber(2000000)}</span>
-        <span style={pctStyle} className="progress__total"></span>
+        <span style={pctStyle} className="progress__total" />
       </div>
     </div>
   );

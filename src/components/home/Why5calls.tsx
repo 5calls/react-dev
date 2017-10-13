@@ -16,6 +16,7 @@ export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
     <header className="hypothesis__header">
       <h1 className="hypothesis__title">{props.t('hypothesis.title')}</h1>
       <h2 className="hypothesis__subtitle">
+        {/*tslint:disable-next-line:max-line-length*/}
         5 Calls is the easiest and most effective way for citizens to make an impact in national and local politics
       </h2>
       <p>
@@ -32,6 +33,7 @@ export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
       <div className="phonebank-promo">
         <img src="https://5calls.org/img/danica.jpg" alt="Danica Roem" />
         <h3>Take Back Your Country by Making Calls</h3>
+        {/*tslint:disable-next-line:max-line-length*/}
         <p>Getting progressives elected at the local level is the first step to blocking harmful legislation like gerrymandering. We're proud to offer new tools for calling voters nationally in support of candidates like <Link to="/team/danicaroem">Danica Roem</Link>, <strong>Candidate for VA House Delegate in District 13</strong>. You can <Link to="/team/danicaroem">learn more about her campaign and make calls here</Link>.</p>
       </div>
       <hr />

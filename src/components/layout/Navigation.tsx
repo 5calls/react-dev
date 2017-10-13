@@ -41,7 +41,8 @@ const Navigation: React.StatelessComponent<Props> = (props: Props) => {
           </Link>
         </li>
         <li>
-          <a href="https://secure.actblue.com/contribute/page/5calls?refcode=web"><i aria-hidden="true" className="fa fa-money" />
+          <a href="https://secure.actblue.com/contribute/page/5calls?refcode=web">
+            <i aria-hidden="true" className="fa fa-money" />
             <span>Be a Supporter</span>
           </a>
         </li>
