@@ -9,7 +9,8 @@ interface Props {
 
 const Navigation: React.StatelessComponent<Props> = (props: Props) => {
   return (
-    <div className="colophon layout">
+    <div className="layout">
+    <div className="colophon">
       <ul className="colophon__left">
         <li>
           <Link to="/about"><i aria-hidden="true" className="fa fa-heart" />
@@ -33,10 +34,6 @@ const Navigation: React.StatelessComponent<Props> = (props: Props) => {
           </a>
         </li>
       </ul>
-      <div className="colophon__center">
-        <p>© 2017 5 Calls Civic Action is a 501(c)4 non-profit that helps citizens make their voices heard.</p>
-        <p><a href="http://ipinfo.io" target="_blank">{props.t('footer.ipGeolocation')}</a></p>
-      </div>
       <ul className="colophon__right">
         <li>
           <Link id="impact__link" to="/impact"><i aria-hidden="true" className="fa fa-line-chart" />
@@ -44,7 +41,12 @@ const Navigation: React.StatelessComponent<Props> = (props: Props) => {
           </Link>
         </li>
       </ul>
+      <div className="colophon__center">
+        <p>© 2017 5 Calls Civic Action is a 501(c)4 non-profit that helps citizens make their voices heard.</p>
+        <p><a href="http://ipinfo.io" target="_blank">{props.t('footer.ipGeolocation')}</a></p>
+      </div>
       <div style={{'clear': 'both'}} />
+    </div>
     </div>
   );
 };

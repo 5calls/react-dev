@@ -11,6 +11,7 @@ footer {
   }
 
   .colophon {
+    width: 100%;
     position: relative;
     margin: 0 10px;
     padding: 6px 0 24px 0;
@@ -22,6 +23,10 @@ footer {
       -webkit-margin-before: 0;
       -webkit-margin-after: 0;
       -webkit-padding-start: 0;
+
+      @include bp(medium) {
+        width: inherit;
+      }  
     }
 
     a {
@@ -41,6 +46,7 @@ footer {
 
     &__left {
       float: left;
+      height: 100%;
 
       @include bp(medium) {
         float: none;
@@ -48,11 +54,16 @@ footer {
 
       li {
         text-align: left;
+
+        @include bp(medium) {
+          text-align: center;          
+        }
       }
     }
 
     &__right {
       float: right;
+      height: 100%;
 
       @include bp(medium) {
         float: none;
@@ -60,6 +71,10 @@ footer {
 
       li {
         text-align: right;
+
+        @include bp(medium) {
+          text-align: center;          
+        }
       }
     }
 

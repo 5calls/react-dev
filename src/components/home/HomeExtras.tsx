@@ -4,6 +4,7 @@ export const HomeExtras: React.StatelessComponent = () => {
   return (
   <div className="extras">
     <div className="extras__band explainer">
+      <div className="layout">
       <ul>
         <li className="explainer__pick">
           <div className="img-contain"><img src="/img/pick-issue.png" alt="Pick your issue" /></div>
@@ -18,9 +19,11 @@ export const HomeExtras: React.StatelessComponent = () => {
           <br/>Record your result
         </li>
       </ul>
+      </div>
       <div style={{clear: 'both'}} />
     </div>
     <div className="extras__tweets">
+      <div className="layout">
       <ul>
         <li>
           <img src="/img/user-letbeasley.png"/>
@@ -37,9 +40,11 @@ export const HomeExtras: React.StatelessComponent = () => {
           <p>"Made my call to Gov Cuomo. Thank you for making it so easy. Took 5 minutes of my time &amp; I spoke with staff member."</p>
         </li>
       </ul>
+      </div>
       <div style={{clear: 'both'}} />
     </div>
     <div className="extras__band articles">
+      <div className="layout">
       <ul>
         <li className="">
           <img src="/img/logo-techcrunch.png" alt="TechCrunch" />
@@ -54,9 +59,11 @@ export const HomeExtras: React.StatelessComponent = () => {
           <img src="/img/logo-businessweek.png" alt="Bloomberg Businessweek" />
         </li>
       </ul>
+      </div>
       <div style={{clear: 'both'}} />
     </div>
     <div className="extras__media">
+      <div className="layout">
       <ul>
         <li>
           {/*tslint:disable-next-line:max-line-length*/}
@@ -71,6 +78,7 @@ export const HomeExtras: React.StatelessComponent = () => {
           <a href="https://www.youtube.com/watch?v=wwoJqYXvh9s" target="_blank"><img src="/img/video-shower.png" alt="When do you make your 5 Calls?" /></a>
         </li>
       </ul>
+      </div>
       <div style={{clear: 'both'}} />
     </div>
   </div>
