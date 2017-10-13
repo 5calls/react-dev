@@ -61,7 +61,7 @@ export class Location extends React.Component<Props, State> {
     let title = <span/>;
     switch (this.state.uiState) {
       case LocationUiState.LOCATION_FOUND:
-        title = <p id="locationMessage">{this.props.t('location.yourLocation')} <span>{this.state.location}</span></p>;
+        title = <p id="locationMessage">{this.props.t('location.yourLocation')}: <span>{this.state.location}</span></p>;
         break;
       case LocationUiState.FETCHING_LOCATION:
         title = <p id="locationMessage" className="loadingAnimation">{this.props.t('location.gettingYourLocation')}</p>;

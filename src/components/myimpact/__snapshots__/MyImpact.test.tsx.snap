@@ -11,7 +11,7 @@ ShallowWrapper {
   "node": <section
     className="impact"
 >
-    <h2
+    <h1
         className="impact__title"
     />
     <div>
@@ -25,6 +25,7 @@ ShallowWrapper {
         />
     </div>
     <Translate(Component)
+        large={true}
         t={[Function]}
         totalCount={1000}
     />
@@ -33,7 +34,7 @@ ShallowWrapper {
     <section
       className="impact"
 >
-      <h2
+      <h1
             className="impact__title"
       />
       <div>
@@ -47,6 +48,7 @@ ShallowWrapper {
             />
       </div>
       <Translate(Component)
+            large={true}
             t={[Function]}
             totalCount={1000}
       />
@@ -109,7 +111,7 @@ ShallowWrapper {
         "_currentElement": <section
           className="impact"
 >
-          <h2
+          <h1
                     className="impact__title"
           />
           <div>
@@ -123,6 +125,7 @@ ShallowWrapper {
                     />
           </div>
           <Translate(Component)
+                    large={true}
                     t={[Function]}
                     totalCount={1000}
           />
@@ -131,7 +134,7 @@ ShallowWrapper {
         "_renderedOutput": <section
           className="impact"
 >
-          <h2
+          <h1
                     className="impact__title"
           />
           <div>
@@ -145,6 +148,7 @@ ShallowWrapper {
                     />
           </div>
           <Translate(Component)
+                    large={true}
                     t={[Function]}
                     totalCount={1000}
           />

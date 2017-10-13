@@ -22,7 +22,7 @@ export const MyImpact: React.StatelessComponent<Props> = (props: Props) => {
 
   return (
     <section className="impact">
-      <h2 className="impact__title">{props.t('impact.title')}</h2>
+      <h1 className="impact__title">{props.t('impact.title')}</h1>
       {myTotalCalls === 0 &&
         <div>
           <h2
@@ -34,7 +34,7 @@ export const MyImpact: React.StatelessComponent<Props> = (props: Props) => {
 
       {myTotalCalls > 0 &&
         <div>
-          <h2
+          <h1
             className="impact_total"
             dangerouslySetInnerHTML={{ __html: props.t('impact.totalCallCountText', { myTotalCalls }) }}
           />
@@ -49,6 +49,7 @@ export const MyImpact: React.StatelessComponent<Props> = (props: Props) => {
 
       <CallCount
         totalCount={props.totalCount}
+        large={true}
         t={i18n.t}
       />
     </section>

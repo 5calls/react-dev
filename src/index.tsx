@@ -22,8 +22,6 @@ import { CallPageContainer } from './components/call';
 import { MyImpactPageContainer } from './components/myimpact';
 import { GroupPageContainer, GroupCallPageContainer } from './components/groups';
 import './components/bundle.css';
-import './components/shared/scss/style.css';
-import './components/shared/scss/vendor/normalize.css';
 import * as ReactGA from 'react-ga';
 
 ReactGA.initialize('UA-90915119-1');

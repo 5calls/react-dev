@@ -1,0 +1,90 @@
+footer {
+  background-color: $blue;
+  text-align: center;
+  font-size: $font-small;
+  color: #fff;
+  padding-top: 12px;
+  // text-align: center;
+  
+  a {
+    color: #fff;
+  }
+
+  .colophon {
+    width: 100%;
+    position: relative;
+    margin: 0 10px;
+    padding: 6px 0 24px 0;
+    line-height: 2em;
+
+    ul {
+      width: 150px;
+      list-style: none;
+      -webkit-margin-before: 0;
+      -webkit-margin-after: 0;
+      -webkit-padding-start: 0;
+
+      @include bp(medium) {
+        width: inherit;
+      }  
+    }
+
+    a {
+      padding: 0 12px;
+
+      span {
+        margin-left: 5px;
+      }
+    }
+
+    p {
+      a {
+        padding: 0;
+        text-decoration: underline;
+      }
+    }
+
+    &__left {
+      float: left;
+      height: 100%;
+
+      @include bp(medium) {
+        float: none;
+      }
+
+      li {
+        text-align: left;
+
+        @include bp(medium) {
+          text-align: center;          
+        }
+      }
+    }
+
+    &__right {
+      float: right;
+      height: 100%;
+
+      @include bp(medium) {
+        float: none;
+      }
+
+      li {
+        text-align: right;
+
+        @include bp(medium) {
+          text-align: center;          
+        }
+      }
+    }
+
+    &__center {
+      margin: 10px auto;
+
+      p {
+        font-size: 16px;
+        line-height: 1em;
+      }
+    }
+  }
+}

@@ -9,59 +9,77 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div
-    className="logo__header__inner layout"
+    className="logo__header__donate"
 >
     <div
-        className="logo__header__donatebar"
+        className="layout"
     >
-        <span
-            className="logo__header__donatebar__total"
-            style={
-                Object {
-                    "width": "100%",
-                  }
-            }
+        <div
+            className="logo__header__donatebar"
         >
-            $1,345
-        </span>
+            <span
+                className="logo__header__donatebar__total"
+                style={
+                    Object {
+                        "width": "100%",
+                      }
+                }
+            >
+                $1,345
+            </span>
+            <span
+                className="logo__header__donatebar__goal"
+            >
+                $5,000
+            </span>
+        </div>
+        <p
+            className="logo__header__donatetext"
+        >
+            <a
+                href="https://secure.actblue.com/donate/5calls-donate"
+            >
+                Donate today to keep 5 Calls running
+            </a>
+        </p>
     </div>
-    <p
-        className="logo__header__donatetext"
-    >
-        <a
-            href="https://secure.actblue.com/donate/5calls-donate"
-        >
-            Donate today to keep 5 Calls running
-        </a>
-    </p>
 </div>,
   "nodes": Array [
     <div
-      className="logo__header__inner layout"
+      className="logo__header__donate"
 >
       <div
-            className="logo__header__donatebar"
+            className="layout"
       >
-            <span
-                  className="logo__header__donatebar__total"
-                  style={
-                        Object {
-                              "width": "100%",
-                            }
-                  }
+            <div
+                  className="logo__header__donatebar"
             >
-                  $1,345
-            </span>
+                  <span
+                        className="logo__header__donatebar__total"
+                        style={
+                              Object {
+                                    "width": "100%",
+                                  }
+                        }
+                  >
+                        $1,345
+                  </span>
+                  <span
+                        className="logo__header__donatebar__goal"
+                  >
+                        $5,000
+                  </span>
+            </div>
+            <p
+                  className="logo__header__donatetext"
+            >
+                  <a
+                        href="https://secure.actblue.com/donate/5calls-donate"
+                  >
+                        Donate today to keep 5 Calls running
+                  </a>
+            </p>
       </div>
-      <p
-            className="logo__header__donatetext"
-      >
-            <a
-                  href="https://secure.actblue.com/donate/5calls-donate"
-            >
-                  Donate today to keep 5 Calls running
-            </a>
-      </p>
 </div>,
   ],
   "options": Object {},
@@ -105,59 +123,77 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
-          className="logo__header__inner layout"
+          className="logo__header__donate"
 >
           <div
-                    className="logo__header__donatebar"
+                    className="layout"
           >
-                    <span
-                              className="logo__header__donatebar__total"
-                              style={
-                                        Object {
-                                                  "width": "100%",
-                                                }
-                              }
+                    <div
+                              className="logo__header__donatebar"
                     >
-                              $1,345
-                    </span>
+                              <span
+                                        className="logo__header__donatebar__total"
+                                        style={
+                                                  Object {
+                                                            "width": "100%",
+                                                          }
+                                        }
+                              >
+                                        $1,345
+                              </span>
+                              <span
+                                        className="logo__header__donatebar__goal"
+                              >
+                                        $5,000
+                              </span>
+                    </div>
+                    <p
+                              className="logo__header__donatetext"
+                    >
+                              <a
+                                        href="https://secure.actblue.com/donate/5calls-donate"
+                              >
+                                        Donate today to keep 5 Calls running
+                              </a>
+                    </p>
           </div>
-          <p
-                    className="logo__header__donatetext"
-          >
-                    <a
-                              href="https://secure.actblue.com/donate/5calls-donate"
-                    >
-                              Donate today to keep 5 Calls running
-                    </a>
-          </p>
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div
-          className="logo__header__inner layout"
+          className="logo__header__donate"
 >
           <div
-                    className="logo__header__donatebar"
+                    className="layout"
           >
-                    <span
-                              className="logo__header__donatebar__total"
-                              style={
-                                        Object {
-                                                  "width": "100%",
-                                                }
-                              }
+                    <div
+                              className="logo__header__donatebar"
                     >
-                              $1,345
-                    </span>
+                              <span
+                                        className="logo__header__donatebar__total"
+                                        style={
+                                                  Object {
+                                                            "width": "100%",
+                                                          }
+                                        }
+                              >
+                                        $1,345
+                              </span>
+                              <span
+                                        className="logo__header__donatebar__goal"
+                              >
+                                        $5,000
+                              </span>
+                    </div>
+                    <p
+                              className="logo__header__donatetext"
+                    >
+                              <a
+                                        href="https://secure.actblue.com/donate/5calls-donate"
+                              >
+                                        Donate today to keep 5 Calls running
+                              </a>
+                    </p>
           </div>
-          <p
-                    className="logo__header__donatetext"
-          >
-                    <a
-                              href="https://secure.actblue.com/donate/5calls-donate"
-                    >
-                              Donate today to keep 5 Calls running
-                    </a>
-          </p>
 </div>,
       },
       "_renderedNodeType": 0,

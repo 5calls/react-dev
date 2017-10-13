@@ -21,9 +21,9 @@ export const MoreIssues: React.StatelessComponent<Props> = (props: Props) => {
   return (
     <section className="call">
     <div className="call_complete">
-      <h2 className="call__title">
+      <h1 className="call__title">
         {props.t('issues.activeIssuesWithCount', {count: totalCount})}
-      </h2>
+      </h1>
       {props.categoryMap ? props.categoryMap.map((cat, key) =>
         <div key={key}>
           <h2>{cat.category.name}</h2>

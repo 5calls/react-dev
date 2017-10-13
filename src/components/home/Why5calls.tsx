@@ -1,8 +1,10 @@
 import * as React from 'react';
 import i18n from '../../services/i18n';
+import { Link } from 'react-router-dom';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
-import { Promotion, CallCount } from '../shared';
+import { CallCount } from '../shared';
+import * as Constants from '../../common/constants';
 
 interface Props {
   readonly totalCount: number;
@@ -12,48 +14,42 @@ interface Props {
 export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
   <div className="hypothesis" >
     <header className="hypothesis__header">
-      <h2 className="hypothesis__title">{props.t('hypothesis.title')}</h2>
+      <h1 className="hypothesis__title">{props.t('hypothesis.title')}</h1>
+      <h2 className="hypothesis__subtitle">
+        {/*tslint:disable-next-line:max-line-length*/}
+        5 Calls is the easiest and most effective way for citizens to make an impact in national and local politics
+      </h2>
       <p>
         {props.t('hypothesis.p1')}
       </p>
-      <p><strong>{props.t('hypothesis.p2')}</strong></p>
-      <Promotion
-        currentIssue={null}
-        t={i18n.t}
-      />
     </header>
     <div className="hypothesis__text">
-      <p dangerouslySetInnerHTML={{ __html: props.t('hypothesis.p3') }} />
-      <p dangerouslySetInnerHTML={{ __html: props.t('hypothesis.contribute') }} />
-      <p className="hypothesis__callout">
-        <a href="https://secure.actblue.com/contribute/page/5calls?refcode=web" target="_blank">
-          {props.t('hypothesis.donateCallout')}
-        </a>
-      </p>
-      <h3 className="hypothesis__subtitle">{props.t('hypothesis.featuresTitle')}</h3>
-      <ul className="hypothesis__list">
-        <li>{props.t('hypothesis.feature1')}</li>
-        <li>{props.t('hypothesis.feature2')}</li>
-      </ul>
-      <h3 className="hypothesis__subtitle">
-        {props.t('hypothesis.getApp')}
-      </h3>
-      <ul className="hypothesis__apps">
-        <li>
-          <a href="https://itunes.apple.com/us/app/5-calls/id1202558609?mt=8" target="_blank">
-            <img className="ios" src="/img/app-store.svg" alt={props.t('hypothesis.onAppStore')}/>
-          </a>
-        </li>
-        <li>
-          <a href="https://play.google.com/store/apps/details?id=org.a5calls.android.a5calls&hl=en" target="_blank">
-            <img className="play" src="/img/google-play-badge.png" alt={props.t('hypothesis.onGooglePlay')} />
-          </a>
-        </li>
-      </ul>
       <CallCount
         totalCount={props.totalCount}
+        large={true}
         t={i18n.t}
       />
+      <hr />
+      <div className="phonebank-promo">
+        <img src="https://5calls.org/img/danica.jpg" alt="Danica Roem" />
+        <h3>Take Back Your Country by Making Calls</h3>
+        {/*tslint:disable-next-line:max-line-length*/}
+        <p>Getting progressives elected at the local level is the first step to blocking harmful legislation like gerrymandering. We're proud to offer new tools for calling voters nationally in support of candidates like <Link to="/team/danicaroem">Danica Roem</Link>, <strong>Candidate for VA House Delegate in District 13</strong>. You can <Link to="/team/danicaroem">learn more about her campaign and make calls here</Link>.</p>
+      </div>
+      <hr />
+      <a href={Constants.contact.apps}><img src="/img/5calls-apps.png" className="hypothesis__text__mobile" /></a>
+      <p dangerouslySetInnerHTML={{ __html: props.t('hypothesis.p3') }} />
+      <div className="subscribe">
+        {/*tslint:disable-next-line:max-line-length*/}
+        <form action="//5calls.us16.list-manage.com/subscribe/post?u=82a164d5fe7f51f4a4efb1f83&amp;id=624ef52208" method="post" target="popupwindow">
+          <label htmlFor="email">{props.t('footer.emailLabel')}</label>
+          <span className="emailform">
+            <input type="text" placeholder="youremail@example.com" name="email" id="email" />
+            <input type="submit" value={props.t('footer.subscribe')} />
+          </span>
+        </form>
+      </div>
+      <div style={{'clear': 'both'}} />
     </div>
   </div>
 );

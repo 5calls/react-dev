@@ -1,7 +1,7 @@
 import * as React from 'react';
 import i18n from '../../services/i18n';
 import { RouteComponentProps } from 'react-router-dom';
-import { Why5callsTranslatable } from './index';
+import { Why5callsTranslatable, HomeExtras } from './index';
 import { LayoutContainer } from '../layout';
 
 interface Props extends RouteComponentProps<{ id: string }> {
@@ -17,7 +17,10 @@ interface Props extends RouteComponentProps<{ id: string }> {
   this component to child components
 */
 export const HomePage: React.StatelessComponent<Props> = (props: Props) => (
-  <LayoutContainer issueId={props.match.params.id}>
+  <LayoutContainer
+   issueId={props.match.params.id}
+   extraComponent={<HomeExtras/>}
+  >
     <Why5callsTranslatable
       totalCount={props.totalCount}
       t={i18n.t}
