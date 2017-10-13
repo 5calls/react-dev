@@ -14,7 +14,7 @@ ShallowWrapper {
     <div
         className="call_complete"
     >
-        <h2
+        <h1
             className="call__title"
         />
         <p
@@ -58,6 +58,7 @@ ShallowWrapper {
             </Trans>
         </p>
         <Translate(Component)
+            large={true}
             t={[Function]}
             totalCount={10000}
         />
@@ -70,7 +71,7 @@ ShallowWrapper {
       <div
             className="call_complete"
       >
-            <h2
+            <h1
                   className="call__title"
             />
             <p
@@ -114,6 +115,7 @@ ShallowWrapper {
                   </Trans>
             </p>
             <Translate(Component)
+                  large={true}
                   t={[Function]}
                   totalCount={10000}
             />
@@ -202,7 +204,7 @@ ShallowWrapper {
           <div
                     className="call_complete"
           >
-                    <h2
+                    <h1
                               className="call__title"
                     />
                     <p
@@ -246,6 +248,7 @@ ShallowWrapper {
                               </Trans>
                     </p>
                     <Translate(Component)
+                              large={true}
                               t={[Function]}
                               totalCount={10000}
                     />
@@ -258,7 +261,7 @@ ShallowWrapper {
           <div
                     className="call_complete"
           >
-                    <h2
+                    <h1
                               className="call__title"
                     />
                     <p
@@ -302,6 +305,7 @@ ShallowWrapper {
                               </Trans>
                     </p>
                     <Translate(Component)
+                              large={true}
                               t={[Function]}
                               totalCount={10000}
                     />

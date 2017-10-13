@@ -11,6 +11,6 @@ test('Call header component should be rendered if passed a valid object', () => 
       currentIssue={issue}
       t={i18n.t}
     />);
-  const node = component.find('h2.call__title');
+  const node = component.find('h1.call__title');
   expect(node.text()).toBe('testName');
 });
