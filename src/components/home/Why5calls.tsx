@@ -31,10 +31,11 @@ export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
       />
       <hr />
       <div className="phonebank-promo">
-        <img src="https://5calls.org/img/danica.jpg" alt="Danica Roem" />
-        <h3>Take Back Your Country by Making Calls</h3>
-        {/*tslint:disable-next-line:max-line-length*/}
-        <p>Getting progressives elected at the local level is the first step to blocking harmful legislation like gerrymandering. We're proud to offer new tools for calling voters nationally in support of candidates like <Link to="/team/danicaroem">Danica Roem</Link>, <strong>Candidate for VA House Delegate in District 13</strong>. You can <Link to="/team/danicaroem">learn more about her campaign and make calls here</Link>.</p>
+        <h3 style={{color: '#e53935'}}>Call Voters in Virginia - phone bank for Danica Roem!</h3>
+        <p>We're partnering with <a href="https://www.mobilizeamerica.io/" target="_blank">Mobilize America</a> to bring you a phone bank for Danica Roem, candidate for VA House Delegate in District 13.</p>
+        <p>Virginia's House of Delegates election is coming up on November 7th. You can help elect progressive candidates by making 5 calls to voters in Virginia today!</p>
+        <p>Learn more about <Link to="/team/danicaroem">Danica here and start making calls.</Link></p>
+        <Link to="/team/danicaroem"><img src="/img/danica-mobilize-2.png" alt="Danica Roem, VA House Delegate District 13"/></Link>
       </div>
       <hr />
       <a href={Constants.contact.apps}><img src="/img/5calls-apps.png" className="hypothesis__text__mobile" /></a>
