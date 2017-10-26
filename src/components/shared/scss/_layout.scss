@@ -342,6 +342,10 @@ button {
     padding-right: 5px;
     line-height: 21px;
     color: $blue-light;
+
+    @include bp(medium) {
+      display: none;
+    }
   }
 }
 
@@ -360,6 +364,6 @@ button {
   .progress__goal {
     font-size: 28px;
     height: 40px;
-    line-height: 40px;   
+    line-height: 40px;
   }
 }
