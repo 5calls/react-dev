@@ -95,7 +95,10 @@ class CallPage extends React.Component<Props, State> {
     // On the second render, we'll have the issues and the current issue will have been identified
     // Here we set it on the redux store(note that if we've already set it in local state, in this component)
     // we don't want to set it on the redux store again because that will cause a re-render loop.
-    if (!this.props.callState.currentIssueId && newProps.currentIssue) {
+    // ALSO
+    // if we navigate backwards or reload the page, the currentissueid will be set, but it will be incorrect,
+    // so set it if it's wrong as well
+    if ((!this.props.callState.currentIssueId && newProps.currentIssue) || (newProps.currentIssue && this.props.callState.currentIssueId != newProps.currentIssue.id)) {
       this.props.onSelectIssue(newProps.currentIssue.id);
     }
   }
