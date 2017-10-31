@@ -13,7 +13,7 @@ interface Props {
   readonly issueId: string;
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
-  readonly currentGroup?: string;
+  readonly currentGroupId?: string;
   readonly completedIssueIds: string[];
   readonly callState: CallState;
   readonly locationState: LocationState;
@@ -33,6 +33,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
         <div className="issues">
           <SidebarHeader
             callState={props.callState}
+            currentGroupId={props.currentGroupId}
             locationState={props.locationState}
             setLocation={props.setLocation}
             clearLocation={props.clearLocation}
@@ -40,7 +41,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
           <Sidebar
             issues={props.issues}
             currentIssue={props.currentIssue ? props.currentIssue : undefined}
-            currentGroup={props.currentGroup}
+            currentGroup={props.currentGroupId}
             completedIssueIds={props.completedIssueIds}
             onSelectIssue={props.onSelectIssue}
           />

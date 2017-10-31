@@ -15,6 +15,7 @@ import { setUserStatsActionCreator } from './redux/userStats';
 
 import { HomePageContainer } from './components/home';
 import { AboutPage } from './components/about';
+import { PhonebanksPage } from './components/phonebanks';
 import { FaqPage } from './components/faq';
 import { DonePageContainer } from './components/done';
 import { MoreIssuesContainer } from './components/issues';
@@ -60,10 +61,11 @@ ReactDOM.render(
           <Route path="/done/:id" exact={true} component={DonePageContainer} />
           <Route path="/impact" exact={true} component={MyImpactPageContainer} />
           <Route path="/more" exact={true} component={MoreIssuesContainer} />
-          <Route path="/group/:groupid" exact={true} component={GroupPageContainer} />
-          <Route path="/group/:groupid/:issueid" exact={true} component={GroupCallPageContainer} />
+          <Route path="/team/:groupid" exact={true} component={GroupPageContainer} />
+          <Route path="/team/:groupid/:issueid" exact={true} component={GroupCallPageContainer} />
           <Route path="/faq" exact={true} component={FaqPage} />
           <Route path="/about" exact={true} component={AboutPage} />
+          <Route path="/phonebanks" exact={true} component={PhonebanksPage} />
           <Route path="*" component={HomePageContainer} />
         </Switch>
       </ConnectedRouter>

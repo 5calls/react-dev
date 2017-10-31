@@ -8,6 +8,7 @@ export const REPORT_API_URL = `${APP_URL}/report`;
 export const COUNTS_API_URL = `${API_URL}/counts`;
 export const DONATIONS_API_URL = `${API_URL}/donations`;
 export const GROUP_API_URL = `${API_URL}/groups`;
+export const CONTACTS_API_URL = `${API_URL}/contacts`;
 export const IP_INFO_URL = 'https://ipinfo.io/json';
 
 export const zipCodeRegex: RegExp = /^\d{5}(-\d{4})?$/;

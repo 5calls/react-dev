@@ -5,6 +5,7 @@ export interface Issue {
   reason: string;
   script: string;
   contacts?: Contact[];
+  contactType?: string;
   categories: Category[];
   inactive: boolean;
   outcomeModels: Outcome[];
@@ -41,6 +42,13 @@ export interface Contact {
   reason: string;
   area?: string;
   field_offices?: FieldOffice[];
+}
+
+export interface VoterContact {
+  id: string;
+  name: string;
+  city: string;
+  phone: string;
 }
 
 export interface Category {
@@ -81,6 +89,7 @@ export interface Group {
   name: string;
   description: string;
   totalCalls: number;
+  photoURL: string;
 }
 
 /**

@@ -1,7 +1,7 @@
-import { OutcomeData } from './../redux/callState/asyncActionCreator';
+import { OutcomeData, FlexibleOutcomeData } from './../redux/callState/asyncActionCreator';
 import axios from 'axios';
 import * as querystring from 'querystring';
-import { ApiData, CountData, DonationGoal, Group, GroupIssues } from './../common/model';
+import { ApiData, CountData, DonationGoal, Group, GroupIssues, VoterContact } from './../common/model';
 import * as Constants from '../common/constants';
 
 export const getAllIssues = (address: string): Promise<ApiData> => {
@@ -45,6 +45,29 @@ export const postOutcomeData = (data: OutcomeData) => {
     .catch(e => Promise.reject(e));
 };
 
+export const postFlexibleOutcomeData = (data: FlexibleOutcomeData) => {
+  const postData = querystring.stringify({
+    location: data.location,
+    result: data.outcome,
+    contactid: data.contactId,
+    issueid: data.issueId,
+    groupid: data.groupId,
+    via: data.via
+  });
+  // console.log('postOutcomeData() posted data:', postData)
+  return axios.post(
+      `${Constants.REPORT_API_URL}`,
+      postData,
+      {
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      })
+    .then(response => {
+    // console.log('postOutcomeData() response: ', response.data);
+    return Promise.resolve(null);
+  })
+    .catch(e => Promise.reject(e));
+};
+
 export const getDonations = (): Promise<DonationGoal> => {
   const donationUrl = `${Constants.DONATIONS_API_URL}`;
   return axios.get(`${donationUrl}`)
@@ -54,7 +77,14 @@ export const getDonations = (): Promise<DonationGoal> => {
 
 export const getGroup = (groupId: string): Promise<Group> => {
   const groupUrl = `${Constants.GROUP_API_URL}/${groupId}`;
-  return axios.get(`${groupUrl}`)
+  return axios.get(groupUrl)
+    .then(response => Promise.resolve(response.data))
+    .catch(e => Promise.reject(e));
+};
+
+export const getNextContact = (issueId: string): Promise<VoterContact[]> => {
+  const contactsUrl = `${Constants.CONTACTS_API_URL}?issueID=${issueId}`;
+  return axios.get(contactsUrl)
     .then(response => Promise.resolve(response.data))
     .catch(e => Promise.reject(e));
 };

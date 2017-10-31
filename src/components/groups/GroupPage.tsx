@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { LayoutContainer } from '../layout';
-import { RouteComponentProps } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
+import * as ReactMarkdown from 'react-markdown';
 
 import { Group, Issue } from '../../common/model';
 import { formatNumber } from '../shared/utils';
@@ -79,7 +80,7 @@ class GroupPage extends React.Component<Props, State> {
     e.currentTarget.blur();
 
     if (this.state.pageGroup) {
-      this.props.onJoinGroup(this.state.pageGroup);      
+      this.props.onJoinGroup(this.state.pageGroup); 
     }
   }
 
@@ -88,7 +89,7 @@ class GroupPage extends React.Component<Props, State> {
       case GroupLoadingState.LOADING:
         return (
           <LayoutContainer
-            currentGroup={this.props.match.params.groupid}
+            currentGroupId={this.props.match.params.groupid}
             issues={this.props.issues}
             issueId={this.props.match.params.issueid}
           >
@@ -98,45 +99,68 @@ class GroupPage extends React.Component<Props, State> {
           </LayoutContainer>
         );
       case GroupLoadingState.FOUND:
-        const groupId = this.props.activeGroup ? this.props.activeGroup.id : 'nogroup';
+        // const groupId = this.props.activeGroup ? this.props.activeGroup.id : 'nogroup';
 
         // I hate handling optionals this way, swift is so much better on this
-        let group;
+        let group: Group;
         if (this.state.pageGroup) {
           group = this.state.pageGroup;
         } else {
           return <span/>;
         }
 
-        const pctDone = (group.totalCalls / 1000) * 100;
-        const pctStyle = {width: `${pctDone}%`};    
+        // const pctDone = (group.totalCalls / 1000) * 100;
+        // const pctStyle = {width: `${pctDone}%`};    
+
+        const introStyle = {
+          backgroundColor: '#ddd',
+          borderRadius: '6px',
+          padding: '10px 10px 1px 10px',
+        };
 
         return (
           <LayoutContainer 
-            currentGroup={this.props.match.params.groupid}
+            currentGroupId={this.props.match.params.groupid}
             issues={this.props.issues}
             issueId={this.props.match.params.issueid}
           >
             <div className="page__group">
+            {group.photoURL !== '' ?
+             <div className="page__group__image"><img alt={group.name} src={group.photoURL} /></div>
+             :
+             <span/>
+            }
               <h2 className="page__title">{group.name}</h2>
-              <button onClick={this.joinTeam}>{groupId === group.id ? `You're on this team` : 'Join Team'}</button>
-              <div className="progress">
+              <h3>Together we've made {formatNumber(group.totalCalls)} calls!</h3>
+              { (group.id === 'danicaroem') ?
+              <blockquote style={introStyle}>
+                {/*tslint:disable-next-line:max-line-length*/}
+                <p>Welcome to the phone bank for Danica Roem, candidate for Virginia’s House of Delegates for District 13!</p>
+                {/*tslint:disable-next-line:max-line-length*/}
+                <p>We'll be making calls to voters in District 13 to help spread the word about Danica and the upcoming election on November 7th.</p>
+                {/*tslint:disable-next-line:max-line-length*/}
+                <p>These are a little different from calling your Congressperson, so before making these important calls, please read through all the materials below and familiarize yourself with Danica.</p>
+                {/*tslint:disable-next-line:max-line-length*/}
+                <p>If you’ve never made voter calls before, that’s perfectly ok! <Link to="/phonebanks">Please head over here</Link> for tips on phone banking and a great video that will make you feel ready!</p>
+              </blockquote>
+              : <span />}
+              {/* <div className="progress">
                 <span style={pctStyle} className="progress__total">
                     {formatNumber(group.totalCalls)} Calls
                 </span>
-              </div>
-              <p>{group.description}</p>
-              <p>{groupId === group.id ? 
+              </div> */}
+              <ReactMarkdown source={group.description}/>
+              {/* <p>{groupId === group.id ? 
                   `You're contributing to the call total for this team!` : 
                   `Join this group to start making your calls count towards this team's total.`
-              }</p>
+              }</p> */}
             </div>
           </LayoutContainer>
         );
       default:
         return (
           <LayoutContainer
-            currentGroup={this.props.match.params.groupid}
+            currentGroupId={this.props.match.params.groupid}
             issues={this.props.issues}
             issueId={this.props.match.params.issueid}
           >          

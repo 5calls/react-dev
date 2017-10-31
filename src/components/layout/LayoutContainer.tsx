@@ -12,7 +12,7 @@ import { Issue } from '../../common/model';
 interface OwnProps {
   readonly issueId?: string;
   readonly issues?: Issue[];
-  readonly currentGroup?: string;
+  readonly currentGroupId?: string;
   readonly children?: {};
   readonly extraComponent?: {};
 }
@@ -21,7 +21,7 @@ interface StateProps {
   readonly children?: {};
   readonly issues: Issue[];
   readonly currentIssue?: Issue;
-  readonly currentGroup?: string;
+  readonly currentGroupId?: string;
   readonly completedIssueIds: string[];
   readonly callState: CallState;
   readonly locationState: LocationState;
@@ -46,7 +46,7 @@ function mapStateToProps(state: ApplicationState, ownProps: OwnProps): StateProp
   return {
     issues: issues,
     currentIssue: currentIssue,
-    currentGroup: ownProps.currentGroup,
+    currentGroupId: ownProps.currentGroupId,
     completedIssueIds: state.callState.completedIssueIds,
     callState: state.callState,
     locationState: state.locationState,

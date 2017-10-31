@@ -2,9 +2,9 @@ import * as React from 'react';
 import i18n from '../../services/i18n';
 import { RouteComponentProps } from 'react-router-dom';
 
-import { CallTranslatable } from './index';
+import { CallTranslatable, FetchCall } from './index';
 import { LayoutContainer } from '../layout';
-import { Issue, Group } from '../../common/model';
+import { Issue } from '../../common/model';
 import { CallState, OutcomeData } from '../../redux/callState';
 import { LocationState } from '../../redux/location/reducer';
 import { queueUntilRehydration } from '../../redux/rehydrationUtil';
@@ -44,7 +44,7 @@ interface RouteProps extends RouteComponentProps<any> { }
 interface Props extends RouteProps {
   readonly issues: Issue[];
   readonly currentIssue: Issue;
-  readonly activeGroup?: Group;
+  readonly currentGroupId?: string;
   readonly callState: CallState;
   readonly locationState: LocationState;
   readonly onSubmitOutcome: (data: OutcomeData) => Function;
@@ -95,7 +95,11 @@ class CallPage extends React.Component<Props, State> {
     // On the second render, we'll have the issues and the current issue will have been identified
     // Here we set it on the redux store(note that if we've already set it in local state, in this component)
     // we don't want to set it on the redux store again because that will cause a re-render loop.
-    if (!this.props.callState.currentIssueId && newProps.currentIssue) {
+    // ALSO
+    // if we navigate backwards or reload the page, the currentissueid will be set, but it will be incorrect,
+    // so set it if it's wrong as well
+    if ((!this.props.callState.currentIssueId && newProps.currentIssue)
+       || (newProps.currentIssue && this.props.callState.currentIssueId !== newProps.currentIssue.id)) {
       this.props.onSelectIssue(newProps.currentIssue.id);
     }
   }
@@ -117,22 +121,44 @@ class CallPage extends React.Component<Props, State> {
   }
 
   getView() {
-    return (
-      <LayoutContainer
-        issues={this.props.issues}
-        issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined}
-        currentGroup={this.props.activeGroup ? this.props.activeGroup.id : undefined}
-      >
-        <CallTranslatable
-          issue={this.props.currentIssue}
-          callState={this.props.callState}
-          locationState={this.props.locationState}
-          clearLocation={this.props.clearLocation}
-          onSubmitOutcome={this.props.onSubmitOutcome}
-          t={i18n.t}
-        />
-      </LayoutContainer>
-    );
+    if (this.props.currentIssue && 
+        this.props.currentIssue.contactType && 
+        this.props.currentIssue.contactType === 'FETCH') {
+      return (
+        <LayoutContainer
+          issues={this.props.issues}
+          issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined}
+          currentGroupId={this.props.currentGroupId ? this.props.currentGroupId : undefined}
+        >
+          <FetchCall
+            issue={this.props.currentIssue}
+            currentGroupId={this.props.currentGroupId}
+            callState={this.props.callState}
+            locationState={this.props.locationState}
+            clearLocation={this.props.clearLocation}
+            onSubmitOutcome={this.props.onSubmitOutcome}
+            t={i18n.t}
+          />
+        </LayoutContainer>
+      );
+    } else {
+      return (
+        <LayoutContainer
+          issues={this.props.issues}
+          issueId={this.props.currentIssue ? this.props.currentIssue.id : undefined}
+          currentGroupId={this.props.currentGroupId ? this.props.currentGroupId : undefined}
+        >
+          <CallTranslatable
+            issue={this.props.currentIssue}
+            callState={this.props.callState}
+            locationState={this.props.locationState}
+            clearLocation={this.props.clearLocation}
+            onSubmitOutcome={this.props.onSubmitOutcome}
+            t={i18n.t}
+          />
+        </LayoutContainer>
+      );  
+    }
   }
 
   render() {

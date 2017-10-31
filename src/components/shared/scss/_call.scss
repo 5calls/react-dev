@@ -37,6 +37,10 @@
     &__name {
       font-size: $font-xlarge;
       padding: 0;
+
+      span {
+        font-weight: normal;
+      }
     }
 
     &__phone {
@@ -137,10 +141,46 @@
         background-color: $blue-light;
         text-align: center;
 
+        &.selected {
+          color: #fff;
+          background-color: $red;
+        }
+
         &:hover {
           background-color: $red;
           cursor: pointer;
         }
+
+        &:focus {
+          background-color: $blue-light;
+        }
+      }
+    }
+  }
+}
+
+.voter {
+  .call__outcomes {
+    &__items {
+      button {
+        flex-basis: 40%;
+      }
+      &.disabled {
+        opacity: 0.3;
+  
+        button:hover {
+          color: inherit;
+          background-color: $blue-light;
+          cursor: inherit;
+        }
+      }
+    }
+    &__support {
+      .novote {
+        flex-grow: 5;
+      }
+      button {
+        flex-basis: 10%;
       }
     }
   }

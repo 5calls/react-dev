@@ -37,6 +37,10 @@
       margin: 20px 0;
       width: 434px;
       height: 370px;
+
+      @include bp(medium) {
+        display: none;
+      }
     }
 
     p {
@@ -107,11 +111,6 @@
   }
 
   img {
-    float: right;
-    width: 150px;
-    height: 150px;
-    border-radius: 75px;
-
-    margin: 8px 10px;
+    width: 100%;
   }
 }

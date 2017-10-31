@@ -1,7 +1,44 @@
 .page__group {
+  position: relative;
+
+  .progress {
+    background-color: transparent;
+  }
+
   .page__title {
     font-size: 48px;
     margin-bottom: 10px;
+  }
+
+  h2 {
+    margin-top: 42px;
+  }
+
+  &__image {
+    overflow: hidden;
+    float: right;
+    // position: absolute;
+    top: 0;
+    right: 0;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: $gray-xlight;
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    @include bp(small) {
+      position: relative;
+      margin: auto;
+    }
+  }
+
+  li {
+    font-size: 18px;
+    line-height: 1.4em;
+    margin-bottom: 12px;
   }
 
   button {

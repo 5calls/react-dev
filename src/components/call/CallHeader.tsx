@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { TranslationFunction } from 'i18next';
 import { translate } from 'react-i18next';
+import * as ReactMarkdown from 'react-markdown';
+
 import { Issue } from '../../common/model';
 
 interface Props {
@@ -14,9 +16,7 @@ export const CallHeader: React.StatelessComponent<Props> = ({ currentIssue, t }:
       <header className="call__header">
         <h1 className="call__title">{currentIssue.name}</h1>
         <div className="call__reason">
-          {currentIssue.reason.split('\n').map((line, index) => 
-            <p key={index}>{line}</p>
-          )}
+          <ReactMarkdown source={currentIssue.reason}/>
         </div>
       </header>
     );

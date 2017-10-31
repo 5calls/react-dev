@@ -8,6 +8,7 @@ import { LocationTranslatable } from '../location';
 
 interface Props {
   readonly callState: CallState;
+  readonly currentGroupId?: string;
   readonly locationState: LocationState;
   readonly setLocation: (location: string) => void;  
   readonly clearLocation: () => void;  
@@ -15,13 +16,12 @@ interface Props {
 
 const SidebarHeader: React.StatelessComponent<Props> = (props: Props) => {
   let headerIntro = <h2>{i18n.t('issues.whatsImportantToYou')}</h2>;
-  if (props.callState.group) {
+
+  if (props.currentGroupId) {
     headerIntro = (
       <h3>
-        You're calling with<br/>
-        <Link to={`/group/${props.callState.group.id}`}>
-          {props.callState.group.name}
-        </Link>
+        Your&nbsp;
+        <Link to={`/team/${props.currentGroupId}`}>team page</Link>
       </h3>
     );
   }  
