@@ -98,7 +98,8 @@ class CallPage extends React.Component<Props, State> {
     // ALSO
     // if we navigate backwards or reload the page, the currentissueid will be set, but it will be incorrect,
     // so set it if it's wrong as well
-    if ((!this.props.callState.currentIssueId && newProps.currentIssue) || (newProps.currentIssue && this.props.callState.currentIssueId != newProps.currentIssue.id)) {
+    if ((!this.props.callState.currentIssueId && newProps.currentIssue)
+       || (newProps.currentIssue && this.props.callState.currentIssueId !== newProps.currentIssue.id)) {
       this.props.onSelectIssue(newProps.currentIssue.id);
     }
   }

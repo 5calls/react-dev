@@ -59,11 +59,16 @@ export default class FetchCall extends React.Component<Props, State> {
 
   fillContact() {
     getNextContact(this.props.issue.id).then((contacts: VoterContact[]) => {
-      var contact: VoterContact | undefined = undefined;
+      let contact: VoterContact | undefined = undefined;
       if (contacts.length === 1) {
         contact = contacts[0];
       }
-      this.setState({ currentContact: contact, checkedForContact: true, outcomeState: undefined, supportState: undefined });
+      this.setState({
+        currentContact: contact,
+        checkedForContact: true,
+        outcomeState: undefined,
+        supportState: undefined
+      });
     });
   }
 
@@ -168,8 +173,6 @@ export default class FetchCall extends React.Component<Props, State> {
       }
     }
 
-
-
     this.props.onSubmitOutcome({
       outcome: outcomeState,
       numberContactsLeft: 0,
@@ -197,7 +200,6 @@ export default class FetchCall extends React.Component<Props, State> {
       {title: 'Contacted', emoji: '😀', key: 'contacted'},
       {title: 'Not Available / VM', emoji: '😕', key: 'nothome'},
       {title: 'Refused', emoji: '🤐', key: 'refused'},
-      // {title: 'Left Message', emoji: '📼', key: 'voicemail'},
       {title: 'Out of Service', emoji: '📵', key: 'disconnected'},
       {title: 'Wrong Number', emoji: '👽', key: 'wrongnumber'},
     ];
@@ -253,6 +255,7 @@ export default class FetchCall extends React.Component<Props, State> {
       return (
         <blockquote>
           <h2 className="call__outcomes__header">All done for today!</h2>
+          {/*tslint:disable-next-line:max-line-length*/}
           <p>Looks like we're all out of calls to make for today, or we're outside of normal calling hours (9am-9pm in the local time zone). Come back tomorrow for more calls!</p>
         </blockquote>
       );      

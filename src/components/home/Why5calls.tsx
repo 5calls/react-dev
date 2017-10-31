@@ -32,9 +32,12 @@ export const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
       <hr />
       <div className="phonebank-promo">
         <h3 style={{color: '#e53935'}}>Call Voters in Virginia - phone bank for Danica Roem!</h3>
+        {/*tslint:disable-next-line:max-line-length*/}
         <p>We're partnering with <a href="https://www.mobilizeamerica.io/" target="_blank">Mobilize America</a> to bring you a phone bank for Danica Roem, candidate for VA House Delegate in District 13.</p>
+        {/*tslint:disable-next-line:max-line-length*/}
         <p>Virginia's House of Delegates election is coming up on November 7th. You can help elect progressive candidates by making 5 calls to voters in Virginia today!</p>
         <p>Learn more about <Link to="/team/danicaroem">Danica here and start making calls.</Link></p>
+        {/*tslint:disable-next-line:max-line-length*/}
         <Link to="/team/danicaroem"><img src="/img/danica-mobilize-2.png" alt="Danica Roem, VA House Delegate District 13"/></Link>
       </div>
       <hr />

@@ -46,17 +46,29 @@ export const HomeExtras: React.StatelessComponent = () => {
     <div className="extras__band articles">
       <div className="layout">
       <ul>
-        <li className="">
-          <a href="https://techcrunch.com/2017/01/25/5-calls-debuts-what-may-be-the-easiest-way-to-call-your-reps-yet/" target="_blank"><img src="/img/logo-techcrunch.png" alt="TechCrunch" /></a>
+        <li>
+          {/*tslint:disable-next-line:max-line-length*/}
+          <a href="https://techcrunch.com/2017/01/25/5-calls-debuts-what-may-be-the-easiest-way-to-call-your-reps-yet/" target="_blank">
+            <img src="/img/logo-techcrunch.png" alt="TechCrunch" />
+          </a>
         </li>
-        <li className="">
-          <a href="http://www.vogue.com/article/five-calls-best-political-activist-hack" target="_blank"><img src="/img/logo-vogue.png" alt="Vogue" /></a>
+        <li>
+          {/*tslint:disable-next-line:max-line-length*/}
+          <a href="http://www.vogue.com/article/five-calls-best-political-activist-hack" target="_blank">
+            <img src="/img/logo-vogue.png" alt="Vogue" />
+          </a>
         </li>
-        <li className="">
-          <a href="http://www.huffingtonpost.com/entry/5-calls-congress-phone_us_588ada64e4b0230ce61b26d7" target="_blank"><img src="/img/logo-huffpost.png" alt="HuffPost" /></a>
+        <li>
+          {/*tslint:disable-next-line:max-line-length*/}
+          <a href="http://www.huffingtonpost.com/entry/5-calls-congress-phone_us_588ada64e4b0230ce61b26d7" target="_blank">
+            <img src="/img/logo-huffpost.png" alt="HuffPost" />
+          </a>
         </li>
-        <li className="">
-          <a href="https://www.bloomberg.com/news/articles/2017-02-09/silicon-valley-fights-trump-in-its-free-time" target="_blank"><img src="/img/logo-businessweek.png" alt="Bloomberg Businessweek" /></a>
+        <li>
+          {/*tslint:disable-next-line:max-line-length*/}
+          <a href="https://www.bloomberg.com/news/articles/2017-02-09/silicon-valley-fights-trump-in-its-free-time" target="_blank">
+            <img src="/img/logo-businessweek.png" alt="Bloomberg Businessweek" />
+          </a>
         </li>
       </ul>
       </div>
